@@ -4,7 +4,7 @@
 
 /* ROOM */
 
-const roomName = "3x3 | Cola na humildade";
+const roomName = "teste do bot, nem cola"; // nome sugerido: 3x3 | Cola na humildade
 const botName = "🤖";
 const maxPlayers = 15;
 const roomPublic = true;
@@ -79,7 +79,7 @@ var uniforms = {
         "color2": 0xB22222,
         "color3": 0x000080,
     }
-}
+};
 var nameHome = 'Barcelona';
 var acronymHome = "bar";
 var nameGuest = 'Real Madrird';
@@ -99,7 +99,7 @@ const triggerDistance = playerRadius + ballRadius + 0.01;
 
 /* OPTIONS */
 
-var drawTimeLimit = 60;
+var drawTimeLimit = 5; //segundos
 var maxTeamSize = 4;
 var yellow = 0xffeb15;
 var white = 0xFFFFFF;
@@ -139,13 +139,13 @@ var checkTimeVariable = false;
 
 function sendAnnouncement(announcement) {
     room.sendAnnouncement(announcement, null, white, "bold", 1);
-}
+};
 
 function sendRandomAnnouncement(messages, color, fontWeight) {
     var randomIndex = Math.floor(Math.random() * messages.length);
     var randomMessage = messages[randomIndex];
     sendAnnouncement(randomMessage, white, "bold");
-}
+};
 
 function centerText(string) {
     var space = parseInt((80 - string.length) * 0.8, 10);
@@ -153,7 +153,7 @@ function centerText(string) {
         return '';
     }
     return ' '.repeat(space) + string + ' '.repeat(space);
-}
+};
 
 function docketFormat(string1, string2) {
     if (string1 !== undefined && string2 === undefined) {
@@ -167,7 +167,7 @@ function docketFormat(string1, string2) {
     } else if (string1 === undefined && string2 === undefined) {
         return ''
     }
-}
+};
 
 function getUniform(uniformStr) {
     if (uniforms.hasOwnProperty(uniformStr)) return uniformStr;
@@ -177,7 +177,7 @@ function getUniform(uniformStr) {
         }
     }
     return false;
-}
+};
 
 function changeUniforme() {
     var a = nameHome;
@@ -195,14 +195,14 @@ function changeUniforme() {
     room.setTeamColors(1, uniforms[acronymHome].angle, uniforms[acronymHome].textcolor, [uniforms[acronymHome].color1, uniforms[acronymHome].color2, uniforms[acronymHome].color3]);
 
     room.setTeamColors(2, uniforms[acronymGuest].angle, uniforms[acronymGuest].textcolor, [uniforms[acronymGuest].color1, uniforms[acronymGuest].color2, uniforms[acronymGuest].color3]);
-}
+};
 
 
 /* AUXILIARY FUNCTIONS */
 
 function getRandomInt(max) { // return random number from 0 to max-1
     return Math.floor(Math.random() * Math.floor(max));
-}
+};
 
 function arrayMin(arr) {
     var len = arr.length;
@@ -213,17 +213,27 @@ function arrayMin(arr) {
         }
     }
     return min;
-}
+};
 
 function getTime(scores) {
     return "[" + Math.floor(Math.floor(scores.time / 60) / 10).toString() + Math.floor(Math.floor(scores.time / 60) % 10).toString() + ":" + Math.floor(Math.floor(scores.time - (Math.floor(scores.time / 60) * 60)) / 10).toString() + Math.floor(Math.floor(scores.time - (Math.floor(scores.time / 60) * 60)) % 10).toString() + "]"
-}
+};
+
+function checkDrawTimeLimit() {
+    const scores = room.getScores();
+    const timeLimit = drawTimeLimit * 60;
+
+    if (scores.red === scores.blue && scores.time >= timeLimit) {
+        endGame(Team.NONE);
+        room.stopGameAndDraw();
+    }
+};
 
 function pointDistance(p1, p2) {
     var d1 = p1.x - p2.x;
     var d2 = p1.y - p2.y;
     return Math.sqrt(d1 * d1 + d2 * d2);
-}
+};
 
 /* BUTTONS */
 
@@ -246,7 +256,7 @@ function topBtn() {
             room.setPlayerTeam(teamS[0].id, Team.BLUE);
         }
     }
-}
+};
 
 function resetBtn() {
     resettingTeams = true;
@@ -269,7 +279,7 @@ function resetBtn() {
             room.setPlayerTeam(teamR[teamR.length - 1 - i].id, Team.SPECTATORS);
         }
     }
-}
+};
 
 function blueToSpecBtn() {
     resettingTeams = true;
@@ -277,7 +287,7 @@ function blueToSpecBtn() {
     for (var i = 0; i < teamB.length; i++) {
         room.setPlayerTeam(teamB[teamB.length - 1 - i].id, Team.SPECTATORS);
     }
-}
+};
 
 function redToSpecBtn() {
     resettingTeams = true;
@@ -285,7 +295,7 @@ function redToSpecBtn() {
     for (var i = 0; i < teamR.length; i++) {
         room.setPlayerTeam(teamR[teamR.length - 1 - i].id, Team.SPECTATORS);
     }
-}
+};
 
 function blueToRedBtn() {
     resettingTeams = true;
@@ -293,7 +303,7 @@ function blueToRedBtn() {
     for (var i = 0; i < teamB.length; i++) {
         room.setPlayerTeam(teamB[i].id, Team.RED);
     }
-}
+};
 
 /* GAME FUNCTIONS */
 
@@ -304,8 +314,8 @@ function checkTime() {
             if (checkTimeVariable == false) {
                 checkTimeVariable = true;
                 setTimeout(() => { checkTimeVariable = false; }, 3000);
-                scores.red > scores.blue ? endGame(Team.RED) : endGame(Team.BLUE);
-                setTimeout(() => { room.stopGame(); }, 2000);
+                scores.red > scores.blue ? stopGameAndDraw(Team.RED) : stopGameAndDraw(Team.BLUE);
+                setTimeout(() => { room.stopGameAndDraw(); }, 2000);
             }
             return;
         }
@@ -333,25 +343,20 @@ function checkTime() {
             room.sendAnnouncement(centerText("⌛ 15 segundos restantes até o empate! ⌛"), null, yellow, "bold");;
         }
     }
-    if (Math.abs(scores.time - drawTimeLimit * 60) <= 0.01 && players.length > 2) {
+    if (goldenGoal && Math.abs(drawTimeLimit * 60 - scores.time - 15) <= 0.01 && players.length > 2) {
         if (checkTimeVariable == false) {
             checkTimeVariable = true;
             setTimeout(() => { checkTimeVariable = false; }, 10);
-            endGame(Team.SPECTATORS);
-            room.stopGame();
-            goldenGoal = false;
+            room.sendAnnouncement(centerText("⌛ 15 segundos restantes até o fim da prorrogação! ⌛"), null, yellow, "bold");
         }
     }
-    if (scores.time >= drawTimeLimit * 60) {
-        if (checkTimeVariable == false) {
-            checkTimeVariable = true;
-            setTimeout(() => { checkTimeVariable = false; }, 10);
-            endGame(Team.SPECTATORS);
-            room.stopGame();
-            goldenGoal = false;
-        }
+
+    if (goldenGoal && scores.time > drawTimeLimit * 60) {
+        endGame(Team.SPECTATORS);
+        room.stopGameAndDraw();
+        goldenGoal = false;
     }
-}
+};
 
 function endGame(winner) { // no stopGame() function in it
     const scores = room.getScores();
@@ -374,15 +379,38 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("🏆 " + teamB[GKList.slice(maxPlayers, 2 * maxPlayers).findIndex(p => p == Math.max(...GKList.slice(maxPlayers, 2 * maxPlayers)))].name + " mandou muito! "), null, white, "bold");
         }
     }
-    else {
+};
+
+function stopGameAndDraw() {
+    goldenGoal = false;
+    const scores = room.getScores();
+    const checkDrawTimeLimit = room.checkDrawTimeLimit();
+    Rposs = Rposs / (Rposs + Bposs);
+    Bposs = 1 - Rposs;
+    lastWinner = winner;
+
+    if (scores.red == scores.blue && checkDrawTimeLimit) {
         streak = 0;
         room.sendAnnouncement(centerText("💤 Limite de TEMPO! 💤"), null, yellow, "bold");
         room.sendAnnouncement(centerText("⭐ Posse de bola: " + emojiHome + (Rposs * 100).toPrecision(3).toString() + "% : " + (Bposs * 100).toPrecision(3).toString() + "%" + emojiGuest), null, white, "bold");
+
         if (scores.red == 0) {
             room.sendAnnouncement(centerText("🏆 " + teamB[GKList.slice(maxPlayers, 2 * maxPlayers).findIndex(p => p == Math.max(...GKList.slice(maxPlayers, 2 * maxPlayers)))].name + " e " + teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " mandaram muito! "), null, white, "bold");
         }
+
+        room.stopGame();
     }
-}
+    else if (scores.red > scores.blue || (goldenGoal && scores.red != scores.blue)) {
+        endGame(Team.RED);
+    }
+    else if (scores.blue > scores.red || (goldenGoal && scores.red != scores.blue)) {
+        endGame(Team.BLUE);
+    }
+    setTimeout(() => {
+        room.stopGameAndDraw();
+    }, 1000);
+};
+
 
 /* PLAYER FUNCTIONS */
 
@@ -391,7 +419,7 @@ function updateTeams() {
     teamR = players.filter(p => p.team === Team.RED);
     teamB = players.filter(p => p.team === Team.BLUE);
     teamS = players.filter(p => p.team === Team.SPECTATORS);
-}
+};
 
 function updateAdmins() {
     if (players.length == 0 || players.find((player) => player.admin) != null) {
@@ -400,7 +428,7 @@ function updateAdmins() {
     var copie = [];
     players.forEach(function (element) { copie.push(element.id); });
     room.setPlayerAdmin(arrayMin(copie), true); // Give admin to the player who's played the longest on the room
-}
+};
 
 function updateList(number, team) {
     if (room.getScores() != null) {
@@ -412,7 +440,7 @@ function updateList(number, team) {
             GKList = GKList.slice(0, maxPlayers + number).concat(GKList.slice(maxPlayers + number + 1, GKList.length).concat(0));
         }
     }
-}
+};
 
 /* STATS FUNCTIONS */
 
@@ -428,7 +456,7 @@ function getLastTouchOfTheBall() {
             }
         }
     }
-}
+};
 
 function getStats() { // gives possession, ball speed and GK of each team
     if (activePlay) {
@@ -455,7 +483,7 @@ function getStats() { // gives possession, ball speed and GK of each team
         }
         GKList[maxPlayers + k[0]]++;
     }
-}
+};
 
 /* EVENTS */
 
@@ -471,7 +499,7 @@ room.onPlayerJoin = function (player) {
     updateTeams();
     updateAdmins();
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
-}
+};
 
 room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
     if (changedPlayer.id == 0) {
@@ -482,7 +510,7 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
         updateList(Math.max(teamR.findIndex((p) => p.id == changedPlayer.id), teamB.findIndex((p) => p.id == changedPlayer.id), teamS.findIndex((p) => p.id == changedPlayer.id)), changedPlayer.team);
     }
     updateTeams();
-}
+};
 
 room.onPlayerLeave = function (player) {
     updateList(Math.max(teamR.findIndex((p) => p.id == player.id), teamB.findIndex((p) => p.id == player.id), teamS.findIndex((p) => p.id == player.id)), player.team);
@@ -496,10 +524,10 @@ room.onPlayerLeave = function (player) {
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
-}
+};
 
 room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
-}
+};
 
 /* PLAYER ACTIVITY */
 
@@ -623,10 +651,10 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("Você foi mutado.", player.id), null, yellow, "normal");
         return false;
     }
-}
+};
 
 room.onPlayerActivity = function (player) {
-}
+};
 
 room.onPlayerBallKick = function (player) {
     if (lastPlayersTouched[0] == null || player.id != lastPlayersTouched[0].id) {
@@ -635,7 +663,7 @@ room.onPlayerBallKick = function (player) {
         lastPlayersTouched[1] = lastPlayersTouched[0];
         lastPlayersTouched[0] = player;
     }
-}
+};
 
 /* GAME MANAGEMENT */
 
@@ -655,7 +683,7 @@ room.onGameStart = function (byPlayer) {
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
-}
+};
 
 room.onGameStop = function (byPlayer) {
     if (byPlayer.id == 0) {
@@ -672,7 +700,7 @@ room.onGameStop = function (byPlayer) {
         }
         setTimeout(() => { topBtn(); }, 100);
     }
-}
+};
 
 room.onGamePause = function (byPlayer) {
     setTimeout(function () {
@@ -685,7 +713,7 @@ room.onGamePause = function (byPlayer) {
         var announcement = messages[randomIndex];
         room.sendAnnouncement(centerText(announcement), null, yellow, "bold");
     }, 1500);
-}
+};
 
 room.onGameUnpause = function (byPlayer) {
     var messages = [
@@ -696,7 +724,7 @@ room.onGameUnpause = function (byPlayer) {
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
-}
+};
 
 room.onTeamGoal = function (team) {
     const scores = room.getScores();
@@ -717,23 +745,23 @@ room.onTeamGoal = function (team) {
         goldenGoal = false;
         setTimeout(() => { room.stopGame(); }, 1000);
     }
-}
+};
 
 room.onPositionsReset = function () {
     lastPlayersTouched = [null, null];
-}
+};
 
 /* MISCELLANEOUS */
 
 room.onRoomLink = function (url) {
-}
+};
 
 room.onPlayerAdminChange = function (changedPlayer, byPlayer) {
     if (muteList.includes(changedPlayer.name) && changedPlayer.admin) {
         room.sendAnnouncement(centerText(changedPlayer.name + " foi desmutado."), null, yellow, "normal");
         muteList = muteList.filter((p) => p != changedPlayer.name);
     }
-}
+};
 
 room.onStadiumChange = function (newStadiumName, byPlayer) {
     var messages = [
@@ -744,10 +772,11 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
     room.sendAnnouncement(centerText(announcement), null, yellow, "bold");
-}
+};
 
 room.onGameTick = function () {
+    checkDrawTimeLimit();
     checkTime();
     getLastTouchOfTheBall();
     getStats();
-}
+};

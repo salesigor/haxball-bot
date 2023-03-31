@@ -32,7 +32,7 @@ var uniforms = {
 	"rea": {
 		"name": 'Real Madrid',
 		"type": Uniform,
-		"emoji": '⚪⚪⚪',
+		"emoji": '⚪🟡⚪',
 		"angle": 0,
 		"textcolor": 0xDAA520,
 		"color1": 0xFFFAFA,
@@ -62,7 +62,7 @@ var uniforms = {
 	"bar": {
 		"name": 'Barcelona',
 		"type": Uniform,
-		"emoji": '🔵🔴🟡',
+		"emoji": '🔵🔴🔵',
 		"angle": 360,
 		"textcolor": 0xFFD700,
 		"color1": 0x00008B,
@@ -84,8 +84,8 @@ var nameHome = 'Barcelona';
 var acronymHome = "bar";
 var nameGuest = 'Real Madrird';
 var acronymGuest = "rea";
-var emojiHome = '🔵🔴🟡';
-var emojiGuest = '⚪⚪⚪';
+var emojiHome = '🔵🔴🔵';
+var emojiGuest = '⚪🟡⚪';
 room.setTeamColors(1, uniforms[acronymHome].angle, uniforms[acronymHome].textcolor, [uniforms[acronymHome].color1, uniforms[acronymHome].color2, uniforms[acronymHome].color3]);
 room.setTeamColors(2, uniforms[acronymGuest].angle, uniforms[acronymGuest].textcolor, [uniforms[acronymGuest].color1, uniforms[acronymGuest].color2, uniforms[acronymGuest].color3]);
 var adminPassword = "true";
