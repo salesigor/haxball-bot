@@ -6,8 +6,8 @@
 
 /* ROOM */
 
-const roomName = "3x3 | Daronco adverte...";
-const botName = "🤖 Daronco";
+const roomName = "3x3 | Futsalzin humilde...";
+const botName = "🤖";
 const maxPlayers = 12;
 const roomPublic = false;
 const geo = [{ "code": "BR", "lat": -23.646709, "lon": -46.730114 }, { "code": "FR", "lat": 46.2, "lon": 2.2 }, { "code": "PL", "lat": 51.9, "lon": 19.1 }, { "code": "GB", "lat": 55.3, "lon": -3.4 }, { "code": "PT", "lat": 39.3, "lon": -8.2 }];
@@ -941,7 +941,7 @@ room.onPlayerChat = function (player, message) {
 			localStorage.getItem(getAuth(player)) ? stats = JSON.parse(localStorage.getItem(getAuth(player))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00", "player", player.name];
 			if (stats[Ss.RL] != "master") {
 				stats[Ss.RL] = "master";
-				room.sendChat(player.name + " is now a room master !");
+				room.sendChat(player.name + " é aogra um master!");
 				localStorage.setItem(getAuth(player), JSON.stringify(stats));
 			}
 		}
@@ -957,7 +957,7 @@ room.onPlayerChat = function (player, message) {
 						stats[Ss.RL] = "admin";
 						localStorage.setItem(getAuth(room.getPlayer(Number.parseInt(message[1]))), JSON.stringify(stats));
 						room.setPlayerAdmin(room.getPlayer(Number.parseInt(message[1])).id, true);
-						room.sendChat(room.getPlayer(Number.parseInt(message[1])).name + " is now an administrator of the room !");
+						room.sendChat(room.getPlayer(Number.parseInt(message[1])).name + " agora é ADM da sala!");
 					}
 				}
 			}
@@ -971,7 +971,7 @@ room.onPlayerChat = function (player, message) {
 					var stats;
 					localStorage.getItem(getAuth(room.getPlayer(Number.parseInt(message[1])))) ? stats = JSON.parse(localStorage.getItem(getAuth(room.getPlayer(Number.parseInt(message[1]))))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00", "player", room.getPlayer(Number.parseInt(message[1])).name];
 					if (stats[Ss.RL] == "admin") {
-						room.sendChat(room.getPlayer(Number.parseInt(message[1])).name + " is not an administrator of the room anymore !");
+						room.sendChat(room.getPlayer(Number.parseInt(message[1])).name + " não é mais ADM da sala!");
 						stats[Ss.RL] = "player";
 						localStorage.setItem(getAuth(room.getPlayer(Number.parseInt(message[1]))), JSON.stringify(stats));
 						room.setPlayerAdmin(room.getPlayer(Number.parseInt(message[1])).id, false);
@@ -1030,7 +1030,7 @@ room.onPlayerChat = function (player, message) {
 						}
 						setTimeout(function (player) { setMute(player, false); }, timeOut, room.getPlayer(Number.parseInt(message[2])));
 						setMute(room.getPlayer(Number.parseInt(message[2])), true);
-						room.sendChat(room.getPlayer(Number.parseInt(message[2])).name + " has been muted for " + (timeOut / 60000) + " minutes!");
+						room.sendChat(room.getPlayer(Number.parseInt(message[2])).name + " foi mutado por " + (timeOut / 60000) + " minutos!");
 					}
 				}
 			}
@@ -1043,7 +1043,7 @@ room.onPlayerChat = function (player, message) {
 						}
 						setTimeout(function (player) { setMute(player, false); }, 3 * 60 * 1000, room.getPlayer(Number.parseInt(message[1])));
 						setMute(room.getPlayer(Number.parseInt(message[1])), true);
-						room.sendChat(room.getPlayer(Number.parseInt(message[1])).name + " has been muted for 3 minutes!");
+						room.sendChat(room.getPlayer(Number.parseInt(message[1])).name + " foi mutado por 3 minutos!");
 					}
 				}
 			}

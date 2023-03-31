@@ -140,9 +140,25 @@ function sendRandomAnnouncement(messages, color, fontWeight) {
 }
 
 function centerText(string) {
-	var space;
-	space = parseInt((80 - string.length) * 0.8, 10);
-	return ' '.repeat(space) + string + ' '.repeat(space)
+	var space = parseInt((80 - string.length) * 0.8, 10);
+	if (space <= 0) {
+		return '';
+	}
+	return ' '.repeat(space) + string + ' '.repeat(space);
+}
+
+function docketFormat(string1, string2) {
+	if (string1 !== undefined && string2 === undefined) {
+		var space = 53 - (string1.length) * 0.8;
+		return ' '.repeat(space) + string1
+	} else if (string2 !== undefined && string1 === undefined) {
+		return ' '.repeat(77) + string2
+	} else if (string2 !== undefined && string1 !== undefined) {
+		var space = 16 - (string1.length + 10 + string2.length)
+		return ' '.repeat(12) + centerText(string1 + ' '.repeat(10) + string2)
+	} else if (string1 === undefined && string2 === undefined) {
+		return ''
+	}
 }
 
 function getUniform(uniformStr) {
@@ -473,7 +489,7 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
 room.onPlayerChat = function (player, message) {
 	message = message.split(" ");
 	if (["!help"].includes(message[0].toLowerCase())) {
-		room.sendAnnouncement(centerText("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id));
+		room.sendAnnouncement(centerText("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id), null, yellow, "normal");
 	}
 	else if (["!adm"].includes(message[0].toLowerCase())) {
 		if (message[1] == adminPassword) {
@@ -505,7 +521,7 @@ room.onPlayerChat = function (player, message) {
 								}
 								setTimeout(function (name) { muteList = muteList.filter((p) => p != name) }, timeOut, teamR[Number.parseInt(message[2]) - 1].name);
 								muteList.push(teamR[Number.parseInt(message[2]) - 1].name);
-								room.sendAnnouncement(centerText(teamR[Number.parseInt(message[2]) - 1].name + " foi mutado por " + (timeOut / 60000) + " minutos !"));
+								room.sendAnnouncement(centerText(teamR[Number.parseInt(message[2]) - 1].name + " foi mutado por " + (timeOut / 60000) + " minutos !"), null, yellow, "normal");
 							}
 						}
 					}
@@ -527,7 +543,7 @@ room.onPlayerChat = function (player, message) {
 								}
 								setTimeout(function (name) { muteList = muteList.filter((p) => p != name) }, timeOut, teamB[Number.parseInt(message[2]) - 1].name);
 								muteList.push(teamB[Number.parseInt(message[2]) - 1].name);
-								room.sendAnnouncement(centerText(teamB[Number.parseInt(message[2]) - 1].name + " foi mutado por " + (timeOut / 60000) + " minutos !"));
+								room.sendAnnouncement(centerText(teamB[Number.parseInt(message[2]) - 1].name + " foi mutado por " + (timeOut / 60000) + " minutos !"), null, yellow, "normal");
 							}
 						}
 					}
@@ -549,7 +565,7 @@ room.onPlayerChat = function (player, message) {
 								}
 								setTimeout(function (name) { muteList = muteList.filter((p) => p != name) }, timeOut, teamS[Number.parseInt(message[2]) - 1].name);
 								muteList.push(teamS[Number.parseInt(message[2]) - 1].name);
-								room.sendAnnouncement(centerText(teamS[Number.parseInt(message[2]) - 1].name + " foi mutado por " + (timeOut / 60000) + " minutos !"));
+								room.sendAnnouncement(centerText(teamS[Number.parseInt(message[2]) - 1].name + " foi mutado por " + (timeOut / 60000) + " minutos !"), null, yellow, "normal");
 							}
 						}
 					}
@@ -561,7 +577,7 @@ room.onPlayerChat = function (player, message) {
 		if (player.admin) {
 			if (message.length == 2 && message[1] == "all") {
 				muteList = [];
-				room.sendAnnouncement(centerText("Desmutado."));
+				room.sendAnnouncement(centerText("Desmutado."), null, yellow, "normal");
 			}
 			if (message.length >= 2) {
 				var name = "";
