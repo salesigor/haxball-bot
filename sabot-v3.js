@@ -1,4 +1,4 @@
-// SEMI-AUTOMÁTICO V3.3
+// SEMI-AUTOMÁTICO V3.5
 
 /* VARIABLES */
 
@@ -22,6 +22,7 @@ var uniforms = {
 	"che": {
 		"name": 'Chelsea',
 		"type": Uniform,
+		"emoji": '🔵⚪🔵',
 		"angle": 90,
 		"textcolor": 0xFFFFFF,
 		"color1": 0x0000CD,
@@ -31,6 +32,7 @@ var uniforms = {
 	"rea": {
 		"name": 'Real Madrid',
 		"type": Uniform,
+		"emoji": '⚪⚪⚪',
 		"angle": 0,
 		"textcolor": 0xDAA520,
 		"color1": 0xFFFAFA,
@@ -40,6 +42,7 @@ var uniforms = {
 	"juv": {
 		"name": 'Juventus',
 		"type": Uniform,
+		"emoji": '⚫⚪⚫',
 		"angle": 180,
 		"textcolor": 0x000000,
 		"color1": 0x5E5E5E,
@@ -49,6 +52,7 @@ var uniforms = {
 	"bay": {
 		"name": 'Bayern de Munique',
 		"type": Uniform,
+		"emoji": '🔴🔵🔴',
 		"angle": 30,
 		"textcolor": 0xFFFFFF,
 		"color1": 0xFF0000,
@@ -58,6 +62,7 @@ var uniforms = {
 	"bar": {
 		"name": 'Barcelona',
 		"type": Uniform,
+		"emoji": '🔵🔴🟡',
 		"angle": 360,
 		"textcolor": 0xFFD700,
 		"color1": 0x00008B,
@@ -67,6 +72,7 @@ var uniforms = {
 	"psg": {
 		"name": 'Paris Sant-Germain',
 		"type": Uniform,
+		"emoji": '🔵🔴🔵',
 		"angle": 180,
 		"textcolor": 0xFFFFFF,
 		"color1": 0x000080,
@@ -78,6 +84,8 @@ var nameHome = 'Barcelona';
 var acronymHome = "bar";
 var nameGuest = 'Real Madrird';
 var acronymGuest = "rea";
+var emojiHome = '🔵🔴🟡';
+var emojiGuest = '⚪⚪⚪';
 room.setTeamColors(1, uniforms[acronymHome].angle, uniforms[acronymHome].textcolor, [uniforms[acronymHome].color1, uniforms[acronymHome].color2, uniforms[acronymHome].color3]);
 room.setTeamColors(2, uniforms[acronymGuest].angle, uniforms[acronymGuest].textcolor, [uniforms[acronymGuest].color1, uniforms[acronymGuest].color2, uniforms[acronymGuest].color3]);
 var adminPassword = "true";
@@ -352,16 +360,16 @@ function endGame(winner) { // no stopGame() function in it
 	lastWinner = winner;
 	if (winner == Team.RED) {
 		streak++;
-		room.sendAnnouncement(centerText("🔴 " + nameHome + " vence: " + scores.red + "-" + scores.blue + "! Atual Invicto: " + streak + " 🏆"), null, yellow, "bold");
-		room.sendAnnouncement(centerText("⭐ Posse de bola : 🔴 " + (Rposs * 100).toPrecision(3).toString() + "% : " + (Bposs * 100).toPrecision(3).toString() + "% 🔵"), null, white, "bold");
+		room.sendAnnouncement(centerText(emojiHome + nameHome + " vence: " + scores.red + "-" + scores.blue + "! Atual Invicto: " + streak + " 🏆"), null, yellow, "bold");
+		room.sendAnnouncement(centerText("⭐ Posse de bola: " + emojiHome + (Rposs * 100).toPrecision(3).toString() + "% : " + (Bposs * 100).toPrecision(3).toString() + "%" + emojiGuest), null, white, "bold");
 		if (scores.blue == 0) {
 			room.sendAnnouncement(centerText("🏆 " + teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " mandou muito! "), null, white, "bold");
 		}
 	}
 	else if (winner == Team.BLUE) {
 		streak = 1;
-		room.sendAnnouncement(centerText("🔵 " + nameGuest + " vence " + scores.blue + "-" + scores.red + "! Atual Invicto: " + streak + " 🏆"), null, yellow, "bold");
-		room.sendAnnouncement(centerText("⭐ Posse de bola : 🔴 " + (Rposs * 100).toPrecision(3).toString() + "% : " + (Bposs * 100).toPrecision(3).toString() + "% 🔵"), null, white, "bold");
+		room.sendAnnouncement(centerText(emojiGuest + nameGuest + " vence " + scores.blue + "-" + scores.red + "! Atual Invicto: " + streak + " 🏆"), null, yellow, "bold");
+		room.sendAnnouncement(centerText("⭐ Posse de bola: " + emojiHome + (Rposs * 100).toPrecision(3).toString() + "% : " + (Bposs * 100).toPrecision(3).toString() + "%" + emojiGuest), null, white, "bold");
 		if (scores.red == 0) {
 			room.sendAnnouncement(centerText("🏆 " + teamB[GKList.slice(maxPlayers, 2 * maxPlayers).findIndex(p => p == Math.max(...GKList.slice(maxPlayers, 2 * maxPlayers)))].name + " mandou muito! "), null, white, "bold");
 		}
@@ -369,7 +377,7 @@ function endGame(winner) { // no stopGame() function in it
 	else {
 		streak = 0;
 		room.sendAnnouncement(centerText("💤 Limite de TEMPO! 💤"), null, yellow, "bold");
-		room.sendAnnouncement(centerText("⭐ Posse de bola : 🔴 " + (Rposs * 100).toPrecision(3).toString() + "% : " + (Bposs * 100).toPrecision(3).toString() + "% 🔵"), null, white, "bold");
+		room.sendAnnouncement(centerText("⭐ Posse de bola: " + emojiHome + (Rposs * 100).toPrecision(3).toString() + "% : " + (Bposs * 100).toPrecision(3).toString() + "%" + emojiGuest), null, white, "bold");
 		if (scores.red == 0) {
 			room.sendAnnouncement(centerText("🏆 " + teamB[GKList.slice(maxPlayers, 2 * maxPlayers).findIndex(p => p == Math.max(...GKList.slice(maxPlayers, 2 * maxPlayers)))].name + " e " + teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " mandaram muito! "), null, white, "bold");
 		}
@@ -638,7 +646,7 @@ room.onGameStart = function (byPlayer) {
 	Bposs = 0;
 	lastPlayersTouched = [null, null];
 	goldenGoal = false;
-	room.sendAnnouncement(centerText("🔴 " + nameHome + " vs " + nameGuest + " 🔵"), null, white, "bold");
+	room.sendAnnouncement(centerText(emojiHome + nameHome + " vs " + nameGuest + emojiGuest), null, white, "bold");
 	var messages = [
 		"⚽ Bora pro jogo! ⚽",
 		"⚽ Que vença o menos horrível! kkkkk ⚽",
