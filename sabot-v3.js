@@ -318,14 +318,23 @@ function checkTime() {
 		var announcement = messagens[randomIndex];
 		room.sendAnnouncement(centerText(announcement), null, yellow, "bold");
 	}
-	if (Math.abs(drawTimeLimit * 60 - scores.time - 30) <= 0.01 && players.length > 2) {
+	if (Math.abs(drawTimeLimit * 60 - scores.time - 15) <= 0.01 && players.length > 2) {
 		if (checkTimeVariable == false) {
 			checkTimeVariable = true;
 			setTimeout(() => { checkTimeVariable = false; }, 10);
-			room.sendAnnouncement(centerText("⌛ 30 segundos restantes até o empate! ⌛"), null, yellow, "bold");;
+			room.sendAnnouncement(centerText("⌛ 15 segundos restantes até o empate! ⌛"), null, yellow, "bold");;
 		}
 	}
 	if (Math.abs(scores.time - drawTimeLimit * 60) <= 0.01 && players.length > 2) {
+		if (checkTimeVariable == false) {
+			checkTimeVariable = true;
+			setTimeout(() => { checkTimeVariable = false; }, 10);
+			endGame(Team.SPECTATORS);
+			room.stopGame();
+			goldenGoal = false;
+		}
+	}
+	if (scores.time >= drawTimeLimit * 60) {
 		if (checkTimeVariable == false) {
 			checkTimeVariable = true;
 			setTimeout(() => { checkTimeVariable = false; }, 10);
