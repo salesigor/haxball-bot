@@ -99,11 +99,13 @@ const triggerDistance = playerRadius + ballRadius + 0.01;
 
 /* OPTIONS */
 
-var drawTimeLimit = 5; //segundos
+var drawTimeLimit = 60; //segundos
 var maxTeamSize = 4;
 var yellow = 0xffeb15;
 var white = 0xFFFFFF;
 var green = 0x11d039;
+var red = 0xFF0000;
+var blue = 0x0000FF;
 
 /* PLAYERS */
 
@@ -219,16 +221,6 @@ function getTime(scores) {
     return "[" + Math.floor(Math.floor(scores.time / 60) / 10).toString() + Math.floor(Math.floor(scores.time / 60) % 10).toString() + ":" + Math.floor(Math.floor(scores.time - (Math.floor(scores.time / 60) * 60)) / 10).toString() + Math.floor(Math.floor(scores.time - (Math.floor(scores.time / 60) * 60)) % 10).toString() + "]"
 };
 
-function checkDrawTimeLimit() {
-    const scores = room.getScores();
-    const timeLimit = drawTimeLimit * 60;
-
-    if (scores.red === scores.blue && scores.time >= timeLimit) {
-        endGame(Team.NONE);
-        room.stopGameAndDraw();
-    }
-};
-
 function pointDistance(p1, p2) {
     var d1 = p1.x - p2.x;
     var d2 = p1.y - p2.y;
@@ -314,15 +306,15 @@ function checkTime() {
             if (checkTimeVariable == false) {
                 checkTimeVariable = true;
                 setTimeout(() => { checkTimeVariable = false; }, 3000);
-                scores.red > scores.blue ? stopGameAndDraw(Team.RED) : stopGameAndDraw(Team.BLUE);
-                setTimeout(() => { room.stopGameAndDraw(); }, 2000);
+                scores.red > scores.blue ? endGame(Team.RED) : endGame(Team.BLUE);
+                setTimeout(() => { room.stopGame(); }, 2000);
             }
             return;
         }
         goldenGoal = true;
         var messages = [
             "Se liga, a prorrogação é de " + drawTimeLimit + " segundos!",
-            "Vou dar " + drawTimeLimit + " segundos de prorrogação, rapa!",
+            "Vou dar " + drawTimeLimit + " segundos de prorrogação, rapa!"
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
@@ -336,25 +328,21 @@ function checkTime() {
         var announcement = messagens[randomIndex];
         room.sendAnnouncement(centerText(announcement), null, yellow, "bold");
     }
-    if (Math.abs(drawTimeLimit * 60 - scores.time - 15) <= 0.01 && players.length > 2) {
+    if (Math.abs(drawTimeLimit + scores.time - 15) <= 0.01 && players.length >= 1) {
         if (checkTimeVariable == false) {
             checkTimeVariable = true;
             setTimeout(() => { checkTimeVariable = false; }, 10);
             room.sendAnnouncement(centerText("⌛ 15 segundos restantes até o empate! ⌛"), null, yellow, "bold");;
         }
     }
-    if (goldenGoal && Math.abs(drawTimeLimit * 60 - scores.time - 15) <= 0.01 && players.length > 2) {
+    if (scores.time > drawTimeLimit) {
         if (checkTimeVariable == false) {
             checkTimeVariable = true;
             setTimeout(() => { checkTimeVariable = false; }, 10);
-            room.sendAnnouncement(centerText("⌛ 15 segundos restantes até o fim da prorrogação! ⌛"), null, yellow, "bold");
+            endGame(Team.SPECTATORS);
+            room.stopGame();
+            goldenGoal = false;
         }
-    }
-
-    if (goldenGoal && scores.time > drawTimeLimit * 60) {
-        endGame(Team.SPECTATORS);
-        room.stopGameAndDraw();
-        goldenGoal = false;
     }
 };
 
@@ -379,38 +367,19 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("🏆 " + teamB[GKList.slice(maxPlayers, 2 * maxPlayers).findIndex(p => p == Math.max(...GKList.slice(maxPlayers, 2 * maxPlayers)))].name + " mandou muito! "), null, white, "bold");
         }
     }
-};
-
-function stopGameAndDraw() {
-    goldenGoal = false;
-    const scores = room.getScores();
-    const checkDrawTimeLimit = room.checkDrawTimeLimit();
-    Rposs = Rposs / (Rposs + Bposs);
-    Bposs = 1 - Rposs;
-    lastWinner = winner;
-
-    if (scores.red == scores.blue && checkDrawTimeLimit) {
+    else {
         streak = 0;
         room.sendAnnouncement(centerText("💤 Limite de TEMPO! 💤"), null, yellow, "bold");
         room.sendAnnouncement(centerText("⭐ Posse de bola: " + emojiHome + (Rposs * 100).toPrecision(3).toString() + "% : " + (Bposs * 100).toPrecision(3).toString() + "%" + emojiGuest), null, white, "bold");
-
         if (scores.red == 0) {
-            room.sendAnnouncement(centerText("🏆 " + teamB[GKList.slice(maxPlayers, 2 * maxPlayers).findIndex(p => p == Math.max(...GKList.slice(maxPlayers, 2 * maxPlayers)))].name + " e " + teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " mandaram muito! "), null, white, "bold");
+            const teamBGKIndex = GKList.slice(maxPlayers, 2 * maxPlayers).findIndex(p => p == Math.max(...GKList.slice(maxPlayers, 2 * maxPlayers)));
+            const teamBGKName = (teamBGKIndex >= 0 && teamBGKIndex < teamB.length) ? teamB[teamBGKIndex].name : "o GK do Real";
+            const teamRGKIndex = GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)));
+            const teamRGKName = (teamRGKIndex >= 0 && teamRGKIndex < teamR.length) ? teamR[teamRGKIndex].name : "O Gk do Barça";
+            room.sendAnnouncement(centerText("🏆 " + teamRGKName + " e " + teamBGKName + " mandaram muito! "), null, white, "bold");
         }
-
-        room.stopGame();
     }
-    else if (scores.red > scores.blue || (goldenGoal && scores.red != scores.blue)) {
-        endGame(Team.RED);
-    }
-    else if (scores.blue > scores.red || (goldenGoal && scores.red != scores.blue)) {
-        endGame(Team.BLUE);
-    }
-    setTimeout(() => {
-        room.stopGameAndDraw();
-    }, 1000);
 };
-
 
 /* PLAYER FUNCTIONS */
 
@@ -532,6 +501,7 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
 /* PLAYER ACTIVITY */
 
 room.onPlayerChat = function (player, message) {
+    room.sendAnnouncement(announcementMessage, null, textColor);
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id), null, yellow, "normal");
@@ -775,7 +745,6 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
 };
 
 room.onGameTick = function () {
-    checkDrawTimeLimit();
     checkTime();
     getLastTouchOfTheBall();
     getStats();
