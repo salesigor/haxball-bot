@@ -103,7 +103,7 @@ var drawTimeLimit = 1; //minutos
 var maxTeamSize = 4;
 var yellow = 0xffeb15;
 var white = 0xFFFFFF;
-var green = 0x11d039;
+var green = 0x19d459;
 var red = 0xFF0000;
 var blue = 0x0000FF;
 
