@@ -4,7 +4,7 @@
 
 /* ROOM */
 
-const roomName = "teste do bot, nem cola"; // nome sugerido: 3x3 | Cola na humildade
+const roomName = "3x3 | Cola na humildade"; // nome sugerido: 3x3 | Cola na humildade
 const botName = "🤖";
 const maxPlayers = 15;
 const roomPublic = true;
@@ -99,7 +99,7 @@ const triggerDistance = playerRadius + ballRadius + 0.01;
 
 /* OPTIONS */
 
-var drawTimeLimit = 60; //segundos
+var drawTimeLimit = 1; //minutos
 var maxTeamSize = 4;
 var yellow = 0xffeb15;
 var white = 0xFFFFFF;
@@ -136,6 +136,7 @@ var streak = 0;
 /* AUXILIARY */
 
 var checkTimeVariable = false;
+var announced = false;
 
 /* FUNCTIONS */
 
@@ -313,8 +314,8 @@ function checkTime() {
         }
         goldenGoal = true;
         var messages = [
-            "Se liga, a prorrogação é de " + drawTimeLimit + " segundos!",
-            "Vou dar " + drawTimeLimit + " segundos de prorrogação, rapa!"
+            "Se liga, a prorrogação é de " + drawTimeLimit * 60 + " segundos!",
+            "Vou dar " + drawTimeLimit * 60 + " segundos de prorrogação, rapa!"
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
@@ -326,16 +327,19 @@ function checkTime() {
         ];
         var randomIndex = Math.floor(Math.random() * messagens.length);
         var announcement = messagens[randomIndex];
-        room.sendAnnouncement(centerText(announcement), null, yellow, "bold");
+        room.sendAnnouncement(centerText(announcement), null, white, "bold");
     }
-    if (Math.abs(drawTimeLimit + scores.time - 15) <= 0.01 && players.length >= 1) {
-        if (checkTimeVariable == false) {
+    if (scores.time > scores.timeLimit + drawTimeLimit * 60 - 15 && scores.time <= scores.timeLimit + drawTimeLimit * 60) {
+        if (checkTimeVariable == false && announced == false) {
             checkTimeVariable = true;
-            setTimeout(() => { checkTimeVariable = false; }, 10);
-            room.sendAnnouncement(centerText("⌛ 15 segundos restantes até o empate! ⌛"), null, yellow, "bold");;
+            announced = true;
+            setTimeout(() => {
+                checkTimeVariable = false;
+            }, 10);
+            room.sendAnnouncement(centerText("⌛ 15 segundos para o empate! ⌛"), null, yellow, "bold");
         }
     }
-    if (scores.time > drawTimeLimit) {
+    if (scores.time > (scores.timeLimit + drawTimeLimit * 60)) {
         if (checkTimeVariable == false) {
             checkTimeVariable = true;
             setTimeout(() => { checkTimeVariable = false; }, 10);
@@ -501,7 +505,6 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
 /* PLAYER ACTIVITY */
 
 room.onPlayerChat = function (player, message) {
-    room.sendAnnouncement(announcementMessage, null, textColor);
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id), null, yellow, "normal");
@@ -708,7 +711,7 @@ room.onTeamGoal = function (team) {
         }
     }
     else {
-        room.sendAnnouncement(centerText("😂 Gol CONTRA de " + lastPlayersTouched[0].name + " 🤡 ! Velocidade : " + ballSpeed.toPrecision(4).toString() + "km/h " + (team == Team.RED ? "🔴" : "🔵") + getTime(scores)), null, green, "bold");
+        room.sendAnnouncement(centerText("😂 Gol CONTRA de " + lastPlayersTouched[0].name + " 🤡 ! Velocidade : " + ballSpeed.toPrecision(4).toString() + "km/h " + (team == Team.RED ? "🔴" : "🔵") + getTime(scores)), null, yellow, "bold");
     }
     if (scores.scoreLimit != 0 && (scores.red == scores.scoreLimit || scores.blue == scores.scoreLimit || goldenGoal == true)) {
         endGame(team);
