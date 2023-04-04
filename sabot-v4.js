@@ -4,7 +4,7 @@
 
 /* ROOM */
 
-const roomName = "3x3 | Cola na humildade"; // nome sugerido: 3x3 | Cola na humildade
+const roomName = "🏆 3x3 ⚽ | Cola na humildade"; // nome sugerido: 🏆⚽⭐ 3x3 | Cola na humildade
 const botName = "🤖";
 const maxPlayers = 15;
 const roomPublic = true;
@@ -704,14 +704,14 @@ room.onTeamGoal = function (team) {
     activePlay = false;
     if (lastPlayersTouched[0] != null && lastPlayersTouched[0].team == team) {
         if (lastPlayersTouched[1] != null && lastPlayersTouched[1].team == team) {
-            room.sendAnnouncement(centerText("⚽ Gol de " + lastPlayersTouched[0].name + " ! Assistência de " + lastPlayersTouched[1].name + ". Velocidade : " + ballSpeed.toPrecision(4).toString() + "km/h " + (team == Team.RED ? "🔴" : "🔵") + getTime(scores)), null, green, "bold");
+            room.sendAnnouncement(centerText("⚽ Gol de " + lastPlayersTouched[0].name + " ! Assistência de " + lastPlayersTouched[1].name + ". Velocidade : " + ballSpeed.toPrecision(4).toString() + "km/h " + (team == Team.RED ? emojiHome : emojiGuest) + getTime(scores)), null, green, "bold");
         }
         else {
-            room.sendAnnouncement(centerText("⚽ Gol de " + lastPlayersTouched[0].name + " ! Velocidade : " + ballSpeed.toPrecision(4).toString() + "km/h " + (team == Team.RED ? "🔴" : "🔵") + getTime(scores)), null, green, "bold");
+            room.sendAnnouncement(centerText("⚽ Gol de " + lastPlayersTouched[0].name + " ! Velocidade : " + ballSpeed.toPrecision(4).toString() + "km/h " + (team == Team.RED ? emojiHome : emojiGuest) + getTime(scores)), null, green, "bold");
         }
     }
     else {
-        room.sendAnnouncement(centerText("😂 Gol CONTRA de " + lastPlayersTouched[0].name + " 🤡 ! Velocidade : " + ballSpeed.toPrecision(4).toString() + "km/h " + (team == Team.RED ? "🔴" : "🔵") + getTime(scores)), null, yellow, "bold");
+        room.sendAnnouncement(centerText("😂 Gol CONTRA de " + lastPlayersTouched[0].name + " 🤡 ! Velocidade : " + ballSpeed.toPrecision(4).toString() + "km/h " + (team == Team.RED ? emojiHome : emojiGuest) + getTime(scores)), null, yellow, "bold");
     }
     if (scores.scoreLimit != 0 && (scores.red == scores.scoreLimit || scores.blue == scores.scoreLimit || goldenGoal == true)) {
         endGame(team);
