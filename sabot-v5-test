@@ -118,6 +118,9 @@ var blue = 0x0000FF;
 /* PLAYERS */
 
 const Team = { SPECTATORS: 0, RED: 1, BLUE: 2 };
+var extendedP = [];
+const eP = { ID: 0, AUTH: 1, CONN: 2, AFK: 3, ACT: 4, GK: 5, MUTE: 6 };
+const Ss = { GA: 0, WI: 1, DR: 2, LS: 3, WR: 4, GL: 5, AS: 6, GK: 7, CS: 8, CP: 9, RL: 10, NK: 11 }
 var players;
 var teamR;
 var teamB;
@@ -130,6 +133,10 @@ var lastPlayersTouched;
 var goldenGoal = false;
 var activePlay = false;
 var muteList = [];
+var banList = [];
+var countAFK = false; // Created to get better track of activity
+
+
 
 /* STATS */
 
@@ -140,11 +147,31 @@ var point = [{ "x": 0, "y": 0 }, { "x": 0, "y": 0 }];
 var ballSpeed;
 var lastWinner = Team.SPECTATORS;
 var streak = 0;
+var vcgbsdbf = 7865;
+var allBlues = []; // This is to count the players who should be counted for the stats. This includes players who left after the game has started, doesn't include those who came too late or ...
+var allReds = []; // ... those who came in a very unequal game.
 
 /* AUXILIARY */
 
 var checkTimeVariable = false;
 var announced = false;
+var statNumber = 0; // This allows the room to be given stat information every X minutes
+var endGameVariable = false; // This variable with the one below helps distinguish the cases where games are stopped because they have finished to the ones where games are stopped due to player movements or resetting teams
+
+/* OBJECTS */
+
+function Goal(time, team, striker, assist) {
+    this.time = time;
+    this.team = team;
+    this.striker = striker;
+    this.assist = assist;
+}
+
+function Game(date, scores, goals) {
+    this.date = date;
+    this.scores = scores;
+    this.goals = goals;
+}
 
 /* FUNCTIONS */
 
@@ -271,6 +298,61 @@ function pointDistance(p1, p2) {
     var d2 = p1.y - p2.y;
     return Math.sqrt(d1 * d1 + d2 * d2);
 };
+
+function handleInactivity() { // handles inactivity : players will be kicked after afkLimit
+    if (countAFK && (teamR.length + teamB.length) > 1) {
+        for (var i = 0; i < teamR.length; i++) {
+            setActivity(teamR[i], getActivity(teamR[i]) + 1);
+        }
+        for (var i = 0; i < teamB.length; i++) {
+            setActivity(teamB[i], getActivity(teamB[i]) + 1);
+        }
+    }
+    for (var i = 0; i < extendedP.length; i++) {
+        if (extendedP[i][eP.ACT] == 60 * (2 / 3 * afkLimit)) {
+            room.sendChat("⛔ Atenção @" + room.getPlayer(extendedP[i][eP.ID]).name + ", se não se mover ou enviar um texto em " + Math.floor(afkLimit / 3) + " segundos, vai tomar kick!", extendedP[i][eP.ID]);
+        }
+        if (extendedP[i][eP.ACT] >= 60 * afkLimit) {
+            extendedP[i][eP.ACT] = 0;
+            if (room.getScores().time <= afkLimit - 0.5) {
+                setTimeout(() => { !inChooseMode ? quickRestart() : room.stopGame(); }, 10);
+            }
+            room.kickPlayer(extendedP[i][eP.ID], "AFK", false);
+        }
+    }
+}
+
+function getAuth(player) {
+    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.AUTH] : null;
+}
+
+function getAFK(player) {
+    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.AFK] : null;
+}
+
+function setAFK(player, value) {
+    extendedP.filter((a) => a[0] == player.id).forEach((player) => player[eP.AFK] = value);
+}
+
+function getActivity(player) {
+    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.ACT] : null;
+}
+
+function setActivity(player, value) {
+    extendedP.filter((a) => a[0] == player.id).forEach((player) => player[eP.ACT] = value);
+}
+
+function getGK(player) {
+    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.GK] : null;
+}
+
+function getMute(player) {
+    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.MUTE] : null;
+}
+
+function setMute(player, value) {
+    extendedP.filter((a) => a[0] == player.id).forEach((player) => player[eP.MUTE] = value);
+}
 
 /* BUTTONS */
 
@@ -427,6 +509,7 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("🏆 " + teamRGKName + " e " + teamBGKName + " mandaram muito! "), null, white, "bold");
         }
     }
+    updateStats()
 };
 
 /* PLAYER FUNCTIONS */
@@ -457,6 +540,20 @@ function updateList(number, team) {
             GKList = GKList.slice(0, maxPlayers + number).concat(GKList.slice(maxPlayers + number + 1, GKList.length).concat(0));
         }
     }
+};
+
+function getSpecList(player) {
+    var cstm = "Jogadores: ";
+    for (var i = 0; i < teamS.length; i++) {
+        if (140 - cstm.length < (teamS[i].name + "[" + (i + 1) + "], ").length) {
+            room.sendChat(cstm, player.id);
+            cstm = "... ";
+        }
+        cstm += teamS[i].name + "[" + (i + 1) + "], ";
+    }
+    cstm = cstm.substring(0, cstm.length - 2);
+    cstm += ".";
+    room.sendChat(cstm, player.id);
 };
 
 /* STATS FUNCTIONS */
@@ -501,6 +598,101 @@ function getStats() { // gives possession, ball speed and GK of each team
         GKList[maxPlayers + k[0]]++;
     }
 };
+
+function updateStats() {
+    if (players.length >= 2 * maxTeamSize && (game.scores.time >= (5 / 6) * game.scores.timeLimit || game.scores.red == game.scores.scoreLimit || game.scores.blue == game.scores.scoreLimit) && allReds.length >= maxTeamSize && allBlues.length >= maxTeamSize) {
+        var stats;
+        for (var i = 0; i < allReds.length; i++) {
+            localStorage.getItem(getAuth(allReds[i])) ? stats = JSON.parse(localStorage.getItem(getAuth(allReds[i]))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00", "player", allReds[i].name];
+            stats[Ss.GA]++;
+            lastWinner == Team.RED ? stats[Ss.WI]++ : lastWinner == Team.BLUE ? stats[Ss.LS]++ : stats[Ss.DR]++;
+            stats[Ss.WR] = (100 * stats[Ss.WI] / stats[Ss.GA]).toPrecision(3);
+            localStorage.setItem(getAuth(allReds[i]), JSON.stringify(stats));
+        }
+        for (var i = 0; i < allBlues.length; i++) {
+            localStorage.getItem(getAuth(allBlues[i])) ? stats = JSON.parse(localStorage.getItem(getAuth(allBlues[i]))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00", "player", allBlues[i].name];
+            stats[Ss.GA]++;
+            lastWinner == Team.BLUE ? stats[Ss.WI]++ : lastWinner == Team.RED ? stats[Ss.LS]++ : stats[Ss.DR]++;
+            stats[Ss.WR] = (100 * stats[Ss.WI] / stats[Ss.GA]).toPrecision(3);
+            localStorage.setItem(getAuth(allBlues[i]), JSON.stringify(stats));
+        }
+        for (var i = 0; i < game.goals.length; i++) {
+            if (game.goals[i].striker != null) {
+                if ((allBlues.concat(allReds)).findIndex((player) => player.id == game.goals[i].striker.id) != -1) {
+                    stats = JSON.parse(localStorage.getItem(getAuth(game.goals[i].striker)));
+                    stats[Ss.GL]++;
+                    localStorage.setItem(getAuth(game.goals[i].striker), JSON.stringify(stats));
+                }
+            }
+            if (game.goals[i].assist != null) {
+                if ((allBlues.concat(allReds)).findIndex((player) => player.name == game.goals[i].assist.name) != -1) {
+                    stats = JSON.parse(localStorage.getItem(getAuth(game.goals[i].assist)));
+                    stats[Ss.AS]++;
+                    localStorage.setItem(getAuth(game.goals[i].assist), JSON.stringify(stats));
+                }
+            }
+        }
+        if (allReds.findIndex((player) => player.id == GKList[0].id) != -1) {
+            stats = JSON.parse(localStorage.getItem(getAuth(GKList[0])));
+            stats[Ss.GK]++;
+            game.scores.blue == 0 ? stats[Ss.CS]++ : null;
+            stats[Ss.CP] = (100 * stats[Ss.CS] / stats[Ss.GK]).toPrecision(3);
+            localStorage.setItem(getAuth(GKList[0]), JSON.stringify(stats));
+        }
+        if (allBlues.findIndex((player) => player.id == GKList[1].id) != -1) {
+            stats = JSON.parse(localStorage.getItem(getAuth(GKList[1])));
+            stats[Ss.GK]++;
+            game.scores.red == 0 ? stats[Ss.CS]++ : null;
+            stats[Ss.CP] = (100 * stats[Ss.CS] / stats[Ss.GK]).toPrecision(3);
+            localStorage.setItem(getAuth(GKList[1]), JSON.stringify(stats));
+        }
+    }
+};
+
+/*setInterval(() => {
+    var tableau = [];
+    if (statNumber % 5 == 0) {
+        Object.keys(localStorage).forEach(function (key) { if (!["player_name", "view_mode", "geo", "avatar", "player_auth_key"].includes(key)) { tableau.push([(JSON.parse(localStorage.getItem(key))[Ss.NK]), (JSON.parse(localStorage.getItem(key))[Ss.GA])]); } });
+        if (tableau.length < 5) {
+            return false;
+        }
+        tableau.sort(function (a, b) { return b[1] - a[1]; });
+        room.sendChat("Jogos> #1 " + tableau[0][0] + ": " + tableau[0][1] + " #2 " + tableau[1][0] + ": " + tableau[1][1] + " #3 " + tableau[2][0] + ": " + tableau[2][1] + " #4 " + tableau[3][0] + ": " + tableau[3][1] + " #5 " + tableau[4][0] + ": " + tableau[4][1]);
+    }
+    if (statNumber % 5 == 1) {
+        Object.keys(localStorage).forEach(function (key) { if (!["player_name", "view_mode", "geo", "avatar", "player_auth_key"].includes(key)) { tableau.push([(JSON.parse(localStorage.getItem(key))[Ss.NK]), (JSON.parse(localStorage.getItem(key))[Ss.WI])]); } });
+        if (tableau.length < 5) {
+            return false;
+        }
+        tableau.sort(function (a, b) { return b[1] - a[1]; });
+        room.sendChat("Vitórias> #1 " + tableau[0][0] + ": " + tableau[0][1] + " #2 " + tableau[1][0] + ": " + tableau[1][1] + " #3 " + tableau[2][0] + ": " + tableau[2][1] + " #4 " + tableau[3][0] + ": " + tableau[3][1] + " #5 " + tableau[4][0] + ": " + tableau[4][1]);
+    }
+    if (statNumber % 5 == 2) {
+        Object.keys(localStorage).forEach(function (key) { if (!["player_name", "view_mode", "geo", "avatar", "player_auth_key"].includes(key)) { tableau.push([(JSON.parse(localStorage.getItem(key))[Ss.NK]), (JSON.parse(localStorage.getItem(key))[Ss.GL])]); } });
+        if (tableau.length < 5) {
+            return false;
+        }
+        tableau.sort(function (a, b) { return b[1] - a[1]; });
+        room.sendChat("Gols> #1 " + tableau[0][0] + ": " + tableau[0][1] + " #2 " + tableau[1][0] + ": " + tableau[1][1] + " #3 " + tableau[2][0] + ": " + tableau[2][1] + " #4 " + tableau[3][0] + ": " + tableau[3][1] + " #5 " + tableau[4][0] + ": " + tableau[4][1]);
+    }
+    if (statNumber % 5 == 3) {
+        Object.keys(localStorage).forEach(function (key) { if (!["player_name", "view_mode", "geo", "avatar", "player_auth_key"].includes(key)) { tableau.push([(JSON.parse(localStorage.getItem(key))[Ss.NK]), (JSON.parse(localStorage.getItem(key))[Ss.AS])]); } });
+        if (tableau.length < 5) {
+            return false;
+        }
+        tableau.sort(function (a, b) { return b[1] - a[1]; });
+        room.sendChat("Assists> #1 " + tableau[0][0] + ": " + tableau[0][1] + " #2 " + tableau[1][0] + ": " + tableau[1][1] + " #3 " + tableau[2][0] + ": " + tableau[2][1] + " #4 " + tableau[3][0] + ": " + tableau[3][1] + " #5 " + tableau[4][0] + ": " + tableau[4][1]);
+    }
+    if (statNumber % 5 == 4) {
+        Object.keys(localStorage).forEach(function (key) { if (!["player_name", "view_mode", "geo", "avatar", "player_auth_key"].includes(key)) { tableau.push([(JSON.parse(localStorage.getItem(key))[Ss.NK]), (JSON.parse(localStorage.getItem(key))[Ss.CS])]); } });
+        if (tableau.length < 5) {
+            return false;
+        }
+        tableau.sort(function (a, b) { return b[1] - a[1]; });
+        room.sendChat("CS> #1 " + tableau[0][0] + ": " + tableau[0][1] + " #2 " + tableau[1][0] + ": " + tableau[1][1] + " #3 " + tableau[2][0] + ": " + tableau[2][1] + " #4 " + tableau[3][0] + ": " + tableau[3][1] + " #5 " + tableau[4][0] + ": " + tableau[4][1]);
+    }
+    statNumber++;
+}, statInterval * 60 * 1000);*/
 
 /* EVENTS */
 
@@ -551,7 +743,99 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
 room.onPlayerChat = function (player, message) {
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id), null, yellow, "normal");
+        room.sendAnnouncement("Comandos de Player: !eu, !jogos, !vitorias, !gols, !assists, !cs, !afks, !mutes, !bans.", player.id);
+        player.admin ? room.sendAnnouncement("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id) : null;
+    }
+    else if (["!afk"].includes(message[0].toLowerCase())) {
+        if (players.length != 1 && player.team != Team.SPECTATORS) {
+            if (player.team == Team.RED && streak > 0 && room.getScores() == null) {
+                room.setPlayerTeam(player.id, Team.SPECTATORS);
+            }
+            else {
+                room.sendAnnouncement("Você não pode ficar AFK se tiver em um time!", player.id);
+                return false;
+            }
+        }
+        else if (players.length == 1 && !getAFK(player)) {
+            room.setPlayerTeam(player.id, Team.SPECTATORS);
+        }
+        setAFK(player, !getAFK(player));
+        room.sendAnnouncement(player.name + (getAFK(player) ? " está AFK agora!" : " não está AFK mais!"));
+        getAFK(player) ? updateRoleOnPlayerOut() : updateRoleOnPlayerIn();
+    }
+    else if (["!afks", "!afklist"].includes(message[0].toLowerCase())) {
+        var cstm = "Lista de AFK: ";
+        for (var i = 0; i < extendedP.length; i++) {
+            if (room.getPlayer(extendedP[i][eP.ID]) != null && getAFK(room.getPlayer(extendedP[i][eP.ID]))) {
+                if (140 - cstm.length < (room.getPlayer(extendedP[i][eP.ID]).name + ", ").length) {
+                    room.sendAnnouncement(cstm, player.id);
+                    cstm = "... ";
+                }
+                cstm += room.getPlayer(extendedP[i][eP.ID]).name + ", ";
+            }
+        }
+        if (cstm == "Lista de AFK: ") {
+            room.sendAnnouncement("Não tem ninguém na lista de AFK!", player.id);
+            return false;
+        }
+        cstm = cstm.substring(0, cstm.length - 2);
+        cstm += ".";
+        room.sendAnnouncement(cstm, player.id);
+    }
+    else if (["!eu"].includes(message[0].toLowerCase())) {
+        var stats;
+        localStorage.getItem(getAuth(player)) ? stats = JSON.parse(localStorage.getItem(getAuth(player))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00"];
+        room.sendAnnouncement(player.name + "> Jogos: " + stats[Ss.GA] + ", Vitórias: " + stats[Ss.WI] + ", Espates: " + stats[Ss.DR] + ", Derrotas: " + stats[Ss.LS] + ", WR: " + stats[Ss.WR] + "%, Gols: " + stats[Ss.GL] + ", Assist: " + stats[Ss.AS] + ", GK: " + stats[Ss.GK] + ", CS: " + stats[Ss.CS] + ", CS%: " + stats[Ss.CP] + "%", player.id);
+    }
+    else if (["!jogos"].includes(message[0].toLowerCase())) {
+        var tableau = [];
+        Object.keys(localStorage).forEach(function (key) { if (!["player_name", "view_mode", "geo", "avatar", "player_auth_key"].includes(key)) { tableau.push([(JSON.parse(localStorage.getItem(key))[Ss.NK]), (JSON.parse(localStorage.getItem(key))[Ss.GA])]); } });
+        if (tableau.length < 5) {
+            room.sendAnnouncement("Tu ainda não jogou o bastante", player.id);
+            return false;
+        }
+        tableau.sort(function (a, b) { return b[1] - a[1]; });
+        room.sendAnnouncement("Jogos> #1 " + tableau[0][0] + ": " + tableau[0][1] + " #2 " + tableau[1][0] + ": " + tableau[1][1] + " #3 " + tableau[2][0] + ": " + tableau[2][1] + " #4 " + tableau[3][0] + ": " + tableau[3][1] + " #5 " + tableau[4][0] + ": " + tableau[4][1], player.id);
+    }
+    else if (["!vitorias"].includes(message[0].toLowerCase())) {
+        var tableau = [];
+        Object.keys(localStorage).forEach(function (key) { if (!["player_name", "view_mode", "geo", "avatar", "player_auth_key"].includes(key)) { tableau.push([(JSON.parse(localStorage.getItem(key))[Ss.NK]), (JSON.parse(localStorage.getItem(key))[Ss.WI])]); } });
+        if (tableau.length < 5) {
+            room.sendAnnouncement("Tu ainda não jogou o bastante", player.id);
+            return false;
+        }
+        tableau.sort(function (a, b) { return b[1] - a[1]; });
+        room.sendAnnouncement("Vitórias> #1 " + tableau[0][0] + ": " + tableau[0][1] + " #2 " + tableau[1][0] + ": " + tableau[1][1] + " #3 " + tableau[2][0] + ": " + tableau[2][1] + " #4 " + tableau[3][0] + ": " + tableau[3][1] + " #5 " + tableau[4][0] + ": " + tableau[4][1], player.id);
+    }
+    else if (["!gols"].includes(message[0].toLowerCase())) {
+        var tableau = [];
+        Object.keys(localStorage).forEach(function (key) { if (!["player_name", "view_mode", "geo", "avatar", "player_auth_key"].includes(key)) { tableau.push([(JSON.parse(localStorage.getItem(key))[Ss.NK]), (JSON.parse(localStorage.getItem(key))[Ss.GL])]); } });
+        if (tableau.length < 5) {
+            room.sendAnnouncement("Tu ainda não jogou o bastante", player.id);
+            return false;
+        }
+        tableau.sort(function (a, b) { return b[1] - a[1]; });
+        room.sendAnnouncement("Gols> #1 " + tableau[0][0] + ": " + tableau[0][1] + " #2 " + tableau[1][0] + ": " + tableau[1][1] + " #3 " + tableau[2][0] + ": " + tableau[2][1] + " #4 " + tableau[3][0] + ": " + tableau[3][1] + " #5 " + tableau[4][0] + ": " + tableau[4][1], player.id);
+    }
+    else if (["!assists"].includes(message[0].toLowerCase())) {
+        var tableau = [];
+        Object.keys(localStorage).forEach(function (key) { if (!["player_name", "view_mode", "geo", "avatar", "player_auth_key"].includes(key)) { tableau.push([(JSON.parse(localStorage.getItem(key))[Ss.NK]), (JSON.parse(localStorage.getItem(key))[Ss.AS])]); } });
+        if (tableau.length < 5) {
+            room.sendAnnouncement("Tu ainda não jogou o bastante", player.id);
+            return false;
+        }
+        tableau.sort(function (a, b) { return b[1] - a[1]; });
+        room.sendAnnouncement("Assists> #1 " + tableau[0][0] + ": " + tableau[0][1] + " #2 " + tableau[1][0] + ": " + tableau[1][1] + " #3 " + tableau[2][0] + ": " + tableau[2][1] + " #4 " + tableau[3][0] + ": " + tableau[3][1] + " #5 " + tableau[4][0] + ": " + tableau[4][1], player.id);
+    }
+    else if (["!cs"].includes(message[0].toLowerCase())) {
+        var tableau = [];
+        Object.keys(localStorage).forEach(function (key) { if (!["player_name", "view_mode", "geo", "avatar", "player_auth_key"].includes(key)) { tableau.push([(JSON.parse(localStorage.getItem(key))[Ss.NK]), (JSON.parse(localStorage.getItem(key))[Ss.CS])]); } });
+        if (tableau.length < 5) {
+            room.sendAnnouncement("Tu ainda não jogou o bastante", player.id);
+            return false;
+        }
+        tableau.sort(function (a, b) { return b[1] - a[1]; });
+        room.sendAnnouncement("CS> #1 " + tableau[0][0] + ": " + tableau[0][1] + " #2 " + tableau[1][0] + ": " + tableau[1][1] + " #3 " + tableau[2][0] + ": " + tableau[2][1] + " #4 " + tableau[3][0] + ": " + tableau[3][1] + " #5 " + tableau[4][0] + ": " + tableau[4][1], player.id);
     }
     else if (["!adm"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
