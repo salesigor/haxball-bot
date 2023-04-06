@@ -232,15 +232,12 @@ function getUniform(uniformStr) {
 function changeUniforms() {
     var prevRandomIndex1 = randomIndex1;
     var prevRandomIndex2 = randomIndex2;
-
     do {
         randomIndex1 = Math.floor(Math.random() * uniformIds.length);
     } while (randomIndex1 === prevRandomIndex1);
-
     do {
         randomIndex2 = Math.floor(Math.random() * uniformIds.length);
     } while (randomIndex2 === prevRandomIndex2 || randomIndex2 === randomIndex1);
-
     var homeUniformId = uniformIds[randomIndex1];
     var guestUniformId = uniformIds[randomIndex2];
     var nameHome = uniforms[homeUniformId].name;
@@ -249,7 +246,6 @@ function changeUniforms() {
     var nameGuest = uniforms[guestUniformId].name;
     var acronymGuest = guestUniformId;
     var emojiGuest = uniforms[guestUniformId].emoji;
-
     if (winningTeam === null) {
         room.setTeamColors(1, uniforms[acronymHome].angle, uniforms[acronymHome].textcolor, [uniforms[acronymHome].color1, uniforms[acronymHome].color2, uniforms[acronymHome].color3]);
         room.setTeamColors(2, uniforms[acronymGuest].angle, uniforms[acronymGuest].textcolor, [uniforms[acronymGuest].color1, uniforms[acronymGuest].color2, uniforms[acronymGuest].color3]);
@@ -509,6 +505,7 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("🏆 " + teamRGKName + " e " + teamBGKName + " mandaram muito! "), null, white, "bold");
         }
     }
+    changeUniforms()
     updateStats()
 };
 
@@ -989,7 +986,6 @@ room.onGameStart = function (byPlayer) {
 room.onGameStop = function (byPlayer) {
     if (byPlayer.id == 0) {
         updateTeams();
-        changeUniforms();
         if (lastWinner == Team.RED) {
             blueToSpecBtn();
         }
