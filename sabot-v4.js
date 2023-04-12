@@ -1,10 +1,8 @@
-// SEMI-AUTOMÁTICO V4
-
 /* VARIABLES */
 
 /* ROOM */
 
-const roomName = "🏆 3x3 ⚽ | Cola na humildade"; // nome sugerido: 🏆⚽⭐ 3x3 | Cola na humildade
+const roomName = "🏆 3x3 Futsal ⚽ | Cola na humildade"; // nome sugerido: 🏆 3x3 Futsal ⚽ | Cola na humildade
 const botName = "🤖";
 const maxPlayers = 15;
 const roomPublic = true;
@@ -679,7 +677,7 @@ room.onGamePause = function (byPlayer) {
     setTimeout(function () {
         var messages = [
             "Calma aê, vamo resolver e já voltamos. Não enche! kkk",
-            "Muita calmaaa, tem que esperar... kk",
+            "VAR ta analizando, calma... kk",
             "Calma aê, rapa. Rapidão já voltamos pro game."
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);

@@ -1,10 +1,8 @@
-// SEMI-AUTOMÁTICO V4
-
 /* VARIABLES */
 
 /* ROOM */
 
-const roomName = "🏆 3x3 ⚽ | Cola na humildade"; // nome sugerido: 🏆⚽⭐ 3x3 | Cola na humildade
+const roomName = "🏆 3x3 Futsal ⚽ | Cola na humildade"; // nome sugerido: 🏆 3x3 Futsal ⚽ | Cola na humildade
 const botName = "🤖";
 const maxPlayers = 15;
 const roomPublic = true;
