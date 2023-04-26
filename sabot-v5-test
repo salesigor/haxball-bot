@@ -35,7 +35,10 @@ var bar = {"name": 'Barcelona', "type": Uniform, "emoji": '🔵🔴🔵', "angle
 var psg = {"name": 'Paris Sant-Germain', "type": Uniform, "emoji": '🔵🔴🔵', "angle": 180, "textcolor": 0xFFFFFF, "color1": 0x000080, "color2": 0xB22222, "color3": 0x000080};
 var uniformIds = [che, rea, juv, bay, bar, psg];
 var randomIndex1 = Math.floor(Math.random() * uniformIds.length);
-var randomIndex2 = Math.floor(Math.random() * uniformIds.length);
+var randomIndex2;
+do {
+    randomIndex2 = Math.floor(Math.random() * uniformIds.length);
+} while (randomIndex2 == randomIndex1);
 var homeUniformId = uniformIds[randomIndex1];
 var guestUniformId = uniformIds[randomIndex2];
 var nameHome = homeUniformId.name;
@@ -935,6 +938,7 @@ room.onGameStop = function (byPlayer) {
         }
         setTimeout(() => { topBtn(); }, 100);
     }
+    switchUniforms()
 };
 
 room.onGamePause = function (byPlayer) {

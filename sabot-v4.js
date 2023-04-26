@@ -15,77 +15,6 @@ const timeLimit = 3;
 room.setScoreLimit(scoreLimit);
 room.setTimeLimit(timeLimit);
 room.setTeamsLock(true);
-const Uniform = {};
-var uniforms = {
-    "che": {
-        "name": 'Chelsea',
-        "type": Uniform,
-        "emoji": '🔵⚪🔵',
-        "angle": 90,
-        "textcolor": 0xFFFFFF,
-        "color1": 0x0000CD,
-        "color2": 0x0000CD,
-        "color3": 0x0000CD,
-    },
-    "rea": {
-        "name": 'Real Madrid',
-        "type": Uniform,
-        "emoji": '⚪🟡⚪',
-        "angle": 0,
-        "textcolor": 0xDAA520,
-        "color1": 0xFFFAFA,
-        "color2": 0xFFFAFA,
-        "color3": 0xFFFAFA,
-    },
-    "juv": {
-        "name": 'Juventus',
-        "type": Uniform,
-        "emoji": '⚫⚪⚫',
-        "angle": 180,
-        "textcolor": 0x000000,
-        "color1": 0x5E5E5E,
-        "color2": 0xD9D9D9,
-        "color3": 0x5E5E5E,
-    },
-    "bay": {
-        "name": 'Bayern de Munique',
-        "type": Uniform,
-        "emoji": '🔴🔵🔴',
-        "angle": 30,
-        "textcolor": 0xFFFFFF,
-        "color1": 0xFF0000,
-        "color2": 0xF20000,
-        "color3": 0xFF0000,
-    },
-    "bar": {
-        "name": 'Barcelona',
-        "type": Uniform,
-        "emoji": '🔵🔴🔵',
-        "angle": 360,
-        "textcolor": 0xFFD700,
-        "color1": 0x00008B,
-        "color2": 0x8B0000,
-        "color3": 0x00008B,
-    },
-    "psg": {
-        "name": 'Paris Sant-Germain',
-        "type": Uniform,
-        "emoji": '🔵🔴🔵',
-        "angle": 180,
-        "textcolor": 0xFFFFFF,
-        "color1": 0x000080,
-        "color2": 0xB22222,
-        "color3": 0x000080,
-    }
-};
-var nameHome = 'Barcelona';
-var acronymHome = "bar";
-var nameGuest = 'Real Madrid';
-var acronymGuest = "rea";
-var emojiHome = '🔵🔴🔵';
-var emojiGuest = '⚪🟡⚪';
-room.setTeamColors(1, uniforms[acronymHome].angle, uniforms[acronymHome].textcolor, [uniforms[acronymHome].color1, uniforms[acronymHome].color2, uniforms[acronymHome].color3]);
-room.setTeamColors(2, uniforms[acronymGuest].angle, uniforms[acronymGuest].textcolor, [uniforms[acronymGuest].color1, uniforms[acronymGuest].color2, uniforms[acronymGuest].color3]);
 var adminPassword = "true";
 console.log("adminPassword : " + adminPassword);
 
@@ -94,6 +23,32 @@ console.log("adminPassword : " + adminPassword);
 const playerRadius = 15;
 var ballRadius = 10;
 const triggerDistance = playerRadius + ballRadius + 0.01;
+
+/* UNIFORMS */
+
+const Uniform = {};
+var che = {"name": 'Chelsea', "type": Uniform, "emoji": '🔵⚪🔵', "angle": 90, "textcolor": 0xFFFFFF, "color1": 0x0000CD, "color2": 0x0000CD, "color3": 0x0000CD};
+var rea = {"name": 'Real Madrid', "type": Uniform, "emoji": '⚪🟡⚪', "angle": 0, "textcolor": 0xDAA520, "color1": 0xFFFAFA, "color2": 0xFFFAFA, "color3": 0xFFFAFA};
+var juv = {"name": 'Juventus', "type": Uniform, "emoji": '⚫⚪⚫', "angle": 180, "textcolor": 0x000000, "color1": 0x5E5E5E, "color2": 0xD9D9D9, "color3": 0x5E5E5E};
+var bay = {"name": 'Bayern de Munique', "type": Uniform, "emoji": '🔴🔵🔴', "angle": 30, "textcolor": 0xFFFFFF, "color1": 0xFF0000, "color2": 0xF20000, "color3": 0xFF0000};
+var bar = {"name": 'Barcelona', "type": Uniform, "emoji": '🔵🔴🔵', "angle": 360, "textcolor": 0xFFD700, "color1": 0x00008B, "color2": 0x8B0000, "color3": 0x00008B};
+var psg = {"name": 'Paris Sant-Germain', "type": Uniform, "emoji": '🔵🔴🔵', "angle": 180, "textcolor": 0xFFFFFF, "color1": 0x000080, "color2": 0xB22222, "color3": 0x000080};
+var uniformIds = [che, rea, juv, bay, bar, psg];
+var randomIndex1 = Math.floor(Math.random() * uniformIds.length);
+var randomIndex2;
+do {
+    randomIndex2 = Math.floor(Math.random() * uniformIds.length);
+} while (randomIndex2 == randomIndex1);
+var homeUniformId = uniformIds[randomIndex1];
+var guestUniformId = uniformIds[randomIndex2];
+var nameHome = homeUniformId.name;
+var acronymHome = homeUniformId;
+var emojiHome = homeUniformId.emoji;
+var nameGuest = guestUniformId.name;
+var acronymGuest = guestUniformId;
+var emojiGuest = guestUniformId.emoji;
+room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
 
 /* OPTIONS */
 
@@ -137,6 +92,50 @@ var checkTimeVariable = false;
 var announced = false;
 
 /* FUNCTIONS */
+
+function switchUniforms() {
+    if (room.getScores() === null || room.getScores().length < 2) {
+      return;
+    }
+  
+    const scoreRed = room.getScores()[0];
+    const scoreBlue = room.getScores()[1];
+    var oldHomeUniformId = homeUniformId;
+    var oldGuestUniformId = guestUniformId;
+  
+    // Sorteia novos uniformes
+    do {
+      randomIndex1 = Math.floor(Math.random() * uniformIds.length);
+      randomIndex2 = Math.floor(Math.random() * uniformIds.length);
+    } while (randomIndex1 === randomIndex2);
+  
+    homeUniformId = uniformIds[randomIndex1];
+    guestUniformId = uniformIds[randomIndex2];
+  
+    // Verifica se os novos uniformes são iguais aos antigos
+    while (homeUniformId === oldGuestUniformId || guestUniformId === oldHomeUniformId) {
+      randomIndex1 = Math.floor(Math.random() * uniformIds.length);
+      randomIndex2 = Math.floor(Math.random() * uniformIds.length);
+      homeUniformId = uniformIds[randomIndex1];
+      guestUniformId = uniformIds[randomIndex2];
+    }
+  
+    // Verifica qual time ganhou a partida
+    if (scoreBlue > scoreRed) {
+      // Se o time blue venceu, seu uniforme será trocado com o do time red
+      room.setTeamColors(1, guestUniformId.angle, guestUniformId.textcolor, [guestUniformId.color1, guestUniformId.color2, guestUniformId.color3]);
+      room.setTeamColors(2, homeUniformId.angle, homeUniformId.textcolor, [homeUniformId.color1, homeUniformId.color2, homeUniformId.color3]);
+      // Atualiza as variáveis globais
+      homeUniformId = oldGuestUniformId;
+      guestUniformId = oldHomeUniformId;
+    } else if (scoreBlue < scoreRed) {
+      // Se o time red venceu, só o uniforme do time blue será alterado
+      room.setTeamColors(1, homeUniformId.angle, homeUniformId.textcolor, [homeUniformId.color1, homeUniformId.color2, homeUniformId.color3]);
+      room.setTeamColors(2, oldGuestUniformId.angle, oldGuestUniformId.textcolor, [oldGuestUniformId.color1, oldGuestUniformId.color2, oldGuestUniformId.color3]);
+      // Atualiza a variável global do uniforme do time blue
+      guestUniformId = oldGuestUniformId;
+    }
+};
 
 function sendAnnouncement(announcement) {
     room.sendAnnouncement(announcement, null, white, "bold", 1);
@@ -381,6 +380,7 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("🏆 " + teamRGKName + " e " + teamBGKName + " mandaram muito! "), null, white, "bold");
         }
     }
+    switchUniforms()
 };
 
 /* PLAYER FUNCTIONS */
@@ -672,6 +672,7 @@ room.onGameStop = function (byPlayer) {
         }
         setTimeout(() => { topBtn(); }, 100);
     }
+    switchUniforms()
 };
 
 room.onGamePause = function (byPlayer) {
