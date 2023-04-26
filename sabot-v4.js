@@ -690,7 +690,6 @@ room.onGamePause = function (byPlayer) {
 room.onGameUnpause = function (byPlayer) {
     var messages = [
         "⚽ Bora pro jogo! ⚽",
-        "⚽ Voltemo! ⚽",
         "⚽ Simboraaa! ⚽"
     ];
     var randomIndex = Math.floor(Math.random() * messages.length);
