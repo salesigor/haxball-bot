@@ -80,7 +80,7 @@ var uniforms = {
 };
 var nameHome = 'Barcelona';
 var acronymHome = "bar";
-var nameGuest = 'Real Madrird';
+var nameGuest = 'Real Madrid';
 var acronymGuest = "rea";
 var emojiHome = '🔵🔴🔵';
 var emojiGuest = '⚪🟡⚪';
@@ -402,6 +402,7 @@ function updateAdmins() {
 };
 
 function updateList(number, team) {
+    
     if (room.getScores() != null) {
         if (team == Team.RED) {
             GKList = GKList.slice(0, number).concat(GKList.slice(number + 1, maxPlayers)).concat(0).concat(GKList.slice(maxPlayers, GKList.length));
