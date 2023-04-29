@@ -34,13 +34,8 @@ var bay = {"name": 'Bayern de Munique', "type": Uniform, "emoji": '🔴🔵🔴'
 var bar = {"name": 'Barcelona', "type": Uniform, "emoji": '🔵🔴🔵', "angle": 360, "textcolor": 0xFFD700, "color1": 0x00008B, "color2": 0x8B0000, "color3": 0x00008B};
 var psg = {"name": 'Paris Sant-Germain', "type": Uniform, "emoji": '🔵🔴🔵', "angle": 180, "textcolor": 0xFFFFFF, "color1": 0x000080, "color2": 0xB22222, "color3": 0x000080};
 var uniformIds = [che, rea, juv, bay, bar, psg];
-var randomIndex1 = Math.floor(Math.random() * uniformIds.length);
-var randomIndex2;
-do {
-    randomIndex2 = Math.floor(Math.random() * uniformIds.length);
-} while (randomIndex2 == randomIndex1);
-var homeUniformId = uniformIds[randomIndex1];
-var guestUniformId = uniformIds[randomIndex2];
+let homeUniformId = uniformIds[4];
+let guestUniformId = uniformIds[1];
 var nameHome = homeUniformId.name;
 var acronymHome = homeUniformId;
 var emojiHome = homeUniformId.emoji;
