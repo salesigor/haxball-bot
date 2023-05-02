@@ -503,9 +503,10 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
 /* PLAYER ACTIVITY */
 
 room.onPlayerChat = function (player, message) {
+    var mensagem = message;
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id), player.id, yellow, "normal");
     }
     else if (["!adm"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
@@ -620,6 +621,22 @@ room.onPlayerChat = function (player, message) {
     }
     if (muteList.includes(player.name)) {
         room.sendAnnouncement(centerText("Você foi mutado.", player.id), null, yellow, "normal");
+        return false;
+    }
+    if (player.admin == true) {
+        room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, yellow, "normal", 2);
+        return false;
+    }
+    if (player.teamR) {
+        room.sendAnnouncement(nameHome + " | " + player.name + ": " + mensagem, null, red, "normal", 1);
+        return false;
+    }
+    if (player.teamB) {
+        room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "normal", 1);
+        return false;
+    }
+    else {
+        room.sendAnnouncement(player.name + ": " + mensagem, null, white, "normal", 1);
         return false;
     }
 };
