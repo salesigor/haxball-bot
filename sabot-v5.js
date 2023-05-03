@@ -5,7 +5,7 @@
 const roomName = "🏆 3x3 Futsal ⚽ | Cola na humildade"; // nome sugerido: 🏆 3x3 Futsal ⚽ | Cola na humildade
 const botName = "🤖";
 const maxPlayers = 15;
-const roomPublic = true;
+const roomPublic = false; // nao esquece de colocar true, maluco!
 const geo = [{ "lat": -23.646709, "lon": -46.730114, "code": "br" }, { "code": "FR", "lat": 46.2, "lon": 2.2 }, { "code": "PL", "lat": 51.9, "lon": 19.1 }, { "code": "GB", "lat": 55.3, "lon": -3.4 }, { "code": "PT", "lat": 39.3, "lon": -8.2 }];
 
 const room = HBInit({ roomName: roomName, maxPlayers: maxPlayers, public: roomPublic, playerName: botName, geo: geo[0] });
@@ -39,16 +39,17 @@ const fra = {'name': 'França', "type": Uniform, "emoji": '🔵⚪🔴', "angle"
 const ing = {'name': 'Inglaterra', "type": Uniform, "emoji": '⚪🔴⚪', "angle": 0, "textcolor": 0x0549A0, "color1": 0xDEDFE4, "color2": 0xDEDFE4, "color3": 0xDEDFE4};
 const bel = {'name': 'Bélgica', "type": Uniform, "emoji": '⚫🔴🟡', "angle": 0, "textcolor": 0xCA9144, "color1": 0xC4212A, "color2": 0xC4212A, "color3": 0xC4212A};
 const uniformIds = [ale, arg, bra, esp, por, ita, uru, fra, ing, bel];
-let homeUniformIndex = Math.floor(Math.random() * uniformIds.length);
-let guestUniformIndex = (homeUniformIndex + 3);
-let homeUniformId = uniformIds[homeUniformIndex];
-let guestUniformId = uniformIds[guestUniformIndex];
-let nameHome = homeUniformIndex.name;
-let emojiHome = homeUniformIndex.emoji;
-let nameGuest = guestUniformIndex.name;
-let emojiGuest = guestUniformIndex.emoji;
-room.setTeamColors(1, homeUniformId.angle, homeUniformId.textcolor, [homeUniformId.color1, homeUniformId.color2, homeUniformId.color3]);
-room.setTeamColors(2, guestUniformId.angle, guestUniformId.textcolor, [guestUniformId.color1, guestUniformId.color2, guestUniformId.color3]);
+let randomUniformId = Math.floor(Math.random() * uniformIds.length);
+let homeUniformId = uniformIds[randomUniformId];
+let guestUniformId = uniformIds[(randomUniformId + 3)];
+var nameHome = homeUniformId.name;
+var acronymHome = homeUniformId;
+var emojiHome = homeUniformId.emoji;
+var nameGuest = guestUniformId.name;
+var acronymGuest = guestUniformId;
+var emojiGuest = guestUniformId.emoji;
+room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
 
 /* OPTIONS */
 
@@ -83,6 +84,7 @@ var Rposs = 0;
 var Bposs = 0;
 var point = [{ "x": 0, "y": 0 }, { "x": 0, "y": 0 }];
 var ballSpeed;
+var winner = [];
 var lastWinner = Team.SPECTATORS;
 var streak = 0;
 var goalsHome = [];
@@ -106,8 +108,6 @@ function getNextGuestUniform() {
     guestUniformIndex = (guestUniformIndex + 1) % uniformIds.length;
     return uniformId2;
 };
-
-
 
 function sendAnnouncement(announcement) {
     room.sendAnnouncement(announcement, null, white, "bold", 1);
@@ -152,36 +152,31 @@ function getUniform(uniformStr) {
 };
 
 function switchUniforms() {
-    if (room.getScores() === null || room.getScores().length < 2) {
-        return;
+    const scores = room.getScores();
+    if (scores.red === scores.blue) {
+        var oldHomeUniformId = homeUniformId;
+        var oldGuestUniformId = guestUniformId;
+        homeUniformId = Math.floor(Math.random() * uniformIds.length);
+        guestUniformId = (homeUniformId + 2);
+        acronymHome = homeUniformId;
+        acronymGuest = guestUniformId;
+        room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+        room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
     }
-    const scoreRed = room.getScores()[0];
-    const scoreBlue = room.getScores()[1];
-    var oldHomeUniformId = homeUniformId;
-    var oldGuestUniformId = guestUniformId;
-    do {
-        randomIndex1 = Math.floor(Math.random() * uniformIds.length);
-        randomIndex2 = Math.floor(Math.random() * uniformIds.length);
-    } while (randomIndex1 === randomIndex2);
-    homeUniformId = uniformIds[randomIndex1];
-    guestUniformId = uniformIds[randomIndex2];
-    while (homeUniformId === oldGuestUniformId || guestUniformId === oldHomeUniformId) {
-        randomIndex1 = Math.floor(Math.random() * uniformIds.length);
-        randomIndex2 = Math.floor(Math.random() * uniformIds.length);
-        homeUniformId = uniformIds[randomIndex1];
-        guestUniformId = uniformIds[randomIndex2];
-    }
-    if (scoreBlue > scoreRed) {
-        room.setTeamColors(1, uniformIds[guestUniformId].angle, uniformIds[guestUniformId].textcolor, [uniformIds[guestUniformId].color1, uniformIds[guestUniformId].color2, uniformIds[guestUniformId].color3]);
-        room.setTeamColors(2, uniformIds[homeUniformId].angle, uniformIds[homeUniformId].textcolor, [uniformIds[homeUniformId].color1, uniformIds[homeUniformId].color2, uniformIds[homeUniformId].color3]);
+    if (lastWinner == Team.BLUE) {
         homeUniformId = oldGuestUniformId;
-        guestUniformId = oldHomeUniformId;
-    } else if (scoreBlue < scoreRed) {
-        // Se o time red venceu, só o uniforme do time blue será alterado
-        room.setTeamColors(1, uniformIds[homeUniformId].angle, uniformIds[homeUniformId].textcolor, [uniformIds[homeUniformId].color1, uniformIds[homeUniformId].color2, uniformIds[homeUniformId].color3]);
-        room.setTeamColors(2, uniformIds[oldGuestUniformId].angle, uniformIds[oldGuestUniformId].textcolor, [uniformIds[oldGuestUniformId].color1, uniformIds[oldGuestUniformId].color2, uniformIds[oldGuestUniformId].color3]);
-        // Atualiza a variável global do uniforme do time blue
-        guestUniformId = oldGuestUniformId;
+        guestUniformId = Math.floor(Math.random() * uniformIds.length);
+        acronymHome = homeUniformId;
+        acronymGuest = guestUniformId;
+        room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+        room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+    }
+    else if (lastWinner == Team.RED) {
+        homeUniformId = oldHomeUniformId;
+        acronymHome = homeUniformId;
+        acronymGuest = guestUniformId;
+        room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+        room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
     }
 };
 
@@ -351,16 +346,16 @@ function checkTime() {
     }
 };
 
-function endGame(winner) { // no stopGame() function in it
+/*function endGame(winner) { // no stopGame() function in it
     const scores = room.getScores();
     Rposs = Rposs / (Rposs + Bposs);
     Bposs = 1 - Rposs;
     lastWinner = winner;
     if (winner == Team.RED) {
         streak++;
-        room.sendAnnouncement(centerText(`🏆 FIM DE PARTIDA 🏆`), null, white, "bold");
-	    room.sendAnnouncement(centerText(`${emojiHome} ${nameHome} ${scores.red} - ${scores.blue} ${nameGuest} ${emojiGuest}`), null, white, "bold");
-	    room.sendAnnouncement(centerText(`${emojiHome} ` + (Rposs * 100).toPrecision(2).toString() + `%` + `  Posse de bola  ` + (Bposs * 100).toPrecision(2).toString() + `% ${emojiGuest}`), null, white, "bold");
+        room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, white, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + nameHome + scores.red + " - " + scores.blue + nameGuest + emojiGuest), null, white, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "  + emojiGuest), null, white, "bold");
         if (scores.blue == 0) {
             room.sendAnnouncement(centerText(teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " GK ponta firme!"), null, white, "bold");
         }
@@ -370,9 +365,9 @@ function endGame(winner) { // no stopGame() function in it
     }
     else if (winner == Team.BLUE) {
         streak = 1;
-        room.sendAnnouncement(centerText(`🏆 FIM DE PARTIDA 🏆`), null, white, "bold");
-	    room.sendAnnouncement(centerText(`${emojiHome} ${nameHome} ${scores.red} - ${scores.blue} ${nameGuest} ${emojiGuest}`), null, white, "bold");
-	    room.sendAnnouncement(centerText(`${emojiHome} ` + (Rposs * 100).toPrecision(2).toString() + `%` + `  Posse de bola  ` + (Bposs * 100).toPrecision(2).toString() + `% ${emojiGuest}`), null, white, "bold");
+        room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, white, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + nameHome + scores.red + " - " + scores.blue + nameGuest + emojiGuest), null, white, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "  + emojiGuest), null, white, "bold");
         if (scores.blue == 0) {
             room.sendAnnouncement(centerText(teamB[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " GK ponta firme!"), null, white, "bold");
         }
@@ -382,8 +377,9 @@ function endGame(winner) { // no stopGame() function in it
     }
     else {
         streak = 0;
-        room.sendAnnouncement(centerText(`🏆 FIM DE PARTIDA 🏆`), null, white, "bold");
-	    room.sendAnnouncement(centerText(`${emojiHome} ${nameHome} ${scores.red} - ${scores.blue} ${nameGuest} ${emojiGuest}`), null, white, "bold");
+        room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, white, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + nameHome + scores.red + " - " + scores.blue + nameGuest + emojiGuest), null, white, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% " + emojiGuest), null, white, "bold");
         if (scores.red == 0) {
             const teamBGKIndex = GKList.slice(maxPlayers, 2 * maxPlayers).findIndex(p => p == Math.max(...GKList.slice(maxPlayers, 2 * maxPlayers)));
             const teamBGKName = (teamBGKIndex >= 0 && teamBGKIndex < teamB.length) ? teamB[teamBGKIndex].name : "o GK do Real";
@@ -395,8 +391,7 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
         }
     }
-    switchUniforms()
-};
+};*/
 
 /* PLAYER FUNCTIONS */
 
@@ -686,24 +681,6 @@ room.onGameStart = function (byPlayer) {
 	}
 };
 
-room.onGameStop = function (byPlayer) {
-    if (byPlayer && byPlayer.id == 0) {
-        updateTeams();
-        endGame(winner)
-        if (lastWinner == Team.RED) {
-            blueToSpecBtn();
-        }
-        else if (lastWinner == Team.BLUE) {
-            redToSpecBtn();
-            blueToRedBtn();
-        }
-        else {
-            resetBtn();
-        }
-        setTimeout(() => { topBtn(); }, 100);
-    }
-};
-
 room.onGamePause = function (byPlayer) {
     setTimeout(function () {
         var messages = [
@@ -728,19 +705,58 @@ room.onGameUnpause = function (byPlayer) {
 };
 
 room.onTeamVictory = function () {
-    let winner;
-    if (team === Team.RED) {
-        winner = Team.RED;
-    } else {
-        winner = Team.BLUE;
+    const scores = room.getScores();
+    Rposs = Rposs / (Rposs + Bposs);
+    Bposs = 1 - Rposs;
+    lastWinner = winner;
+    if (winner == Team.RED) {
+        streak++;
+        room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + nameHome + scores.red + " - " + scores.blue + nameGuest + emojiGuest), null, white, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + (Rposs * 100).toPrecision(3).toString() + "% | Posse | " + (Bposs * 100).toPrecision(3).toString() + "% "  + emojiGuest), null, white, "bold");
+        for (var i = 0; i < 3; i++) {
+            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
+        }
     }
-    endGame(winner);
+    else if (winner == Team.BLUE) {
+        streak = 1;
+        room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + nameHome + scores.red + " - " + scores.blue + nameGuest + emojiGuest), null, white, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "  + emojiGuest), null, white, "bold");
+        for (var i = 0; i < 3; i++) {
+            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
+        }
+    }
+    else {
+        streak = 0;
+        room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + nameHome + scores.red + " - " + scores.blue + nameGuest + emojiGuest), null, white, "bold");
+	    room.sendAnnouncement(centerText(emojiHome + (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% " + emojiGuest), null, white, "bold");
+        for (var i = 0; i < 3; i++) {
+            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
+        }
+    }
     setTimeout(function () { 
 		lastPlayersTouched[0] = { id: 0, team: 0 };
 		lastPlayersTouched[1] = undefined;
 		goalsHome = [];
 		goalsGuest = [];
 	}, 8000);
+    updateTeams();
+    setTimeout(function () {
+        if (lastWinner == Team.RED) {
+            blueToSpecBtn();
+        }
+        else if (lastWinner == Team.BLUE) {
+            redToSpecBtn();
+            blueToRedBtn();
+        }
+        else {
+            resetBtn();
+        }
+    }, 9000);
+    setTimeout(() => { topBtn(); }, 400);
+    switchUniforms();
 };
 
 room.onTeamGoal = function (team) {
@@ -753,23 +769,24 @@ room.onTeamGoal = function (team) {
 		room.sendAnnouncement(centerText(`Velocidade do Chute: ${ballSpeed.toFixed()}km/h`), null, white, "bold", 0);
 		if (lastPlayersTouched[1] != null && lastPlayersTouched[1].team == team) {
 			room.sendAnnouncement(centerText(`👟 Assistência: ${lastPlayersTouched[1].name}👟`), null, white, "bold", 0);
-			room.setPlayerAvatar(lastPlayersTouched[1].id, '👟');
-			setTimeout(function () { room.setPlayerAvatar(lastPlayersTouched[1].id,); }, 2400);
 		}
 		if (team === 1) {
-			goalsHome.push(`${lastPlayersTouched.name}  ${getTime(scores)}`);
-		} else if (team === 2) {
-			goalsGuest.push(`${lastPlayersTouched.name}  ${getTime(scores)}`);
+			goalsHome.push(lastPlayersTouched[0].name + getTime(scores));
 		}
-	} else {
+        else if (team === 2) {
+			goalsGuest.push(lastPlayersTouched[0].name + getTime(scores));
+		}
+	}
+    else {
 		room.sendAnnouncement(``, null, white, "bold", Notification.CHAT);
 		room.sendAnnouncement(centerText(`🤦‍♂️ É GOOOOOL CONTRA!! 🤦‍♂️`), null, yellow, "bold", 0);
 		room.sendAnnouncement(centerText(`🤡 Gol de ${lastPlayersTouched[0].name} 🤡`), null, white, "bold", 0);
 		room.sendAnnouncement(centerText(`Velocidade do Chute: ${ballSpeed.toFixed()}km/h`), null, white, "bold", 0);
         if (team === 1) {
-			goalsHome.push(`${lastPlayersTouched[0].name}  ${getTime(scores)}`);
-		} else if (team === 2) {
-			goalsGuest.push(`${lastPlayersTouched[0].name}  ${getTime(scores)}`);
+			goalsHome.push(lastPlayersTouched[0].name + getTime(scores));
+		}
+        else if (team === 2) {
+			goalsGuest.push(lastPlayersTouched[0].name + getTime(scores));
 		}
 	}
 	room.sendAnnouncement(centerText(`${emojiHome} ${nameHome} ${scores.red} - ${scores.blue} ${nameGuest} ${emojiGuest}`), null, white, "bold", 0);
