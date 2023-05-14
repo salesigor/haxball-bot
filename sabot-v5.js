@@ -42,12 +42,12 @@ const uniformIds = [ale, arg, bra, esp, por, ita, uru, fra, ing, bel];
 let randomUniformId = Math.floor(Math.random() * uniformIds.length);
 let homeUniformId = uniformIds[randomUniformId];
 let guestUniformId = uniformIds[(randomUniformId + 3)];
-var nameHome = homeUniformId.name;
-var acronymHome = homeUniformId;
-var emojiHome = homeUniformId.emoji;
-var nameGuest = guestUniformId.name;
-var acronymGuest = guestUniformId;
-var emojiGuest = guestUniformId.emoji;
+let nameHome = homeUniformId.name;
+let acronymHome = homeUniformId;
+let emojiHome = homeUniformId.emoji;
+let nameGuest = guestUniformId.name;
+let acronymGuest = guestUniformId;
+let emojiGuest = guestUniformId.emoji;
 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
 
@@ -688,9 +688,6 @@ room.onPlayerChat = function (player, message) {
     }
 };
 
-room.onPlayerActivity = function (player) {
-};
-
 room.onPlayerBallKick = function (player) {
     if (lastPlayersTouched[0] == null || player.id != lastPlayersTouched[0].id) {
         !activePlay ? activePlay = true : null;
@@ -740,43 +737,27 @@ room.onGameUnpause = function (byPlayer) {
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
 };
 
-room.onTeamVictory = function () {
-    const scores = room.getScores();
+room.onTeamVictory = function (scores) {
     Rposs = Rposs / (Rposs + Bposs);
     Bposs = 1 - Rposs;
     lastWinner = winner;
-    if (lastWinner == Team.RED) {
+    room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
+    room.sendAnnouncement(centerText(emojiHome + nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest + emojiGuest), null, white, "bold");
+    room.sendAnnouncement(centerText(+ (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
+    for (var i = 0; i < 3; i++) {
+        room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
+    }
+    if (scores.red > scores.blue) {
         streak++;
-        room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
-	    room.sendAnnouncement(centerText(emojiHome + nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest + emojiGuest), null, white, "bold");
-	    room.sendAnnouncement(centerText(emojiHome + (Rposs * 100).toPrecision(3).toString() + "% | Posse | " + (Bposs * 100).toPrecision(3).toString() + "% "  + emojiGuest), null, white, "bold");
-        for (var i = 0; i < 3; i++) {
-            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
-        }
         redWins();
-        return false;
     }
-    else if (lastWinner == Team.BLUE) {
+    else if (scores.red < scores.blue) {
         streak = 1;
-        room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
-	    room.sendAnnouncement(centerText(emojiHome + nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest + emojiGuest), null, white, "bold");
-	    room.sendAnnouncement(centerText(emojiHome + (Rposs * 100).toPrecision(3).toString() + "% | Posse | " + (Bposs * 100).toPrecision(3).toString() + "% "  + emojiGuest), null, white, "bold");
-        for (var i = 0; i < 3; i++) {
-            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
-        }
         blueWins();
-        return false;
     }
-    else if (scores.BLUE === scores.RED) {
+    else if (scores.red === scores.blue) {
         streak = 0;
-        room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
-	    room.sendAnnouncement(centerText(emojiHome + nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest + emojiGuest), null, white, "bold");
-	    room.sendAnnouncement(centerText(emojiHome + (Rposs * 100).toPrecision(3).toString() + "% | Posse | " + (Bposs * 100).toPrecision(3).toString() + "% " + emojiGuest), null, white, "bold");
-        for (var i = 0; i < 3; i++) {
-            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
-        } 
         noOneWins();
-        return false;
     }
 };
 

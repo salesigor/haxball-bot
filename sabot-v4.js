@@ -627,11 +627,11 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, yellow, "normal", 2);
         return false;
     }
-    if (player.teamR) {
+    if (player.team === Team.RED) {
         room.sendAnnouncement(nameHome + " | " + player.name + ": " + mensagem, null, red, "normal", 1);
         return false;
     }
-    if (player.teamB) {
+    if (player.team === Team.BLUE) {
         room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "normal", 1);
         return false;
     }
