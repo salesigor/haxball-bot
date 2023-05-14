@@ -58,8 +58,8 @@ var maxTeamSize = 4;
 var yellow = 0xffeb15;
 var white = 0xFFFFFF;
 var green = 0x19d459;
-var red = 0xFF0000;
-var blue = 0x0000FF;
+var red = 0xed4a3e;
+var blue = 0x3e84ed;
 
 /* PLAYERS */
 
@@ -149,119 +149,6 @@ function getUniform(uniformStr) {
         }
     }
     return false;
-};
-
-function redWins() {
-
-    // Manda o time BLUE pra SPECTATORS
-    setTimeout(function () {
-        for (var i = 0; i < teamB.length; i++) {
-            room.setPlayerTeam(teamB[teamB.length - 1 - i].id, Team.SPECTATORS);
-        }
-    }, 5000);
-
-    // Muda o uniform do time BLUE
-    guestUniformId = uniformIds[Math.floor(Math.random() * uniformIds.length)];
-    acronymGuest = guestUniformId;
-    nameGuest = guestUniformId.name;
-    emojiGuest = guestUniformId.emoji;
-    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-    
-    // atualiza os times e zera as stats para o novo jogo
-    updateTeams();
-    setTimeout(function () { 
-		lastPlayersTouched[0] = { id: 0, team: 0 };
-		lastPlayersTouched[1] = undefined;
-		goalsHome = [];
-		goalsGuest = [];
-	}, 8000);;
-
-    // manda o próximo da fila para o time blue
-    setTimeout(() => { topBtn(); }, 100);
-};
-
-function blueWins() {
-    // Manda o time RED pra SPECTATORS e o BLUE para RED
-    setTimeout(function () {
-        for (var i = 0; i < teamR.length; i++) {
-            room.setPlayerTeam(teamR[teamR.length - 1 - i].id, Team.SPECTATORS);
-        }
-        for (var i = 0; i < teamB.length; i++) {
-            room.setPlayerTeam(teamB[i].id, Team.RED);
-        }
-    }, 5000); 
-
-    // Coloca o uniform do BLUE no RED e um troca o uniform do BLUE
-    var oldGuestUniformId = uniformIds[guestUniformId];
-    guestUniformId = uniformIds[Math.floor(Math.random() * uniformIds.length)];
-    acronymHome = oldGuestUniformId;
-    acronymGuest = guestUniformId;
-    nameHome = oldGuestUniformId.name;
-    emojiHome = oldGuestUniformId.emoji;
-    nameGuest = guestUniformId.name;
-    emojiGuest = guestUniformId.emoji;
-    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-    
-    // atualiza os times e zera as stats para o novo jogo
-    updateTeams();
-    setTimeout(function () { 
-		lastPlayersTouched[0] = { id: 0, team: 0 };
-		lastPlayersTouched[1] = undefined;
-		goalsHome = [];
-		goalsGuest = [];
-	}, 8000);;
-
-    // manda o próximo da fila para o time blue
-    setTimeout(() => { topBtn(); }, 100);
-};
-
-function noOneWins() {
-    // Manda todos os jogadores para SPECTATORS
-    setTimeout(function () {
-        if (teamR.length <= teamB.length) {
-            for (var i = 0; i < teamR.length; i++) {
-                room.setPlayerTeam(teamB[teamB.length - 1 - i].id, Team.SPECTATORS);
-                room.setPlayerTeam(teamR[teamR.length - 1 - i].id, Team.SPECTATORS);
-            }
-            for (var i = teamR.length; i < teamB.length; i++) {
-                room.setPlayerTeam(teamB[teamB.length - 1 - i].id, Team.SPECTATORS);
-            }
-        }
-        else {
-            for (var i = 0; i < teamB.length; i++) {
-                room.setPlayerTeam(teamB[teamB.length - 1 - i].id, Team.SPECTATORS);
-                room.setPlayerTeam(teamR[teamR.length - 1 - i].id, Team.SPECTATORS);
-            }
-            for (var i = teamB.length; i < teamR.length; i++) {
-                room.setPlayerTeam(teamR[teamR.length - 1 - i].id, Team.SPECTATORS);
-            }
-        }
-    }, 5000);
-
-    // Muda os uniforms dos dois times
-    homeUniformId = uniformIds[Math.floor(Math.random() * uniformIds.length)];
-    guestUniformId = uniformIds[(homeUniformId + 2)];
-    acronymHome = homeUniformId;
-    acronymGuest = guestUniformId;
-    nameHome = homeUniformId.name;
-    emojiHome = homeUniformId.emoji;
-    nameGuest = guestUniformId.name;
-    emojiGuest = guestUniformId.emoji;
-    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-
-    // atualiza os times e zera as stats para o novo jogo
-    updateTeams();
-    setTimeout(function () { 
-		lastPlayersTouched[0] = { id: 0, team: 0 };
-		lastPlayersTouched[1] = undefined;
-		goalsHome = [];
-		goalsGuest = [];
-	}, 8000);;
-
-    // manda o próximo da fila para o time blue
-    setTimeout(() => { topBtn(); }, 100);
 };
 
 /* AUXILIARY FUNCTIONS */
@@ -671,15 +558,15 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (player.admin == true) {
-        room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, yellow, "normal", 2);
+        room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, yellow, "bold", 2);
         return false;
     }
     if (player.team === Team.RED) {
-        room.sendAnnouncement(nameHome + " | " + player.name + ": " + mensagem, null, red, "normal", 1);
+        room.sendAnnouncement(nameHome + " | " + player.name + ": " + mensagem, null, red, "bold", 1);
         return false;
     }
     if (player.team === Team.BLUE) {
-        room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "normal", 1);
+        room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "bold", 1);
         return false;
     }
     else {

@@ -56,8 +56,8 @@ var maxTeamSize = 4;
 var yellow = 0xffeb15;
 var white = 0xFFFFFF;
 var green = 0x19d459;
-var red = 0xFF0000;
-var blue = 0x0000FF;
+var red = 0xed4a3e;
+var blue = 0x3e84ed;
 
 /* PLAYERS */
 
@@ -92,48 +92,16 @@ var announced = false;
 
 /* FUNCTIONS */
 
-function switchUniforms() {
-    if (room.getScores() === null || room.getScores().length < 2) {
-      return;
-    }
-  
-    const scoreRed = room.getScores()[0];
-    const scoreBlue = room.getScores()[1];
-    var oldHomeUniformId = homeUniformId;
-    var oldGuestUniformId = guestUniformId;
-  
-    // Sorteia novos uniformes
-    do {
-      randomIndex1 = Math.floor(Math.random() * uniformIds.length);
-      randomIndex2 = Math.floor(Math.random() * uniformIds.length);
-    } while (randomIndex1 === randomIndex2);
-  
-    homeUniformId = uniformIds[randomIndex1];
-    guestUniformId = uniformIds[randomIndex2];
-  
-    // Verifica se os novos uniformes são iguais aos antigos
-    while (homeUniformId === oldGuestUniformId || guestUniformId === oldHomeUniformId) {
-      randomIndex1 = Math.floor(Math.random() * uniformIds.length);
-      randomIndex2 = Math.floor(Math.random() * uniformIds.length);
-      homeUniformId = uniformIds[randomIndex1];
-      guestUniformId = uniformIds[randomIndex2];
-    }
-  
-    // Verifica qual time ganhou a partida
-    if (scoreBlue > scoreRed) {
-      // Se o time blue venceu, seu uniforme será trocado com o do time red
-      room.setTeamColors(1, guestUniformId.angle, guestUniformId.textcolor, [guestUniformId.color1, guestUniformId.color2, guestUniformId.color3]);
-      room.setTeamColors(2, homeUniformId.angle, homeUniformId.textcolor, [homeUniformId.color1, homeUniformId.color2, homeUniformId.color3]);
-      // Atualiza as variáveis globais
-      homeUniformId = oldGuestUniformId;
-      guestUniformId = oldHomeUniformId;
-    } else if (scoreBlue < scoreRed) {
-      // Se o time red venceu, só o uniforme do time blue será alterado
-      room.setTeamColors(1, homeUniformId.angle, homeUniformId.textcolor, [homeUniformId.color1, homeUniformId.color2, homeUniformId.color3]);
-      room.setTeamColors(2, oldGuestUniformId.angle, oldGuestUniformId.textcolor, [oldGuestUniformId.color1, oldGuestUniformId.color2, oldGuestUniformId.color3]);
-      // Atualiza a variável global do uniforme do time blue
-      guestUniformId = oldGuestUniformId;
-    }
+function getNextHomeUniform() {
+    const uniformId = uniformIds[homeUniformIndex];
+    homeUniformIndex = (homeUniformIndex + 1) % uniformIds.length;
+    return uniformId;
+};
+
+function getNextGuestUniform() {
+    const uniformId2 = uniformIds[guestUniformIndex];
+    guestUniformIndex = (guestUniformIndex + 1) % uniformIds.length;
+    return uniformId2;
 };
 
 function sendAnnouncement(announcement) {
@@ -624,15 +592,15 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (player.admin == true) {
-        room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, yellow, "normal", 2);
+        room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, yellow, "bold", 2);
         return false;
     }
     if (player.team === Team.RED) {
-        room.sendAnnouncement(nameHome + " | " + player.name + ": " + mensagem, null, red, "normal", 1);
+        room.sendAnnouncement(nameHome + " | " + player.name + ": " + mensagem, null, red, "bold", 1);
         return false;
     }
     if (player.team === Team.BLUE) {
-        room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "normal", 1);
+        room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "bold", 1);
         return false;
     }
     else {
