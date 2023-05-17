@@ -475,6 +475,11 @@ room.onPlayerChat = function (player, message) {
     if (["!help"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id), player.id, yellow, "normal");
     }
+    else if (["!discord"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
+        room.sendAnnouncement(centerText(" https://discord.gg/HbQ5Mvad "), null, white, "bold");
+        room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
+    }
     else if (["!adm"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
             room.setPlayerAdmin(player.id, true);

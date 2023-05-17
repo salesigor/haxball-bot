@@ -683,6 +683,11 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement("Comandos de Player: !eu, !jogos, !vitorias, !gols, !assists, !cs, !afks, !mutes, !bans.", player.id);
         player.admin ? room.sendAnnouncement("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id) : null;
     }
+    else if (["!discord"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
+        room.sendAnnouncement(centerText(" https://discord.gg/HbQ5Mvad "), null, white, "bold");
+        room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
+    }
     else if (["!afk"].includes(message[0].toLowerCase())) {
         if (players.length != 1 && player.team != Team.SPECTATORS) {
             if (player.team == Team.RED && streak > 0 && room.getScores() == null) {
