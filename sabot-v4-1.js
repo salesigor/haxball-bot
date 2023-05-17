@@ -500,7 +500,7 @@ room.onGameStop = function (byPlayer) {
         else if (lastWinner == Team.BLUE) {
             redToSpecBtn();
             blueToRedBtn();
-            room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+            room.setTeamColors(1, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             getNextGuestUniform();
         }
         else {
