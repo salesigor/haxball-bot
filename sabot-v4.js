@@ -655,7 +655,6 @@ room.onGameStop = function (byPlayer) {
         }
         setTimeout(() => { topBtn(); }, 100);
     }
-    switchUniforms()
 };
 
 room.onGamePause = function (byPlayer) {
