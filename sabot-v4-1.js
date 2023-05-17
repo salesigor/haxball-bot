@@ -429,9 +429,9 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id), player.id, yellow, "normal");
     }
     else if (["!discord"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
+        room.sendAnnouncement(centerText("      Ta aí nosso server!"), null, white, "normal");
         room.sendAnnouncement(centerText(" https://discord.gg/HbQ5Mvad "), null, white, "bold");
-        room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
+        room.sendAnnouncement(centerText("  Mantém o respeito, na moral!"), null, white, "normal");
     }
     else if (["!adm"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
@@ -485,7 +485,7 @@ room.onGameStart = function (byPlayer) {
     room.sendAnnouncement(centerText(`🥅🥅 PARTIDA INICIANDO 🥅🥅`), null, yellow, "bold", Notification.CHAT);
 	room.sendAnnouncement(centerText(`${emojiHome} ${nameHome} X ${nameGuest} ${emojiGuest}`), null, white, "bold", 0);
 	if (streak !== 0) {
-		room.sendAnnouncement(centerText(`     📢 ${nameHome} está invicto 📢`), null, white, "bold", 0);
+		room.sendAnnouncement(centerText(`         📢 ${nameHome} está invicto 📢`), null, white, "bold", 0);
 		room.sendAnnouncement(centerText(`     📢 Sequência de ${streak} jogo(s) 📢`), null, white, "bold", 0);
 	}
 };
