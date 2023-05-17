@@ -347,7 +347,6 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("🏆 " + teamRGKName + " e " + teamBGKName + " mandaram muito! "), null, white, "bold");
         }
     }
-    switchUniforms()
 };
 
 /* PLAYER FUNCTIONS */
