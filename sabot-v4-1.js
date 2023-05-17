@@ -389,7 +389,7 @@ room.onPlayerJoin = function (player) {
     var announcement = messages[randomIndex];
     updateTeams();
     updateAdmins();
-    room.sendAnnouncement(centerText(announcement), null, white, "bold");
+    room.sendAnnouncement(centerText(announcement), player.id, white, "bold");
 };
 
 room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
@@ -432,6 +432,9 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("      Ta aí nosso server!"), null, white, "normal");
         room.sendAnnouncement(centerText(" https://discord.gg/HbQ5Mvad "), null, white, "bold");
         room.sendAnnouncement(centerText("  Mantém o respeito, na moral!"), null, white, "normal");
+    }
+    else if (["!soberbo"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("SOBEEEERBOOOOOOO!"), null, yellow, "bold");
     }
     else if (["!adm"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
