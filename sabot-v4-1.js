@@ -374,7 +374,9 @@ room.onPlayerJoin = function (player) {
     var announcement = messages[randomIndex];
     updateTeams();
     updateAdmins();
-    room.sendAnnouncement(centerText(announcement), player.id, white, "bold");
+    room.sendAnnouncement(centerText(announcement), null, white, "bold");
+    room.sendAnnouncement(centerText("Comandos: !help, !regras, !discord, !verdade"), player.id, yellow, "normal");
+    room.sendAnnouncement(centerText("Comemorações: !gol, !ain, !chupa, !soberbo"), player.id, yellow, "normal");
 };
 
 room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
@@ -411,8 +413,17 @@ room.onPlayerChat = function (player, message) {
     var mensagem = message;
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("Comandos: !discord, !verdade"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Comandos: !help, !regras, !discord, !verdade"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Comemorações: !gol, !ain, !chupa, !soberbo"), null, yellow, "normal");
+    }
+    else if (["!regras"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("REGRAS DE JOGO"), null, white, "bold");
+        room.sendAnnouncement(centerText("3x3 por 3minutos + 1minuto de prorrogação"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("FAIR PLAY pra ficar dahora"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Capitão do time é o player1"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Capitão escolhe o time com número da fila ou nome"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Uma vez escolhido fica até o final"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("AFK vai pro final da fila e pausamos pro cap escolher outro"), null, yellow, "normal");
     }
     else if (["!discord"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
