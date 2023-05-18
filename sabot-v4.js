@@ -473,12 +473,44 @@ room.onPlayerChat = function (player, message) {
     var mensagem = message;
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id), player.id, yellow, "normal");
+        room.sendAnnouncement(centerText("Comandos: !discord, !verdade"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Comemorações: !gol, !ain, !chupa, !soberbo"), null, yellow, "normal");
     }
     else if (["!discord"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
         room.sendAnnouncement(centerText(" https://discord.gg/HbQ5Mvad "), null, white, "bold");
         room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
+    }
+    else if (["!soberbo"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("🍫 SOBEEEERBOOOOOOO! 🍫"), null, yellow, "bold");
+    }
+    else if (["!ain"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(player.name + ": AINN, PAI PARAAA!", null, yellow, "bold");
+    }
+    else if (["!gol"].includes(message[0].toLowerCase())) {
+        var messages = [
+            "LAAAAÇO! ⚽",
+            "GOLAAAAÇO! ⚽",
+            "É GOOOOL! ⚽",
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        room.sendAnnouncement(player.name + ": " + announcement, null, white, "bold");
+    }
+    else if (["!chupa"].includes(message[0].toLowerCase())) {
+        var messages = [
+            "Chupaaa!",
+            "Chupaaa!",
+            "Chupaaa!",
+            "Chupaaa!",
+            "Chupaaa, Lady Gaga! 👱‍♀️",
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        room.sendAnnouncement(player.name + ": " + announcement, null, white, "bold");
+    }
+    else if (["!verdade"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText(player.name + " é ruim pra caramba!"), null, yellow, "bold");
     }
     else if (["!adm"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {

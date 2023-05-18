@@ -77,6 +77,7 @@ var muteList = [];
 
 /* STATS */
 
+const scores = room.getScores();
 var GKList = new Array(2 * maxPlayers).fill(0);
 var Rposs = 0;
 var Bposs = 0;
@@ -94,22 +95,6 @@ var checkTimeVariable = false;
 var announced = false;
 
 /* FUNCTIONS */
-
-function getNextHomeUniform() {
-    const uniformId = uniformIds[homeUniformIndex];
-    homeUniformIndex = (homeUniformIndex + 1) % uniformIds.length;
-    var acronymHome = homeUniformId;
-    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-    return uniformId;
-};
-
-function getNextGuestUniform() {
-    const uniformId2 = uniformIds[guestUniformIndex];
-    guestUniformIndex = (guestUniformIndex + 1) % uniformIds.length;
-    var acronymGuest = guestUniformId;
-    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-    return uniformId2;
-};
 
 function sendAnnouncement(announcement) {
     room.sendAnnouncement(announcement, null, white, "bold", 1);
@@ -426,15 +411,44 @@ room.onPlayerChat = function (player, message) {
     var mensagem = message;
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("Admin commands: !mute <R/B/S> <team position> <duration = 3>, !unmute all/<nick>, !clearbans", player.id), player.id, yellow, "normal");
+        room.sendAnnouncement(centerText("Comandos: !discord, !verdade"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Comemorações: !gol, !ain, !chupa, !soberbo"), null, yellow, "normal");
     }
     else if (["!discord"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("      Ta aí nosso server!"), null, white, "normal");
+        room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
         room.sendAnnouncement(centerText(" https://discord.gg/HbQ5Mvad "), null, white, "bold");
-        room.sendAnnouncement(centerText("  Mantém o respeito, na moral!"), null, white, "normal");
+        room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
     }
     else if (["!soberbo"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("SOBEEEERBOOOOOOO!"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("🍫 SOBEEEERBOOOOOOO! 🍫"), null, yellow, "bold");
+    }
+    else if (["!ain"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(player.name + ": AINN, PAI PARAAA!", null, yellow, "bold");
+    }
+    else if (["!gol"].includes(message[0].toLowerCase())) {
+        var messages = [
+            "LAAAAÇO! ⚽",
+            "GOLAAAAÇO! ⚽",
+            "É GOOOOL! ⚽",
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        room.sendAnnouncement(player.name + ": " + announcement, null, white, "bold");
+    }
+    else if (["!chupa"].includes(message[0].toLowerCase())) {
+        var messages = [
+            "Chupaaa!",
+            "Chupaaa!",
+            "Chupaaa!",
+            "Chupaaa!",
+            "Chupaaa, Lady Gaga! 👱‍♀️",
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        room.sendAnnouncement(player.name + ": " + announcement, null, white, "bold");
+    }
+    else if (["!verdade"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText(player.name + " é ruim pra caramba!"), null, yellow, "bold");
     }
     else if (["!adm"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
@@ -497,19 +511,31 @@ room.onGameStop = function (byPlayer) {
     if (byPlayer && byPlayer.id == 0) {
         updateTeams();
         if (lastWinner == Team.RED) {
+            streak++;
             blueToSpecBtn();
-            getNextGuestUniform();
+            guestUniformIndex = (guestUniformIndex + 1) % uniformIds.length;
+            var acronymGuest = guestUniformId;
+            room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
         }
         else if (lastWinner == Team.BLUE) {
+            streak = 1;
             redToSpecBtn();
             blueToRedBtn();
             room.setTeamColors(1, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-            getNextGuestUniform();
+            guestUniformIndex = (guestUniformIndex + 1) % uniformIds.length;
+            var acronymGuest = guestUniformId;
+            room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
         }
         else {
+            streak = 0;
             resetBtn();
-            getNextHomeUniform();
-            getNextGuestUniform();
+            homeUniformIndex = (homeUniformIndex + 1) % uniformIds.length;
+            var acronymHome = homeUniformId;
+            room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+            guestUniformIndex = (guestUniformIndex + 1) % uniformIds.length;
+            var acronymGuest = guestUniformId;
+            room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+    
         }
         setTimeout(() => { topBtn(); }, 100);
     }
@@ -524,15 +550,6 @@ room.onTeamVictory = function (scores) {
     room.sendAnnouncement(centerText(+ (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
     for (var i = 0; i < 3; i++) {
         room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
-    }
-    if (scores.red > scores.blue) {
-        streak++;
-    }
-    else if (scores.red < scores.blue) {
-        streak = 1;
-    }
-    else if (scores.red === scores.blue) {
-        streak = 0;
     }
 };
 
@@ -560,7 +577,6 @@ room.onGameUnpause = function (byPlayer) {
 };
 
 room.onTeamGoal = function (team) {
-    const scores = room.getScores();
     activePlay = false;
     if (lastPlayersTouched[0].team === team) {
 		room.sendAnnouncement(``, null, white, "bold", Notification.CHAT);
