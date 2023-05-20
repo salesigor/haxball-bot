@@ -510,6 +510,8 @@ room.onGameStart = function (byPlayer) {
     Bposs = 0;
     lastPlayersTouched = [null, null];
     goldenGoal = false;
+    goalsHome = [];
+    goalsGuest = []; 
     room.sendAnnouncement(centerText(`🥅🥅 PARTIDA INICIANDO 🥅🥅`), null, yellow, "bold", Notification.CHAT);
 	room.sendAnnouncement(centerText(`${emojiHome} ${nameHome} X ${nameGuest} ${emojiGuest}`), null, white, "bold", 0);
 	if (streak !== 0) {
