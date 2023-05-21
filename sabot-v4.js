@@ -524,14 +524,7 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("🍫 SOBEEEERBOOOOOOO! 🍫"), null, yellow, "bold");
     }
     else if (["!ain"].includes(message[0].toLowerCase())) {
-        var messages = [
-            "AINN, PAI PARAAA!",
-            "AINN, CALMAA!",
-            "RELAXA, BOY!",
-        ];
-        var randomIndex = Math.floor(Math.random() * messages.length);
-        var announcement = messages[randomIndex];
-        room.sendAnnouncement(player.name + ": " + announcement, null, yellow, "bold");
+        room.sendAnnouncement(player.name + ": AINN, PAI PARAAA!", null, yellow, "bold");
     }
     else if (["!gol"].includes(message[0].toLowerCase())) {
         var messages = [
@@ -565,114 +558,10 @@ room.onPlayerChat = function (player, message) {
             console.log("adminPassword : " + adminPassword);
         }
     }
-    else if (["!bb", "!bye", "!kick"].includes(message[0].toLowerCase())) {
-        var bannedPlayer = message[1]
-        if (player.admin) {
-            room.kickPlayer(bannedPlayer, "Flw!", false);
-        }
-    }
-    else if (["!clearbans"].includes(message[0].toLowerCase())) {
-        if (player.admin) {
-            room.clearBans();
-            room.sendAnnouncement(centerText("Banimentos apagados"), null, yellow, "normal");
-        }
-    }
-    else if (["!mute"].includes(message[0].toLowerCase())) {
-        if (player.admin) {
-            if (message.length == 3 || message.length == 4) {
-                if (["R", "B", "S"].includes(message[1])) {
-                    var timeOut;
-                    if (message[1] == "R") {
-                        if (!Number.isNaN(Number.parseInt(message[2]))) {
-                            if (Number.parseInt(message[2]) <= teamR.length && Number.parseInt(message[2]) > 0) {
-                                if (teamR[Number.parseInt(message[2]) - 1].admin || muteList.filter((p) => p == teamR[Number.parseInt(message[2]) - 1].name).length > 0) {
-                                    return false;
-                                }
-                                if (message.length == 4) {
-                                    if (!Number.isNaN(Number.parseInt(message[3]))) {
-                                        if (Number.parseInt(message[3]) > 0) {
-                                            timeOut = Number.parseInt(message[3]) * 60 * 1000;
-                                        }
-                                    }
-                                }
-                                else {
-                                    timeOut = 3 * 60 * 1000;
-                                }
-                                setTimeout(function (name) { muteList = muteList.filter((p) => p != name) }, timeOut, teamR[Number.parseInt(message[2]) - 1].name);
-                                muteList.push(teamR[Number.parseInt(message[2]) - 1].name);
-                                room.sendAnnouncement(centerText(teamR[Number.parseInt(message[2]) - 1].name + " foi mutado por " + (timeOut / 60000) + " minutos !"), null, yellow, "normal");
-                            }
-                        }
-                    }
-                    if (message[1] == "B") {
-                        if (!Number.isNaN(Number.parseInt(message[2]))) {
-                            if (Number.parseInt(message[2]) <= teamB.length && Number.parseInt(message[2]) > 0) {
-                                if (teamB[Number.parseInt(message[2]) - 1].admin || muteList.filter((p) => p == teamB[Number.parseInt(message[2]) - 1].name).length > 0) {
-                                    return false;
-                                }
-                                if (message.length == 4) {
-                                    if (!Number.isNaN(Number.parseInt(message[3]))) {
-                                        if (Number.parseInt(message[3]) > 0) {
-                                            timeOut = Number.parseInt(message[3]) * 60 * 1000;
-                                        }
-                                    }
-                                }
-                                else {
-                                    timeOut = 3 * 60 * 1000;
-                                }
-                                setTimeout(function (name) { muteList = muteList.filter((p) => p != name) }, timeOut, teamB[Number.parseInt(message[2]) - 1].name);
-                                muteList.push(teamB[Number.parseInt(message[2]) - 1].name);
-                                room.sendAnnouncement(centerText(teamB[Number.parseInt(message[2]) - 1].name + " foi mutado por " + (timeOut / 60000) + " minutos !"), null, yellow, "normal");
-                            }
-                        }
-                    }
-                    if (message[1] == "S") {
-                        if (!Number.isNaN(Number.parseInt(message[2]))) {
-                            if (Number.parseInt(message[2]) <= teamS.length && Number.parseInt(message[2]) > 0) {
-                                if (teamS[Number.parseInt(message[2]) - 1].admin || muteList.filter((p) => p == teamS[Number.parseInt(message[2]) - 1].name).length > 0) {
-                                    return false;
-                                }
-                                if (message.length == 4) {
-                                    if (!Number.isNaN(Number.parseInt(message[3]))) {
-                                        if (Number.parseInt(message[3]) > 0) {
-                                            timeOut = Number.parseInt(message[3]) * 60 * 1000;
-                                        }
-                                    }
-                                }
-                                else {
-                                    timeOut = 3 * 60 * 1000;
-                                }
-                                setTimeout(function (name) { muteList = muteList.filter((p) => p != name) }, timeOut, teamS[Number.parseInt(message[2]) - 1].name);
-                                muteList.push(teamS[Number.parseInt(message[2]) - 1].name);
-                                room.sendAnnouncement(centerText(teamS[Number.parseInt(message[2]) - 1].name + " foi mutado por " + (timeOut / 60000) + " minutos !"), null, yellow, "normal");
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    else if (["!unmute"].includes(message[0].toLowerCase())) {
-        if (player.admin) {
-            if (message.length == 2 && message[1] == "all") {
-                muteList = [];
-                room.sendAnnouncement(centerText("Desmutado."), null, yellow, "normal");
-            }
-            if (message.length >= 2) {
-                var name = "";
-                for (var i = 1; i < message.length; i++) {
-                    name += message[i] + " ";
-                }
-                name = name.substring(0, name.length - 1);
-                muteList.length != muteList.filter((p) => p != name).length ? room.sendAnnouncement(centerText(name + " foi desmutado.")) : null;
-                muteList = muteList.filter((p) => p != name);
-            }
-        }
-    }
     if (message[0][0] == "!") {
         return false;
     }
-    if (player.admin) {
+    if (player.admin == true) {
         room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, yellow, "bold", 2);
         return false;
     }
