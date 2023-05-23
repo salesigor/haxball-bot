@@ -545,7 +545,7 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["!smith"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("eu sou a LENDA!"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("by " + player.id), null, white, "normal");
+        room.sendAnnouncement(centerText("by " + player.name), null, white, "normal");
     }
     else if (["!messi"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
