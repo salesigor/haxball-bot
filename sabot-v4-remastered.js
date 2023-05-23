@@ -459,7 +459,7 @@ room.onPlayerJoin = function (player) {
     updateAdmins();
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
     room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
-    room.sendAnnouncement(centerText("!help, !score, !tag, !regras, !discord, !verdade"), player.id, yellow, "normal");
+    room.sendAnnouncement(centerText("!help, !tag, !regras, !discord, !verdade"), player.id, yellow, "normal");
     room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
     room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), player.id, yellow, "normal");
 };
@@ -499,7 +499,7 @@ room.onPlayerChat = function (player, message) {
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Comandos:"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("!help, !score, !tag, !regras, !discord, !verdade"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("!help, !tag, !regras, !discord, !verdade"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold");
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), null, yellow, "normal");
         
@@ -521,13 +521,6 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
         room.sendAnnouncement(centerText(" https://discord.gg/HbQ5Mvad "), null, white, "bold");
         room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
-    }
-    
-    else if (["!score"].includes(message[0].toLowerCase())) {
-        const scores = room.getScores();
-        room.sendAnnouncement(centerText("RESUMO DE GOLS:"), null, white, "normal");
-        room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
-        room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
     }
     else if (["!lenda"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
@@ -687,7 +680,7 @@ room.onGameStart = function (byPlayer) {
 	}
     setTimeout(function () {
         room.sendAnnouncement(centerText("Comandos:"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("!help, !score, !tag, !regras, !discord, !verdade"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("!help, !tag, !regras, !discord, !verdade"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold");
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), null, yellow, "normal");
     }, 2000);
