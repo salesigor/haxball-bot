@@ -524,6 +524,7 @@ room.onPlayerChat = function (player, message) {
     }
     
     else if (["!score"].includes(message[0].toLowerCase())) {
+        const scores = room.getScores();
         room.sendAnnouncement(centerText("RESUMO DE GOLS:"), null, white, "normal");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
