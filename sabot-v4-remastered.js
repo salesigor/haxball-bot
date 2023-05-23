@@ -74,10 +74,11 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 var drawTimeLimit = 1; //minutos
 var maxTeamSize = 4;
 var yellow = 0xffeb15;
+var offYellow = 0xffdd8c;
 var white = 0xFFFFFF;
-var green = 0x19d459;
-var red = 0xed4a3e;
-var blue = 0x3e84ed;
+var green = 0x32f073;
+var red = 0xfc383b;
+var blue = 0x03adfc;
 
 /* PLAYERS */
 
@@ -298,18 +299,18 @@ function checkTime() {
             }
             return;
         }
+        room.sendAnnouncement(centerText("PRORROGAÇÃO"), null, yellow, "bold");
         goldenGoal = true;
         var messages = [
-            "Se liga, a prorrogação é de " + drawTimeLimit * 60 + " segundos!",
-            "Vou dar " + drawTimeLimit * 60 + " segundos de prorrogação, rapa!"
+            drawTimeLimit * 60 + " segundos para o final!",
+            "Vou dar " + drawTimeLimit * 60 + " segundos!"
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
-        room.sendAnnouncement(centerText(announcement), null, yellow, "bold");
+        room.sendAnnouncement(centerText(announcement), null, yellow, "normal");
         var messagens = [
             "⚽ Primeiro GOL vence! ⚽",
-            "⚽ Quem fizer leva! ⚽",
-            "⚽ Boraa, decisivo! Fez, ganhou! ⚽",
+            "⚽ GOL DE OURO ativado ⚽",
         ];
         var randomIndex = Math.floor(Math.random() * messagens.length);
         var announcement = messagens[randomIndex];
@@ -480,9 +481,9 @@ room.onPlayerLeave = function (player) {
     updateTeams();
     updateAdmins();
     var messages = [
-        "Vixi, " + player.name + " vazou!",
-        "Voltaaaaaa, " + player.name + "!",
-        "Aaaah, " + player.name + " arregou essas hora!",
+        player.name + " vazou!",
+        "Tivemos uma perda... HIP " + player.name,
+        player.name + " arregou essas horas!",
     ];
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
@@ -528,37 +529,37 @@ room.onPlayerChat = function (player, message) {
     else if (["!malco"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("❌"), null, white, "normal");
-        }, 25);
+        }, 10);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🎵 Vai, malco! 🎶"), null, white, "normal");
-        }, 100);
+        }, 800);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🎶 Vai, malco! 🎵"), null, white, "normal");
-        }, 400);
+        }, 1600);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🎵 Vai, malco! 🎶"), null, white, "normal");
-        }, 700);
+        }, 2400);
         setTimeout(function () {
             room.sendAnnouncement(centerText("❌"), null, white, "normal");
-        }, 1000);
+        }, 3200);
     }
     else if (["!smith"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("eu sou a LENDA! by "), null, yellow, "bold");
-        room.sendAnnouncement(centerText(player.id), null, white, "normal");
+        room.sendAnnouncement(centerText("eu sou a LENDA!"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("by " + player.id), null, white, "normal");
     }
     else if (["!messi"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("Messi, Messi, messi!"), null, white, "bold");
-        }, 50);
+        }, 10);
         setTimeout(function () {
             room.sendAnnouncement(centerText("Ankara, Messi"), null, white, "bold");
-        }, 200);
+        }, 800);
         setTimeout(function () {
             room.sendAnnouncement(centerText("Ankara, Messi"), null, white, "bold");
-        }, 400);
+        }, 1400);
         setTimeout(function () {
             room.sendAnnouncement(centerText("Gol, gol, gol!!!"), null, white, "bold");
-        }, 600);
+        }, 2200);
     }
     else if (["!noob"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
@@ -566,10 +567,10 @@ room.onPlayerChat = function (player, message) {
         }, 50);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🎶 é o NooB! 🎶" ), null, white, "normal");
-        }, 150);
+        }, 2500);
         setTimeout(function () {
             room.sendAnnouncement(centerText("o NooB MaSteR!!" ), null, white, "bold");
-        }, 200);
+        }, 4000);
     }
     else if (["!pepe"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("PÊEEPÊ NELES!"), null, yelwhiteow, "bold");
@@ -580,13 +581,13 @@ room.onPlayerChat = function (player, message) {
         }, 25);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🍫...🍫"), null, white, "normal");
-        }, 300);
+        }, 1000);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🍫...🍫...🍫"), null, white, "normal");
-        }, 600);
+        }, 2200);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🍫... SOBEEEERBOOOOOOO! ...🍫"), null, white, "normal");
-        }, 900);
+        }, 3500);
     }
     else if (["!gk"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("GOLEIROOO!"), null, white, "bold");
@@ -602,6 +603,7 @@ room.onPlayerChat = function (player, message) {
             "LAAAAÇO! ⚽",
             "GOLAAAAÇO! ⚽",
             "É GOOOOL! ⚽",
+            "OLHA O GOL, OLHA O GOL, OLHA O GOL!",
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
@@ -612,7 +614,10 @@ room.onPlayerChat = function (player, message) {
             "Chupaaa!",
             "Chupaaa!",
             "Chupaaa!",
+            "Chupaaa!",
+            "Chupaaa!",
             "Chupaaa, Lady Gaga! 👱‍♀️",
+            "Chupaaa, imperatriz! 🧞‍♂️",
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
@@ -632,7 +637,7 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (player.admin == true) {
-        room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, yellow, "bold", 2);
+        room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, offYellow, "bold", 2);
         return false;
     }
     if (player.team === Team.RED) {
@@ -706,9 +711,8 @@ room.onGameStop = function (byPlayer) {
 room.onGamePause = function (byPlayer) {
     setTimeout(function () {
         var messages = [
-            "Calma aê, vamo resolver e já voltamos. Não enche! kkk",
-            "VAR ta analizando, calma... kk",
-            "Calma aê, rapa. Rapidão já voltamos pro game."
+            "Opa, vamos ter que levar para o VAR analizar...",
+            "VAR está coferindo o lance...",
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
@@ -718,8 +722,8 @@ room.onGamePause = function (byPlayer) {
 
 room.onGameUnpause = function (byPlayer) {
     var messages = [
-        "⚽ Bora pro jogo! ⚽",
-        "⚽ Simboraaa! ⚽"
+        "⚽ Pro jogo! ⚽",
+        "⚽ E o Juiz apita! ⚽"
     ];
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
@@ -781,9 +785,9 @@ room.onPlayerAdminChange = function (changedPlayer, byPlayer) {
 
 room.onStadiumChange = function (newStadiumName, byPlayer) {
     var messages = [
-        "Troca de Mapa pra ficar mais esquema.",
+        "Esse é o estádio que vai dar jogo.",
         "Mapa mudou, agora da jogão!",
-        "Aquele não tava rolando né? Trocamo!"
+        "Santiago Bernabéu? Não, aqui futsal!"
     ];
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
