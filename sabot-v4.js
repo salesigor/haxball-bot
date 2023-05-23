@@ -104,6 +104,8 @@ var point = [{ "x": 0, "y": 0 }, { "x": 0, "y": 0 }];
 var ballSpeed;
 var lastWinner = Team.SPECTATORS;
 var streak = 0;
+var goalsHome = [];
+var goalsGuest = [];
 
 /* AUXILIARY */
 
@@ -499,7 +501,7 @@ room.onPlayerChat = function (player, message) {
     var mensagem = message;
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("Comandos:"), null, white, "bold");
+        room.sendAnnouncement(centerText("Comandos:"), null, yellow, "bold");
         room.sendAnnouncement(centerText("!help, !regras, !discord, !verdade"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold");
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk"), null, yellow, "normal");
@@ -634,23 +636,22 @@ room.onGameStart = function (byPlayer) {
     Bposs = 0;
     lastPlayersTouched = [null, null];
     goldenGoal = false;
-    room.sendAnnouncement(centerText(emojiHome + nameHome + " vs " + nameGuest + emojiGuest), null, white, "bold");
-    var messages = [
-        "⚽ Bora pro jogo! ⚽",
-        "⚽ Que vença o menos horrível! kkkkk ⚽",
-        "⚽ Decisivo, quem perder sai! kkk vamo! ⚽"
-    ];
-    var randomIndex = Math.floor(Math.random() * messages.length);
-    var announcement = messages[randomIndex];
-    room.sendAnnouncement(centerText(announcement), null, white, "bold");
+    goalsHome = [];
+    goalsGuest = []; 
+    room.sendAnnouncement(centerText("🥅🥅 PARTIDA INICIANDO 🥅🥅"), null, yellow, "bold");
+	room.sendAnnouncement(centerText(emojiHome + nameHome + " vs " + nameGuest + emojiGuest), null, white, "bold");
+	if (streak !== 0) {
+		room.sendAnnouncement(centerText("         📢 " + nameHome + " está invicto 📢"), null, white, "bold");
+		room.sendAnnouncement(centerText("     📢 Sequência de " + streak + " jogo(s) 📢"), null, white, "bold");
+	}
     setTimeout(function () {
-    room.sendAnnouncement(centerText("Comandos:"), null, white, "bold");
+    room.sendAnnouncement(centerText("Comandos:"), null, yellow, "bold");
     room.sendAnnouncement(centerText("!help, !regras, !discord, !verdade"), null, yellow, "normal");
     room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold");
     room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk"), null, yellow, "normal");
     room.sendAnnouncement(centerText("Shoutout:"), null, yellow, "bold");
     room.sendAnnouncement(centerText("!malco, !soberbo, !messi, !noob, !pepe !me"), null, yellow, "normal");
-    }, 1500);
+    }, 3500);
 };
 
 room.onGameStop = function (byPlayer) {
