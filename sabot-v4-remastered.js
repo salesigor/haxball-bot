@@ -683,7 +683,7 @@ room.onGameStart = function (byPlayer) {
         room.sendAnnouncement(centerText("!help, !tag, !regras, !discord, !verdade"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold");
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), null, yellow, "normal");
-    }, 2000);
+    }, 6000);
 };
 
 room.onGameStop = function (byPlayer) {
