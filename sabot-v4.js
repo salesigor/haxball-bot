@@ -457,8 +457,12 @@ room.onPlayerJoin = function (player) {
     updateTeams();
     updateAdmins();
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
-    room.sendAnnouncement(centerText("Comandos: !help, !regras, !discord, !verdade"), player.id, yellow, "normal");
-    room.sendAnnouncement(centerText("Comemorações: !gol, !ain, !chupa, !soberbo"), player.id, yellow, "normal");
+    room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
+    room.sendAnnouncement(centerText("!help, !regras, !discord, !verdade"), player.id, yellow, "normal");
+    room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
+    room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk"), player.id, yellow, "normal");
+    room.sendAnnouncement(centerText("Shoutout:"), player.id, yellow, "bold");
+    room.sendAnnouncement(centerText("!soberbo, !messi, !noob, !pepe !me"), player.id, yellow, "normal");
 };
 
 room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
@@ -495,9 +499,12 @@ room.onPlayerChat = function (player, message) {
     var mensagem = message;
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("Comandos: !help, !regras, !discord, !verdade"), null, yellow, "normal");
-        room.sendAnnouncement(centerText("Comemorações: !gol, !ain, !chupa, !gk"), null, yellow, "normal");
-        room.sendAnnouncement(centerText("Shoutout: !soberbo, !messi, !me"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Comandos:"), null, white, "bold");
+        room.sendAnnouncement(centerText("!help, !regras, !discord, !verdade"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Shoutout:"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("!soberbo, !messi, !noob, !pepe !me"), null, yellow, "normal");
     }
     else if (["!regras"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("REGRAS DE JOGO"), null, white, "bold");
@@ -513,20 +520,46 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText(" https://discord.gg/HbQ5Mvad "), null, white, "bold");
         room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
     }
+    else if (["!lenda"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
+    }
+    else if (["!malco"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("❌❌❌"), null, white, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Vai, malco! 🎶"), null, white, "normal");
+        }, 200);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Vai, malco! 🎵"), null, white, "normal");
+        }, 200);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Vai, malco! 🎶"), null, white, "normal");
+        }, 200);
+        room.sendAnnouncement(centerText("❌❌❌"), null, white, "normal");
+    }
+    else if (["!smith"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("eu sou a LENDA! by "), null, yellow, "bold");
+        room.sendAnnouncement(centerText(player.id), null, white, "normal");
+    }
     else if (["!messi"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("Ancara, Messi!"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("Ancara, Messi!"), null, white, "bold");
+    }
+    else if (["!noob"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("NoooooooB MaaaaaSteeeeeR!"), null, white, "bold");
+    }
+    else if (["!pepe"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("PÊEEPÊ NELES!"), null, yelwhiteow, "bold");
     }
     else if (["!soberbo"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("🍫 SOBEEEERBOOOOOOO! 🍫"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("🍫 SOBEEEERBOOOOOOO! 🍫"), null, white, "bold");
     }
     else if (["!gk"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("GOLEIROOO!"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("GOLEIROOO!"), null, white, "bold");
     }
     else if (["!me"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText(player.ir + " é braboooo!"), null, yellow, "bold");
+        room.sendAnnouncement(centerText(player.id + " é braboooo!"), null, white, "bold");
     }
     else if (["!ain"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(player.name + ": AINN, PAI PARAAA!", null, yellow, "bold");
+        room.sendAnnouncement(player.name + ": AINN, PAI PARAAA!", null, white, "bold");
     }
     else if (["!gol"].includes(message[0].toLowerCase())) {
         var messages = [
@@ -540,7 +573,6 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["!chupa"].includes(message[0].toLowerCase())) {
         var messages = [
-            "Chupaaa!",
             "Chupaaa!",
             "Chupaaa!",
             "Chupaaa!",
@@ -611,6 +643,14 @@ room.onGameStart = function (byPlayer) {
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
+    setTimeout(function () {
+    room.sendAnnouncement(centerText("Comandos:"), null, white, "bold");
+    room.sendAnnouncement(centerText("!help, !regras, !discord, !verdade"), null, yellow, "normal");
+    room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold");
+    room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk"), null, yellow, "normal");
+    room.sendAnnouncement(centerText("Shoutout:"), null, yellow, "bold");
+    room.sendAnnouncement(centerText("!soberbo, !messi, !noob, !pepe !me"), null, yellow, "normal");
+    }, 1500);
 };
 
 room.onGameStop = function (byPlayer) {
