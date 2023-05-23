@@ -593,7 +593,7 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("GOLEIROOO!"), null, white, "bold");
     }
     else if (["!me"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText(player.id + " é braboooo!"), null, white, "bold");
+        room.sendAnnouncement(centerText(player.name + " é braboooo!"), null, white, "bold");
     }
     else if (["!ain"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(player.name + ": AINN, PAI PARAAA!", null, yellow, "bold");
@@ -741,10 +741,10 @@ room.onTeamGoal = function (team) {
 			room.sendAnnouncement(centerText("👟 Assistência: " + lastPlayersTouched[1].name + " 👟"), null, white, "bold");
 		}
 		if (team === 1) {
-			goalsHome.push(lastPlayersTouched[0].name + getTime(scores));
+			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
 		}
         else if (team === 2) {
-			goalsGuest.push(lastPlayersTouched[0].name + getTime(scores));
+			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
 		}
 	}
     else {
@@ -753,10 +753,10 @@ room.onTeamGoal = function (team) {
 		room.sendAnnouncement(centerText("🤡 Gol de " + lastPlayersTouched[0].name + " 🤡"), null, white, "bold");
 		room.sendAnnouncement(centerText("Velocidade do Chute: " + ballSpeed.toPrecision(4).toString() + " km/h"), null, white, "normal");
         if (team === 1) {
-			goalsHome.push(lastPlayersTouched[0].name + getTime(scores));
+			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
 		}
         else if (team === 2) {
-			goalsGuest.push(lastPlayersTouched[0].name + getTime(scores));
+			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
 		}
 	}
 	room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "normal");
