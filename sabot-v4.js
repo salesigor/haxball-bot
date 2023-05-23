@@ -462,7 +462,7 @@ room.onPlayerJoin = function (player) {
     room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
     room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk"), player.id, yellow, "normal");
     room.sendAnnouncement(centerText("Shoutout:"), player.id, yellow, "bold");
-    room.sendAnnouncement(centerText("!soberbo, !messi, !noob, !pepe !me"), player.id, yellow, "normal");
+    room.sendAnnouncement(centerText("!malco, !soberbo, !messi, !noob, !pepe !me"), player.id, yellow, "normal");
 };
 
 room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
@@ -504,7 +504,7 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold");
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Shoutout:"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("!soberbo, !messi, !noob, !pepe !me"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("!malco, !soberbo, !messi, !noob, !pepe !me"), null, yellow, "normal");
     }
     else if (["!regras"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("REGRAS DE JOGO"), null, white, "bold");
@@ -649,7 +649,7 @@ room.onGameStart = function (byPlayer) {
     room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold");
     room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk"), null, yellow, "normal");
     room.sendAnnouncement(centerText("Shoutout:"), null, yellow, "bold");
-    room.sendAnnouncement(centerText("!soberbo, !messi, !noob, !pepe !me"), null, yellow, "normal");
+    room.sendAnnouncement(centerText("!malco, !soberbo, !messi, !noob, !pepe !me"), null, yellow, "normal");
     }, 1500);
 };
 
