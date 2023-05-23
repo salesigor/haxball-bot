@@ -573,7 +573,7 @@ room.onPlayerChat = function (player, message) {
         }, 4000);
     }
     else if (["!pepe"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("PÊEEPÊ NELES!"), null, yelwhiteow, "bold");
+        room.sendAnnouncement(centerText("PÊEEPÊ NELES!"), null, white, "bold");
     }
     else if (["!soberbo"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
