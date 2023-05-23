@@ -27,6 +27,26 @@ const triggerDistance = playerRadius + ballRadius + 0.01;
 /* UNIFORMS */
 
 const Uniform = {};
+const rea = {
+    "name": 'Real Madrid',
+    "type": Uniform,
+    "emoji": '⚪🟡⚪',
+    "angle": 0,
+    "textcolor": 0xDAA520,
+    "color1": 0xFFFAFA,
+    "color2": 0xFFFAFA,
+    "color3": 0xFFFAFA
+}
+const bar = {
+    "name": 'Barcelona',
+    "type": Uniform,
+    "emoji": '🔵🔴🔵',
+    "angle": 360,
+    "textcolor": 0xFFD700,
+    "color1": 0x00008B,
+    "color2": 0x8B0000,
+    "color3": 0x00008B
+}
 const ale = {'name': 'Alemanha', "type": Uniform, "emoji": '⚫🔴🟡', "angle": 90, "textcolor": 0x000000, "color1": 0xFFFFFF, "color2": 0xFFFFFF, "color3": 0xFFFFFF,};
 const arg = {'name': 'Argentina', "type": Uniform, "emoji": '🔵⚪🔵', "angle": 90, "textcolor": 0x1F374B, "color1": 0x75AADB, "color2": 0xFFFFFF, "color3": 0x75AADB};
 const bra = {'name': 'Brasil', "type": Uniform, "emoji": '🟢🟡🔵', "angle": 360, "textcolor": 0x27965A, "color1": 0xDBB71B, "color2": 0xDBB71B, "color3": 0xDBB71B};
@@ -38,14 +58,14 @@ const fra = {'name': 'França', "type": Uniform, "emoji": '🔵⚪🔴', "angle"
 const ing = {'name': 'Inglaterra', "type": Uniform, "emoji": '⚪🔴⚪', "angle": 0, "textcolor": 0x0549A0, "color1": 0xDEDFE4, "color2": 0xDEDFE4, "color3": 0xDEDFE4};
 const bel = {'name': 'Bélgica', "type": Uniform, "emoji": '⚫🔴🟡', "angle": 0, "textcolor": 0xCA9144, "color1": 0xC4212A, "color2": 0xC4212A, "color3": 0xC4212A};
 const uniformIds = [ale, arg, bra, esp, por, ita, uru, fra, ing, bel];
-let homeUniformId = uniformIds[0];
-let guestUniformId = uniformIds[5];
-var nameHome = homeUniformId.name;
-var acronymHome = homeUniformId;
-var emojiHome = homeUniformId.emoji;
-var nameGuest = guestUniformId.name;
-var acronymGuest = guestUniformId;
-var emojiGuest = guestUniformId.emoji;
+var nameHome = 'Barcelona';
+var acronymHome = bar;
+var nameGuest = 'Real Madrird';
+var acronymGuest = rea;
+var emojiHome = '🔵🔴🟡';
+var emojiGuest = '⚪⚪⚪';
+var emojiHome = '🔵🔴🔵';
+var emojiGuest = '⚪🟡⚪';
 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
 
@@ -476,7 +496,8 @@ room.onPlayerChat = function (player, message) {
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Comandos: !help, !regras, !discord, !verdade"), null, yellow, "normal");
-        room.sendAnnouncement(centerText("Comemorações: !gol, !ain, !chupa, !soberbo"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Comemorações: !gol, !ain, !chupa, !gk"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Shoutout: !soberbo, !messi, !me"), null, yellow, "normal");
     }
     else if (["!regras"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("REGRAS DE JOGO"), null, white, "bold");
@@ -492,8 +513,17 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText(" https://discord.gg/HbQ5Mvad "), null, white, "bold");
         room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
     }
+    else if (["!messi"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("Ancara, Messi!"), null, yellow, "bold");
+    }
     else if (["!soberbo"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("🍫 SOBEEEERBOOOOOOO! 🍫"), null, yellow, "bold");
+    }
+    else if (["!gk"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("GOLEIROOO!"), null, yellow, "bold");
+    }
+    else if (["!me"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText(player.ir + " é braboooo!"), null, yellow, "bold");
     }
     else if (["!ain"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(player.name + ": AINN, PAI PARAAA!", null, yellow, "bold");
