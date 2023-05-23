@@ -592,12 +592,12 @@ room.onGameUnpause = function (byPlayer) {
 room.onTeamGoal = function (team) {
     activePlay = false;
     if (lastPlayersTouched[0].team === team) {
-		room.sendAnnouncement(``, null, white, "bold", Notification.CHAT);
-		room.sendAnnouncement(centerText(`TOCA A MÚÚSICAAA, É GOOOOOL!!!`), null, green, "bold", 0);
-		room.sendAnnouncement(centerText(`         ⚽ Gol de ${lastPlayersTouched[0].name} ⚽`), null, white, "bold", 0);
-		room.sendAnnouncement(centerText(`Velocidade do Chute: ${ballSpeed.toFixed()}km/h`), null, white, "bold", 0);
+		room.sendAnnouncement("", null, white, "bold");
+		room.sendAnnouncement(centerText("TOCA A MÚÚSICAAA, É GOOOOOL!!!"), null, green, "bold");
+		room.sendAnnouncement(centerText("         ⚽ Gol de " + lastPlayersTouched[0].name + " ⚽"), null, white, "bold");
+		room.sendAnnouncement(centerText("Velocidade do Chute: " + ballSpeed.toPrecision(4).toString() + " km/h"), null, white, "bold");
 		if (lastPlayersTouched[1] != null && lastPlayersTouched[1].team == team) {
-			room.sendAnnouncement(centerText(`👟 Assistência: ${lastPlayersTouched[1].name}👟`), null, white, "bold", 0);
+			room.sendAnnouncement(centerText("👟 Assistência: " + lastPlayersTouched[1].name + " 👟"), null, white, "bold");
 		}
 		if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + getTime(scores));
@@ -607,10 +607,10 @@ room.onTeamGoal = function (team) {
 		}
 	}
     else {
-		room.sendAnnouncement(``, null, white, "bold", Notification.CHAT);
-		room.sendAnnouncement(centerText(`🤦‍♂️ É GOOOOOL CONTRA!! 🤦‍♂️`), null, yellow, "bold", 0);
-		room.sendAnnouncement(centerText(`🤡 Gol de ${lastPlayersTouched[0].name} 🤡`), null, white, "bold", 0);
-		room.sendAnnouncement(centerText(`Velocidade do Chute: ${ballSpeed.toFixed()}km/h`), null, white, "bold", 0);
+		room.sendAnnouncement("", null, white, "bold");
+		room.sendAnnouncement(centerText("🤦‍♂️ É GOOOOOL CONTRA!! 🤦‍♂️"), null, yellow, "bold");
+		room.sendAnnouncement(centerText("🤡 Gol de " + lastPlayersTouched[0].name + " 🤡"), null, white, "bold");
+		room.sendAnnouncement(centerText("Velocidade do Chute: " + ballSpeed.toPrecision(4).toString() + " km/h"), null, white, "bold");
         if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + getTime(scores));
 		}
@@ -618,7 +618,7 @@ room.onTeamGoal = function (team) {
 			goalsGuest.push(lastPlayersTouched[0].name + getTime(scores));
 		}
 	}
-	room.sendAnnouncement(centerText(`${emojiHome} ${nameHome} ${scores.red} - ${scores.blue} ${nameGuest} ${emojiGuest}`), null, white, "bold", 0);
+	room.sendAnnouncement(centerText(emojiHome + nameHome + scores.red + " - " + scores.blue + nameGuest + emojiGuest), null, white, "bold");
 };
 
 room.onPositionsReset = function () {
