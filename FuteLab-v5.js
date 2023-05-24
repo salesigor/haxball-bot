@@ -795,7 +795,7 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
     var messages = [
         "Esse é o estádio que vai dar jogo.",
         "Mapa mudou, agora da jogão!",
-        "Santiago Bernabéu? Não, aqui futsal!"
+        "Santiago Bernabéu? Não, aqui é futsal!"
     ];
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
