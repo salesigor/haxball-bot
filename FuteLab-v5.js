@@ -1,8 +1,16 @@
-/* VARIABLES */
-
 /* ROOM */
 
-const roomName = "🏆 3x3 Futsal ⚽ | Cola na humildade"; // nome sugerido: 🏆 3x3 Futsal ⚽ | Cola na humildade
+const roomName = "🎯 Cola na humildade | ⚽ Futsal 3x3 🏆";
+/* NOMES SUGERIDOS:
+1: 🏆 3x3 Futsal ⚽ | Cola na humildade
+2: 🏆 SABOT | ⚽ 3x3 Futsal ⚽ | Cola na humildade
+3: 🏆 FuteLab | ⚽ Futsal ⚽ | Cola na humildade
+4: 🎯 SABOT | ⚽ Futsal ⚽ | Cola na humildade
+5: 🎯 saBOT | ⚽ Futsal ⚽ | 3x3 | Cola na humildade
+6: 🎯 FuteLab | ⚽ Futsal ⚽ | 3x3 | Cola na humildade
+7: 🎯 Futsal ⚽ 3x3 🏆 | Cola na humildade
+8: 🎯 Cola na humildade | ⚽ Futsal 3x3 🏆
+*/
 const botName = "🤖";
 const maxPlayers = 15;
 const roomPublic = true;
