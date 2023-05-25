@@ -515,7 +515,7 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["!tag"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Player Tags:"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("!malco, !soberbo, !messi, !noob, !pepe"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("!malco, !soberbo, !messi, !noob, !pepe, !abob"), null, yellow, "normal");
     }
     else if (["!regras"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("REGRAS DE JOGO"), null, white, "bold");
@@ -527,6 +527,7 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("AFK vai pro final da fila e pausamos pro cap escolher outro"), null, yellow, "normal");
     }
     else if (["!discord"].includes(message[0].toLowerCase())) {
+        
         room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
         room.sendAnnouncement(centerText(" https://discord.gg/HbQ5Mvad "), null, white, "bold");
         room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
