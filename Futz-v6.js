@@ -1216,7 +1216,7 @@ room.onGameStop = function (byPlayer) {
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             setTimeout(function () {
                 room.sendAnnouncement(centerText("Uniforme do time BLUE foi atualizado."), null, yellow, "bold");
-                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, yellow, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
             }, 500);
         }
         else if (lastWinner == Team.BLUE) {
@@ -1230,7 +1230,7 @@ room.onGameStop = function (byPlayer) {
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             setTimeout(function () {
                 room.sendAnnouncement(centerText("Uniformes atualizados."), null, yellow, "bold");
-                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, yellow, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
             }, 500);
         }
         else {
@@ -1243,7 +1243,7 @@ room.onGameStop = function (byPlayer) {
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             setTimeout(function () {
                 room.sendAnnouncement(centerText("Uniformes atualizados."), null, yellow, "bold");
-                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, yellow, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
             }, 500);
         }
         setTimeout(() => { topBtn(); }, 100);
