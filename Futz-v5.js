@@ -569,6 +569,20 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("Gol, gol, gol!!!"), null, white, "bold");
         }, 2200);
     }
+    else if (["!abob"].includes(message[0].toLowerCase())) {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Abobrinha, que nunca falha..."), null, white, "bold");
+        }, 10);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Abobrinha, atacante de raça..."), null, white, "bold");
+        }, 800);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Abobrinha que canta e vibraaaaa!"), null, white, "bold");
+        }, 1500);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("ABOBRINHA, THE GOAT"), null, yellow, "bold");
+        }, 2200);
+    }
     else if (["!noob"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("🎶 Olê, olê, olê, olê! 🎶" ), null, white, "normal");
