@@ -70,8 +70,6 @@ var nameHome = 'Barcelona';
 var acronymHome = bar;
 var nameGuest = 'Real Madrid';
 var acronymGuest = rea;
-var emojiHome = '🔵🔴🟡';
-var emojiGuest = '⚪⚪⚪';
 var emojiHome = '🔵🔴🔵';
 var emojiGuest = '⚪🟡⚪';
 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
@@ -516,6 +514,8 @@ room.onPlayerChat = function (player, message) {
     else if (["!tag"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Player Tags:"), null, yellow, "bold");
         room.sendAnnouncement(centerText("!malco, !soberbo, !messi, !noob, !pepe, !abob"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Team Tags:"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("!bar, !rea"), null, yellow, "normal");
     }
     else if (["!regras"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("REGRAS DE JOGO"), null, white, "bold");
@@ -535,22 +535,56 @@ room.onPlayerChat = function (player, message) {
     else if (["!lenda"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
     }
+    else if (["!bar"].includes(message[0].toLowerCase())) {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🎶 Todo o estádio, é um só clamor 🎵"), null, white, "normal");
+        }, 10);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🎵 Azul-grená ao vento, um grito valente 🎶"), null, white, "normal");
+        }, 1250);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🎶 Temos um nome, que todos conhecem 🎵"), null, white, "normal");
+        }, 2500);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🎵 Barça, Barça, Barça! 🎶"), null, white, "normal");
+        }, 3750);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🔵🔴🔵...🔵🔴🔵...🔵🔴🔵"), null, white, "normal");
+        }, 5000);
+    }
+    else if (["!rea"].includes(message[0].toLowerCase())) {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🎶 Já corre a flecha 🎵"), null, white, "normal");
+        }, 10);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🎵 Já ataca o meu Madrid 🎶"), null, white, "normal");
+        }, 1250);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🎶 O grito que aprendi 🎵"), null, white, "normal");
+        }, 2500);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🎵 Madrid, Madrid, Madrid 🎶"), null, white, "normal");
+        }, 3750);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("⚪🟡⚪...⚪🟡⚪...⚪🟡⚪"), null, white, "normal");
+        }, 5000);
+    }
     else if (["!malco"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("❌"), null, white, "normal");
         }, 10);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🎵 Vai, malco! 🎶"), null, white, "normal");
-        }, 800);
+        }, 1250);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🎶 Vai, malco! 🎵"), null, white, "normal");
-        }, 1600);
+        }, 2500);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🎵 Vai, malco! 🎶"), null, white, "normal");
-        }, 2400);
+        }, 3750);
         setTimeout(function () {
             room.sendAnnouncement(centerText("❌"), null, white, "normal");
-        }, 3200);
+        }, 5000);
     }
     else if (["!smith"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("eu sou a LENDA!"), null, yellow, "bold");
@@ -562,13 +596,13 @@ room.onPlayerChat = function (player, message) {
         }, 10);
         setTimeout(function () {
             room.sendAnnouncement(centerText("Ankara, Messi"), null, white, "bold");
-        }, 800);
+        }, 1500);
         setTimeout(function () {
             room.sendAnnouncement(centerText("Ankara, Messi"), null, white, "bold");
-        }, 1400);
+        }, 3500);
         setTimeout(function () {
             room.sendAnnouncement(centerText("Gol, gol, gol!!!"), null, white, "bold");
-        }, 2200);
+        }, 6000);
     }
     else if (["!abob"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
@@ -576,13 +610,13 @@ room.onPlayerChat = function (player, message) {
         }, 10);
         setTimeout(function () {
             room.sendAnnouncement(centerText("Abobrinha, atacante de raça..."), null, white, "bold");
-        }, 800);
+        }, 2000);
         setTimeout(function () {
             room.sendAnnouncement(centerText("Abobrinha que canta e vibraaaaa!"), null, white, "bold");
-        }, 1500);
+        }, 4000);
         setTimeout(function () {
             room.sendAnnouncement(centerText("ABOBRINHA, THE GOAT"), null, yellow, "bold");
-        }, 2200);
+        }, 6000);
     }
     else if (["!noob"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
@@ -607,7 +641,7 @@ room.onPlayerChat = function (player, message) {
         }, 1000);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🍫...🍫...🍫"), null, white, "normal");
-        }, 2200);
+        }, 2250);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🍫... SOBEEEERBOOOOOOO! ...🍫"), null, white, "normal");
         }, 3500);
