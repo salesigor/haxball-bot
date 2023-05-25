@@ -32,46 +32,41 @@ const playerRadius = 15;
 var ballRadius = 10;
 const triggerDistance = playerRadius + ballRadius + 0.01;
 
-/* UNIFORMS */
+/* UNIFORMS */ 
 
 const Uniform = {};
-const rea = {
-    "name": 'Real Madrid',
-    "type": Uniform,
-    "emoji": '⚪🟡⚪',
-    "angle": 0,
-    "textcolor": 0xDAA520,
-    "color1": 0xFFFAFA,
-    "color2": 0xFFFAFA,
-    "color3": 0xFFFAFA
-}
-const bar = {
-    "name": 'Barcelona',
-    "type": Uniform,
-    "emoji": '🔵🔴🔵',
-    "angle": 360,
-    "textcolor": 0xFFD700,
-    "color1": 0x00008B,
-    "color2": 0x8B0000,
-    "color3": 0x00008B
-}
-const ale = {'name': 'Alemanha', "type": Uniform, "emoji": '⚫🔴🟡', "angle": 90, "textcolor": 0x000000, "color1": 0xFFFFFF, "color2": 0xFFFFFF, "color3": 0xFFFFFF,};
+// Times Europeus
+const rea = { "name": 'Real Madrid', "type": Uniform, "emoji": '⚪🟡⚪', "angle": 0, "textcolor": 0xDAA520, "color1": 0xFFFAFA, "color2": 0xFFFAFA, "color3": 0xFFFAFA};
+const bar = {"name": 'Barcelona', "type": Uniform, "emoji": '🔵🔴🔵', "angle": 360, "textcolor": 0xFFD700, "color1": 0x00008B, "color2": 0x8B0000, "color3": 0x00008B};
+const che = {"name": 'Chelsea', "type": Uniform, "emoji": '🔵⚪🔵', "angle": 90, "textcolor": 0xFFFFFF, "color1": 0x0000CD, "color2": 0x0000CD, "color3": 0x0000CD};
+const juv = {"name": 'Juventus', "type": Uniform, "emoji": '⚫⚪⚫', "angle": 180, "textcolor": 0x000000, "color1": 0x5E5E5E, "color2": 0xD9D9D9, "color3": 0x5E5E5E};
+const bay = {"name": 'Bayern de Munique', "type": Uniform, "emoji": '🔴🔵🔴', "angle": 30, "textcolor": 0xFFFFFF, "color1": 0xFF0000, "color2": 0xF20000, "color3": 0xFF0000};
+const psg = {"name": 'Paris Saint-Germain', "type": Uniform, "emoji": '🔵🔴🔵', "angle": 180, "textcolor": 0xFFFFFF, "color1": 0x000080, "color2": 0xB22222, "color3": 0x000080};
+const liv = {"name": 'Liverpool', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0xFFFFFF, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
+const manC = {"name": 'Manchester City', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0xFFFFFF, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
+const manU = {"name": 'Manchester United', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0xFFFFFF, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
+const ars = {"name": 'Arsenal', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0xFFFFFF, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
+// Seleções
+const ale = {'name': 'Alemanha', "type": Uniform, "emoji": '⚫🔴🟡', "angle": 90, "textcolor": 0x000000, "color1": 0xFFFFFF, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
 const arg = {'name': 'Argentina', "type": Uniform, "emoji": '🔵⚪🔵', "angle": 90, "textcolor": 0x1F374B, "color1": 0x75AADB, "color2": 0xFFFFFF, "color3": 0x75AADB};
 const bra = {'name': 'Brasil', "type": Uniform, "emoji": '🟢🟡🔵', "angle": 360, "textcolor": 0x27965A, "color1": 0xDBB71B, "color2": 0xDBB71B, "color3": 0xDBB71B};
 const esp = {'name': 'Espanha', "type": Uniform, "emoji": '🔴🟡🔴', "angle": 90, "textcolor": 0xFFFF00, "color1": 0xFF0000, "color2": 0xFF0000, "color3": 0xFF0000};
 const por = {'name': 'Portugal', "type": Uniform, "emoji": '🟢🔴🔴', "angle": 0, "textcolor": 0x289E1F, "color1": 0xFF0000, "color2": 0xFF0000, "color3": 0xFF0000};
-const ita = {'name': 'Italia', "type": Uniform, "emoji": '🟢⚪🔴', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0x3646A9, "color2": 0x3646A9, "color3": 0x3646A9};
+const ita = {'name': 'Itália', "type": Uniform, "emoji": '🟢⚪🔴', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0x3646A9, "color2": 0x3646A9, "color3": 0x3646A9};
 const uru = {'name': 'Uruguai', "type": Uniform, "emoji": '⚪🔵⚪', "angle": 0, "textcolor": 0x212124, "color1": 0x66A5D4, "color2": 0x66A5D4, "color3": 0x66A5D4};
 const fra = {'name': 'França', "type": Uniform, "emoji": '🔵⚪🔴', "angle": 90, "textcolor": 0xF5F9F6, "color1": 0x265ECF, "color2": 0x384355, "color3": 0x384355};
 const ing = {'name': 'Inglaterra', "type": Uniform, "emoji": '⚪🔴⚪', "angle": 0, "textcolor": 0x0549A0, "color1": 0xDEDFE4, "color2": 0xDEDFE4, "color3": 0xDEDFE4};
 const bel = {'name': 'Bélgica', "type": Uniform, "emoji": '⚫🔴🟡', "angle": 0, "textcolor": 0xCA9144, "color1": 0xC4212A, "color2": 0xC4212A, "color3": 0xC4212A};
-const uniformIds = [ale, arg, bra, esp, por, ita, uru, fra, ing, bel];
-var nameHome = 'Barcelona';
+const seleçoes = [ale, arg, bra, esp, por, ita, uru, fra, ing, bel];
+const euro = [rea, bar, che, juv, bay, psg, liv, manC, manU, ars];
+var defaultHome = bar
+var defaultGuest = rea
+var nameHome = defaultHome.name;
 var acronymHome = bar;
-var nameGuest = 'Real Madrid';
+var nameGuest = defaultGuest.name;
 var acronymGuest = rea;
-var emojiHome = '🔵🔴🔵';
-var emojiGuest = '⚪🟡⚪';
+var emojiHome = defaultHome.emoji;
+var emojiGuest = defaultGuest.emoji;
 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
 
@@ -466,7 +461,7 @@ room.onPlayerJoin = function (player) {
     updateAdmins();
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
     room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
-    room.sendAnnouncement(centerText("!help, !tag, !regras, !discord, !verdade"), player.id, yellow, "normal");
+    room.sendAnnouncement(centerText("!help, !tag, !uniforme, !regras, !vs, !discord, !verdade"), player.id, yellow, "normal");
     room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
     room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), player.id, yellow, "normal");
 };
@@ -506,16 +501,403 @@ room.onPlayerChat = function (player, message) {
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Comandos:"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("!help, !tag, !regras, !discord, !verdade"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("!help, !tag, !uniforme, !regras, !discord, !vs, !verdade"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold");
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), null, yellow, "normal");
-        
+        if (player.admin) {
+            room.sendAnnouncement(centerText("Admin Commands:"), player.id, yellow, "bold");
+            room.sendAnnouncement(centerText("!comofaz, !uni (mesmo que !uniforme)"), player.id, yellow, "normal");
+        }
+    }
+    else if (["!comofaz"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("Trocar Uniforme:"), player.id, yellow, "bold");
+        room.sendAnnouncement(centerText("Com !uniforme escolha qual uniforme deseja."), player.id, white, "normal");
+        room.sendAnnouncement(centerText("Decore o acronimo dele que estará entre <>. Exemplo Barcelona <bar>"), player.id, white, "normal");
+        room.sendAnnouncement(centerText("Veja qual time deseja atribuir o uniforme. RED ou BLUE"), player.id, white, "normal");
+        room.sendAnnouncement(centerText("sendo assim, o comando será:"), player.id, white, "normal");
+        room.sendAnnouncement(centerText("!uni red bar"), player.id, white, "bold");
     }
     else if (["!tag"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Player Tags:"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("!malco, !soberbo, !messi, !noob, !pepe, !abob"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("!malco, !soberbo, !messi, !noob, !pepe, !abob, !onlyway"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Team Tags:"), null, yellow, "bold");
         room.sendAnnouncement(centerText("!bar, !rea"), null, yellow, "normal");
+    }
+    else if (["!uniforme"].includes(message[0].toLowerCase())) {
+        if (message[1] == null) {
+            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+            room.sendAnnouncement("Times Europeus:", null, yellow, "bold");
+            room.sendAnnouncement("Manchester City <manC>, Manchester United <manU>, Paris Saint-Germain <psg>, Real Madrid <rea>", null, white, "normal");
+            room.sendAnnouncement("Barcelona <bar>, Arsenal <ars>, Liverpool <liv>, Chelsea <che>, Juventus <juv>, Bayern de Munique <bay>", null, white, "normal");
+            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+            room.sendAnnouncement("Seleções:", null, yellow, "bold");
+            room.sendAnnouncement("Brasil <bra> Alemanha <ale> Argentina <arg> Espanha <esp> Portugal <por>", null, white, "normal");
+            room.sendAnnouncement("Itália <ita> Uruguai <uru> França <fra> Inglaterra <ing> Bélgica <bel>", null, white, "normal");
+            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+        }
+        else if (message[1] == "red") {
+            if (message[2] == "bar") {
+                nameHome = bar.name;
+                acronymHome = bar;
+            }
+            else if (message[2] == "rea") {
+                nameHome = rea.name;
+                acronymHome = rea;
+            }
+            else if (message[2] == "manC") {
+                nameHome = manC.name;
+                acronymHome = manC;
+            }
+            else if (message[2] == "manU") {
+                nameHome = manU.name;
+                acronymHome = manU;
+            }
+            else if (message[2] == "ars") {
+                nameHome = ars.name;
+                acronymHome = ars;
+            }
+            else if (message[2] == "psg") {
+                nameHome = psg.name;
+                acronymHome = psg;
+            }
+            else if (message[2] == "liv") {
+                nameHome = liv.name;
+                acronymHome = liv;
+            }
+            else if (message[2] == "che") {
+                nameHome = che.name;
+                acronymHome = che;
+            }
+            else if (message[2] == "juv") {
+                nameHome = juv.name;
+                acronymHome = juv;
+            }
+            else if (message[2] == "bay") {
+                nameHome = bay.name;
+                acronymHome = bay;
+            }
+            else if (message[2] == "bra") {
+                nameHome = bra.name;
+                acronymHome = bra;
+            }
+            else if (message[2] == "ale") {
+                nameHome = ale.name;
+                acronymHome = ale;
+            }
+            else if (message[2] == "arg") {
+                nameHome = arg.name;
+                acronymHome = arg;
+            }
+            else if (message[2] == "esp") {
+                nameHome = esp.name;
+                acronymHome = esp;
+            }
+            else if (message[2] == "por") {
+                nameHome = por.name;
+                acronymHome = por;
+            }
+            else if (message[2] == "ita") {
+                nameHome = ita.name;
+                acronymHome = ita;
+            }
+            else if (message[2] == "uru") {
+                nameHome = uru.name;
+                acronymHome = uru;
+            }
+            else if (message[2] == "fra") {
+                nameHome = fra.name;
+                acronymHome = fra;
+            }
+            else if (message[2] == "ing") {
+                nameHome = ing.name;
+                acronymHome = ing;
+            }
+            else if (message[2] == "bel") {
+                nameHome = bel.name;
+                acronymHome = bel;
+            }
+            room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("Uniforme do time RED foi atualizado. Agora é " + nameHome), null, yellow, "bold");
+            }, 500);
+        }
+        else if (message[1] == "blue") {
+            if (message[2] == "bar") {
+                nameGuest = bar.name;
+                acronymGuest = bar;
+            }
+            else if (message[2] == "rea") {
+                nameGuest = rea.name;
+                acronymGuest = rea;
+            }
+            else if (message[2] == "manC") {
+                nameGuest = manC.name;
+                acronymGuest = manC;
+            }
+            else if (message[2] == "manU") {
+                nameGuest = manU.name;
+                acronymGuest = manU;
+            }
+            else if (message[2] == "ars") {
+                nameGuest = ars.name;
+                acronymGuest = ars;
+            }
+            else if (message[2] == "psg") {
+                nameGuest = psg.name;
+                acronymGuest = psg;
+            }
+            else if (message[2] == "liv") {
+                nameGuest = liv.name;
+                acronymGuest = liv;
+            }
+            else if (message[2] == "che") {
+                nameGuest = che.name;
+                acronymGuest = che;
+            }
+            else if (message[2] == "juv") {
+                nameGuest = juv.name;
+                acronymGuest = juv;
+            }
+            else if (message[2] == "bay") {
+                nameGuest = bay.name;
+                acronymGuest = bay;
+            }
+            else if (message[2] == "bra") {
+                nameGuest = bra.name;
+                acronymGuest = bra;
+            }
+            else if (message[2] == "ale") {
+                nameGuest = ale.name;
+                acronymGuest = ale;
+            }
+            else if (message[2] == "arg") {
+                nameGuest = arg.name;
+                acronymGuest = arg;
+            }
+            else if (message[2] == "esp") {
+                nameGuest = esp.name;
+                acronymGuest = esp;
+            }
+            else if (message[2] == "por") {
+                nameGuest = por.name;
+                acronymGuest = por;
+            }
+            else if (message[2] == "ita") {
+                nameGuest = ita.name;
+                acronymGuest = ita;
+            }
+            else if (message[2] == "uru") {
+                nameGuest = uru.name;
+                acronymGuest = uru;
+            }
+            else if (message[2] == "fra") {
+                nameGuest = fra.name;
+                acronymGuest = fra;
+            }
+            else if (message[2] == "ing") {
+                nameGuest = ing.name;
+                acronymGuest = ing;
+            }
+            else if (message[2] == "bel") {
+                nameGuest = bel.name;
+                acronymGuest = bel;
+            }
+            room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("Uniforme do time BLUE foi atualizado. Agora é " + nameGuest), null, yellow, "bold");
+            }, 500);
+        }
+    }
+    else if (["!uni"].includes(message[0].toLowerCase())) {
+        if (message[1] == "red") {
+            if (message[2] == "bar") {
+                nameHome = bar.name;
+                acronymHome = bar;
+            }
+            else if (message[2] == "rea") {
+                nameHome = rea.name;
+                acronymHome = rea;
+            }
+            else if (message[2] == "manC") {
+                nameHome = manC.name;
+                acronymHome = manC;
+            }
+            else if (message[2] == "manU") {
+                nameHome = manU.name;
+                acronymHome = manU;
+            }
+            else if (message[2] == "ars") {
+                nameHome = ars.name;
+                acronymHome = ars;
+            }
+            else if (message[2] == "psg") {
+                nameHome = psg.name;
+                acronymHome = psg;
+            }
+            else if (message[2] == "liv") {
+                nameHome = liv.name;
+                acronymHome = liv;
+            }
+            else if (message[2] == "che") {
+                nameHome = che.name;
+                acronymHome = che;
+            }
+            else if (message[2] == "juv") {
+                nameHome = juv.name;
+                acronymHome = juv;
+            }
+            else if (message[2] == "bay") {
+                nameHome = bay.name;
+                acronymHome = bay;
+            }
+            else if (message[2] == "bra") {
+                nameHome = bra.name;
+                acronymHome = bra;
+            }
+            else if (message[2] == "ale") {
+                nameHome = ale.name;
+                acronymHome = ale;
+            }
+            else if (message[2] == "arg") {
+                nameHome = arg.name;
+                acronymHome = arg;
+            }
+            else if (message[2] == "esp") {
+                nameHome = esp.name;
+                acronymHome = esp;
+            }
+            else if (message[2] == "por") {
+                nameHome = por.name;
+                acronymHome = por;
+            }
+            else if (message[2] == "ita") {
+                nameHome = ita.name;
+                acronymHome = ita;
+            }
+            else if (message[2] == "uru") {
+                nameHome = uru.name;
+                acronymHome = uru;
+            }
+            else if (message[2] == "fra") {
+                nameHome = fra.name;
+                acronymHome = fra;
+            }
+            else if (message[2] == "ing") {
+                nameHome = ing.name;
+                acronymHome = ing;
+            }
+            else if (message[2] == "bel") {
+                nameHome = bel.name;
+                acronymHome = bel;
+            }
+            room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("Uniforme do time RED foi atualizado. Agora é " + nameHome), null, yellow, "bold");
+            }, 500);
+        }
+        else if (message[1] == "blue") {
+            if (message[2] == "bar") {
+                nameGuest = bar.name;
+                acronymGuest = bar;
+            }
+            else if (message[2] == "rea") {
+                nameGuest = rea.name;
+                acronymGuest = rea;
+            }
+            else if (message[2] == "manC") {
+                nameGuest = manC.name;
+                acronymGuest = manC;
+            }
+            else if (message[2] == "manU") {
+                nameGuest = manU.name;
+                acronymGuest = manU;
+            }
+            else if (message[2] == "ars") {
+                nameGuest = ars.name;
+                acronymGuest = ars;
+            }
+            else if (message[2] == "psg") {
+                nameGuest = psg.name;
+                acronymGuest = psg;
+            }
+            else if (message[2] == "liv") {
+                nameGuest = liv.name;
+                acronymGuest = liv;
+            }
+            else if (message[2] == "che") {
+                nameGuest = che.name;
+                acronymGuest = che;
+            }
+            else if (message[2] == "juv") {
+                nameGuest = juv.name;
+                acronymGuest = juv;
+            }
+            else if (message[2] == "bay") {
+                nameGuest = bay.name;
+                acronymGuest = bay;
+            }
+            else if (message[2] == "bra") {
+                nameGuest = bra.name;
+                acronymGuest = bra;
+            }
+            else if (message[2] == "ale") {
+                nameGuest = ale.name;
+                acronymGuest = ale;
+            }
+            else if (message[2] == "arg") {
+                nameGuest = arg.name;
+                acronymGuest = arg;
+            }
+            else if (message[2] == "esp") {
+                nameGuest = esp.name;
+                acronymGuest = esp;
+            }
+            else if (message[2] == "por") {
+                nameGuest = por.name;
+                acronymGuest = por;
+            }
+            else if (message[2] == "ita") {
+                nameGuest = ita.name;
+                acronymGuest = ita;
+            }
+            else if (message[2] == "uru") {
+                nameGuest = uru.name;
+                acronymGuest = uru;
+            }
+            else if (message[2] == "fra") {
+                nameGuest = fra.name;
+                acronymGuest = fra;
+            }
+            else if (message[2] == "ing") {
+                nameGuest = ing.name;
+                acronymGuest = ing;
+            }
+            else if (message[2] == "bel") {
+                nameGuest = bel.name;
+                acronymGuest = bel;
+            }
+            room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("Uniforme do time BLUE foi atualizado. Agora é " + nameGuest), null, yellow, "bold");
+            }, 500);
+        }
+    }
+    else if (["!vs"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+    }
+    else if (["!seleçoes"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("_______________________________________"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("Seleções:"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("Brasil <bra>, Alemanha <ale>, Argentina <arg>, Espanha <esp>, Portugal <por>"), null, white, "normal");
+        room.sendAnnouncement(centerText("Itália <ita>, Uruguai <uru>, França <fra>, Inglaterra <ing>, Bélgica <bel>"), null, white, "normal");
+        room.sendAnnouncement(centerText("_______________________________________"), null, yellow, "bold");
+    }
+    else if (["!euro"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("_______________________________________"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("Times Europeus:"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("Barcelona <bar>, Real Madrid <rea>, Manchester City <manC>, Manchester United <manU>, Arsenal <ars>"), null, white, "normal");
+        room.sendAnnouncement(centerText("Paris Saint-Germain <psg>, Liverpool <liv>, Chelsea <che>, Juventus <juv>, Bayern de Munique <bay>"), null, white, "normal");
+        room.sendAnnouncement(centerText("_______________________________________"), null, yellow, "bold");
     }
     else if (["!regras"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("REGRAS DE JOGO"), null, white, "bold");
@@ -584,6 +966,26 @@ room.onPlayerChat = function (player, message) {
         }, 3750);
         setTimeout(function () {
             room.sendAnnouncement(centerText("❌"), null, white, "normal");
+        }, 5000);
+    }
+    else if (["!onlyway"].includes(message[0].toLowerCase())) {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("ONLY FANS?"), null, yellow, "bold");
+        }, 10);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Não..."), null, yellow, "bold");
+        }, 1250);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("THE..."), null, yellow, "bold");
+        }, 2500);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("...ONLY..."), null, yellow, "bold");
+        }, 3750);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("...WAY!"), null, yellow, "bold");
+        }, 5000);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("THEONLYWAY"), null, white, "bold");
         }, 5000);
     }
     else if (["!smith"].includes(message[0].toLowerCase())) {
@@ -742,7 +1144,7 @@ room.onGameStart = function (byPlayer) {
 	}
     setTimeout(function () {
         room.sendAnnouncement(centerText("Comandos:"), null, yellow, "bold", 0);
-        room.sendAnnouncement(centerText("!help, !tag, !regras, !discord, !verdade"), null, yellow, "normal", 0);
+        room.sendAnnouncement(centerText("!help, !tag, !uniforme, !regras, !vs, !discord, !verdade"), null, yellow, "normal", 0);
         room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold", 0);
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), null, yellow, "normal", 0);
     }, 6000);
