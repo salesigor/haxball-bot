@@ -939,19 +939,19 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
     }
     else if (["!seleçoes"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("_______________________________________"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("Seleções:"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("Brasil <bra>, Alemanha <ale>, Argentina <arg>, Espanha <esp>, Portugal <por>"), null, white, "normal");
-        room.sendAnnouncement(centerText("Itália <ita>, Uruguai <uru>, França <fra>, Inglaterra <ing>, Bélgica <bel>"), null, white, "normal");
-        room.sendAnnouncement(centerText("_______________________________________"), null, yellow, "bold");
-    }
-    else if (["!euro"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("_______________________________________"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("Times Europeus:"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("Barcelona <bar>, Real Madrid <rea>, Manchester City <manC>, Manchester United <manU>, Arsenal <ars>"), null, white, "normal");
-        room.sendAnnouncement(centerText("Paris Saint-Germain <psg>, Liverpool <liv>, Chelsea <che>, Juventus <juv>, Bayern de Munique <bay>"), null, white, "normal");
-        room.sendAnnouncement(centerText("_______________________________________"), null, yellow, "bold");
-    }
+        room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+        room.sendAnnouncement("Seleções:", null, yellow, "bold");
+        room.sendAnnouncement("Brasil <bra> Alemanha <ale> Argentina <arg> Espanha <esp> Portugal <por>", null, white, "normal");
+        room.sendAnnouncement("Itália <ita> Uruguai <uru> França <fra> Inglaterra <ing> Bélgica <bel>", null, white, "normal");
+        room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+}
+else if (["!euro"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+        room.sendAnnouncement("Times Europeus:", null, yellow, "bold");
+        room.sendAnnouncement("Manchester City <manC>, Manchester United <manU>, Paris Saint-Germain <psg>, Real Madrid <rea>", null, white, "normal");
+        room.sendAnnouncement("Barcelona <bar>, Arsenal <ars>, Liverpool <liv>, Chelsea <che>, Juventus <juv>, Bayern de Munique <bay>", null, white, "normal");
+        room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+}
     else if (["!regras"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("REGRAS DE JOGO"), null, white, "bold");
         room.sendAnnouncement(centerText("3x3 por 3minutos + 1minuto de prorrogação"), null, yellow, "normal");
