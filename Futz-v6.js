@@ -1381,18 +1381,18 @@ room.onPlayerChat = function (player, message) {
         }
     }
     else if (["!2x"].includes(message[0].toLowerCase())) {
-        if (player.admin) {
-            room.setCustomStadium(smallStadium);
+        if (message[1] == null) {
+        room.setCustomStadium(smallStadium);
         }
     }
     else if (["!3x"].includes(message[0].toLowerCase())) {
-        if (player.admin) {
-            room.setCustomStadium(mediumStadium);
+        if (message[1] == null) {
+        room.setCustomStadium(mediumStadium);
         }
     }
     else if (["!5x"].includes(message[0].toLowerCase())) {
-        if (player.admin) {
-            room.setCustomStadium(bigStadium);
+        if (message[1] == null) {
+        room.setCustomStadium(bigStadium);
         }
     }
     else if (["!comofaz"].includes(message[0].toLowerCase())) {
