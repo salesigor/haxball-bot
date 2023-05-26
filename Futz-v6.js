@@ -367,7 +367,7 @@ function endGame(winner) { // no stopGame() function in it
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText(+ (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
         for (var i = 0; i < 3; i++) {
-            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
+            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
     }
     else if (winner == Team.BLUE) {
@@ -376,7 +376,7 @@ function endGame(winner) { // no stopGame() function in it
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText(+ (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
         for (var i = 0; i < 3; i++) {
-            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
+            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
     }
     else {
@@ -385,7 +385,7 @@ function endGame(winner) { // no stopGame() function in it
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText(+ (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
         for (var i = 0; i < 3; i++) {
-            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "bold");
+            room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
     }
 };
@@ -1277,7 +1277,7 @@ room.onPlayerChat = function (player, message) {
     else if (["!discord"].includes(message[0].toLowerCase())) {
         
         room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
-        room.sendAnnouncement(centerText(" https://discord.gg/HbQ5Mvad "), null, white, "bold");
+        room.sendAnnouncement(centerText(" https://discord.gg/3CaP4dMr "), null, white, "bold");
         room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
     }
     else if (["!lenda"].includes(message[0].toLowerCase())) {
