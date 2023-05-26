@@ -135,18 +135,6 @@ var announced = false;
 
 /* FUNCTIONS */
 
-function getNextHomeUniform() {
-    const uniformId = uniformIds[homeUniformIndex];
-    homeUniformIndex = (homeUniformIndex + 1) % uniformIds.length;
-    return uniformId;
-};
-
-function getNextGuestUniform() {
-    const uniformId2 = uniformIds[guestUniformIndex];
-    guestUniformIndex = (guestUniformIndex + 1) % uniformIds.length;
-    return uniformId2;
-};
-
 function sendAnnouncement(announcement) {
     room.sendAnnouncement(announcement, null, white, "bold", 1);
 };
@@ -178,35 +166,6 @@ function docketFormat(string1, string2) {
         return ''
     }
 };
-
-function getUniform(uniformStr) {
-    if (uniforms.hasOwnProperty(uniformStr)) return uniformStr;
-    for (const [key, value] of Object.entries(uniforms)) {
-        for (let i = 0; i < value.aliases.length; i++) {
-            if (value.aliases[i] === uniformStr) return key;
-        }
-    }
-    return false;
-};
-
-function changeUniforme() {
-    var a = nameHome;
-    nameHome = nameGuest;
-    nameGuest = a;
-
-    var b = acronymHome;
-    acronymHome = acronymGuest;
-    acronymGuest = b;
-
-    var c = emojiHome;
-    emojiHome = emojiGuest;
-    emojiGuest = c;
-
-    room.setTeamColors(1, uniforms[acronymHome].angle, uniforms[acronymHome].textcolor, [uniforms[acronymHome].color1, uniforms[acronymHome].color2, uniforms[acronymHome].color3]);
-
-    room.setTeamColors(2, uniforms[acronymGuest].angle, uniforms[acronymGuest].textcolor, [uniforms[acronymGuest].color1, uniforms[acronymGuest].color2, uniforms[acronymGuest].color3]);
-};
-
 
 /* AUXILIARY FUNCTIONS */
 
@@ -592,15 +551,15 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["!uniforme"].includes(message[0].toLowerCase())) {
         if (message[1] == null) {
+            
+            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
             room.sendAnnouncement("Seleções:", null, yellow, "bold");
             room.sendAnnouncement("Brasil <bra> Alemanha <ale> Argentina <arg> Espanha <esp> Portugal <por>", null, white, "normal");
             room.sendAnnouncement("Itália <ita> Uruguai <uru> França <fra> Inglaterra <ing> Bélgica <bel>, Holanda <hol>", null, white, "normal");
             room.sendAnnouncement("_______________________________________", null, yellow, "bold");
-            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
             room.sendAnnouncement("Times Sulamericanos:", null, yellow, "bold");
             room.sendAnnouncement("Corinthians <cor>, São Paulo <spfc>, Palmeiras <pal>, Santos <sfc>, Flamengo <fla>, Grêmio <gre>", null, white, "normal");
             room.sendAnnouncement("Vasco <vas>, Fluminense <flu>, Internacional <int>, Cruzeiro <cru>, Boca Juniors <boc>, River Plate <riv>", null, white, "normal");
-            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
             room.sendAnnouncement("_______________________________________", null, yellow, "bold");
             room.sendAnnouncement("Times Europeus:", null, yellow, "bold");
             room.sendAnnouncement("Manchester City <mci>, Borussia Dortmund <bor>, Paris Saint-Germain <psg>, Real Madrid <rea>, Inter de Milão <intM>", null, white, "normal");
@@ -750,9 +709,10 @@ room.onPlayerChat = function (player, message) {
             }
             room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
             setTimeout(function () {
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
                 room.sendAnnouncement(centerText("Uniforme do time RED foi atualizado. Agora é " + nameHome), null, yellow, "bold");
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
         else if (message[1] == "blue") {
@@ -898,9 +858,11 @@ room.onPlayerChat = function (player, message) {
             }
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             setTimeout(function () {
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
                 room.sendAnnouncement(centerText("Uniforme do time BLUE foi atualizado. Agora é " + nameGuest), null, yellow, "bold");
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
     }
@@ -1048,9 +1010,10 @@ room.onPlayerChat = function (player, message) {
             }
             room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
             setTimeout(function () {
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
                 room.sendAnnouncement(centerText("Uniforme do time RED foi atualizado. Agora é " + nameHome), null, yellow, "bold");
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
         else if (message[1] == "blue") {
@@ -1196,9 +1159,10 @@ room.onPlayerChat = function (player, message) {
             }
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             setTimeout(function () {
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
                 room.sendAnnouncement(centerText("Uniforme do time BLUE foi atualizado. Agora é " + nameGuest), null, yellow, "bold");
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
     }
@@ -1214,10 +1178,10 @@ room.onPlayerChat = function (player, message) {
             room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             setTimeout(function () {
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
                 room.sendAnnouncement(centerText("Uniformes atualizados."), null, yellow, "bold");
-                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, yellow, "bold");
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
         else if (message[1] == "red") {
@@ -1225,9 +1189,10 @@ room.onPlayerChat = function (player, message) {
             acronymHome = allClubes[randHome];
             room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
             setTimeout(function () {
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
                 room.sendAnnouncement(centerText("Uniforme do time RED foi atualizado. Agora é " + nameHome), null, yellow, "bold");
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
         else if (message[1] == "blue") {
@@ -1235,9 +1200,10 @@ room.onPlayerChat = function (player, message) {
             acronymGuest = allClubes[randGuest];
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             setTimeout(function () {
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
                 room.sendAnnouncement(centerText("Uniforme do time BLUE foi atualizado. Agora é " + nameGuest), null, yellow, "bold");
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
     }
@@ -1264,9 +1230,10 @@ room.onPlayerChat = function (player, message) {
             acronymHome = seleçoes[randHome];
             room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
             setTimeout(function () {
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
                 room.sendAnnouncement(centerText("Uniforme do time RED foi atualizado. Agora é " + nameHome), null, yellow, "bold");
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
         else if (message[1] == "blue") {
@@ -1274,9 +1241,10 @@ room.onPlayerChat = function (player, message) {
             acronymGuest = seleçoes[randGuest];
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             setTimeout(function () {
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
                 room.sendAnnouncement(centerText("Uniforme do time BLUE foi atualizado. Agora é " + nameGuest), null, yellow, "bold");
-                room.sendAnnouncement(centerText("_________________________________"), null, white, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
     }
