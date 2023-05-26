@@ -98,6 +98,7 @@ var white = 0xFFFFFF;
 var green = 0x32f073;
 var red = 0xfc383b;
 var blue = 0x03adfc;
+var warn = 0xff9966;
 
 /* PLAYERS */
 
@@ -512,6 +513,7 @@ room.onPlayerLeave = function (player) {
 };
 
 room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
+    room.sendAnnouncement(centerText("Kicked por inatividade ou por pura encheção de saco!"), null, warn, "italic");
 };
 
 /* PLAYER ACTIVITY */
@@ -528,7 +530,44 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), null, yellow, "normal");
         if (player.admin) {
             room.sendAnnouncement(centerText("Admin Commands:"), player.id, yellow, "bold");
-            room.sendAnnouncement(centerText("!comofaz, !uni (acronimo de !uniforme), !rand <red/blue> (clubes), !selecrand <red/blue>"), player.id, yellow, "normal");
+            room.sendAnnouncement(centerText("!who <r/b/rb>, !comofaz, !uni (acronimo de !uniforme), !rand <red/blue> (clubes), !selecrand <red/blue>"), player.id, yellow, "normal");
+        }
+    }
+    else if (["!who"].includes(message[0].toLowerCase())) {
+        if (player.admin) {
+            if (message[1] == "r") {
+                room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
+                room.sendAnnouncement(centerText("Você escolhe, " + teamR[0].name), null, white, "bold");
+                room.sendAnnouncement(centerText("Digite Nº, nome, auto (fila) ou rand (aleatório) do player na fila"), null, white, "normal");
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
+                }, 1000);
+            }
+            else if (message[1] == "b") {
+                room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
+                room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
+                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
+                }, 1000);
+            }
+            else if (message[1] == "rb") {
+                room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
+                room.sendAnnouncement(centerText(teamR[0].name + " e " + teamB[0].name + "escolhem"), null, white, "bold");
+                room.sendAnnouncement(centerText("RED escolhe primeiro!"), null, warn, "bold");
+                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
+                }, 1000);
+            }
+            else if (message[1] == null) {
+                room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
+                room.sendAnnouncement(centerText("Escolha seu time"), null, white, "bold");
+                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
+                }, 1000);
+            }
         }
     }
     else if (["!comofaz"].includes(message[0].toLowerCase())) {
