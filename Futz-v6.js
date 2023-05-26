@@ -76,7 +76,7 @@ const hol = {'name': 'Holanda', "type": Uniform, "emoji": '', "angle": 0, "textc
 const seleçoes = [ale, arg, bra, esp, por, ita, uru, fra, ing, bel, hol];
 const euroClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM];
 const sulaClubes = [cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
-const allClubes = {rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv}
+const allClubes = {rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv};
 var defaultHome = bar
 var defaultGuest = rea
 var nameHome = defaultHome.name;
@@ -1164,6 +1164,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     else if (["!rand"].includes(message[0].toLowerCase())) {
+        const allClubes = {rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv};
         var randHome = Math.floor(Math.random() * allClubes.length);
         var randGuest = Math.floor(Math.random() * allClubes.length);
         if (message[1] == null) {
@@ -1202,6 +1203,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     else if (["!selecrand"].includes(message[0].toLowerCase())) {
+        const seleçoes = [ale, arg, bra, esp, por, ita, uru, fra, ing, bel, hol];
         var randHome = Math.floor(Math.random() * seleçoes.length);
         var randGuest = Math.floor(Math.random() * seleçoes.length);
         if (message[1] == null) {
@@ -1516,6 +1518,7 @@ room.onGameStart = function (byPlayer) {
 
 room.onGameStop = function (byPlayer) {
     if (byPlayer && byPlayer.id == 0) {
+        const allClubes = {rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv};
         var randHome = Math.floor(Math.random() * allClubes.length);
         var randGuest = Math.floor(Math.random() * allClubes.length);
         updateTeams();
