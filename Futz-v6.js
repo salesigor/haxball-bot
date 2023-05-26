@@ -1164,7 +1164,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     else if (["!rand"].includes(message[0].toLowerCase())) {
-        const allClubes = {rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv};
+        const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
         var randHome = Math.floor(Math.random() * allClubes.length);
         var randGuest = Math.floor(Math.random() * allClubes.length);
         if (message[1] == null) {
