@@ -76,7 +76,7 @@ const hol = {'name': 'Holanda', "type": Uniform, "emoji": '', "angle": 0, "textc
 const seleçoes = [ale, arg, bra, esp, por, ita, uru, fra, ing, bel, hol];
 const euroClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM];
 const sulaClubes = [cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
-const allClubes = {rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv};
+const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
 var defaultHome = bar
 var defaultGuest = rea
 var nameHome = defaultHome.name;
@@ -1518,9 +1518,9 @@ room.onGameStart = function (byPlayer) {
 
 room.onGameStop = function (byPlayer) {
     if (byPlayer && byPlayer.id == 0) {
-        const allClubes = {rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv};
-        var randHome = Math.floor(Math.random() * allClubes.length);
-        var randGuest = Math.floor(Math.random() * allClubes.length);
+        const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
+        let randHome = Math.floor(Math.random() * allClubes.length);
+        let randGuest = Math.floor(Math.random() * allClubes.length);
         updateTeams();
         if (lastWinner == Team.RED) {
             blueToSpecBtn();
