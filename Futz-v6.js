@@ -1123,7 +1123,7 @@ room.setCustomStadium(smallStadium);
 
 const Uniform = {};
 // Clubes Sulamericanos
-const cor = {"name": 'Corinthians', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0x363636, "color1": 0x000000, "color2": 0xFFFFFF, "color3": 0x000000};
+const cor = {"name": 'Corinthians', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0x000000, "color2": 0x000000, "color3": 0x000000};
 const spfc = {"name": 'São Paulo', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0xBF0505, "color2": 0x000000, "color3": 0xFFFFFF};
 const pal = {"name": 'Palmeiras', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0x117D31, "color2": 0x117D31, "color3": 0x117D31};
 const sfc = {"name": 'Santos', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0x827E09, "color1": 0xFFFFFF, "color2": 0x000000, "color3": 0xFFFFFF};
