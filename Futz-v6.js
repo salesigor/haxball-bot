@@ -1418,6 +1418,14 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
+            room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
+            room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
+            }, 1000);
+        }, 4000);
     }
     else if (winner == Team.BLUE) {
         streak = 1;
@@ -1427,6 +1435,14 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
+            room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
+            room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
+            }, 1000);
+        }, 4000);
     }
     else {
         streak = 0;
@@ -1436,6 +1452,15 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
+            room.sendAnnouncement(centerText(teamR[0].name + " e " + teamB[0].name + "escolhem"), null, white, "bold");
+            room.sendAnnouncement(centerText("RED escolhe primeiro!"), null, warn, "bold");
+            room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");              
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
+            }, 1000);
+        }, 4000);
     }
 };
 
