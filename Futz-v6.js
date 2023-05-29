@@ -1648,28 +1648,28 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["auto"].includes(message[0].toLowerCase())) {
         if (choose == true) {    
-            if (teamR[0]) {
-                if (teamR[1] == null) {
+            if (player.id == teamR[0].id) {
+                if (teamR[1].id == null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu AUTO"), null, white, "bold");
                     room.sendAnnouncement(centerText("Os escalados foram " + teamS[0].name + " e " + teamS[1].name), null, white, "normal");
                     room.setPlayerTeam(teamS[0].id, Team.RED);
                     room.setPlayerTeam(teamS[1].id, Team.RED);
                 }
-                else if (teamR[1] != null && teamR[2] == null) {
+                else if (teamR[1].id != null && teamR[2] == null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu AUTO"), null, white, "bold");
                     room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
                     room.setPlayerTeam(teamS[0].id, Team.RED);
                 }
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
-                    if (teamB[1] == null) {
+                    if (teamB[1].id == null) {
                         room.sendAnnouncement(centerText(teamB[0].name + " escolheu AUTO"), null, white, "bold");
                         room.sendAnnouncement(centerText("Os escalados foram " + teamS[0].name + " e " + teamS[1].name), null, white, "normal");
                         room.setPlayerTeam(teamS[0].id, Team.BLUE);
                         room.setPlayerTeam(teamS[1].id, Team.BLUE);
                     }
-                    else if (teamB[1] != null && teamR[2] == null) {
+                    else if (teamB[1].id != null && teamR[2] == null) {
                         room.sendAnnouncement(centerText(teamB[0].name + " escolheu AUTO"), null, white, "bold");
                         room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
                         room.setPlayerTeam(teamS[0].id, Team.BLUE);
@@ -1684,14 +1684,14 @@ room.onPlayerChat = function (player, message) {
         var randblue1 = Math.floor(Math.random() * teamS.length);
         var randblue2 = Math.floor(Math.random() * teamS.length);
         if (choose == true) {    
-            if (teamR[0]) {
-                if (teamR[1] == null) {
+            if (player.id == teamR[0].id) {
+                if (teamR[1].id == null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
                     room.sendAnnouncement(centerText("Os escalados foram " + teamS[randred1].name + " e " + teamS[randred2].name), null, white, "normal");
                     room.setPlayerTeam(teamS[randred1].id, Team.RED);
                     room.setPlayerTeam(teamS[randred2].id, Team.RED);
                 }
-                else if (teamR[1] != null && teamR[2] == null) {
+                else if (teamR[1].id != null && teamR[2].id == null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
                     room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
                     room.setPlayerTeam(teamS[randred1].id, Team.RED);
@@ -1716,11 +1716,11 @@ room.onPlayerChat = function (player, message) {
     }
     if (["1"].includes(message[0].toLowerCase())) {
         if (choose == true) {    
-            if (teamR[0]) {
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[0].name), null, white, "bold");
                 room.setPlayerTeam(teamS[0].id, Team.RED);
             }
-            if (teamB[0]) {
+            else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[0].name), null, white, "bold");
                     room.setPlayerTeam(teamS[0].id, Team.BLUE);
@@ -1730,11 +1730,11 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["2"].includes(message[0].toLowerCase())) {
         if (choose == true) {    
-            if (teamR[0]) {
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[1].name), null, white, "bold");
                 room.setPlayerTeam(teamS[1].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[1].name), null, white, "bold");
                     room.setPlayerTeam(teamS[1].id, Team.BLUE);
@@ -1744,11 +1744,11 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["3"].includes(message[0].toLowerCase())) {
         if (choose == true) {    
-            if (teamR[0]) {
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[2].name), null, white, "bold");
                 room.setPlayerTeam(teamS[2].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[2].name), null, white, "bold");
                     room.setPlayerTeam(teamS[2].id, Team.BLUE);
@@ -1758,11 +1758,11 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["4"].includes(message[0].toLowerCase())) {
         if (choose == true) {    
-            if (teamR[0]) {
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[3].name), null, white, "bold");
                 room.setPlayerTeam(teamS[3].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[3].name), null, white, "bold");
                     room.setPlayerTeam(teamS[3].id, Team.BLUE);
@@ -1772,11 +1772,11 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["5"].includes(message[0].toLowerCase())) {
         if (choose == true) {    
-            if (teamR[0]) {
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[4].name), null, white, "bold");
                 room.setPlayerTeam(teamS[4].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[4].name), null, white, "bold");
                     room.setPlayerTeam(teamS[4].id, Team.BLUE);
@@ -1786,11 +1786,11 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["6"].includes(message[0].toLowerCase())) {
         if (choose == true) {    
-            if (teamR[0]) {
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[5].name), null, white, "bold");
                 room.setPlayerTeam(teamS[5].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[5].name), null, white, "bold");
                     room.setPlayerTeam(teamS[5].id, Team.BLUE);
@@ -1800,11 +1800,11 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["7"].includes(message[0].toLowerCase())) {
         if (choose == true) {    
-            if (teamR[0]) {
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[6].name), null, white, "bold");
                 room.setPlayerTeam(teamS[6].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[6].name), null, white, "bold");
                     room.setPlayerTeam(teamS[6].id, Team.BLUE);
@@ -1814,11 +1814,11 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["8"].includes(message[0].toLowerCase())) {
         if (choose == true) {    
-            if (teamR[0]) {
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[7].name), null, white, "bold");
                 room.setPlayerTeam(teamS[7].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[7].name), null, white, "bold");
                     room.setPlayerTeam(teamS[7].id, Team.BLUE);
@@ -1828,11 +1828,11 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["9"].includes(message[0].toLowerCase())) {
         if (choose == true) {    
-            if (teamR[0]) {
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[8].name), null, white, "bold");
                 room.setPlayerTeam(teamS[8].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[8].name), null, white, "bold");
                     room.setPlayerTeam(teamS[8].id, Team.BLUE);
@@ -1842,11 +1842,11 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["10"].includes(message[0].toLowerCase())) {
         if (choose == true) {    
-            if (teamR[0]) {
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[9].name), null, white, "bold");
                 room.setPlayerTeam(teamS[9].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[9].name), null, white, "bold");
                     room.setPlayerTeam(teamS[9].id, Team.BLUE);
