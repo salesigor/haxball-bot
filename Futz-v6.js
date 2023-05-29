@@ -1188,6 +1188,7 @@ var green = 0x32f073;
 var red = 0xfc383b;
 var blue = 0x03adfc;
 var warn = 0xff9966;
+var chatInvisble = 0x4b5b50;
 
 /* PLAYERS */
 
@@ -1601,6 +1602,9 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Uniformes:"), null, yellow, "bold");
         room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), null, yellow, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+        }, 100);
         if (player.admin) {
             room.sendAnnouncement(centerText("Admin Commands:"), player.id, yellow, "bold");
             room.sendAnnouncement(centerText("!who <r/b/rb>, !comofaz, !uni (acronimo de !uniforme), !rand <red/blue> (clubes), !selecrand <red/blue>"), player.id, yellow, "normal");
@@ -1684,10 +1688,12 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("!malco, !soberbo, !messi, !noob, !pepe, !abob, !onlyway"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Team Tags:"), null, yellow, "bold");
         room.sendAnnouncement(centerText("!bar, !rea"), null, yellow, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+        }, 100);
     }
     else if (["!uniforme"].includes(message[0].toLowerCase())) {
         if (message[1] == null) {
-            
             room.sendAnnouncement("_______________________________________", null, yellow, "bold");
             room.sendAnnouncement("Seleções:", null, yellow, "bold");
             room.sendAnnouncement("Brasil <bra> Alemanha <ale> Argentina <arg> Espanha <esp> Portugal <por>", null, white, "normal");
@@ -1701,6 +1707,9 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement("Manchester City <mci>, Borussia Dortmund <bor>, Paris Saint-Germain <psg>, Real Madrid <rea>, Inter de Milão <intM>", null, white, "normal");
             room.sendAnnouncement("Barcelona <bar>, Atlético de Madrid <atm>, Liverpool <liv>, Chelsea <che>, Juventus <juv>, Bayern de Munique <bay>, Milan <mil>", null, white, "normal");
             room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+            }, 100);
         }
         else if (message[1] == "red") {
             if (message[2] == "bar") {
@@ -2394,6 +2403,9 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["!vs"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+        }, 100);
     }
     else if (["!seleçoes"].includes(message[0].toLowerCase())) {
             room.sendAnnouncement("_______________________________________", null, yellow, "bold");
@@ -2401,6 +2413,9 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement("Brasil <bra> Alemanha <ale> Argentina <arg> Espanha <esp> Portugal <por>", null, white, "normal");
             room.sendAnnouncement("Itália <ita> Uruguai <uru> França <fra> Inglaterra <ing> Bélgica <bel>, Holanda <hol>", null, white, "normal");
             room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+            }, 100);
     }
     else if (["!euro"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement("_______________________________________", null, yellow, "bold");
@@ -2408,6 +2423,9 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement("Manchester City <mci>, Borussia Dortmund <bor>, Paris Saint-Germain <psg>, Real Madrid <rea>, Inter de Milão <intM>", null, white, "normal");
         room.sendAnnouncement("Barcelona <bar>, Atlético de Madrid <atm>, Liverpool <liv>, Chelsea <che>, Juventus <juv>, Bayern de Munique <bay>, Milan <mil>", null, white, "normal");
         room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+        }, 100);
     }
     else if (["!sula"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement("_______________________________________", null, yellow, "bold");
@@ -2415,6 +2433,9 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement("Corinthians <cor>, São Paulo <spfc>, Palmeiras <pal>, Santos <sfc>, Flamengo <fla>, Grêmio <gre>", null, white, "normal");
         room.sendAnnouncement("Vasco <vas>, Fluminense <flu>, Internacional <int>, Cruzeiro <cru>, Boca Juniors <boc>, River Plate <riv>", null, white, "normal");
         room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+        }, 100);
 }
     else if (["!regras"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("REGRAS DE JOGO"), null, white, "bold");
@@ -2424,14 +2445,20 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("Capitão escolhe o time com número da fila ou nome"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Uma vez escolhido fica até o final"), null, yellow, "normal");
         room.sendAnnouncement(centerText("AFK vai pro final da fila e pausamos pro cap escolher outro"), null, yellow, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+        }, 100);
     }
     else if (["!discord"].includes(message[0].toLowerCase())) {
-        
         room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
         room.sendAnnouncement(centerText(" https://discord.gg/3CaP4dMr "), null, white, "bold");
         room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+        }, 100);
     }
     else if (["!lenda"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("by " + player.name), player.admin, white, "italic");
         room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
     }
     else if (["!bar"].includes(message[0].toLowerCase())) {
@@ -2449,6 +2476,9 @@ room.onPlayerChat = function (player, message) {
         }, 3750);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🔵🔴🔵...🔵🔴🔵...🔵🔴🔵"), null, white, "normal");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+            }, 100);
         }, 5000);
     }
     else if (["!rea"].includes(message[0].toLowerCase())) {
@@ -2466,6 +2496,9 @@ room.onPlayerChat = function (player, message) {
         }, 3750);
         setTimeout(function () {
             room.sendAnnouncement(centerText("⚪🟡⚪...⚪🟡⚪...⚪🟡⚪"), null, white, "normal");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+            }, 100);
         }, 5000);
     }
     else if (["!malco"].includes(message[0].toLowerCase())) {
@@ -2483,6 +2516,9 @@ room.onPlayerChat = function (player, message) {
         }, 3750);
         setTimeout(function () {
             room.sendAnnouncement(centerText("❌"), null, white, "normal");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+            }, 100);
         }, 5000);
     }
     else if (["!onlyway"].includes(message[0].toLowerCase())) {
@@ -2503,11 +2539,14 @@ room.onPlayerChat = function (player, message) {
         }, 5000);
         setTimeout(function () {
             room.sendAnnouncement(centerText("THEONLYWAY"), null, white, "bold");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+            }, 100);
         }, 5000);
     }
     else if (["!smith"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("eu sou a LENDA!"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("by " + player.name), null, white, "normal");
+        room.sendAnnouncement(centerText("by " + player.name), null, white, "italic");
     }
     else if (["!messi"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
@@ -2521,6 +2560,9 @@ room.onPlayerChat = function (player, message) {
         }, 3500);
         setTimeout(function () {
             room.sendAnnouncement(centerText("Gol, gol, gol!!!"), null, white, "bold");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+            }, 100);
         }, 6000);
     }
     else if (["!abob"].includes(message[0].toLowerCase())) {
@@ -2535,21 +2577,30 @@ room.onPlayerChat = function (player, message) {
         }, 4000);
         setTimeout(function () {
             room.sendAnnouncement(centerText("ABOBRINHA, THE GOAT"), null, yellow, "bold");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+            }, 100);
         }, 6000);
     }
     else if (["!noob"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
-            room.sendAnnouncement(centerText("🎶 Olê, olê, olê, olê! 🎶" ), null, white, "normal");
+            room.sendAnnouncement(centerText("🎶 Olê, olê, olê, olê! 🎶" ), c, white, "normal");
         }, 50);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🎶 é o NooB! 🎶" ), null, white, "normal");
         }, 2500);
         setTimeout(function () {
             room.sendAnnouncement(centerText("o NooB MaSteR!!" ), null, white, "bold");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+            }, 100);
         }, 4000);
     }
     else if (["!pepe"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("PÊEEPÊ NELES!"), null, white, "bold");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+        }, 100);
     }
     else if (["!soberbo"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
@@ -2563,16 +2614,28 @@ room.onPlayerChat = function (player, message) {
         }, 2250);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🍫... SOBEEEERBOOOOOOO! ...🍫"), null, white, "normal");
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+            }, 100);
         }, 3500);
     }
     else if (["!gk"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("GOLEIROOO!"), null, white, "bold");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+        }, 100);
     }
     else if (["!me"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText(player.name + " é braboooo!"), null, white, "bold");
     }
     else if (["!ain"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(player.name + ": AINN, PAI PARAAA!", null, yellow, "bold");
+        var messages = [
+            "AINN, PAI PARAAA!",
+            "AIN, ZÉ DA MANGA!"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        room.sendAnnouncement(player.name + ": " + announcement, null, yellow, "bold");
     }
     else if (["!gol"].includes(message[0].toLowerCase())) {
         var messages = [
