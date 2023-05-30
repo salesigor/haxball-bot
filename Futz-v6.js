@@ -1162,6 +1162,14 @@ const bel = {'name': 'Bélgica', "type": Uniform, "emoji": '', "angle": 0, "text
 const hol = {'name': 'Holanda', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0xF25100, "color2": 0xF25100, "color3": 0xF25100};
 // clubes de zueira
 const girl = { "name": 'Barbies', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0x520131, "color1": 0xba2f82, "color2": 0xba2f82, "color3": 0xba2f82};
+// GOL comemoração
+const gol1 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
+const gol12 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0xFFFFFF, "color3": 0x2ebdff};
+const gol2 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x2ebdff, "color2": 0x42f56f, "color3": 0xFFFFFF};
+const gol3 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0xFFFFFF, "color2": 0x2ebdff, "color3": 0x42f56f};
+const gol4 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0x42f56f, "color3": 0x42f56f};
+const gol5 = {"angle": 0, "textcolor": 0x42f56f, "color1": 0xFFFFFF, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
+//
 const seleçoes = [ale, arg, bra, esp, por, ita, uru, fra, ing, bel, hol];
 const euroClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM];
 const sulaClubes = [cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
@@ -3065,9 +3073,63 @@ room.onTeamGoal = function (team) {
 		}
 		if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
+            setTimeout(function () {
+                room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                setTimeout(function () {
+                    room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                    setTimeout(function () {
+                        room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                        setTimeout(function () {
+                            room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                            setTimeout(function () {
+                                room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                                setTimeout(function () {
+                                    room.setTeamColors(1, gol1.angle, gol1.textcolor, [gol1.color1, gol1.color2, gol1.color3]);
+                                    setTimeout(function () {
+                                        room.setTeamColors(1, gol2.angle, gol2.textcolor, [gol2.color1, gol2.color2, gol2.color3]);
+                                        setTimeout(function () {
+                                            room.setTeamColors(1, gol3.angle, gol3.textcolor, [gol3.color1, gol3.color2, gol3.color3]);
+                                            setTimeout(function () {
+                                                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                                            }, 0);
+                                        }, 0);
+                                    }, 0);
+                                }, 0);
+                            }, 0);
+                        }, 0);
+                    }, 0);
+                }, 0);
+            }, 0);
 		}
         else if (team === 2) {
 			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
+            setTimeout(function () {
+                room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                setTimeout(function () {
+                    room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                    setTimeout(function () {
+                        room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                        setTimeout(function () {
+                            room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                            setTimeout(function () {
+                                room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                                setTimeout(function () {
+                                    room.setTeamColors(2, gol1.angle, gol1.textcolor, [gol1.color1, gol1.color2, gol1.color3]);
+                                    setTimeout(function () {
+                                        room.setTeamColors(2, gol2.angle, gol2.textcolor, [gol2.color1, gol2.color2, gol2.color3]);
+                                        setTimeout(function () {
+                                            room.setTeamColors(2, gol3.angle, gol3.textcolor, [gol3.color1, gol3.color2, gol3.color3]);
+                                            setTimeout(function () {
+                                                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                                            }, 0);
+                                        }, 0);
+                                    }, 0);
+                                }, 0);
+                            }, 0);
+                        }, 0);
+                    }, 0);
+                }, 0);
+            }, 0);
 		}
 	}
     else {
@@ -3077,9 +3139,63 @@ room.onTeamGoal = function (team) {
 		room.sendAnnouncement(centerText("Velocidade do Chute: " + ballSpeed.toPrecision(4).toString() + " km/h"), null, white, "normal");
         if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
+            setTimeout(function () {
+                room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                setTimeout(function () {
+                    room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                    setTimeout(function () {
+                        room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                        setTimeout(function () {
+                            room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                            setTimeout(function () {
+                                room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                                setTimeout(function () {
+                                    room.setTeamColors(2, gol1.angle, gol1.textcolor, [gol1.color1, gol1.color2, gol1.color3]);
+                                    setTimeout(function () {
+                                        room.setTeamColors(2, gol2.angle, gol2.textcolor, [gol2.color1, gol2.color2, gol2.color3]);
+                                        setTimeout(function () {
+                                            room.setTeamColors(2, gol3.angle, gol3.textcolor, [gol3.color1, gol3.color2, gol3.color3]);
+                                            setTimeout(function () {
+                                                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                                            }, 0);
+                                        }, 0);
+                                    }, 0);
+                                }, 0);
+                            }, 0);
+                        }, 0);
+                    }, 0);
+                }, 0);
+            }, 0);
 		}
         else if (team === 2) {
 			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
+            setTimeout(function () {
+                room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                setTimeout(function () {
+                    room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                    setTimeout(function () {
+                        room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                        setTimeout(function () {
+                            room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                            setTimeout(function () {
+                                room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                                setTimeout(function () {
+                                    room.setTeamColors(1, gol1.angle, gol1.textcolor, [gol1.color1, gol1.color2, gol1.color3]);
+                                    setTimeout(function () {
+                                        room.setTeamColors(1, gol2.angle, gol2.textcolor, [gol2.color1, gol2.color2, gol2.color3]);
+                                        setTimeout(function () {
+                                            room.setTeamColors(1, gol3.angle, gol3.textcolor, [gol3.color1, gol3.color2, gol3.color3]);
+                                            setTimeout(function () {
+                                                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                                            }, 0);
+                                        }, 0);
+                                    }, 0);
+                                }, 0);
+                            }, 0);
+                        }, 0);
+                    }, 0);
+                }, 0);
+            }, 0);
 		}
 	}
 	room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "normal");
