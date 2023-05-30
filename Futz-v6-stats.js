@@ -1187,7 +1187,7 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 
 /* OPTIONS */
 
-var afkLimit = 1;
+var afkLimit = 1 / 2;
 var drawTimeLimit = 1; //minutos
 var maxTeamSize = 3;
 var slowMode = 0;
@@ -1223,7 +1223,6 @@ console.log("mute list : " + muteList);
 console.log("ban list : " + banList);
 var countAFK = false; // Created to get better track of activity
 var SMSet = new Set(); // Set created to get slow mode which is useful in chooseMode
-
 
 /* STATS */
 
@@ -1557,11 +1556,25 @@ function handleInactivity() { // handles inactivity : players will be kicked aft
         if (extendedP[i][eP.ACT] >= 60 * afkLimit) {
             extendedP[i][eP.ACT] = 0;
             if (room.getScores().time <= afkLimit - 0.5) {
-                setTimeout(() => { !inChooseMode ? quickRestart() : room.stopGame(); }, 10);
+                setTimeout(() => { choose = true ? quickRestart() : room.stopGame(); }, 10);
             }
             room.setPlayerTeam(extendedP[i][eP.ID], Team.SPECTATORS);
         }
     }
+};
+
+function quickRestart() {
+    room.stopGame();
+    setTimeout(() => { room.startGame(); }, 2000);
+};
+
+function resumeGame() {
+    setTimeout(() => { room.startGame(); }, 2000);
+    setTimeout(() => { room.pauseGame(false); }, 1000);
+};
+
+function pauseGame() {
+    setTimeout(() => { room.pauseGame(true); }, 1000);
 };
 
 function getAFK(player) {
@@ -1786,7 +1799,7 @@ room.onPlayerLeave = function (player) {
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
     if (teamR.length =! teamB.length) {
         setTimeout(function () {
-            room.pauseGame(true);
+            pauseGame()
             if (teamR.length < teamB.length) {
                 room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
                 choose = true;
@@ -3452,36 +3465,6 @@ room.onTeamGoal = function (team) {
         if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
             setTimeout(function () {
-                room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
-                setTimeout(function () {
-                    room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
-                    setTimeout(function () {
-                        room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
-                        setTimeout(function () {
-                            room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
-                            setTimeout(function () {
-                                room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
-                                setTimeout(function () {
-                                    room.setTeamColors(2, gol1.angle, gol1.textcolor, [gol1.color1, gol1.color2, gol1.color3]);
-                                    setTimeout(function () {
-                                        room.setTeamColors(2, gol2.angle, gol2.textcolor, [gol2.color1, gol2.color2, gol2.color3]);
-                                        setTimeout(function () {
-                                            room.setTeamColors(2, gol3.angle, gol3.textcolor, [gol3.color1, gol3.color2, gol3.color3]);
-                                            setTimeout(function () {
-                                                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                                            }, 0);
-                                        }, 0);
-                                    }, 0);
-                                }, 0);
-                            }, 0);
-                        }, 0);
-                    }, 0);
-                }, 0);
-            }, 0);
-		}
-        else if (team === 2) {
-			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
-            setTimeout(function () {
                 room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
                 setTimeout(function () {
                     room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
@@ -3499,6 +3482,36 @@ room.onTeamGoal = function (team) {
                                             room.setTeamColors(1, gol3.angle, gol3.textcolor, [gol3.color1, gol3.color2, gol3.color3]);
                                             setTimeout(function () {
                                                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                                            }, 0);
+                                        }, 0);
+                                    }, 0);
+                                }, 0);
+                            }, 0);
+                        }, 0);
+                    }, 0);
+                }, 0);
+            }, 0);
+		}
+        else if (team === 2) {
+			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
+            setTimeout(function () {
+                room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                setTimeout(function () {
+                    room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                    setTimeout(function () {
+                        room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                        setTimeout(function () {
+                            room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                            setTimeout(function () {
+                                room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                                setTimeout(function () {
+                                    room.setTeamColors(2, gol1.angle, gol1.textcolor, [gol1.color1, gol1.color2, gol1.color3]);
+                                    setTimeout(function () {
+                                        room.setTeamColors(2, gol2.angle, gol2.textcolor, [gol2.color1, gol2.color2, gol2.color3]);
+                                        setTimeout(function () {
+                                            room.setTeamColors(2, gol3.angle, gol3.textcolor, [gol3.color1, gol3.color2, gol3.color3]);
+                                            setTimeout(function () {
+                                                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                                             }, 0);
                                         }, 0);
                                     }, 0);
@@ -3549,4 +3562,5 @@ room.onGameTick = function () {
     checkTime();
     getLastTouchOfTheBall();
     getStats();
+    handleInactivity();
 };
