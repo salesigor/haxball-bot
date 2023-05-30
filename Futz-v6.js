@@ -11,7 +11,7 @@ const roomName = "🎯 Cola na humildade | ⚽ Futsal 3x3 🏆";
 7: 🎯 Futsal ⚽ 3x3 🏆 | Cola na humildade
 8: 🎯 Cola na humildade | ⚽ Futsal 3x3 🏆
 */
-const botName = "🤖";
+const botName = "🏁 Áʀʙɪᴛʀᴏ ʙᴏᴛ 🤖";
 const maxPlayers = 15;
 const roomPublic = true;
 const geo = [{ "lat": -23.646709, "lon": -46.730114, "code": "br" }, { "code": "FR", "lat": 46.2, "lon": 2.2 }, { "code": "PL", "lat": 51.9, "lon": 19.1 }, { "code": "GB", "lat": 55.3, "lon": -3.4 }, { "code": "PT", "lat": 39.3, "lon": -8.2 }];
@@ -1179,8 +1179,10 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 
 /* OPTIONS */
 
+
+var afkLimit = 12;
 var drawTimeLimit = 1; //minutos
-var maxTeamSize = 4;
+var maxTeamSize = 3;
 var yellow = 0xffeb15;
 var offYellow = 0xffdd8c;
 var white = 0xFFFFFF;
@@ -1697,13 +1699,13 @@ room.onPlayerChat = function (player, message) {
                     room.setPlayerTeam(teamS[randred1].id, Team.RED);
                 }
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     if (teamB[1] == null) {
                         room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");
-                        room.sendAnnouncement(centerText("Os escalados foram " + teamS[randblue1].name + " e " + teamS[randblue1].name), null, white, "normal");
+                        room.sendAnnouncement(centerText("Os escalados foram " + teamS[randblue1].name + " e " + teamS[randblue2].name), null, white, "normal");
                         room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
-                        room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
+                        room.setPlayerTeam(teamS[randblue2].id, Team.BLUE);
                     }
                     else if (teamB[1] != null && teamR[2] == null) {
                         room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");

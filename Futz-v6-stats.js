@@ -11,7 +11,7 @@ const roomName = "🎯 Cola na humildade | ⚽ Futsal 3x3 🏆";
 7: 🎯 Futsal ⚽ 3x3 🏆 | Cola na humildade
 8: 🎯 Cola na humildade | ⚽ Futsal 3x3 🏆
 */
-const botName = "🤖";
+const botName = "🏁 Áʀʙɪᴛʀᴏ ʙᴏᴛ 🤖";
 const maxPlayers = 15;
 const roomPublic = true;
 const geo = [{ "lat": -23.646709, "lon": -46.730114, "code": "br" }, { "code": "FR", "lat": 46.2, "lon": 2.2 }, { "code": "PL", "lat": 51.9, "lon": 19.1 }, { "code": "GB", "lat": 55.3, "lon": -3.4 }, { "code": "PT", "lat": 39.3, "lon": -8.2 }];
@@ -1162,6 +1162,14 @@ const bel = {'name': 'Bélgica', "type": Uniform, "emoji": '', "angle": 0, "text
 const hol = {'name': 'Holanda', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0xF25100, "color2": 0xF25100, "color3": 0xF25100};
 // clubes de zueira
 const girl = { "name": 'Barbies', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0x520131, "color1": 0xba2f82, "color2": 0xba2f82, "color3": 0xba2f82};
+// GOL comemoração
+const gol1 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
+const gol12 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0xFFFFFF, "color3": 0x2ebdff};
+const gol2 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x2ebdff, "color2": 0x42f56f, "color3": 0xFFFFFF};
+const gol3 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0xFFFFFF, "color2": 0x2ebdff, "color3": 0x42f56f};
+const gol4 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0x42f56f, "color3": 0x42f56f};
+const gol5 = {"angle": 0, "textcolor": 0x42f56f, "color1": 0xFFFFFF, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
+//
 const seleçoes = [ale, arg, bra, esp, por, ita, uru, fra, ing, bel, hol];
 const euroClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM];
 const sulaClubes = [cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
@@ -1179,8 +1187,10 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 
 /* OPTIONS */
 
+var afkLimit = 1;
 var drawTimeLimit = 1; //minutos
-var maxTeamSize = 4;
+var maxTeamSize = 3;
+var slowMode = 0;
 var yellow = 0xffeb15;
 var offYellow = 0xffdd8c;
 var white = 0xFFFFFF;
@@ -1193,6 +1203,9 @@ var chatInvisble = 0x4b5b50;
 /* PLAYERS */
 
 const Team = { SPECTATORS: 0, RED: 1, BLUE: 2 };
+var extendedP = [];
+const eP = { ID: 0, AUTH: 1, CONN: 2, AFK: 3, ACT: 4, GK: 5, MUTE: 6 };
+const Ss = { GA: 0, WI: 1, DR: 2, LS: 3, WR: 4, GL: 5, AS: 6, GK: 7, CS: 8, CP: 9, RL: 10, NK: 11 }
 var players;
 var teamR;
 var teamB;
@@ -1205,10 +1218,18 @@ var lastPlayersTouched;
 var goldenGoal = false;
 var activePlay = false;
 var muteList = [];
+var banList = [];
+console.log("mute list : " + muteList);
+console.log("ban list : " + banList);
+var countAFK = false; // Created to get better track of activity
+var SMSet = new Set(); // Set created to get slow mode which is useful in chooseMode
+
 
 /* STATS */
 
-var GKList = new Array(2 * maxPlayers).fill(0);
+var game;
+// var GKList = new Array(2 * maxPlayers).fill(0);
+var GKList = ["", ""];
 var Rposs = 0;
 var Bposs = 0;
 var point = [{ "x": 0, "y": 0 }, { "x": 0, "y": 0 }];
@@ -1217,46 +1238,35 @@ var lastWinner = Team.SPECTATORS;
 var streak = 0;
 var goalsHome = [];
 var goalsGuest = [];
-class stats {
-    constructor(playerName = '') {
-        this.playerName = playerName;
-        this.games = 0;
-        this.wins = 0;
-        this.winrate = '0.00%';
-        this.playtime = 0;
-        this.goals = 0;
-        this.assists = 0;
-        this.CS = 0;
-        this.ownGoals = 0;
-    }
-}
+var allBlues = []; // This is to count the players who should be counted for the stats. This includes players who left after the game has started, doesn't include those who came too late or ...
+var allReds = []; // ... those who came in a very unequal game.
 
 /* AUXILIARY */
 
 var checkTimeVariable = false;
 var announced = false;
-const State = { PLAY: 0, PAUSE: 1, STOP: 2 };
-const Role = { PLAYER: 0, ADMIN_TEMP: 1, ADMIN_PERM: 2, MASTER: 3 };
-const Situation = { STOP: 0, KICKOFF: 1, PLAY: 2, GOAL: 3 };
-var gameState = State.STOP;
-var playSituation = Situation.STOP;
 let choose = true;
 let redFirst = false;
+var statNumber = 0; // This allows the room to be given stat information every X minutes
+var endGameVariable = false; // This variable with the one below helps distinguish the cases where games are stopped because they have finished to the ones where games are stopped due to player movements or resetting teams
+var resettingTeams = false;
 
-var playersAll = [];
-var teamRed = [];
-var teamBlue = [];
-var teamSpec = [];
+/* OBJECTS */
 
-var teamRedStats = [];
-var teamBlueStats = [];
+function Goal(time, team, striker, assist) {
+    var striker = lastPlayersTouched[0];
+    var assist = lastPlayersTouched[1];
+    this.time = time;
+    this.team = team;
+    this.striker = striker;
+    this.assist = assist;
+}
 
-var banList = [];
-
-var adminList = [
-    [Role.ADMIN_TEMP, 'Malco'],   // ['INSERT_AUTH_HERE_1', 'NICK_OF_ADMIN_1'],
-    [Role.ADMIN_TEMP, 'Soberbo']    // ['INSERT_AUTH_HERE_2', 'NICK_OF_ADMIN_2'],
-];
+function Game(date, scores, goals) {
+    this.date = date;
+    this.scores = scores;
+    this.goals = goals;
+}
 
 /* FUNCTIONS */
 
@@ -1365,6 +1375,29 @@ function resetBtn() {
     }
 };
 
+function randomBtn() {
+    if (teamS.length == 0) {
+        return;
+    }
+    else {
+        if (teamR.length == teamB.length) {
+            if (teamS.length > 1) {
+                var r = getRandomInt(teamS.length);
+                room.setPlayerTeam(teamS[r].id, Team.RED);
+                teamS = teamS.filter((spec) => spec.id != teamS[r].id);
+                room.setPlayerTeam(teamS[getRandomInt(teamS.length)].id, Team.BLUE);
+            }
+            return;
+        }
+        else if (teamR.length < teamB.length) {
+            room.setPlayerTeam(teamS[getRandomInt(teamS.length)].id, Team.RED);
+        }
+        else {
+            room.setPlayerTeam(teamS[getRandomInt(teamS.length)].id, Team.BLUE);
+        }
+    }
+};
+
 function blueToSpecBtn() {
     resettingTeams = true;
     setTimeout(function () { resettingTeams = false; }, 100);
@@ -1457,7 +1490,7 @@ function endGame(winner) { // no stopGame() function in it
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
-            room.sendAnnouncement(centerText("Para escolher digite Nº do player na fila, auto (fila) ou rand (aleatório)"), null, white, "italic");
+            room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
             choose = true;
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
@@ -1475,7 +1508,7 @@ function endGame(winner) { // no stopGame() function in it
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
-            room.sendAnnouncement(centerText("Para escolher digite Nº do player na fila, auto (fila) ou rand (aleatório)"), null, white, "italic");
+            room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
             choose = true;
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
@@ -1506,6 +1539,61 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("*** " + teamB[0].name + " está liberado para escolher ***"), null, yellow, "italic");
         }, 20000);
     }
+};
+
+function handleInactivity() { // handles inactivity : players will be kicked after afkLimit
+    if (countAFK && (teamR.length + teamB.length) > 1) {
+        for (var i = 0; i < teamR.length; i++) {
+            setActivity(teamR[i], getActivity(teamR[i]) + 1);
+        }
+        for (var i = 0; i < teamB.length; i++) {
+            setActivity(teamB[i], getActivity(teamB[i]) + 1);
+        }
+    }
+    for (var i = 0; i < extendedP.length; i++) {
+        if (extendedP[i][eP.ACT] == 60 * (2 / 3 * afkLimit)) {
+            room.sendChat("⛔ ¡@" + room.getPlayer(extendedP[i][eP.ID]).name + ", se mova ou fale no Chat em " + Math.floor(afkLimit / 3) + " segundos ou irá para a fila!", extendedP[i][eP.ID]);
+        }
+        if (extendedP[i][eP.ACT] >= 60 * afkLimit) {
+            extendedP[i][eP.ACT] = 0;
+            if (room.getScores().time <= afkLimit - 0.5) {
+                setTimeout(() => { !inChooseMode ? quickRestart() : room.stopGame(); }, 10);
+            }
+            room.setPlayerTeam(extendedP[i][eP.ID], Team.SPECTATORS);
+        }
+    }
+};
+
+function getAFK(player) {
+    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.AFK] : null;
+};
+
+function setAFK(player, value) {
+    extendedP.filter((a) => a[0] == player.id).forEach((player) => player[eP.AFK] = value);
+};
+
+function getActivity(player) {
+    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.ACT] : null;
+};
+
+function setActivity(player, value) {
+    extendedP.filter((a) => a[0] == player.id).forEach((player) => player[eP.ACT] = value);
+};
+
+/* function getGK(player) {
+    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.GK] : null;
+};
+
+function setGK(player, value) {
+    extendedP.filter((a) => a[0] == player.id).forEach((player) => player[eP.GK] = value);
+}; */
+
+function getMute(player) {
+    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.MUTE] : null;
+};
+
+function setMute(player, value) {
+    extendedP.filter((a) => a[0] == player.id).forEach((player) => player[eP.MUTE] = value);
 };
 
 /* PLAYER FUNCTIONS */
@@ -1582,6 +1670,75 @@ function getStats() { // gives possession, ball speed and GK of each team
     }
 };
 
+function updateStats() {
+    if (players.length >= 2 * maxTeamSize && (game.scores.time >= (5 / 6) * game.scores.timeLimit || game.scores.red == game.scores.scoreLimit || game.scores.blue == game.scores.scoreLimit) && allReds.length >= maxTeamSize && allBlues.length >= maxTeamSize) {
+        var stats;
+        for (var i = 0; i < allReds.length; i++) {
+            localStorage.getItem(getAuth(allReds[i])) ? stats = JSON.parse(localStorage.getItem(getAuth(allReds[i]))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00", "player", allReds[i].name];
+            stats[Ss.GA]++;
+            lastWinner == Team.RED ? stats[Ss.WI]++ : lastWinner == Team.BLUE ? stats[Ss.LS]++ : stats[Ss.DR]++;
+            stats[Ss.WR] = (100 * stats[Ss.WI] / stats[Ss.GA]).toPrecision(3);
+            localStorage.setItem(getAuth(allReds[i]), JSON.stringify(stats));
+        }
+        for (var i = 0; i < allBlues.length; i++) {
+            localStorage.getItem(getAuth(allBlues[i])) ? stats = JSON.parse(localStorage.getItem(getAuth(allBlues[i]))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00", "player", allBlues[i].name];
+            stats[Ss.GA]++;
+            lastWinner == Team.BLUE ? stats[Ss.WI]++ : lastWinner == Team.RED ? stats[Ss.LS]++ : stats[Ss.DR]++;
+            stats[Ss.WR] = (100 * stats[Ss.WI] / stats[Ss.GA]).toPrecision(3);
+            localStorage.setItem(getAuth(allBlues[i]), JSON.stringify(stats));
+        }
+        for (var i = 0; i < game.goals.length; i++) {
+            if (game.goals[i].striker != null) {
+                if ((allBlues.concat(allReds)).findIndex((player) => player.id == game.goals[i].striker.id) != -1) {
+                    stats = JSON.parse(localStorage.getItem(getAuth(game.goals[i].striker)));
+                    stats[Ss.GL]++;
+                    localStorage.setItem(getAuth(game.goals[i].striker), JSON.stringify(stats));
+                }
+            }
+            if (game.goals[i].assist != null) {
+                if ((allBlues.concat(allReds)).findIndex((player) => player.name == game.goals[i].assist.name) != -1) {
+                    stats = JSON.parse(localStorage.getItem(getAuth(game.goals[i].assist)));
+                    stats[Ss.AS]++;
+                    localStorage.setItem(getAuth(game.goals[i].assist), JSON.stringify(stats));
+                }
+            }
+        }
+        if (allReds.findIndex((player) => player.id == GKList[0].id) != -1) {
+            stats = JSON.parse(localStorage.getItem(getAuth(GKList[0])));
+            stats[Ss.GK]++;
+            game.scores.blue == 0 ? stats[Ss.CS]++ : null;
+            stats[Ss.CP] = (100 * stats[Ss.CS] / stats[Ss.GK]).toPrecision(3);
+            localStorage.setItem(getAuth(GKList[0]), JSON.stringify(stats));
+        }
+        if (allBlues.findIndex((player) => player.id == GKList[1].id) != -1) {
+            stats = JSON.parse(localStorage.getItem(getAuth(GKList[1])));
+            stats[Ss.GK]++;
+            game.scores.red == 0 ? stats[Ss.CS]++ : null;
+            stats[Ss.CP] = (100 * stats[Ss.CS] / stats[Ss.GK]).toPrecision(3);
+            localStorage.setItem(getAuth(GKList[1]), JSON.stringify(stats));
+        }
+    }
+};
+
+function findGK() {
+    var tab = [[-1, ""], [-1, ""]];
+    for (var i = 0; i < extendedP.length; i++) {
+        if (room.getPlayer(extendedP[i][eP.ID]) != null && room.getPlayer(extendedP[i][eP.ID]).team == Team.RED) {
+            if (tab[0][0] < extendedP[i][eP.GK]) {
+                tab[0][0] = extendedP[i][eP.GK];
+                tab[0][1] = room.getPlayer(extendedP[i][eP.ID]);
+            }
+        }
+        else if (room.getPlayer(extendedP[i][eP.ID]) != null && room.getPlayer(extendedP[i][eP.ID]).team == Team.BLUE) {
+            if (tab[1][0] < extendedP[i][eP.GK]) {
+                tab[1][0] = extendedP[i][eP.GK];
+                tab[1][1] = room.getPlayer(extendedP[i][eP.ID]);
+            }
+        }
+    }
+    GKList = [tab[0][1], tab[1][1]];
+};
+
 /* EVENTS */
 
 /* PLAYER MOVEMENT */
@@ -1612,6 +1769,12 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
     if (changedPlayer.team == Team.SPECTATORS) {
         updateList(Math.max(teamR.findIndex((p) => p.id == changedPlayer.id), teamB.findIndex((p) => p.id == changedPlayer.id), teamS.findIndex((p) => p.id == changedPlayer.id)), changedPlayer.team);
     }
+    if (teamR.length == 3 && teamB.length == 3 && pauseGame(true)) {
+        room.pauseGame(false);
+    }
+    else if (teamR.length == 3 && teamB.length == 3) {
+        room.startgame();
+    }
     updateTeams();
 };
 
@@ -1627,9 +1790,33 @@ room.onPlayerLeave = function (player) {
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
+    if (teamR.length =! teamB.length) {
+        setTimeout(function () {
+            room.pauseGame(true);
+            if (teamR.length < teamB.length) {
+                room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
+                choose = true;
+                room.sendAnnouncement(centerText("Quem entra, " + teamR[0].name + "?"), null, white, "bold");
+                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("*** 20segundos para a escolha automatica ***"), null, warn, "italic");
+                }, 700);
+            }
+            else if (teamR.length > teamB.length) {
+                room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
+                choose = true;
+                room.sendAnnouncement(centerText("Quem entra, " + teamB[0].name + "?"), null, white, "bold");
+                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("*** 20segundos para a escolha automatica ***"), null, warn, "italic");
+                }, 700);
+            }
+        }, 500);
+    }
 };
 
 room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
+    ban == true ? banList.push([kickedPlayer.name, kickedPlayer.id]) : null;
     room.sendAnnouncement(centerText("Kicked por inatividade ou por pura encheção de saco!"), null, warn, "italic");
 };
 
@@ -1680,29 +1867,29 @@ room.onPlayerChat = function (player, message) {
         }
     }
     else if (["auto"].includes(message[0].toLowerCase())) {
-        if (choose == true) {    
-            if (teamR[0]) {
-                if (teamR[1] == null) {
+        if (choose == true && teamS.length > 1) {    
+            if (player.id == teamR[0].id) {
+                if (teamR[1].id == null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu AUTO"), null, white, "bold");
                     room.sendAnnouncement(centerText("Os escalados foram " + teamS[0].name + " e " + teamS[1].name), null, white, "normal");
                     room.setPlayerTeam(teamS[0].id, Team.RED);
                     room.setPlayerTeam(teamS[1].id, Team.RED);
                 }
-                else if (teamR[1] != null && teamR[2] == null) {
+                else if (teamR[1].id != null && teamR[2] == null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu AUTO"), null, white, "bold");
                     room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
                     room.setPlayerTeam(teamS[0].id, Team.RED);
                 }
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
-                    if (teamB[1] == null) {
+                    if (teamB[1].id == null) {
                         room.sendAnnouncement(centerText(teamB[0].name + " escolheu AUTO"), null, white, "bold");
                         room.sendAnnouncement(centerText("Os escalados foram " + teamS[0].name + " e " + teamS[1].name), null, white, "normal");
                         room.setPlayerTeam(teamS[0].id, Team.BLUE);
                         room.setPlayerTeam(teamS[1].id, Team.BLUE);
                     }
-                    else if (teamB[1] != null && teamR[2] == null) {
+                    else if (teamB[1].id != null && teamR[2] == null) {
                         room.sendAnnouncement(centerText(teamB[0].name + " escolheu AUTO"), null, white, "bold");
                         room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
                         room.setPlayerTeam(teamS[0].id, Team.BLUE);
@@ -1710,33 +1897,42 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 1) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+        }
     }
     else if (["rand"].includes(message[0].toLowerCase())) {
         var randred1 = Math.floor(Math.random() * teamS.length);
         var randred2 = Math.floor(Math.random() * teamS.length);
         var randblue1 = Math.floor(Math.random() * teamS.length);
         var randblue2 = Math.floor(Math.random() * teamS.length);
-        if (choose == true) {    
-            if (teamR[0]) {
-                if (teamR[1] == null) {
+        if (choose == true && teamS.length >= 2) {    
+            if (player.id == teamR[0].id) {
+                if (teamR[1].id == null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
                     room.sendAnnouncement(centerText("Os escalados foram " + teamS[randred1].name + " e " + teamS[randred2].name), null, white, "normal");
                     room.setPlayerTeam(teamS[randred1].id, Team.RED);
                     room.setPlayerTeam(teamS[randred2].id, Team.RED);
                 }
-                else if (teamR[1] != null && teamR[2] == null) {
+                else if (teamR[1].id != null && teamR[2].id == null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
                     room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
                     room.setPlayerTeam(teamS[randred1].id, Team.RED);
                 }
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     if (teamB[1] == null) {
                         room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");
-                        room.sendAnnouncement(centerText("Os escalados foram " + teamS[randblue1].name + " e " + teamS[randblue1].name), null, white, "normal");
+                        room.sendAnnouncement(centerText("Os escalados foram " + teamS[randblue1].name + " e " + teamS[randblue2].name), null, white, "normal");
                         room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
-                        room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
+                        room.setPlayerTeam(teamS[randblue2].id, Team.BLUE);
                     }
                     else if (teamB[1] != null && teamR[2] == null) {
                         room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");
@@ -1746,145 +1942,244 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 2) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+        }
     }
     if (["1"].includes(message[0].toLowerCase())) {
-        if (choose == true) {    
-            if (teamR[0]) {
+        if (choose == true && teamS.length > 1) {    
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[0].name), null, white, "bold");
                 room.setPlayerTeam(teamS[0].id, Team.RED);
             }
-            if (teamB[0]) {
+            else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[0].name), null, white, "bold");
                     room.setPlayerTeam(teamS[0].id, Team.BLUE);
                 }
             }
         }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 1) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+        }
     }
     else if (["2"].includes(message[0].toLowerCase())) {
-        if (choose == true) {    
-            if (teamR[0]) {
+        if (choose == true && teamS.length >= 2) {    
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[1].name), null, white, "bold");
                 room.setPlayerTeam(teamS[1].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[1].name), null, white, "bold");
                     room.setPlayerTeam(teamS[1].id, Team.BLUE);
                 }
             }
         }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 2) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+        }
     }
     else if (["3"].includes(message[0].toLowerCase())) {
-        if (choose == true) {    
-            if (teamR[0]) {
+        if (choose == true && teamS.length >= 3) {    
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[2].name), null, white, "bold");
                 room.setPlayerTeam(teamS[2].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[2].name), null, white, "bold");
                     room.setPlayerTeam(teamS[2].id, Team.BLUE);
                 }
             }
         }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 3) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+        }
     }
     else if (["4"].includes(message[0].toLowerCase())) {
-        if (choose == true) {    
-            if (teamR[0]) {
+        if (choose == true && teamS.length >= 4) {    
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[3].name), null, white, "bold");
                 room.setPlayerTeam(teamS[3].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[3].name), null, white, "bold");
                     room.setPlayerTeam(teamS[3].id, Team.BLUE);
                 }
             }
         }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 4) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+        }
     }
     else if (["5"].includes(message[0].toLowerCase())) {
-        if (choose == true) {    
-            if (teamR[0]) {
+        if (choose == true && teamS.length >= 5) {    
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[4].name), null, white, "bold");
                 room.setPlayerTeam(teamS[4].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[4].name), null, white, "bold");
                     room.setPlayerTeam(teamS[4].id, Team.BLUE);
                 }
             }
         }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 5) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+        }
     }
     else if (["6"].includes(message[0].toLowerCase())) {
-        if (choose == true) {    
-            if (teamR[0]) {
+        if (choose == true && teamS.length >= 6) {    
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[5].name), null, white, "bold");
                 room.setPlayerTeam(teamS[5].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[5].name), null, white, "bold");
                     room.setPlayerTeam(teamS[5].id, Team.BLUE);
                 }
             }
         }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 6) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+        }
     }
     else if (["7"].includes(message[0].toLowerCase())) {
-        if (choose == true) {    
-            if (teamR[0]) {
+        if (choose == true && teamS.length >= 7) {    
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[6].name), null, white, "bold");
                 room.setPlayerTeam(teamS[6].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[6].name), null, white, "bold");
                     room.setPlayerTeam(teamS[6].id, Team.BLUE);
                 }
             }
         }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 7) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+        }
     }
     else if (["8"].includes(message[0].toLowerCase())) {
-        if (choose == true) {    
-            if (teamR[0]) {
+        if (choose == true && teamS.length >= 8) {    
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[7].name), null, white, "bold");
                 room.setPlayerTeam(teamS[7].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[7].name), null, white, "bold");
                     room.setPlayerTeam(teamS[7].id, Team.BLUE);
                 }
             }
         }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 8) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+        }
     }
     else if (["9"].includes(message[0].toLowerCase())) {
-        if (choose == true) {    
-            if (teamR[0]) {
+        if (choose == true && teamS.length >= 9) {    
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[8].name), null, white, "bold");
                 room.setPlayerTeam(teamS[8].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[8].name), null, white, "bold");
                     room.setPlayerTeam(teamS[8].id, Team.BLUE);
                 }
             }
         }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 9) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+        }
     }
     else if (["10"].includes(message[0].toLowerCase())) {
-        if (choose == true) {    
-            if (teamR[0]) {
+        if (choose == true && teamS.length >= 10) {    
+            if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[9].name), null, white, "bold");
                 room.setPlayerTeam(teamS[9].id, Team.RED);
             }
-            if (teamB[0]) {
+            if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[9].name), null, white, "bold");
                     room.setPlayerTeam(teamS[9].id, Team.BLUE);
                 }
             }
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && choose == false) {
+            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
+        }
+        else if (player.id == teamB[0].id && redFirst == true) {
+            room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+        }
+        else if (player.id == teamR[0].id || player.id == teamB[0].id && teamS.length < 10) {
+            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
         }
     }
     else if (["!who"].includes(message[0].toLowerCase())) {
@@ -2898,24 +3193,6 @@ room.onPlayerChat = function (player, message) {
             }, 100);
         }, 3500);
     }
-    else if (["!gklist"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("Lista de GKs:"), null, white, "bold");
-        if (GKList.name == null) {
-            room.sendAnnouncement(centerText("ainda não temos GKs"), null, yellow, "italic");
-        }
-        if (GKList.name != null) {
-            room.sendAnnouncement(centerText("1- " + GKList.name[0]), null, white, "normal");
-        }
-        if (GKList.name != null) {
-            room.sendAnnouncement(centerText("2- " + GKList.name[1]), null, white, "normal");
-        }
-        if (GKList.name != null) {
-            room.sendAnnouncement(centerText("3- " + GKList.name[2]), null, white, "normal");
-        }
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
-        }, 100);
-    }
     else if (["!gk"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("GOLEIROOO!"), null, white, "bold");
         setTimeout(function () {
@@ -3012,7 +3289,7 @@ room.onGameStart = function (byPlayer) {
     lastPlayersTouched = [null, null];
     goldenGoal = false;
     goalsHome = [];
-    goalsGuest = []; 
+    goalsGuest = [];
     choose = false;
     redFirst = false;
     room.sendAnnouncement(centerText("🥅🥅 PARTIDA INICIANDO 🥅🥅"), null, yellow, "bold");
@@ -3073,7 +3350,6 @@ room.onGameStop = function (byPlayer) {
             }, 500);
         }
         setTimeout(() => { topBtn(); }, 100);
-        choose = true;
     }
 };
 
@@ -3115,9 +3391,63 @@ room.onTeamGoal = function (team) {
 		}
 		if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
+            setTimeout(function () {
+                room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                setTimeout(function () {
+                    room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                    setTimeout(function () {
+                        room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                        setTimeout(function () {
+                            room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                            setTimeout(function () {
+                                room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                                setTimeout(function () {
+                                    room.setTeamColors(1, gol1.angle, gol1.textcolor, [gol1.color1, gol1.color2, gol1.color3]);
+                                    setTimeout(function () {
+                                        room.setTeamColors(1, gol2.angle, gol2.textcolor, [gol2.color1, gol2.color2, gol2.color3]);
+                                        setTimeout(function () {
+                                            room.setTeamColors(1, gol3.angle, gol3.textcolor, [gol3.color1, gol3.color2, gol3.color3]);
+                                            setTimeout(function () {
+                                                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                                            }, 0);
+                                        }, 0);
+                                    }, 0);
+                                }, 0);
+                            }, 0);
+                        }, 0);
+                    }, 0);
+                }, 0);
+            }, 0);
 		}
         else if (team === 2) {
 			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
+            setTimeout(function () {
+                room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                setTimeout(function () {
+                    room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                    setTimeout(function () {
+                        room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                        setTimeout(function () {
+                            room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
+                            setTimeout(function () {
+                                room.setTeamColors(2, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
+                                setTimeout(function () {
+                                    room.setTeamColors(2, gol1.angle, gol1.textcolor, [gol1.color1, gol1.color2, gol1.color3]);
+                                    setTimeout(function () {
+                                        room.setTeamColors(2, gol2.angle, gol2.textcolor, [gol2.color1, gol2.color2, gol2.color3]);
+                                        setTimeout(function () {
+                                            room.setTeamColors(2, gol3.angle, gol3.textcolor, [gol3.color1, gol3.color2, gol3.color3]);
+                                            setTimeout(function () {
+                                                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                                            }, 0);
+                                        }, 0);
+                                    }, 0);
+                                }, 0);
+                            }, 0);
+                        }, 0);
+                    }, 0);
+                }, 0);
+            }, 0);
 		}
 	}
     else {
