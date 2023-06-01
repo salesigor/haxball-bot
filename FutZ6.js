@@ -1360,18 +1360,6 @@ function sendScoresToDiscord(message) {
     request.send(JSON.stringify(params));
 };
 
-/*function getRoomLink() {
-    const linkElement = document.querySelector('pre');
-    if (linkElement && linkElement.textContent.includes('Room Link:')) {
-        const linkStartIndex = linkElement.textContent.indexOf('Room Link: ') + 11;
-        const link = linkElement.textContent.substring(linkStartIndex).trim();
-        return link;
-    }
-    return null;
-};
-
-const roomURL = getRoomLink();*/
-
 /* FUNCTIONS */
 
 function sendAnnouncement(announcement) {
@@ -1571,11 +1559,7 @@ function endGame(winner) { // no stopGame() function in it
         sendScoresToDiscord("🏆 FIM DE PARTIDA 🏆" + "\n" + " " + "\n" + 
         nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest + "\n" + 
         (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
-        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "\n" + 
-        nameHome + "| Escalação: " + teamR[0].name + teamR[1].name + teamR[2].name + "\n" + 
-        nameHome + "| gols: " + goalsHome[i] + "\n" +  "\n" + 
-        nameGuest + "| Escalação: " + teamB[0].name + teamB[1].name + teamB[2].name + "\n" +  
-        nameGuest + "| gols: " + goalsGuest[i])
+        (Bposs * 100).toPrecision(3).toString())
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
