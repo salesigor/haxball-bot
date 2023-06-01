@@ -1746,7 +1746,7 @@ room.onPlayerJoin = function (player) {
     const connections = ['3137372E3130322E3133372E3632', '3137372E38312E37362E313930']; // malco, soberbo
     if(connections.includes(player.conn)) {
         room.setPlayerAdmin(player.id, true);
-        room.sendAnnouncement(("O Administrador " + player.name + " entrou na sala!"), null, white, "bold"); 
+        room.sendAnnouncement(centerText("O Administrador " + player.name + " entrou na sala!"), null, white, "bold"); 
     }
     var conn = player.conn
     var ipv4 = conn.match(/.{1,2}/g).map(function(v){
