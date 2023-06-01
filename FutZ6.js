@@ -1,5 +1,6 @@
 /* ROOM */
 
+const botVersion = "Futz6";
 const roomName = "🎯 Cola na humildade | ⚽ Futsal 3x3 🏆";
 /* NOMES SUGERIDOS:
 1: 🏆 3x3 Futsal ⚽ | Cola na humildade
@@ -17,7 +18,6 @@ const roomPublic = true;
 const geo = [{ "lat": -23.646709, "lon": -46.730114, "code": "br" }, { "code": "FR", "lat": 46.2, "lon": 2.2 }, { "code": "PL", "lat": 51.9, "lon": 19.1 }, { "code": "GB", "lat": 55.3, "lon": -3.4 }, { "code": "PT", "lat": 39.3, "lon": -8.2 }];
 
 const room = HBInit({ roomName: roomName, maxPlayers: maxPlayers, public: roomPublic, playerName: botName, geo: geo[0] });
-
 const scoreLimit = 3;
 const timeLimit = 3;
 room.setScoreLimit(scoreLimit);
@@ -25,6 +25,7 @@ room.setTimeLimit(timeLimit);
 room.setTeamsLock(true);
 var adminPassword = "true";
 console.log("adminPassword : " + adminPassword);
+token = "thr1.AAAAAGR4BqYGX1xpjWlM5Q.abVNGYI2XbQ";
 
 /* STADIUM */
 
@@ -1187,7 +1188,6 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 
 /* OPTIONS */
 
-
 var afkLimit = 1 / 2;
 var drawTimeLimit = 1; //minutos
 var maxTeamSize = 3;
@@ -1210,6 +1210,11 @@ var players;
 var teamR;
 var teamB;
 var teamS;
+const connections = [/*Malco*/'3139312E3230392E34332E313533', /*Soberbo*/'3137392E33342E38332E3634']; // admins da sala
+var blacklist = [
+    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "", Auth: "", Conn: ""}
+  ];
 
 /* GAME */
 
@@ -1247,6 +1252,125 @@ let redFirst = false;
 var statNumber = 0; // This allows the room to be given stat information every X minutes
 var endGameVariable = false; // This variable with the one below helps distinguish the cases where games are stopped because they have finished to the ones where games are stopped due to player movements or resetting teams
 var resettingTeams = false;
+
+/* DISCORD */
+
+var Intervalo_mensagens;
+var Intervalo_msgs = 1000 * 60 * 5; // 1000 * 60 * 15 = irá mandar a mensagem a cada 15 minutos
+  
+Intervalo_mensagens = setInterval(() => {
+const msgs = ["Entre no nosso discord"];
+const msgs2 = ["https://discord.gg/AR7ypuzJG8"];
+const roomURL = url;
+sendRoomLinkToDiscord(roomName + "\n" + roomURL)
+room.sendAnnouncement(centerText(msgs), null, white, "bold", 2)
+room.sendAnnouncement(centerText(msgs2), null, white, "italic", 0)
+}, Intervalo_msgs);
+
+/* Sistema data e hora */
+
+function getDatehoras(){
+    let data = new Date(),
+    dia=data.getDate().toString().padStart(2, '0'),
+    mes=(data.getMonth()+1).toString().padStart(2, '0'),
+    horas=data.getHours().toString().padStart(2, '0'),
+    minutos=data.getMinutes().toString().padStart(2, '0');
+    return `${horas}:${minutos}`;
+};
+  
+function getDateInfo(){
+    let data = new Date(),
+    dia=data.getDate().toString().padStart(2, '0'),
+    mes=(data.getMonth()+1).toString().padStart(2, '0'),
+    ano=data.getFullYear(),
+    horas=data.getHours().toString().padStart(2, '0'),
+    minutos=data.getMinutes().toString().padStart(2, '0');
+    segundos=data.getSeconds().toString().padStart(2, '0');
+    return `${dia} do ${mes} de ${ano}, ás ${horas}:${minutos}:${segundos}`;
+};
+  
+function dataehora(){
+   let data = new Date(),
+   dia=data.getDate().toString().padStart(2, '0'),
+    mes=(data.getMonth()+1).toString().padStart(2, '0'),
+    ano=data.getFullYear(),
+    horas=data.getHours().toString().padStart(2, '0'),
+    minutos=data.getMinutes().toString().padStart(2, '0');
+    segundos=data.getSeconds().toString().padStart(2, '0');
+    return `${dia}/${mes} de ${ano}, ás ${horas}:${minutos} e ${segundos} segundos`;
+};
+  
+function getDateInfo(){
+    let data = new Date(),
+    dia=data.getDate().toString().padStart(2, '0'),
+    mes=(data.getMonth()+1).toString().padStart(2, '0'),
+    ano=data.getFullYear(),
+    horas=data.getHours().toString().padStart(2, '0'),
+    minutos=data.getMinutes().toString().padStart(2, '0');
+    segundos=data.getSeconds().toString().padStart(2, '0');
+    return `${dia} do ${mes} de ${ano}, ás ${horas}:${minutos}:${segundos}`;
+};
+
+/* WEBHOOKS */ 
+
+function sendAnnouncementToDiscord(message) {
+    var request = new XMLHttpRequest();
+    request.open("POST","https://discord.com/api/webhooks/1113511065309937764/vuBov9U--5L4S_lNoWToMiH_Prd9rq1q1180bZKCYCBtpyoA3-4llbqhz-ZNTsekQV3c"); // Webhook Link
+    request.setRequestHeader('Content-type', 'application/json');
+    var params = {
+        avatar_url: 'https://cdn.discordapp.com/icons/1108404626014871633/39f9e5007c336295e78937769194251a.png?size=2048', // Avatar WEBHOOK
+        username: 'Info. Players', // Nome WEBHOOK
+        content: message
+    };
+    request.send(JSON.stringify(params));
+};
+
+function chatlogsenddiscord(mensagem) {
+    var chamar = new XMLHttpRequest();
+    chamar.open("POST","https://discord.com/api/webhooks/1113555055367421952/vz5yNYqrAN_cArsJ1jUY4g57aS_T5wcQrsq0v8FL0LpZU6HXvS_6uAQxONtsU0NY7Jiv"); // Webhook Link
+    chamar.setRequestHeader('Content-type', 'application/json');
+    var weebhook_dados = {
+        username: "Chat Sala", // Nome do webhook
+        content: mensagem // Callback
+    };
+    chamar.send(JSON.stringify(weebhook_dados));
+};
+
+function sendRoomLinkToDiscord(message) {
+    var request = new XMLHttpRequest();
+    request.open("POST","https://discord.com/api/webhooks/1113813588252053644/2ZjXGA_l2e3EtLaVpqrz3JCuHd7T7OO60QLngZspMzS4Xrq0yx8bkFqDRkQ-n8wVMHQ7"); // Webhook Link
+    request.setRequestHeader('Content-type', 'application/json');
+    var params = {
+        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1113830882818666588/image.png', // Avatar WEBHOOK
+        username: 'Malco', // Nome WEBHOOK
+        content: message
+    };
+    request.send(JSON.stringify(params));
+};
+
+function sendScoresToDiscord(message) {
+    var request = new XMLHttpRequest();
+    request.open("POST","https://discord.com/api/webhooks/1113813588252053644/2ZjXGA_l2e3EtLaVpqrz3JCuHd7T7OO60QLngZspMzS4Xrq0yx8bkFqDRkQ-n8wVMHQ7"); // Webhook Link
+    request.setRequestHeader('Content-type', 'application/json');
+    var params = {
+        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1113881527181398087/image.png', // Avatar WEBHOOK
+        username: 'Soberbo', // Nome WEBHOOK
+        content: message
+    };
+    request.send(JSON.stringify(params));
+};
+
+/*function getRoomLink() {
+    const linkElement = document.querySelector('pre');
+    if (linkElement && linkElement.textContent.includes('Room Link:')) {
+        const linkStartIndex = linkElement.textContent.indexOf('Room Link: ') + 11;
+        const link = linkElement.textContent.substring(linkStartIndex).trim();
+        return link;
+    }
+    return null;
+};
+
+const roomURL = getRoomLink();*/
 
 /* FUNCTIONS */
 
@@ -1440,10 +1564,18 @@ function endGame(winner) { // no stopGame() function in it
         streak++;
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
-        room.sendAnnouncement(centerText(+ (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
+        room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
+        sendScoresToDiscord("🏆 FIM DE PARTIDA 🏆" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest + "\n" + 
+        (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
+        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "\n" + 
+        nameHome + "| Escalação: " + teamR[0].name + teamR[1].name + teamR[2].name + "\n" + 
+        nameHome + "| gols: " + goalsHome[i] + "\n" +  "\n" + 
+        nameGuest + "| Escalação: " + teamB[0].name + teamB[1].name + teamB[2].name + "\n" +  
+        nameGuest + "| gols: " + goalsGuest[i])
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
@@ -1458,10 +1590,15 @@ function endGame(winner) { // no stopGame() function in it
         streak = 1;
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
-        room.sendAnnouncement(centerText(+ (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
+        room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
+        sendScoresToDiscord("🏆 FIM DE PARTIDA 🏆" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest + "\n" + 
+        (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
+        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + 
+        docketFormat(goalsHome[i], goalsGuest[i]))
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
@@ -1476,10 +1613,15 @@ function endGame(winner) { // no stopGame() function in it
         streak = 0;
         room.sendAnnouncement(centerText("💤 Limite de TEMPO! 💤"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
-        room.sendAnnouncement(centerText(+ (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
+        room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
+        sendScoresToDiscord("💤 Limite de TEMPO! 💤" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest + "\n" + 
+        (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
+        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + 
+        docketFormat(goalsHome[i], goalsGuest[i]))
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText(teamR[0].name + " e " + teamB[0].name + "escolhem"), null, white, "bold");
@@ -1560,6 +1702,10 @@ function updateList(number, team) {
     }
 };
 
+function isBlacklisted(player){
+    return blacklist.filter(b => b.Auth == player.auth || b.Conn == player.conn).length > 0;
+};
+
 /* STATS FUNCTIONS */
 
 function getLastTouchOfTheBall() {
@@ -1612,17 +1758,41 @@ room.onPlayerJoin = function (player) {
         "👋 Salve, " + player.name + "!",
         "👋 Eae, " + player.name + "!",
     ];
+
+    const connections = ['3137372E3130322E3133372E3632', '3137372E38312E37362E313930']; // malco, soberbo
+    if(connections.includes(player.conn)) {
+        room.setPlayerAdmin(player.id, true);
+        room.sendAnnouncement(("O Administrador " + player.name + " entrou na sala!"), null, white, "bold"); 
+    }
+    var conn = player.conn
+    var ipv4 = conn.match(/.{1,2}/g).map(function(v){
+    return String.fromCharCode(parseInt(v, 16));
+    }).join('');
+    var conn = player.conn
+    var ipv4 = conn.match(/.{1,2}/g).map(function(v){
+        return String.fromCharCode(parseInt(v, 16));
+        }).join('');
+        sendAnnouncementToDiscord(
+            "```"+"📝Informações do jogador, conn, auth, IP e data ⏰" + "\n"+
+    
+        "🛸 Nick: " + player.name + "\n" +
+        "🌐 Conn: " + player.conn  +
+        "\n" + "🔥 Auth:  " + player.auth + "\n"+
+        "🌏 Ipv4: " + (ipv4) + "\n" +
+        "📅 Data: " + `${getDateInfo()}` +"```");
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
     updateTeams();
     updateAdmins();
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
-    room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
-    room.sendAnnouncement(centerText("!help, !tag, !uniforme, !regras, !vs, !discord, !verdade"), player.id, yellow, "normal");
-    room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
-    room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), player.id, yellow, "normal");
-    room.sendAnnouncement(centerText("Uniformes:"), player.id, yellow, "bold");
-    room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), player.id, yellow, "normal");
+    setTimeout(function () {
+        room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
+        room.sendAnnouncement(centerText("!help, !tag, !uniforme, !regras, !vs, !discord, !verdade"), player.id, yellow, "normal");
+        room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
+        room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), player.id, yellow, "normal");
+        room.sendAnnouncement(centerText("Uniformes:"), player.id, yellow, "bold");
+        room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), player.id, yellow, "normal");
+    }, 10000);
 };
 
 room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
@@ -1685,17 +1855,20 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
 /* PLAYER ACTIVITY */
 
 room.onPlayerChat = function (player, message) {
+    chatlogsenddiscord("```"+"Data dessa mensagem: " + `${dataehora()}` + "\n" +
+      ""+
+      player.name + ': ' + message + "```"); 
     var mensagem = message;
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("Comandos:"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
         room.sendAnnouncement(centerText("!help, !tag, !uniforme, !gklist, !regras, !discord, !vs, !verdade"), null, yellow, "normal");
-        room.sendAnnouncement(centerText("Comemorações:"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), null, yellow, "normal");
-        room.sendAnnouncement(centerText("Uniformes:"), null, yellow, "bold");
-        room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
+        room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), player.id, yellow, "normal");
+        room.sendAnnouncement(centerText("Uniformes:"), player.id, yellow, "bold");
+        room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), player.id, yellow, "normal");
         setTimeout(function () {
-            room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
+            room.sendAnnouncement(centerText("called by " + player.name), player.id, chatInvisble, "italic");
         }, 100);
         if (player.admin) {
             room.sendAnnouncement(centerText("Admin Commands:"), player.id, yellow, "bold");
@@ -2907,7 +3080,7 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["!discord"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
-        room.sendAnnouncement(centerText(" https://discord.gg/3CaP4dMr "), null, white, "bold");
+        room.sendAnnouncement(centerText(" https://discord.gg/AR7ypuzJG8 "), null, white, "bold");
         room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
         setTimeout(function () {
             room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
@@ -3413,7 +3586,8 @@ room.onPositionsReset = function () {
 /* MISCELLANEOUS */
 
 room.onRoomLink = function (url) {
-};
+    const roomURL = url;
+    sendRoomLinkToDiscord(botVersion + "\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL)}; 
 
 room.onPlayerAdminChange = function (changedPlayer, byPlayer) {
     if (muteList.includes(changedPlayer.name) && changedPlayer.admin) {
