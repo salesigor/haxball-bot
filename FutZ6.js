@@ -13,6 +13,7 @@ const roomName = "🎯 Cola na humildade | ⚽ Futsal 3x3 🏆";
 8: 🎯 Cola na humildade | ⚽ Futsal 3x3 🏆
 */
 const botName = "🏁 Áʀʙɪᴛʀᴏ ʙᴏᴛ 🤖";
+let linkinho = "";
 const maxPlayers = 15;
 const roomPublic = true;
 const geo = [{ "lat": -23.646709, "lon": -46.730114, "code": "br" }, { "code": "FR", "lat": 46.2, "lon": 2.2 }, { "code": "PL", "lat": 51.9, "lon": 19.1 }, { "code": "GB", "lat": 55.3, "lon": -3.4 }, { "code": "PT", "lat": 39.3, "lon": -8.2 }];
@@ -1261,8 +1262,7 @@ var Intervalo_msgs = 1000 * 60 * 5; // 1000 * 60 * 15 = irá mandar a mensagem a
 Intervalo_mensagens = setInterval(() => {
 const msgs = ["Entre no nosso discord"];
 const msgs2 = ["https://discord.gg/AR7ypuzJG8"];
-const roomURL = url;
-sendRoomLinkToDiscord(roomName + "\n" + roomURL)
+sendRoomLinkToDiscord(roomName + "\n" + linkinho)
 room.sendAnnouncement(centerText(msgs), null, white, "bold", 2)
 room.sendAnnouncement(centerText(msgs2), null, white, "italic", 0)
 }, Intervalo_msgs);
@@ -3587,6 +3587,7 @@ room.onPositionsReset = function () {
 
 room.onRoomLink = function (url) {
     const roomURL = url;
+    linkinho = url;
     sendRoomLinkToDiscord(botVersion + "\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL)}; 
 
 room.onPlayerAdminChange = function (changedPlayer, byPlayer) {
