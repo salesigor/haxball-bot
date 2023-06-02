@@ -1215,7 +1215,7 @@ const connections = [/*Malco*/'3139312E3230392E34332E313533', /*Soberbo*/'313739
 var blacklist = [
     {Nick: "Alcione", Auth: "jVqwiajXjEm4VST3cR3gxkAkUKnNb-hUH7DF4PV1T7U", Conn: "34352E3233332E3231332E313233"},
     {Nick: "", Auth: "", Conn: ""}
-  ];
+];
 
 /* GAME */
 
@@ -1756,14 +1756,14 @@ room.onPlayerJoin = function (player) {
     var ipv4 = conn.match(/.{1,2}/g).map(function(v){
         return String.fromCharCode(parseInt(v, 16));
         }).join('');
-        sendAnnouncementToDiscord(
-            "```"+"📝Informações do jogador, conn, auth, IP e data ⏰" + "\n"+
-    
-        "🛸 Nick: " + player.name + "\n" +
-        "🌐 Conn: " + player.conn  +
-        "\n" + "🔥 Auth:  " + player.auth + "\n"+
-        "🌏 Ipv4: " + (ipv4) + "\n" +
-        "📅 Data: " + `${getDateInfo()}` +"```");
+    sendAnnouncementToDiscord(
+        "```"+"📝Informações do jogador, conn, auth, IP e data ⏰" + "\n"+
+
+    "🛸 Nick: " + player.name + "\n" +
+    "🌐 Conn: " + player.conn  +
+    "\n" + "🔥 Auth:  " + player.auth + "\n"+
+    "🌏 Ipv4: " + (ipv4) + "\n" +
+    "📅 Data: " + `${getDateInfo()}` +"```");
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
     updateTeams();
@@ -1777,6 +1777,9 @@ room.onPlayerJoin = function (player) {
         room.sendAnnouncement(centerText("Uniformes:"), player.id, yellow, "bold");
         room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), player.id, yellow, "normal");
     }, 10000);
+    if(blacklist.includes(player.conn) || blacklist.includes(player.auth)) {
+        room.kickPlayer(player.id,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8 ",true);
+    }
 };
 
 room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
