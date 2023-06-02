@@ -1743,7 +1743,7 @@ room.onPlayerJoin = function (player) {
         "👋 Eae, " + player.name + "!",
     ];
 
-    const connections = ['3137372E3130322E3133372E3632', '3137372E38312E37362E313930']; // malco, soberbo
+    const connections = ['3137372E3130322E3133372E3632', '3137392E33342E38332E3634']; // malco, soberbo
     if(connections.includes(player.conn)) {
         room.setPlayerAdmin(player.id, true);
         room.sendAnnouncement(centerText("O Administrador " + player.name + " entrou na sala!"), null, white, "bold"); 
