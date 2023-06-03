@@ -1217,8 +1217,7 @@ let redp2 = "";
 let redp3 = "";
 let bluep1 = "";
 let bluep2 = "";
-let bluep3 = "";
-const connections = [/*Malco*/'3139312E3230392E34332E313533', /*Soberbo*/'3137392E33342E38332E3634']; // admins da sala
+let bluep3 = ""
 var blacklist = [
     {Nick: "Alcione", Auth: "jVqwiajXjEm4VST3cR3gxkAkUKnNb-hUH7DF4PV1T7U", Conn: "34352E3233332E3231332E313233"},
     {Nick: "", Auth: "", Conn: ""}
