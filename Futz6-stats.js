@@ -1220,7 +1220,17 @@ let bluep2 = "";
 let bluep3 = ""
 var blacklist = [
     {Nick: "Alcione", Auth: "jVqwiajXjEm4VST3cR3gxkAkUKnNb-hUH7DF4PV1T7U", Conn: "34352E3233332E3231332E313233"},
-    {Nick: "", Auth: "", Conn: ""}
+    {Nick: "Arthur MM", Auth: "YD0Jm8MmB9G9YJCwJEEoIcC1SvD3Q2811xT9T-NTmVw", Conn: "3137372E35372E3135302E313736"},
+    {Nick: "ᱦiᱮ∀Ʀd", Auth: "YJINpE0p70-sAT-nTx10vI5VvHyQ-jkZ1C-zi6dI2us", Conn: "3136372E3234392E39332E313135"},
+    {Nick: "Schneider", Auth: "_nsAyl-n61ELIOJghIDiHojx-parT0N19K374jqygqo", Conn: "3137372E37362E3232342E3730"},
+    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "", Auth: "", Conn: ""},
 ];
 var playerList = []; 
 var conns = []
