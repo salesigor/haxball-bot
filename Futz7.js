@@ -2054,7 +2054,7 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), player.id, yellow, "normal");
         if (player.admin) {
             room.sendAnnouncement(centerText("Admin Commands:"), player.id, yellow, "bold");
-            room.sendAnnouncement(centerText("rr, !who <r/b/rb>, !ban <nome>, !clearbans, !comofaz"), player.id, yellow, "normal");
+            room.sendAnnouncement(centerText("rr, go/play/bora, !who <r/b/rb>, !ban <nome>, !clearbans, !comofaz"), player.id, yellow, "normal");
             room.sendAnnouncement(centerText("Mapas:"), player.id, yellow, "bold");
             room.sendAnnouncement(centerText("!2x, !3x <blue>, !5x"), player.id, yellow, "normal");
             room.sendAnnouncement(centerText("Choose Mode:"), player.id, yellow, "bold");
@@ -2518,23 +2518,33 @@ room.onPlayerChat = function (player, message) {
             }
         }
     }
-    else if (["!2x"].includes(message[0].toLowerCase())) {
-        if (message[1] == null) {
-        room.setCustomStadium(smallStadium);
+    else if (["2x"].includes(message[0].toLowerCase())) {
+        if (player.admin) {
+            if (message[1] == null) {
+                room.setCustomStadium(smallStadium);
+            }
+            else {return false}
         }
+        else {return false}
     }
-    else if (["!3x"].includes(message[0].toLowerCase())) {
-        if (message[1] == null) {
-        room.setCustomStadium(mediumStadium);
+    else if (["3x"].includes(message[0].toLowerCase())) {
+        if (player.admin) {
+            if (message[1] == null) {
+            room.setCustomStadium(mediumStadium);
+            }
+            else if (message[1] == "blue") {
+                room.setCustomStadium(mediumBlue);
+            }
         }
-        else if (message[1] == "blue") {
-            room.setCustomStadium(mediumBlue);
-        }
+        else {return false}
     }
     else if (["!5x"].includes(message[0].toLowerCase())) {
-        if (message[1] == null) {
-        room.setCustomStadium(bigStadium);
+        if (player.admin) {
+            if (message[1] == null) {
+            room.setCustomStadium(bigStadium);
+            }
         }
+        else {return false}
     }
     else if (["!comofaz"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Trocar Uniforme:"), player.id, yellow, "bold");
@@ -3502,6 +3512,19 @@ room.onPlayerChat = function (player, message) {
                 rr = false;
             }, 1000);
         }
+        else {return false}
+    }
+    if (["go", "play", "bora"].includes(message[0].toLowerCase())) {
+        if (player.admin) {
+            room.startGame();
+        }
+        
+    }
+    if (["stop"].includes(message[0].toLowerCase())) {
+        if (player.admin) {
+            room.stopGame();
+        }
+        else {return false}
     }
     if (message[0][0] == "!") {
         return false;
