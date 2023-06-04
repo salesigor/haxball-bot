@@ -1217,13 +1217,15 @@ let redp2 = "";
 let redp3 = "";
 let bluep1 = "";
 let bluep2 = "";
-let bluep3 = ""
+let bluep3 = "";
+const badasses = ['3137372E3130322E3133372E3632', '3137392E33342E38332E3634', '3139312E3230392E34332E313533']; // malco, soberbo
+const supervisors = ['3137372E38312E37362E313930','']; // Gustaxs__
 var blacklist = [
     {Nick: "Alcione", Auth: "jVqwiajXjEm4VST3cR3gxkAkUKnNb-hUH7DF4PV1T7U", Conn: "34352E3233332E3231332E313233"},
     {Nick: "Arthur MM", Auth: "YD0Jm8MmB9G9YJCwJEEoIcC1SvD3Q2811xT9T-NTmVw", Conn: "3137372E35372E3135302E313736"},
     {Nick: "ᱦiᱮ∀Ʀd", Auth: "YJINpE0p70-sAT-nTx10vI5VvHyQ-jkZ1C-zi6dI2us", Conn: "3136372E3234392E39332E313135"},
     {Nick: "Schneider", Auth: "_nsAyl-n61ELIOJghIDiHojx-parT0N19K374jqygqo", Conn: "3137372E37362E3232342E3730"},
-    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "Alcione, o anticristo", Auth: "l6CTEtHr4eiv6xwCfvFow6dqEkTxuKRKhWUWgVkmFzY", Conn: "3137392E3231382E32312E323337"},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
@@ -1939,10 +1941,13 @@ room.onPlayerJoin = function (player) {
         "👋 Salve, " + player.name + "!",
         "👋 Eae, " + player.name + "!",
     ];
-    const connections = ['3137372E3130322E3133372E3632', '3137392E33342E38332E3634', '3139312E3230392E34332E313533']; // malco, soberbo
-    if(connections.includes(player.conn)) {
+    if(badasses.includes(player.conn)) {
         room.setPlayerAdmin(player.id, true);
-        room.sendAnnouncement(centerText("O Administrador " + player.name + " entrou na sala!"), null, white, "bold"); 
+        room.sendAnnouncement(centerText("O Administrador " + player.name + " entrou na sala!"), null, green, "bold"); 
+    }
+    if(supervisors.includes(player.conn)) {
+        room.setPlayerAdmin(player.id, true);
+        room.sendAnnouncement(centerText("O Supervisor " + player.name + " entrou na sala!"), null, green, "bold"); 
     }
     var conn = player.conn
     var ipv4 = conn.match(/.{1,2}/g).map(function(v){
