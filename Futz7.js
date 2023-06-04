@@ -3526,6 +3526,35 @@ room.onPlayerChat = function (player, message) {
         }
         else {return false}
     }
+    if (["!avatar"].includes(message[0].toLowerCase())) {
+        if (player.admin) {
+            var message2avatar = message[2];
+            if (message[1] == r1) {
+                var r1 = teamR[0].id;
+                room.setPlayerAvatar(r1, message2avatar);
+            }
+            else if (message[1] == r2) {
+                var r2 = teamR[1].id;
+                room.setPlayerAvatar(r2, message2avatar);
+            }
+            else if (message[1] == r3) {
+                var r3 = teamR[2].id;
+                room.setPlayerAvatar(r3, message2avatar);
+            }
+            else if (message[1] == b1) {
+                var b1 = teamB[0].id;
+                room.setPlayerAvatar(b1, message2avatar);
+            }
+            else if (message[1] == b2) {
+                var b2 = teamB[1].id;
+                room.setPlayerAvatar(b2, message2avatar);
+            }
+            else if (message[1] == b3) {
+                var b3 = teamB[2].id;
+                room.setPlayerAvatar(b3, message2avatar);
+            }
+        }
+    }
     if (message[0][0] == "!") {
         return false;
     }
