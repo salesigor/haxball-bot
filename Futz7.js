@@ -1946,7 +1946,6 @@ room.onPlayerJoin = function (player) {
         room.sendAnnouncement(centerText("O Administrador " + player.name + " entrou na sala!"), null, green, "bold"); 
     }
     if(supervisors.includes(player.conn)) {
-        room.setPlayerAdmin(player.id, true);
         room.sendAnnouncement(centerText("O Supervisor " + player.name + " entrou na sala!"), null, green, "bold"); 
     }
     var conn = player.conn
