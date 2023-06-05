@@ -26,7 +26,6 @@ room.setTimeLimit(timeLimit);
 room.setTeamsLock(true);
 var adminPassword = "true";
 console.log("adminPassword : " + adminPassword);
-token = "thr1.AAAAAGR4BqYGX1xpjWlM5Q.abVNGYI2XbQ";
 
 /* STADIUM */
 
@@ -1296,11 +1295,15 @@ var Intervalo_mensagens;
 var Intervalo_msgs = 1000 * 60 * 5; // 1000 * 60 * 15 = irá mandar a mensagem a cada 15 minutos
   
 Intervalo_mensagens = setInterval(() => {
-const msgs = ["Entre no nosso discord"];
-const msgs2 = ["https://discord.gg/AR7ypuzJG8"];
-sendRoomLinkToDiscord(roomName + "\n" + linkinho)
-room.sendAnnouncement(centerText(msgs), null, white, "bold", 2)
-room.sendAnnouncement(centerText(msgs2), null, white, "italic", 0)
+const msgs1 = ["▒█▀▀▄ ▀█▀ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▄"];
+const msgs2 = ["▒█░▒█ ▒█░ ░▀▀▀▄▄ ▒█░░░ ▒█░░▒█ ▒█▄▄▀ ▒█░▒█"];
+const msgs3 = ["▒█▄▄▀ ▄█▄ ▒█▄▄▄█ ▒█▄▄█ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄▀"];
+const msgs4 = ["https://discord.gg/AR7ypuzJG8"];
+sendRoomLinkToDiscord(roomName + "\n" + linkinho);
+room.sendAnnouncement(centerText(msgs1), null, white, "bold", 2);
+room.sendAnnouncement(centerText(msgs2), null, white, "bold", 2);
+room.sendAnnouncement(centerText(msgs3), null, white, "bold", 2);
+room.sendAnnouncement(centerText(msgs4), null, white, "italic", 0);
 }, Intervalo_msgs);
 
 /* Sistema data e hora */
@@ -1997,14 +2000,7 @@ room.onPlayerLeave = function (player) {
     updateList(Math.max(teamR.findIndex((p) => p.id == player.id), teamB.findIndex((p) => p.id == player.id), teamS.findIndex((p) => p.id == player.id)), player.team);
     updateTeams();
     updateAdmins();
-    var messages = [
-        player.name + " vazou!",
-        "Tivemos uma perda... RIP " + player.name,
-        player.name + " arregou essas horas!",
-    ];
-    var randomIndex = Math.floor(Math.random() * messages.length);
-    var announcement = messages[randomIndex];
-    room.sendAnnouncement(centerText(announcement), null, white, "bold");
+    room.sendAnnouncement(centerText(player.name + " vazou!"), null, white, "bold");
     if (teamR.length =! teamB.length) {
         setTimeout(function () {
             room.pauseGame(true);
@@ -2033,8 +2029,13 @@ room.onPlayerLeave = function (player) {
 room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
     if (ban == true) {
         banList.push([kickedPlayer.name, kickedPlayer.id]);
+        room.sendAnnouncement(centerText(kickedPlayer.name + " levou ban!"), null, white, "bold");
+        room.sendAnnouncement(centerText("Banned por não seguir as REGRAS!"), null, warn, "italic");
     }
+    else {
+    room.sendAnnouncement(centerText(kickedPlayer.name + " levou kick!"), null, white, "bold");
     room.sendAnnouncement(centerText("Kicked por inatividade ou por pura encheção de saco!"), null, warn, "italic");
+    }
     console.log("mute list : " + muteList);
     console.log("ban list : " + banList);
 };
@@ -3312,9 +3313,11 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("AFK vai pro final da fila e pausamos pro cap escolher outro"), null, yellow, "normal");
     }
     else if (["!discord"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("    Ta aí nosso server!"), null, white, "normal");
+        sendRoomLinkToDiscord(roomName + "\n" + linkinho);
+        room.sendAnnouncement(centerText("▒█▀▀▄ ▀█▀ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▄"), null, white, "bold", 2);
+        room.sendAnnouncement(centerText("▒█░▒█ ▒█░ ░▀▀▀▄▄ ▒█░░░ ▒█░░▒█ ▒█▄▄▀ ▒█░▒█"), null, white, "bold", 2);
+        room.sendAnnouncement(centerText("▒█▄▄▀ ▄█▄ ▒█▄▄▄█ ▒█▄▄█ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄▀"), null, white, "bold", 2);
         room.sendAnnouncement(centerText(" https://discord.gg/AR7ypuzJG8 "), null, white, "bold");
-        room.sendAnnouncement(centerText(" Mantém o respeito, na moral!"), null, white, "normal");
     }
     else if (["!lenda"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
