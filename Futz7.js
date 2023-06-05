@@ -1952,6 +1952,15 @@ room.onPlayerJoin = function (player) {
     if(supervisors.includes(player.conn)) {
         room.sendAnnouncement(centerText("O Supervisor " + player.name + " entrou na sala!"), null, green, "bold"); 
     }
+    if(blacklist.includes(player.conn)) {
+        room.kickPlayer(player.id,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8 ",true);
+    }
+    if(blacklist.includes(player.auth)) {
+        room.kickPlayer(player.id,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8 ",true);
+    }
+    if(blacklist.includes(player.name)) {
+        room.kickPlayer(player.id,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8 ",true);
+    }
     var conn = player.conn
     var ipv4 = conn.match(/.{1,2}/g).map(function(v){
     return String.fromCharCode(parseInt(v, 16));
@@ -1973,17 +1982,6 @@ room.onPlayerJoin = function (player) {
     updateTeams();
     updateAdmins();
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
-    setTimeout(function () {
-        room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
-        room.sendAnnouncement(centerText("!help, !tag, !uniforme, !regras, !vs, !discord, !verdade"), player.id, yellow, "normal");
-        room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
-        room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !me"), player.id, yellow, "normal");
-        room.sendAnnouncement(centerText("Uniformes:"), player.id, yellow, "bold");
-        room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), player.id, yellow, "normal");
-    }, 10000);
-    if(blacklist.includes(player.conn) || blacklist.includes(player.auth)) {
-        room.kickPlayer(player.id,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8 ",true);
-    }
 };
 
 room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
