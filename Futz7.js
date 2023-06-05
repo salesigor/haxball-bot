@@ -1569,24 +1569,24 @@ function getPlayersGoalCount() {
     }
     else if (teamR.length == 2) {
         if (lastPlayersTouched[0].id == teamR[0].id) {goalsRp1++;}
-        else if (lastPlayersTouched[0].id == teamR[1].id) {goalsRp2++;}
+        if (lastPlayersTouched[0].id == teamR[1].id) {goalsRp2++;}
     }
     else if (teamR.length == 3) {
         if (lastPlayersTouched[0].id == teamR[0].id) {goalsRp1++;}
-        else if (lastPlayersTouched[0].id == teamR[1].id) {goalsRp2++;}
-        else if (lastPlayersTouched[0].id == teamR[2].id) {goalsRp3++;}
+        if (lastPlayersTouched[0].id == teamR[1].id) {goalsRp2++;}
+        if (lastPlayersTouched[0].id == teamR[2].id) {goalsRp3++;}
     }
     else if (teamB.length == 1) {
         if (lastPlayersTouched[0].id == teamB[0].id) {goalsBp1++;}
     }
     else if (teamB.length == 2) {
         if (lastPlayersTouched[0].id == teamB[0].id) {goalsBp1++;}
-        else if (lastPlayersTouched[0].id == teamB[1].id) {goalsBp2++;}
+        if (lastPlayersTouched[0].id == teamB[1].id) {goalsBp2++;}
     }
     else if (teamB.length == 3) {
         if (lastPlayersTouched[0].id == teamB[0].id) {goalsBp1++;}
-        else if (lastPlayersTouched[0].id == teamB[1].id) {goalsBp2++;}
-        else if (lastPlayersTouched[0].id == teamB[2].id) {goalsBp3++;}
+        if (lastPlayersTouched[0].id == teamB[1].id) {goalsBp2++;}
+        if (lastPlayersTouched[0].id == teamB[2].id) {goalsBp3++;}
     }
 };
 
@@ -3560,6 +3560,10 @@ room.onPlayerChat = function (player, message) {
     }
     if (player.admin == true) {
         room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, offYellow, "bold", 2);
+        return false;
+    }
+    if(supervisors.includes(player.conn)) {
+        room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, offYellow, "bold", 2);
         return false;
     }
     if (player.team === Team.RED) {
