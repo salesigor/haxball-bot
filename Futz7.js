@@ -2052,14 +2052,14 @@ room.onPlayerChat = function (player, message) {
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
-        room.sendAnnouncement(centerText("!help, !tag, !uniforme, !gklist, !regras, !discord, !vs, !verdade"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("!help, !tag, !uniforme, !gklist, !regras, !discord,\n!vs, !verdade, !bb, !bye, !flw"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !brabo"), player.id, yellow, "normal");
         room.sendAnnouncement(centerText("Uniformes:"), player.id, yellow, "bold");
         room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), player.id, yellow, "normal");
         if (player.admin) {
             room.sendAnnouncement(centerText("Admin Commands:"), player.id, yellow, "bold");
-            room.sendAnnouncement(centerText("rr, go/play/bora, !who <r/b/rb>, !ban <nome>, !clearbans, !comofaz"), player.id, yellow, "normal");
+            room.sendAnnouncement(centerText("rr, go/play/bora, !who <r/b/rb>, !ban <nome>, !clearbans,\n!comofaz, !clean, !limpar"), player.id, yellow, "normal");
             room.sendAnnouncement(centerText("Mapas:"), player.id, yellow, "bold");
             room.sendAnnouncement(centerText("!2x, !3x <blue>, !5x"), player.id, yellow, "normal");
             room.sendAnnouncement(centerText("Choose Mode:"), player.id, yellow, "bold");
@@ -3604,6 +3604,27 @@ room.onPlayerChat = function (player, message) {
             adminPassword = "true";
             console.log("adminPassword : " + adminPassword);
         }
+    }
+    else if (["!bb", "!bye", "!flw"].includes(message[0].toLowerCase())) {
+        room.kickPlayer(player.id, "se foi!", false);
+        return false;
+    }
+    else if (["!clean", "!limpar"].includes(message[0].toLowerCase())) {
+        if (player.admin) {
+            function repeatAction(action, times) {
+                for (var i = 0; i < times; i++) {
+                    action(); // Executa a ação
+                }
+            }
+            function blankedAnnouncement() {
+                room.sendAnnouncement("", null);
+            }
+            repeatAction(blankedAnnouncement, 50); // Envia o anúncio 5 vezes
+            setTimeout(function () {
+                room.sendAnnouncement(centerText(player.name + " limpou o chat"), null, yellow, "italic");
+            }, 500);
+        }
+        return false;
     }
     if (["rr", "!rr"].includes(message[0].toLowerCase())) {
         if (player.admin) {
