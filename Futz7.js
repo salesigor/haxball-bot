@@ -1,7 +1,7 @@
 /* ROOM */
 
 const botVersion = "Futz7";
-const roomName = "🎯 Cola na humildade | ⚽ Futsal 3x3 🏆";
+const roomName = "⚽ FutZ 3x3 🏆 | Cola na humildade 🎯";
 /* NOMES SUGERIDOS:
 1: 🏆 3x3 Futsal ⚽ | Cola na humildade
 2: 🏆 SABOT | ⚽ 3x3 Futsal ⚽ | Cola na humildade
@@ -11,6 +11,7 @@ const roomName = "🎯 Cola na humildade | ⚽ Futsal 3x3 🏆";
 6: 🎯 FuteLab | ⚽ Futsal ⚽ | 3x3 | Cola na humildade
 7: 🎯 Futsal ⚽ 3x3 🏆 | Cola na humildade
 8: 🎯 Cola na humildade | ⚽ Futsal 3x3 🏆
+9: ⚽ FutZ 3x3 🏆 | Cola na humildade 🎯
 */
 const botName = "🏁 Áʀʙɪᴛʀᴏ ʙᴏᴛ 🤖";
 let linkinho = "";
