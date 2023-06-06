@@ -1228,7 +1228,7 @@ var blacklist = [
     {Nick: "ᱦiᱮ∀Ʀd", Auth: "YJINpE0p70-sAT-nTx10vI5VvHyQ-jkZ1C-zi6dI2us", Conn: "3136372E3234392E39332E313135"},
     {Nick: "Schneider", Auth: "_nsAyl-n61ELIOJghIDiHojx-parT0N19K374jqygqo", Conn: "3137372E37362E3232342E3730"},
     {Nick: "Alcione, o anticristo", Auth: "l6CTEtHr4eiv6xwCfvFow6dqEkTxuKRKhWUWgVkmFzY", Conn: "3137392E3231382E32312E323337"},
-    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "Alcione", Auth: "l6CTEtHr4eiv6xwCfvFow6dqEkTxuKRKhWUWgVkmFzY", Conn: "3137392E3231382E32312E323337"},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
@@ -3688,69 +3688,103 @@ room.onPlayerChat = function (player, message) {
     }
     if (["!size"].includes(message[0].toLowerCase())) {
         if (player.admin) {
-            if (message[1] == r1) {
-                if (message[2] == big) {
+            if (message[1] == "r1") {
+                if (message[2] == "big") {
                     room.setPlayerDiscProperties(teamR[0].id, {radius: 17, invMass: 30 / 30});
                 }
-                if (message[2] == normal) {
+                else if (message[2] == "normal") {
                     room.setPlayerDiscProperties(teamR[0].id, {radius: 15, invMass: 30 / 30});
                 }
-                if (message[2] == small) {
+                else if (message[2] == "small") {
                     room.setPlayerDiscProperties(teamR[0].id, {radius: 12, invMass: 30 / 30});
                 }
             }
-            else if (message[1] == r2) {
-                if (message[2] == big) {
+            else if (message[1] == "r2") {
+                if (message[2] == "big") {
                     room.setPlayerDiscProperties(teamR[1].id, {radius: 17, invMass: 30 / 30});
                 }
-                if (message[2] == normal) {
+                else if (message[2] == "normal") {
                     room.setPlayerDiscProperties(teamR[1].id, {radius: 15, invMass: 30 / 30});
                 }
-                if (message[2] == small) {
+                else if (message[2] == "small") {
                     room.setPlayerDiscProperties(teamR[1].id, {radius: 12, invMass: 30 / 30});
                 }
             }
-            else if (message[1] == r3) {
-                if (message[2] == big) {
+            else if (message[1] == "r3") {
+                if (message[2] == "big") {
                     room.setPlayerDiscProperties(teamR[2].id, {radius: 17, invMass: 30 / 30});
                 }
-                if (message[2] == normal) {
+                else if (message[2] == "normal") {
                     room.setPlayerDiscProperties(teamR[2].id, {radius: 15, invMass: 30 / 30});
                 }
-                if (message[2] == small) {
+                else if (message[2] == "small") {
                     room.setPlayerDiscProperties(teamR[2].id, {radius: 12, invMass: 30 / 30});
                 }
             }
-            else if (message[1] == b1) {
-                if (message[2] == big) {
+            else if (message[1] == "b1") {
+                if (message[2] == "big") {
                     room.setPlayerDiscProperties(teamB[0].id, {radius: 17, invMass: 30 / 30});
                 }
-                if (message[2] == normal) {
+                else if (message[2] == "normal") {
                     room.setPlayerDiscProperties(teamB[0].id, {radius: 15, invMass: 30 / 30});
                 }
-                if (message[2] == small) {
+                else if (message[2] == "small") {
                     room.setPlayerDiscProperties(teamB[0].id, {radius: 12, invMass: 30 / 30});
                 }
             }
-            else if (message[1] == b2) {
-                if (message[2] == big) {
+            else if (message[1] == "b2") {
+                if (message[2] == "big") {
                     room.setPlayerDiscProperties(teamB[1].id, {radius: 17, invMass: 30 / 30});
                 }
-                if (message[2] == normal) {
+                else if (message[2] == "normal") {
                     room.setPlayerDiscProperties(teamB[1].id, {radius: 15, invMass: 30 / 30});
                 }
-                if (message[2] == small) {
+                else if (message[2] == "small") {
                     room.setPlayerDiscProperties(teamB[1].id, {radius: 12, invMass: 30 / 30});
                 }
             }
-            else if (message[1] == b3) {
-                if (message[2] == big) {
+            else if (message[1] == "b3") {
+                if (message[2] == "big") {
                     room.setPlayerDiscProperties(teamB[2].id, {radius: 17, invMass: 30 / 30});
                 }
-                if (message[2] == normal) {
+                else if (message[2] == "normal") {
                     room.setPlayerDiscProperties(teamB[2].id, {radius: 15, invMass: 30 / 30});
                 }
-                if (message[2] == small) {
+                else if (message[2] == "small") {
+                    room.setPlayerDiscProperties(teamB[2].id, {radius: 12, invMass: 30 / 30});
+                }
+            }
+            else if (message[1] == "red") {
+                if (message[2] == "big") {
+                    room.setPlayerDiscProperties(teamR[0].id, {radius: 17, invMass: 30 / 30});
+                    room.setPlayerDiscProperties(teamR[1].id, {radius: 17, invMass: 30 / 30});
+                    room.setPlayerDiscProperties(teamR[2].id, {radius: 17, invMass: 30 / 30});
+                }
+                else if (message[2] == "normal") {
+                    room.setPlayerDiscProperties(teamR[0].id, {radius: 15, invMass: 30 / 30});
+                    room.setPlayerDiscProperties(teamR[1].id, {radius: 15, invMass: 30 / 30});
+                    room.setPlayerDiscProperties(teamR[2].id, {radius: 15, invMass: 30 / 30});
+                }
+                else if (message[2] == "small") {
+                    room.setPlayerDiscProperties(teamR[0].id, {radius: 12, invMass: 30 / 30});
+                    room.setPlayerDiscProperties(teamR[1].id, {radius: 12, invMass: 30 / 30});
+                    room.setPlayerDiscProperties(teamR[2].id, {radius: 12, invMass: 30 / 30});
+                }
+            }
+            else if (message[1] == "blue") {
+                if (message[2] == "big") {
+                    room.setPlayerDiscProperties(teamB[0].id, {radius: 17, invMass: 30 / 30});
+                    room.setPlayerDiscProperties(teamB[1].id, {radius: 17, invMass: 30 / 30});
+                    room.setPlayerDiscProperties(teamB[2].id, {radius: 17, invMass: 30 / 30});
+                }
+                else if (message[2] == "normal") {
+                    room.setPlayerDiscProperties(teamB[0].id, {radius: 15, invMass: 30 / 30});
+                    room.setPlayerDiscProperties(teamB[1].id, {radius: 15, invMass: 30 / 30});
+                    room.setPlayerDiscProperties(teamB[2].id, {radius: 15, invMass: 30 / 30});
+                }
+                else if (message[2] == "small") {
+                    room.setPlayerDiscProperties(teamB[0].id, {radius: 12, invMass: 30 / 30});
+                    room.setPlayerDiscProperties(teamB[1].id, {radius: 12, invMass: 30 / 30});
                     room.setPlayerDiscProperties(teamB[2].id, {radius: 12, invMass: 30 / 30});
                 }
             }
