@@ -3755,37 +3755,119 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             else if (message[1] == "red") {
+                if (message[2] == "hulk") {
+                    if (teamR.length == 1) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 25, invMass: 30 / 30});
+                    }
+                    else if (teamR.length == 2) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 25, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[1].id, {radius: 25, invMass: 30 / 30});
+                    }
+                    else if (teamR.length == 3) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 25, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[1].id, {radius: 25, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[2].id, {radius: 25, invMass: 30 / 30});
+                    }
+                }
                 if (message[2] == "big") {
-                    room.setPlayerDiscProperties(teamR[0].id, {radius: 17, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamR[1].id, {radius: 17, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamR[2].id, {radius: 17, invMass: 30 / 30});
+                    if (teamR.length == 1) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 17, invMass: 30 / 30});
+                    }
+                    else if (teamR.length == 2) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 17, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[1].id, {radius: 17, invMass: 30 / 30});
+                    }
+                    else if (teamR.length == 3) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 17, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[1].id, {radius: 17, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[2].id, {radius: 17, invMass: 30 / 30});
+                    }
                 }
                 else if (message[2] == "normal") {
-                    room.setPlayerDiscProperties(teamR[0].id, {radius: 15, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamR[1].id, {radius: 15, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamR[2].id, {radius: 15, invMass: 30 / 30});
+                    if (teamR.length == 1) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 15, invMass: 30 / 30});
+                    }
+                    else if (teamR.length == 2) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 15, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[1].id, {radius: 15, invMass: 30 / 30});
+                    }
+                    else if (teamR.length == 3) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 15, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[1].id, {radius: 15, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[2].id, {radius: 15, invMass: 30 / 30});
+                    }
                 }
                 else if (message[2] == "small") {
-                    room.setPlayerDiscProperties(teamR[0].id, {radius: 12, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamR[1].id, {radius: 12, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamR[2].id, {radius: 12, invMass: 30 / 30});
+                    if (teamR.length == 1) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 12, invMass: 30 / 30});
+                    }
+                    else if (teamR.length == 2) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 12, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[1].id, {radius: 12, invMass: 30 / 30});
+                    }
+                    else if (teamR.length == 3) {
+                        room.setPlayerDiscProperties(teamR[0].id, {radius: 12, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[1].id, {radius: 12, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamR[2].id, {radius: 12, invMass: 30 / 30});
+                    }
                 }
             }
             else if (message[1] == "blue") {
-                if (message[2] == "big") {
-                    room.setPlayerDiscProperties(teamB[0].id, {radius: 17, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamB[1].id, {radius: 17, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamB[2].id, {radius: 17, invMass: 30 / 30});
+                if (message[2] == "hulk") {
+                    if (teamB.length == 1) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 25, invMass: 30 / 30});
+                    }
+                    else if (teamB.length == 2) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 25, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[1].id, {radius: 25, invMass: 30 / 30});
+                    }
+                    else if (teamB.length == 3) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 25, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[1].id, {radius: 25, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[2].id, {radius: 25, invMass: 30 / 30});
+                    }
+                }
+                else if (message[2] == "big") {
+                    if (teamB.length == 1) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 17, invMass: 30 / 30});
+                    }
+                    else if (teamB.length == 2) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 17, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[1].id, {radius: 17, invMass: 30 / 30});
+                    }
+                    else if (teamB.length == 3) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 17, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[1].id, {radius: 17, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[2].id, {radius: 17, invMass: 30 / 30});
+                    }
                 }
                 else if (message[2] == "normal") {
-                    room.setPlayerDiscProperties(teamB[0].id, {radius: 15, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamB[1].id, {radius: 15, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamB[2].id, {radius: 15, invMass: 30 / 30});
+                    if (teamB.length == 1) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 15, invMass: 30 / 30});
+                    }
+                    else if (teamB.length == 2) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 15, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[1].id, {radius: 15, invMass: 30 / 30});
+                    }
+                    else if (teamB.length == 3) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 15, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[1].id, {radius: 15, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[2].id, {radius: 15, invMass: 30 / 30});
+                    }
                 }
                 else if (message[2] == "small") {
-                    room.setPlayerDiscProperties(teamB[0].id, {radius: 12, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamB[1].id, {radius: 12, invMass: 30 / 30});
-                    room.setPlayerDiscProperties(teamB[2].id, {radius: 12, invMass: 30 / 30});
+                    if (teamB.length == 1) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 12, invMass: 30 / 30});
+                    }
+                    else if (teamB.length == 2) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 12, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[1].id, {radius: 12, invMass: 30 / 30});
+                    }
+                    else if (teamB.length == 3) {
+                        room.setPlayerDiscProperties(teamB[0].id, {radius: 12, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[1].id, {radius: 12, invMass: 30 / 30});
+                        room.setPlayerDiscProperties(teamB[2].id, {radius: 12, invMass: 30 / 30});
+                    }
                 }
             }
         }
@@ -3820,52 +3902,87 @@ room.onPlayerChat = function (player, message) {
             if (message[1] == "red") {
                 if (message[2] == "30") {
                 redChat = false;
+                room.sendAnnouncement(centerText("O time " + nameHome + " foi mutado por 30 segundos"), null, warn, "italic");
                 setTimeout(function () {
                     redChat = true;
+                    room.sendAnnouncement(centerText("Fim do MUTE para " + nameHome), null, warn, "italic");
                 }, 30000);
                 }
                 else if (message[2] == "1") {
                     redChat = false;
+                    room.sendAnnouncement(centerText("O time " + nameHome + " foi mutado por 1 minuto"), null, warn, "italic");
                     setTimeout(function () {
                         redChat = true;
+                        room.sendAnnouncement(centerText("Fim do MUTE para " + nameHome), null, warn, "italic");
                     }, 60000);
                 }
                 else {
-                    redChat = false;
+                    if (redChat == true) {
+                        redChat = false;
+                        room.sendAnnouncement(centerText("O time " + nameHome + " foi mutado"), null, warn, "italic");
+                    }
+                    else if (redChat == false) {
+                        redChat = true;
+                        room.sendAnnouncement(centerText("Fim do MUTE para " + nameHome), null, warn, "italic");
+                    }
+                    
                 }
             }
             if (message[1] == "blue") {
                 if (message[2] == "30") {
                 blueChat = false;
+                room.sendAnnouncement(centerText("O time " + nameGuest + " foi mutado por 30 segundos"), null, warn, "italic");
                 setTimeout(function () {
                     blueChat = true;
+                    room.sendAnnouncement(centerText("Fim do MUTE para " + nameGuest), null, warn, "italic");
                 }, 30000);
                 }
                 else if (message[2] == "1") {
                     blueChat = false;
+                    room.sendAnnouncement(centerText("O time " + nameGuest + " foi mutado por 1 minuto"), null, warn, "italic");
                     setTimeout(function () {
                         blueChat = true;
+                        room.sendAnnouncement(centerText("Fim do MUTE para " + nameGuest), null, warn, "italic");
                     }, 60000);
                 }
                 else {
-                    blueChat = false;
+                    if (blueChat == true) {
+                        blueChat = false;
+                        room.sendAnnouncement(centerText("O time " + nameGuest + " foi mutado"), null, warn, "italic");
+                    }
+                    else if (blueChat == false) {
+                        blueChat = true;
+                        room.sendAnnouncement(centerText("Fim do MUTE para " + nameGuest), null, warn, "italic");
+                    }
                 }
             }
             if (message[1] == "spec") {
                 if (message[2] == "30") {
                 specChat = false;
+                room.sendAnnouncement(centerText("Espectadores foram mutados por 30 segundos"), null, warn, "italic");
                 setTimeout(function () {
                     specChat = true;
+                    room.sendAnnouncement(centerText("Fim do MUTE para Espectadores"), null, warn, "italic");
                 }, 30000);
                 }
                 else if (message[2] == "1") {
                     specChat = false;
+                    room.sendAnnouncement(centerText("Espectadores foram mutados por 1 minuto"), null, warn, "italic");
                     setTimeout(function () {
                         specChat = true;
+                        room.sendAnnouncement(centerText("Fim do MUTE para Espectadores"), null, warn, "italic");
                     }, 60000);
                 }
                 else {
-                    specChat = false;
+                    if (specChat == true) {
+                        specChat = false;
+                        room.sendAnnouncement(centerText("Espectadores foram mutados"), null, warn, "italic");
+                    }
+                    else if (specChat == false) {
+                        specChat = true;
+                        room.sendAnnouncement(centerText("Fim do MUTE para Espectadores"), null, warn, "italic");
+                    }
+                    
                 }
             }
             if (message[1] == null) {
@@ -3874,12 +3991,14 @@ room.onPlayerChat = function (player, message) {
                     blueChat = true;
                     specChat = true;
                     muted = true;
+                    room.sendAnnouncement(centerText("Chat ATIVADO"), null, warn, "italic");
                 }
                 else if (muted === true) {
                     redChat = false;
                     blueChat = false;
                     specChat = false;
                     muted = false;
+                    room.sendAnnouncement(centerText("Chat DESATIVADO"), null, warn, "italic");
                 }
             }
         }
@@ -3904,7 +4023,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(nameHome + " | " + player.name + ": " + mensagem, null, red, "bold", 1);
         }
         else if (redChat == false) {
-            room.sendAnnouncement(" ", null, red, "normal", 0);
+            return false;
         }
         return false;
     }
@@ -3913,7 +4032,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "bold", 1);
         }
         else if (blueChat == false) {
-            room.sendAnnouncement(" ", null, blue, "normal", 0);
+            return false;
         }
         return false;
     }
@@ -3922,7 +4041,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(player.name + ": " + mensagem, null, white, "normal", 1);
         }
         else if (specChat == false) {
-            room.sendAnnouncement(" ", null, white, "normal", 0);
+            return false;
         }
         return false;
     }
@@ -4185,7 +4304,7 @@ room.onTeamGoal = function (team) {
                                     setTimeout(function () {
                                         room.setTeamColors(2, gol2.angle, gol2.textcolor, [gol2.color1, gol2.color2, gol2.color3]);
                                         setTimeout(function () {
-                                            room.setTeamColors(2, gol3.angle, gol3.textcolor, [gol3.color1, gol3.color2, gol3.color3]);
+                                            room.setPlayerDiscProperties(player.id, {radius: 15, invMass: 30 / 30});
                                             setTimeout(function () {
                                                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                                             }, 0);
