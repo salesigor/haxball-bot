@@ -2063,7 +2063,7 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), player.id, yellow, "normal");
         if (player.admin) {
             room.sendAnnouncement(centerText("Admin Commands:"), player.id, yellow, "bold");
-            room.sendAnnouncement(centerText("rr, go/play/bora, !who <r/b/rb>, !ban <nome>, !clearbans,\n!comofaz, !clean, !limpar, !size <r1/b1> <big/normal/small>"), player.id, yellow, "normal");
+            room.sendAnnouncement(centerText("rr, go/play/bora, !who <r/b/rb>, !ban <nome>, !clearbans,\n!comofaz, !clean, !limpar, !size <r1/b1> <big/normal/small>,\n!mute <red/blue/spec> <30/1>"), player.id, yellow, "normal");
             room.sendAnnouncement(centerText("Mapas:"), player.id, yellow, "bold");
             room.sendAnnouncement(centerText("!2x, !3x <blue>, !5x"), player.id, yellow, "normal");
             room.sendAnnouncement(centerText("Choose Mode:"), player.id, yellow, "bold");
