@@ -3866,6 +3866,126 @@ room.onPlayerChat = function (player, message) {
     else if (["!verdade"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText(player.name + " é ruim pra caramba!"), null, yellow, "bold");
     }
+    else if (["!sedex", "sedex"].includes(message[0].toLowerCase())) {
+        function repeatAction(action, times) {
+            for (var i = 0; i < times; i++) {
+                action(); // Executa a ação
+            }
+        }
+        function blank() {
+            room.sendAnnouncement("", null);
+        }
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                                        🚚", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 10);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                                        🚚", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 1000);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                                       🚚💨", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 1250);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                                     🚚💨_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 1500);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                                   🚚𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 1750);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                                 🚚𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 2000);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                               🚚𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 2250);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                             🚚__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 2500);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                           🚚_-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 2750);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                         🚚𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 3000);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                       🚚𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 3250);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                     🚚𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 3500);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                   🚚__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 3750);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("                 🚚_-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 4000);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("               🚚𝐗__-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 4250);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("             🚚𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 4500);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("           🚚𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 4750);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("         🚚__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 5000);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("       🚚_-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 5250);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("     🚚𝐗__-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 5500);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement("   🚚𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 5750);
+        setTimeout(function () {
+        repeatAction(blank, 10);
+        room.sendAnnouncement(" 🚚𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-__𝐒𝐄𝐃𝐄𝐗__-_", null, white, "normal", 0);
+        repeatAction(blank, 2);
+        }, 6000);
+    }
     else if (["!adm"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
             room.setPlayerAdmin(player.id, true);
@@ -3877,7 +3997,7 @@ room.onPlayerChat = function (player, message) {
         room.kickPlayer(player.id, "se foi!", false);
         return false;
     }
-    else if (["!clean", "!limpar"].includes(message[0].toLowerCase())) {
+    else if (["!clean", "!limpar", "!clear"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             function repeatAction(action, times) {
                 for (var i = 0; i < times; i++) {
