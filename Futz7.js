@@ -1330,10 +1330,10 @@ const msgs2 = ["▒█░▒█ ▒█░ ░▀▀▀▄▄ ▒█░░░ ▒
 const msgs3 = ["▒█▄▄▀ ▄█▄ ▒█▄▄▄█ ▒█▄▄█ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄▀"];
 const msgs4 = ["https://discord.gg/AR7ypuzJG8"];
 sendRoomLinkToDiscord(roomName + "\n" + linkinho);
-room.sendAnnouncement(centerText(msgs1), null, white, "bold", 2);
-room.sendAnnouncement(centerText(msgs2), null, white, "bold", 2);
-room.sendAnnouncement(centerText(msgs3), null, white, "bold", 2);
-room.sendAnnouncement(centerText(msgs4), null, white, "italic", 0);
+room.sendAnnouncement(centerText(msgs1), null, white, "bold", 0);
+room.sendAnnouncement(centerText(msgs2), null, white, "bold", 0);
+room.sendAnnouncement(centerText(msgs3), null, white, "bold", 0);
+room.sendAnnouncement(centerText(msgs4), null, white, "italic", 1);
 }, Intervalo_msgs);
 
 /* Sistema data e hora */
@@ -3650,10 +3650,10 @@ room.onPlayerChat = function (player, message) {
     }
     else if (["!discord"].includes(message[0].toLowerCase())) {
         sendRoomLinkToDiscord(roomName + "\n" + linkinho);
-        room.sendAnnouncement(centerText("▒█▀▀▄ ▀█▀ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▄"), null, white, "bold", 2);
-        room.sendAnnouncement(centerText("▒█░▒█ ▒█░ ░▀▀▀▄▄ ▒█░░░ ▒█░░▒█ ▒█▄▄▀ ▒█░▒█"), null, white, "bold", 2);
-        room.sendAnnouncement(centerText("▒█▄▄▀ ▄█▄ ▒█▄▄▄█ ▒█▄▄█ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄▀"), null, white, "bold", 2);
-        room.sendAnnouncement(centerText(" https://discord.gg/AR7ypuzJG8 "), null, white, "bold");
+        room.sendAnnouncement(centerText("▒█▀▀▄ ▀█▀ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▄"), null, white, "bold", 0);
+        room.sendAnnouncement(centerText("▒█░▒█ ▒█░ ░▀▀▀▄▄ ▒█░░░ ▒█░░▒█ ▒█▄▄▀ ▒█░▒█"), null, white, "bold", 0);
+        room.sendAnnouncement(centerText("▒█▄▄▀ ▄█▄ ▒█▄▄▄█ ▒█▄▄█ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄▀"), null, white, "bold", 0);
+        room.sendAnnouncement(centerText(" https://discord.gg/AR7ypuzJG8 "), null, white, "bold", 1);
     }
     else if (["!lenda"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
@@ -3925,7 +3925,7 @@ room.onPlayerChat = function (player, message) {
             }
         }
         function blank() {
-            room.sendAnnouncement("", null, white, "normal", 0);
+            room.sendAnnouncement(" ", null, white, "normal", 0);
         }
         setTimeout(function () {
         repeatAction(blank, 10);
@@ -4057,7 +4057,7 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             function blankedAnnouncement() {
-                room.sendAnnouncement("", null);
+                room.sendAnnouncement(" ", null, white, "normal", 0);
             }
             repeatAction(blankedAnnouncement, 50); // Envia o anúncio 5 vezes
             setTimeout(function () {
