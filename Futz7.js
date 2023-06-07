@@ -3873,7 +3873,7 @@ room.onPlayerChat = function (player, message) {
             }
         }
         function blank() {
-            room.sendAnnouncement("", null);
+            room.sendAnnouncement("", null, white, "normal", 0);
         }
         setTimeout(function () {
         repeatAction(blank, 10);
