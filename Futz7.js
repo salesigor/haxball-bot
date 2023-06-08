@@ -3216,6 +3216,26 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("Gol, gol, gol!!!"), null, white, "bold");
         }, 6000);
     }
+    else if (["!mess"].includes(message[0].toLowerCase())) {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("de cobertura!!"), null, yellow, "bold");
+        }, 10);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("📢 SHOOOOW!! 🎯"), null, white, "bold");
+        }, 1000);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("📢 SHOOOOW!! 🎯"), null, lightgrey, "bold");
+        }, 1500);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("👽🪐 ELE NÃO É DESSE PLANETA, MESMO🪐👽"), null, white, "bold");
+        }, 2000);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("𝕃 . 𝕄𝕖𝕤𝕤𝕚™"), null, indigo, "bold");
+        }, 3000);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("𝕃 . 𝕄𝕖𝕤𝕤𝕚™"), null, lightgrey, "bold");
+        }, 3500);
+    }
     else if (["!abob"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("Abobrinha, que nunca falha..."), null, white, "bold");
