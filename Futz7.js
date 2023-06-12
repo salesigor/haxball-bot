@@ -1983,6 +1983,12 @@ room.onPlayerJoin = function (player) {
             room.sendAnnouncement(centerText("Se Malco e/ou Soberbo estiverem na sala é PROIBIDO pegar adm"), player.id, warn, "normal");
         }, 1000);
     }
+    if(blacklist.includes(player.conn)) {
+        room.sendAnnouncement(centerText("O player " + player.name + " deve ser banido agora!"), null, warn, "bold");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("você está na blacklist e será banido!"), player.id, warn, "italic");
+        }, 1000);
+    }
     var conn = player.conn
     var ipv4 = conn.match(/.{1,2}/g).map(function(v){
     return String.fromCharCode(parseInt(v, 16));
@@ -4297,7 +4303,7 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
-    if (["!crescer", "gordão"].includes(message[0].toLowerCase())) {
+    if (["!crescer", "gordão", "gordao"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             room.setPlayerDiscProperties(player.id, {radius: 17, invMass: 30 / 30});
         }
