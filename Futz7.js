@@ -1164,6 +1164,8 @@ const bel = {'name': 'Bélgica', "type": Uniform, "emoji": '', "angle": 0, "text
 const hol = {'name': 'Holanda', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0xF25100, "color2": 0xF25100, "color3": 0xF25100};
 // clubes de zueira
 const girl = { "name": 'Barbies', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0x520131, "color1": 0xba2f82, "color2": 0xba2f82, "color3": 0xba2f82};
+const vip1 = { "name": '👑 Søbєrαηøs 👑', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0x6351dd, "color2": 0x6351dd, "color3": 0x6351dd};
+const inv = { "name": '🟨 Iηvicŧus 🟨', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0x8e6600, "color1": 0xdb9d00, "color2": 0xdb9d00, "color3": 0xdb9d00};
 // GOL comemoração
 const gol1 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
 const gol12 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0xFFFFFF, "color3": 0x2ebdff};
@@ -1222,6 +1224,12 @@ let bluep2 = "";
 let bluep3 = "";
 const badasses = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3137392E33342E38332E3634', '3139312E3230392E34332E313533']; // malco, soberbo
 const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539']; // Gustaxs__, Chiquinho, 𝕃 . 𝕄𝕖𝕤𝕤𝕚
+const blacklistconn = [
+    '3137392E3231382E32312E323337','34352E3233332E3231332E313233', '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730'
+]; // Alcione, Alcione, o anticristo, Arthur MM, ᱦiᱮ∀Ʀd, Schneider
+const cartaoamarelo = [
+    '3138392E38352E32392E3739'
+]; // Alcione, Alcione, o anticristo, Arthur MM, ᱦiᱮ∀Ʀd, Schneider
 var blacklist = [
     {Nick: "Alcione", Auth: "jVqwiajXjEm4VST3cR3gxkAkUKnNb-hUH7DF4PV1T7U", Conn: "34352E3233332E3231332E313233"},
     {Nick: "Arthur MM", Auth: "YD0Jm8MmB9G9YJCwJEEoIcC1SvD3Q2811xT9T-NTmVw", Conn: "3137372E35372E3135302E313736"},
@@ -1983,10 +1991,18 @@ room.onPlayerJoin = function (player) {
             room.sendAnnouncement(centerText("Se Malco e/ou Soberbo estiverem na sala é PROIBIDO pegar adm"), player.id, warn, "normal");
         }, 1000);
     }
-    if(blacklist.includes(player.conn)) {
+    if(blacklistconn.includes(player.conn)) {
         room.sendAnnouncement(centerText("O player " + player.name + " deve ser banido agora!"), null, warn, "bold");
         setTimeout(function () {
             room.sendAnnouncement(centerText("você está na blacklist e será banido!"), player.id, warn, "italic");
+            room.kickPlayer(player.id, true);
+        }, 1000);
+    }
+    if(cartaoamarelo.includes(player.conn)) {
+        room.sendAnnouncement(centerText("🟨 O player " + player.name + " está pendurado! 🟨"), null, warn, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("você levou cartão amarelo 🟨 na sua ultima estadia na sala, não mete o louco outra vez!"), player.id, warn, "italic");
+            room.sendAnnouncement(centerText("SUJEITO À BAN"), player.id, warn, "bold");
             room.kickPlayer(player.id, true);
         }, 1000);
     }
@@ -2091,7 +2107,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("Troca de uniforme:"), player.id, yellow, "bold");
             room.sendAnnouncement(centerText("!uni (acronimo de !uniforme), !rand <red/blue> (clubes), !selecrand <red/blue>"), player.id, yellow, "normal");
             room.sendAnnouncement(centerText("Zueras:"), player.id, yellow, "bold");
-            room.sendAnnouncement(centerText("!uni red/blue girl"), player.id, yellow, "normal");
+            room.sendAnnouncement(centerText("Times: vip (Soberanos), Inv (Invictus), girl"), player.id, yellow, "normal");
         }
     }
     if (["!clearbans"].includes(message[0].toLowerCase())) {
@@ -3335,6 +3351,14 @@ room.onPlayerChat = function (player, message) {
                 nameHome = girl.name;
                 acronymHome = girl;
             }
+            else if (message[2] == "vip") {
+                nameHome = vip1.name;
+                acronymHome = vip1;
+            }
+            else if (message[2] == "inv") {
+                nameHome = inv.name;
+                acronymHome = inv;
+            }
             room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
             setTimeout(function () {
                 room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
@@ -3488,6 +3512,14 @@ room.onPlayerChat = function (player, message) {
                 nameGuest = girl.name;
                 acronymGuest = girl;
             }
+            else if (message[2] == "vip") {
+                nameGuest = vip1.name;
+                acronymGuest = vip1;
+            }
+            else if (message[2] == "inv") {
+                nameGuest = inv.name;
+                acronymGuest = inv;
+            }
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             setTimeout(function () {
                 room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
@@ -3497,7 +3529,7 @@ room.onPlayerChat = function (player, message) {
             }, 500);
         }
     }
-    if (["!rand", "rand"].includes(message[0].toLowerCase())) {
+    if (["!rand"].includes(message[0].toLowerCase())) {
         const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
         var randHome = Math.floor(Math.random() * allClubes.length);
         var randGuest = Math.floor(Math.random() * allClubes.length);
@@ -4311,15 +4343,11 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (["!normal", "normal"].includes(message[0].toLowerCase())) {
-        if (player.admin) {
-            room.setPlayerDiscProperties(player.id, {radius: 15, invMass:  20 / 30});
-        }
+        room.setPlayerDiscProperties(player.id, {radius: 15, invMass:  20 / 30});
         return false;
     }
     if (["!diminuir", "anao", "anão"].includes(message[0].toLowerCase())) {
-        if (player.admin) {
-            room.setPlayerDiscProperties(player.id, {radius: 12, invMass:  20 / 30});
-        }
+        room.setPlayerDiscProperties(player.id, {radius: 12, invMass:  20 / 30});
         return false;
     }
     if (["!mute"].includes(message[0].toLowerCase())) {
