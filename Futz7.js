@@ -4297,19 +4297,19 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
-    if (["!crescer"].includes(message[0].toLowerCase())) {
+    if (["!crescer", "gordão"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             room.setPlayerDiscProperties(player.id, {radius: 17, invMass: 30 / 30});
         }
         return false;
     }
-    if (["!normal"].includes(message[0].toLowerCase())) {
+    if (["!normal", "normal"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             room.setPlayerDiscProperties(player.id, {radius: 15, invMass:  20 / 30});
         }
         return false;
     }
-    if (["!diminuir"].includes(message[0].toLowerCase())) {
+    if (["!diminuir", "anao", "anão"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             room.setPlayerDiscProperties(player.id, {radius: 12, invMass:  20 / 30});
         }
