@@ -2297,6 +2297,7 @@ room.onPlayerChat = function (player, message) {
         else if (player.id === (teamR[0].id || teamB[0].id) && choose === false) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["rand", "random"].includes(message[0].toLowerCase())) {
@@ -2343,6 +2344,7 @@ room.onPlayerChat = function (player, message) {
         else if (player.id === (teamR[0].id || teamB[0].id) && teamS.length < 2) {
             room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["1"].includes(message[0].toLowerCase()) && teamS.length > 1) {
@@ -2366,9 +2368,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["2"].includes(message[0].toLowerCase()) && teamS.length > 2) {
@@ -2392,9 +2395,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["3"].includes(message[0].toLowerCase()) && teamS.length > 3) {
@@ -2418,9 +2422,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["4"].includes(message[0].toLowerCase()) && teamS.length > 4) {
@@ -2444,9 +2449,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["5"].includes(message[0].toLowerCase()) && teamS.length > 5) {
@@ -2470,9 +2476,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["6"].includes(message[0].toLowerCase()) && teamS.length > 6) {
@@ -2496,9 +2503,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["7"].includes(message[0].toLowerCase()) && teamS.length > 7) {
@@ -2522,9 +2530,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["8"].includes(message[0].toLowerCase()) && teamS.length > 8) {
@@ -2548,9 +2557,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["9"].includes(message[0].toLowerCase()) && teamS.length > 9) {
@@ -2574,9 +2584,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["10"].includes(message[0].toLowerCase()) && teamS.length > 10) {
@@ -2600,9 +2611,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["11"].includes(message[0].toLowerCase()) && teamS.length > 11) {
@@ -2626,9 +2638,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["12"].includes(message[0].toLowerCase()) && teamS.length > 12) {
@@ -2652,9 +2665,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["13"].includes(message[0].toLowerCase()) && teamS.length > 13) {
@@ -2678,9 +2692,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["14"].includes(message[0].toLowerCase()) && teamS.length > 14) {
@@ -2704,9 +2719,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["15"].includes(message[0].toLowerCase()) && teamS.length > 15) {
@@ -2730,9 +2746,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["16"].includes(message[0].toLowerCase()) && teamS.length > 16) {
@@ -2756,9 +2773,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["17"].includes(message[0].toLowerCase()) && teamS.length > 17) {
@@ -2782,9 +2800,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["18"].includes(message[0].toLowerCase()) && teamS.length > 18) {
@@ -2808,9 +2827,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["19"].includes(message[0].toLowerCase()) && teamS.length > 19) {
@@ -2834,9 +2854,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["20"].includes(message[0].toLowerCase()) && teamS.length > 20) {
@@ -2860,9 +2881,10 @@ room.onPlayerChat = function (player, message) {
                 }
             }
         }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
+         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
+        else {return false;}
         return false;
     }
     if (["2x"].includes(message[0].toLowerCase())) {
@@ -4201,254 +4223,254 @@ room.onPlayerChat = function (player, message) {
         }
         if (message[1] == null) {
             if (teamS.length == 1) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 2);
             }
             else if (teamS.length == 2) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 2);
             }
             else if (teamS.length == 3) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 2);
             }
             else if (teamS.length == 4) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 2);
             }
             else if (teamS.length == 5) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
             }
             else if (teamS.length == 6) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
             }
             else if (teamS.length == 7) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
             }
             else if (teamS.length == 8) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
             }
             else if (teamS.length == 9) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
             }
             else if (teamS.length == 10) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[9].name + ": Nº Fila 10, ID " + teamS[9].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[9].name + " ---> Nº 10 --- | ID - " + teamS[9].id, null, white, "normal", 0);
             }
             else if (teamS.length == 11) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[9].name + ": Nº Fila 10, ID " + teamS[9].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[10].name + ": Nº Fila 11, ID " + teamS[10].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[9].name + " ---> Nº 10 --- | ID - " + teamS[9].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[10].name + " ---> Nº 11 --- | ID - " + teamS[10].id, null, white, "normal", 0);
             }
             else if (teamS.length == 12) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[9].name + ": Nº Fila 10, ID " + teamS[9].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[10].name + ": Nº Fila 11, ID " + teamS[10].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[11].name + ": Nº Fila 12, ID " + teamS[11].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[9].name + " ---> Nº 10 --- | ID - " + teamS[9].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[10].name + " ---> Nº 11 --- | ID - " + teamS[10].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[11].name + " ---> Nº 12 --- | ID - " + teamS[11].id, null, white, "normal", 0);
             }
             else if (teamS.length == 13) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[9].name + ": Nº Fila 10, ID " + teamS[9].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[10].name + ": Nº Fila 11, ID " + teamS[10].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[11].name + ": Nº Fila 12, ID " + teamS[11].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[12].name + ": Nº Fila 13, ID " + teamS[12].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[9].name + " ---> Nº 10 --- | ID - " + teamS[9].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[10].name + " ---> Nº 11 --- | ID - " + teamS[10].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[11].name + " ---> Nº 12 --- | ID - " + teamS[11].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[12].name + " ---> Nº 13 --- | ID - " + teamS[12].id, null, white, "normal", 0);
             }
             else if (teamS.length == 14) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[9].name + ": Nº Fila 10, ID " + teamS[9].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[10].name + ": Nº Fila 11, ID " + teamS[10].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[11].name + ": Nº Fila 12, ID " + teamS[11].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[12].name + ": Nº Fila 13, ID " + teamS[12].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[13].name + ": Nº Fila 14, ID " + teamS[13].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[9].name + " ---> Nº 10 --- | ID - " + teamS[9].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[10].name + " ---> Nº 11 --- | ID - " + teamS[10].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[11].name + " ---> Nº 12 --- | ID - " + teamS[11].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[12].name + " ---> Nº 13 --- | ID - " + teamS[12].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[13].name + " ---> Nº 14 --- | ID - " + teamS[13].id, null, white, "normal", 0);
             }
             else if (teamS.length == 15) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[9].name + ": Nº Fila 10, ID " + teamS[9].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[10].name + ": Nº Fila 11, ID " + teamS[10].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[11].name + ": Nº Fila 12, ID " + teamS[11].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[12].name + ": Nº Fila 13, ID " + teamS[12].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[13].name + ": Nº Fila 14, ID " + teamS[13].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[14].name + ": Nº Fila 15, ID " + teamS[14].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[9].name + " ---> Nº 10 --- | ID - " + teamS[9].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[10].name + " ---> Nº 11 --- | ID - " + teamS[10].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[11].name + " ---> Nº 12 --- | ID - " + teamS[11].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[12].name + " ---> Nº 13 --- | ID - " + teamS[12].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[13].name + " ---> Nº 14 --- | ID - " + teamS[13].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[14].name + " ---> Nº 15 --- | ID - " + teamS[14].id, null, white, "normal", 0);
             }
             else if (teamS.length == 16) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[9].name + ": Nº Fila 10, ID " + teamS[9].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[10].name + ": Nº Fila 11, ID " + teamS[10].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[11].name + ": Nº Fila 12, ID " + teamS[11].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[12].name + ": Nº Fila 13, ID " + teamS[12].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[13].name + ": Nº Fila 14, ID " + teamS[13].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[14].name + ": Nº Fila 15, ID " + teamS[14].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[15].name + ": Nº Fila 16, ID " + teamS[15].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[9].name + " ---> Nº 10 --- | ID - " + teamS[9].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[10].name + " ---> Nº 11 --- | ID - " + teamS[10].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[11].name + " ---> Nº 12 --- | ID - " + teamS[11].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[12].name + " ---> Nº 13 --- | ID - " + teamS[12].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[13].name + " ---> Nº 14 --- | ID - " + teamS[13].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[14].name + " ---> Nº 15 --- | ID - " + teamS[14].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[15].name + " ---> Nº 16 --- | ID - " + teamS[15].id, null, white, "normal", 0);
             }
             else if (teamS.length == 17) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[9].name + ": Nº Fila 10, ID " + teamS[9].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[10].name + ": Nº Fila 11, ID " + teamS[10].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[11].name + ": Nº Fila 12, ID " + teamS[11].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[12].name + ": Nº Fila 13, ID " + teamS[12].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[13].name + ": Nº Fila 14, ID " + teamS[13].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[14].name + ": Nº Fila 15, ID " + teamS[14].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[15].name + ": Nº Fila 16, ID " + teamS[15].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[16].name + ": Nº Fila 17, ID " + teamS[16].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[9].name + " ---> Nº 10 --- | ID - " + teamS[9].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[10].name + " ---> Nº 11 --- | ID - " + teamS[10].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[11].name + " ---> Nº 12 --- | ID - " + teamS[11].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[12].name + " ---> Nº 13 --- | ID - " + teamS[12].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[13].name + " ---> Nº 14 --- | ID - " + teamS[13].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[14].name + " ---> Nº 15 --- | ID - " + teamS[14].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[15].name + " ---> Nº 16 --- | ID - " + teamS[15].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[16].name + " ---> Nº 17 --- | ID - " + teamS[16].id, null, white, "normal", 0);
             }
             else if (teamS.length == 18) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[9].name + ": Nº Fila 10, ID " + teamS[9].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[10].name + ": Nº Fila 11, ID " + teamS[10].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[11].name + ": Nº Fila 12, ID " + teamS[11].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[12].name + ": Nº Fila 13, ID " + teamS[12].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[13].name + ": Nº Fila 14, ID " + teamS[13].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[14].name + ": Nº Fila 15, ID " + teamS[14].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[15].name + ": Nº Fila 16, ID " + teamS[15].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[16].name + ": Nº Fila 17, ID " + teamS[16].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[17].name + ": Nº Fila 18, ID " + teamS[17].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[9].name + " ---> Nº 10 --- | ID - " + teamS[9].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[10].name + " ---> Nº 11 --- | ID - " + teamS[10].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[11].name + " ---> Nº 12 --- | ID - " + teamS[11].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[12].name + " ---> Nº 13 --- | ID - " + teamS[12].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[13].name + " ---> Nº 14 --- | ID - " + teamS[13].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[14].name + " ---> Nº 15 --- | ID - " + teamS[14].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[15].name + " ---> Nº 16 --- | ID - " + teamS[15].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[16].name + " ---> Nº 17 --- | ID - " + teamS[16].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[17].name + " ---> Nº 18 --- | ID - " + teamS[17].id, null, white, "normal", 0);
             }
             else if (teamS.length == 19) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[9].name + ": Nº Fila 10, ID " + teamS[9].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[10].name + ": Nº Fila 11, ID " + teamS[10].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[11].name + ": Nº Fila 12, ID " + teamS[11].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[12].name + ": Nº Fila 13, ID " + teamS[12].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[13].name + ": Nº Fila 14, ID " + teamS[13].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[14].name + ": Nº Fila 15, ID " + teamS[14].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[15].name + ": Nº Fila 16, ID " + teamS[15].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[16].name + ": Nº Fila 17, ID " + teamS[16].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[17].name + ": Nº Fila 18, ID " + teamS[17].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[18].name + ": Nº Fila 19, ID " + teamS[18].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[9].name + " ---> Nº 10 --- | ID - " + teamS[9].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[10].name + " ---> Nº 11 --- | ID - " + teamS[10].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[11].name + " ---> Nº 12 --- | ID - " + teamS[11].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[12].name + " ---> Nº 13 --- | ID - " + teamS[12].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[13].name + " ---> Nº 14 --- | ID - " + teamS[13].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[14].name + " ---> Nº 15 --- | ID - " + teamS[14].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[15].name + " ---> Nº 16 --- | ID - " + teamS[15].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[16].name + " ---> Nº 17 --- | ID - " + teamS[16].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[17].name + " ---> Nº 18 --- | ID - " + teamS[17].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[18].name + " ---> Nº 19 --- | ID - " + teamS[18].id, null, white, "normal", 0);
             }
             else if (teamS.length == 20) {
-                room.sendAnnouncement(teamS[0].name + ": Nº Fila 1, ID " + teamS[0].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[1].name + ": Nº Fila 2, ID " + teamS[1].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[2].name + ": Nº Fila 3, ID " + teamS[2].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[3].name + ": Nº Fila 4, ID " + teamS[3].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[4].name + ": Nº Fila 5, ID " + teamS[4].id, null, white, "normal", 2);
-                room.sendAnnouncement(teamS[5].name + ": Nº Fila 6, ID " + teamS[5].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[6].name + ": Nº Fila 7, ID " + teamS[6].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[7].name + ": Nº Fila 8, ID " + teamS[7].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[8].name + ": Nº Fila 9, ID " + teamS[8].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[9].name + ": Nº Fila 10, ID " + teamS[9].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[10].name + ": Nº Fila 11, ID " + teamS[10].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[11].name + ": Nº Fila 12, ID " + teamS[11].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[12].name + ": Nº Fila 13, ID " + teamS[12].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[13].name + ": Nº Fila 14, ID " + teamS[13].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[14].name + ": Nº Fila 15, ID " + teamS[14].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[15].name + ": Nº Fila 16, ID " + teamS[15].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[16].name + ": Nº Fila 17, ID " + teamS[16].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[17].name + ": Nº Fila 18, ID " + teamS[17].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[18].name + ": Nº Fila 19, ID " + teamS[18].id, null, white, "normal", 0);
-                room.sendAnnouncement(teamS[19].name + ": Nº Fila 20, ID " + teamS[19].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[0].name + " ---> Nº 1 --- | ID - " + teamS[0].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[1].name + " ---> Nº 2 --- | ID - " + teamS[1].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[2].name + " ---> Nº 3 --- | ID - " + teamS[2].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[3].name + " ---> Nº 4 --- | ID - " + teamS[3].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[4].name + " ---> Nº 5 --- | ID - " + teamS[4].id, null, white, "normal", 2);
+                room.sendAnnouncement(teamS[5].name + " ---> Nº 6 --- | ID - " + teamS[5].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[6].name + " ---> Nº 7 --- | ID - " + teamS[6].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[7].name + " ---> Nº 8 --- | ID - " + teamS[7].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[8].name + " ---> Nº 9 --- | ID - " + teamS[8].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[9].name + " ---> Nº 10 --- | ID - " + teamS[9].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[10].name + " ---> Nº 11 --- | ID - " + teamS[10].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[11].name + " ---> Nº 12 --- | ID - " + teamS[11].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[12].name + " ---> Nº 13 --- | ID - " + teamS[12].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[13].name + " ---> Nº 14 --- | ID - " + teamS[13].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[14].name + " ---> Nº 15 --- | ID - " + teamS[14].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[15].name + " ---> Nº 16 --- | ID - " + teamS[15].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[16].name + " ---> Nº 17 --- | ID - " + teamS[16].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[17].name + " ---> Nº 18 --- | ID - " + teamS[17].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[18].name + " ---> Nº 19 --- | ID - " + teamS[18].id, null, white, "normal", 0);
+                room.sendAnnouncement(teamS[19].name + " ---> Nº 20 --- | ID - " + teamS[19].id, null, white, "normal", 0);
             }
         }
         return false;
