@@ -1987,6 +1987,7 @@ room.onPlayerJoin = function (player) {
         room.sendAnnouncement(centerText("O player " + player.name + " deve ser banido agora!"), null, warn, "bold");
         setTimeout(function () {
             room.sendAnnouncement(centerText("você está na blacklist e será banido!"), player.id, warn, "italic");
+            room.kickPlayer(player.id, true);
         }, 1000);
     }
     var conn = player.conn
