@@ -1216,21 +1216,14 @@ var players;
 var teamR;
 var teamB;
 var teamS;
-// red names and ids
+let lastPlayerJoined = "";
+let playertoban = "";
 let redp1 = "";
-let redp1ID = "";
 let redp2 = "";
-let redp2ID = "";
 let redp3 = "";
-let redp3ID = "";
-// blue names and ids
 let bluep1 = "";
-let bluep1ID = "";
 let bluep2 = "";
-let bluep2ID = "";
 let bluep3 = "";
-let bluep3ID = "";
-// spec names and ids
 const badasses = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3137392E33342E38332E3634', '3139312E3230392E34332E313533']; // malco, soberbo
 const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539']; // Gustaxs__, Chiquinho, 𝕃 . 𝕄𝕖𝕤𝕤𝕚
 const blacklistconn = [
@@ -1573,54 +1566,46 @@ function blueToRedBtn() {
 
 /* GAME FUNCTIONS */
 
+function getPlayerNameByID(playerID) {
+    for (let i = 0; i < playerList.length; i++) {
+      const player = playerList[i];
+      if (player.id === playerID) {
+        playertoban = player;
+      }
+    }
+    return null; // Retorna null caso não encontre um jogador com o ID correspondente
+};
+
 function getPlayersList() {
     if (teamR.length == 1) {
         redp1 = teamR[0].name;
         redp2 = " ";
         redp3 = " ";
-        redp1ID = teamR[0].id;
-        redp2ID = " ";
-        redp3ID = " ";
     }
     if (teamR.length == 2) {
         redp1 = teamR[0].name;
         redp2 = teamR[1].name;
         redp3 = " ";
-        redp1ID = teamR[0].id;
-        redp2ID = teamR[1].id;
-        redp3ID = " ";
     }
     if (teamR.length == 3) {
         redp1 = teamR[0].name;
         redp2 = teamR[1].name;
         redp3 = teamR[2].name;
-        redp1ID = teamR[0].id;
-        redp2ID = teamR[1].id;
-        redp3ID = teamR[2].id;
     }
     if (teamB.length == 1) {
         bluep1 = teamB[0].name;
         bluep2 = " ";
         bluep3 = " ";
-        bluep1ID = teamB[0].id;
-        bluep2ID = " ";
-        bluep3ID = " ";
     }
     if (teamB.length == 2) {
         bluep1 = teamB[0].name;
         bluep2 = teamB[1].name;
         bluep3 = " ";
-        bluep1ID = teamB[0].id;
-        bluep2ID = teamB[1].id;
-        bluep3ID = " ";
     }
     if (teamB.length == 3) {
         bluep1 = teamB[0].name;
         bluep2 = teamB[1].name;
         bluep3 = teamB[2].name;
-        bluep1ID = teamB[0].id;
-        bluep2ID = teamB[1].id;
-        bluep3ID = teamB[2].id;
     }
 };
 
@@ -2054,6 +2039,8 @@ room.onPlayerJoin = function (player) {
     updateTeams();
     updateAdmins();
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
+    playerList.push(player.name, player.id);
+    lastPlayerJoined = player;
 };
 
 room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
@@ -2095,6 +2082,7 @@ room.onPlayerLeave = function (player) {
             }
         }, 500);
     }
+    playerList.splice(player.name, player.id);
 };
 
 room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
@@ -2107,7 +2095,7 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
     room.sendAnnouncement(centerText(kickedPlayer.name + " levou kick!"), null, white, "bold");
     room.sendAnnouncement(centerText("Kicked por inatividade ou por pura encheção de saco!"), null, warn, "italic");
     }
-    console.log("mute list : " + muteList);
+    playerList.splice(player.name, player.id);
     console.log("ban list : " + banList);
 };
 
@@ -2144,37 +2132,30 @@ room.onPlayerChat = function (player, message) {
             sendAnnouncementToDiscord(player.name + " limpou a lista de banimentos.");
         }
     }
-    if (["!ban"].includes(message[0].toLowerCase())) {
-        if (badasses.includes(player.conn)) {
-            if (message[1] == player.name) {
-                var banned = message[1].substring(1);
-                if (banList.includes(banned)) {
-                    room.sendAnnouncement(centerText("Esse usuário já está banido!"), player.id, warn, "italic");
-                }
-                else {
-                    var nick = message[1].substring(1); // Remove o "@" do início da string
-                    var playerId = null;
-                    for (var i = 0; i < room.getPlayerList().length; i++) {
-                        var player = room.getPlayerList()[i];
-                        if (player.name === nick) {
-                            playerId = player.id;
-                            break;
-                        }
-                    }
-
-                    var banned = message[1].substring(1);
-                    var bannedId = message[1].id;
-                    var bannedName = bannedId.name;
-                    room.sendAnnouncement(centerText("Pronto!\nUsuário" + bannedName + "banido"), player.id, warn, "italic");
-                    room.kickPlayer(player.id,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8 ",true);
-                    banList.push(bannedName, bannedId);
-                    sendAnnouncementToDiscord("🔴 Jogador Banido:" + "\n"+
-                    "🛸 Nick: " + bannedName + "\n" +
-                    "🌐 Conn: " + bannedId.conn + "\n" +
-                    "🔥 Auth:  " + bannedId.auth + "\n" +
-                    "📅 Data: " + `${getDateInfo()}`);
-                    console.log("ban list : " + banList);
-                }
+    if (["!ban", "ban"].includes(message[0].toLowerCase())) {
+        if (player.admin) {
+            if (message[1] == null) {
+                getPlayerNameByID(message[1])
+                room.sendAnnouncement(centerText("Pronto!\nUsuário" + playertoban.name + "banido"), player.id, warn, "italic");
+                room.kickPlayer(playertoban.id,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8 ",true);
+                banList.push(playertoban.name, playertoban.id);
+                sendAnnouncementToDiscord("🔴 Jogador Banido:" + "\n"+
+                "🛸 Nick: " + playertoban.name + "\n" +
+                "🌐 Conn: " + playertoban.conn + "\n" +
+                "🔥 Auth:  " + playertoban.auth + "\n" +
+                "📅 Data: " + `${getDateInfo()}`);
+                console.log("ban list : " + banList);
+            }
+            else if (message[1] == "last") {
+                room.sendAnnouncement(centerText("Pronto!\nUsuário" + lastPlayerJoined.name + "banido"), player.id, warn, "italic");
+                room.kickPlayer(lastPlayerJoined.id,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8",true);
+                banList.push(lastPlayerJoined.name, lastPlayerJoined.id);
+                sendAnnouncementToDiscord("🔴 Jogador Banido:" + "\n"+
+                "🛸 Nick: " + bannedName + "\n" +
+                "🌐 Conn: " + bannedId.conn + "\n" +
+                "🔥 Auth:  " + bannedId.auth + "\n" +
+                "📅 Data: " + `${getDateInfo()}`);
+                console.log("ban list : " + banList);
             }
         }
         return false;
@@ -4164,31 +4145,7 @@ room.onPlayerChat = function (player, message) {
     }
     if (["!avatar"].includes(message[0].toLowerCase())) {
         if (player.admin) {
-            var message2avatar = message[2];
-            if (message[1] == r1) {
-                var r1 = teamR[0].id;
-                room.setPlayerAvatar(r1, message2avatar);
-            }
-            else if (message[1] == r2) {
-                var r2 = teamR[1].id;
-                room.setPlayerAvatar(r2, message2avatar);
-            }
-            else if (message[1] == r3) {
-                var r3 = teamR[2].id;
-                room.setPlayerAvatar(r3, message2avatar);
-            }
-            else if (message[1] == b1) {
-                var b1 = teamB[0].id;
-                room.setPlayerAvatar(b1, message2avatar);
-            }
-            else if (message[1] == b2) {
-                var b2 = teamB[1].id;
-                room.setPlayerAvatar(b2, message2avatar);
-            }
-            else if (message[1] == b3) {
-                var b3 = teamB[2].id;
-                room.setPlayerAvatar(b3, message2avatar);
-            }
+            room.setPlayerAvatar(message[1], message[2]);
         }
         return false;
     }
