@@ -4959,6 +4959,7 @@ room.onGameUnpause = function (byPlayer) {
 room.onTeamGoal = function (team) {
     const scores = room.getScores();
     activePlay = false;
+    getPlayersGoalCount();
     if (lastPlayersTouched[0] != null && lastPlayersTouched[0].team == team) {
 		room.sendAnnouncement(centerText("TOCA A MÚÚSICAAA, É GOOOOOL!!!"), null, green, "bold");
 		room.sendAnnouncement(centerText("         ⚽ Gol de " + lastPlayersTouched[0].name + " ⚽"), null, white, "bold");
@@ -5028,7 +5029,6 @@ room.onTeamGoal = function (team) {
 		}
 	}
     else {
-        getPlayersGoalCount();
 		room.sendAnnouncement("", null, white, "bold");
 		room.sendAnnouncement(centerText("🤦‍♂️ É GOOOOOL CONTRA!! 🤦‍♂️"), null, yellow, "bold");
 		room.sendAnnouncement(centerText("🤡 Gol de " + lastPlayersTouched[0].name + " 🤡"), null, white, "bold");
@@ -5100,7 +5100,6 @@ room.onTeamGoal = function (team) {
         goldenGoal = false;
         setTimeout(() => { room.stopGame(); }, 1000);
     }
-    getPlayersGoalCount();
 };
 
 room.onPositionsReset = function () {
