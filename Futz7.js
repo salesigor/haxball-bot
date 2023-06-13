@@ -1728,7 +1728,8 @@ function endGame(winner) { // no stopGame() function in it
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
-            room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)\nObs* digite 'lista' para ver a fila"), null, white, "normal");
+            room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+            room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
             choose = true;
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
@@ -1754,7 +1755,8 @@ function endGame(winner) { // no stopGame() function in it
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
-            room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)\nObs* digite 'lista' para ver a fila"), null, white, "normal");
+            room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+            room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
             choose = true;
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
@@ -1781,6 +1783,7 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText(teamR[0].name + " e " + teamB[0].name + "escolhem"), null, white, "bold");
             room.sendAnnouncement(centerText("Para escolher digite Nº do player na fila, auto (fila) ou rand (aleatório)"), null, white, "italic");
+            room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
             room.sendAnnouncement(centerText(nameHome + " escolhe primeiro!"), null, warn, "bold");
             choose = true;
             redFirst = true;
@@ -1791,6 +1794,7 @@ function endGame(winner) { // no stopGame() function in it
         setTimeout(function () {
             redFirst = false;
             room.sendAnnouncement(centerText("*** " + teamB[0].name + " está liberado para escolher ***"), null, yellow, "italic");
+            room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
         }, 20000);
     }
 };
@@ -2086,7 +2090,8 @@ room.onPlayerLeave = function (player) {
                 room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
                 choose = true;
                 room.sendAnnouncement(centerText("Quem entra, " + teamR[0].name + "?"), null, white, "bold");
-                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)\nObs* digite 'lista' para ver a fila"), null, white, "normal");
+                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("*** 20segundos para a escolha automatica ***"), null, warn, "italic");
                 }, 700);
@@ -2095,7 +2100,8 @@ room.onPlayerLeave = function (player) {
                 room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
                 choose = true;
                 room.sendAnnouncement(centerText("Quem entra, " + teamB[0].name + "?"), null, white, "bold");
-                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)\nObs* digite 'lista' para ver a fila"), null, white, "normal");
+                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("*** 20segundos para a escolha automatica ***"), null, warn, "italic");
                 }, 700);
@@ -2224,6 +2230,7 @@ room.onPlayerChat = function (player, message) {
                 room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
                 room.sendAnnouncement(centerText("Você escolhe, " + teamR[0].name), null, white, "bold");
                 room.sendAnnouncement(centerText("Para escolher digite Nº do player na fila, auto (fila) ou rand (aleatório)"), null, white, "italic");
+                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
                 }, 1000);
@@ -2232,6 +2239,7 @@ room.onPlayerChat = function (player, message) {
                 room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
                 room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
                 room.sendAnnouncement(centerText("Para escolher digite Nº do player na fila, auto (fila) ou rand (aleatório)"), null, white, "italic");
+                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
                 }, 1000);
@@ -2240,6 +2248,7 @@ room.onPlayerChat = function (player, message) {
                 room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
                 room.sendAnnouncement(centerText(teamR[0].name + " e " + teamB[0].name + "escolhem"), null, white, "bold");
                 room.sendAnnouncement(centerText("Para escolher digite Nº do player na fila, auto (fila) ou rand (aleatório)"), null, white, "italic");
+                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
                 room.sendAnnouncement(centerText(nameHome + " escolhe primeiro!"), null, warn, "bold");
                 choose = true;
                 redFirst = true;
@@ -2254,7 +2263,8 @@ room.onPlayerChat = function (player, message) {
             else if (message[1] == null) {
                 room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
                 room.sendAnnouncement(centerText("Escolha seu time"), null, white, "bold");
-                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)\nObs* digite 'lista' para ver a fila"), null, white, "normal");
+                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
                 }, 1000);
