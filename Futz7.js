@@ -1269,7 +1269,7 @@ let rr = false; // serve para restartar o game com o comnado rr
 
 // WELL BEING
 
-let forbid = ['macaco', 'adolf hitler', 'nazismo'];
+let forbid = ['macaco', 'adolf hitler', 'nazismo', 'cuzao', 'cuzão', 'autista', 'cu', 'hitler', 'Manco', 'Malco', 'manco', 'malco'];
 
 let
 travamsg = ["㧫璧 觭䢜潇ကᩨ쀡ఈ泄찉넾﫤㏭ 緺", "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", "㧫", "璧", "懈౩䊀脁潡䣚⾤㸼짠ब", "뗲᭾ 띀急蔹⹉ꆣせㆉ였鷀Ú錘陈搳窇㉕"],
@@ -1280,12 +1280,25 @@ linkmsg = ["https://", "http://"],
 link = new RegExp(linkmsg.join("|"), 'gi');
 
 let
-palavras = ["fdp", "porra", "arrombado", "cu preto", "lixo", "autista", "lixeira", "verme", "Horrível", "seu merda", "filho da puta", "caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu"],
+palavras = ["fdp", "cu", "carai", "cuzao", "porra", "arrombado", "cu preto", "lixo", "autista", "lixeira", "verme", "Horrível", "seu merda", "filho da puta",
+"caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu"],
 regex = new RegExp(palavras.join("|"), 'gi');
 
 let
 palv = ["seu preto", "seu macaco", "macaco", "seu negro", "pretinho", "resto de aborto", "seu mcc", "Negrinho", "carvão"],
 xingo = new RegExp(palv.join("|"), 'gi');
+
+let
+malcoxingo = ["Manco", "manco", "Malco lixo", "malco lixo", "Malco ruim", "malco ruim"],
+malcorage = new RegExp(malcoxingo.join("|"), 'gi');
+
+function nameForbid(player) {
+    if (forbid.includes(player.name)) { room.kickPlayer(player.id, 'nick proibido nessa sala', false) }
+};
+
+function banBlackListed(player) {
+    if (blacklistconn.includes(player.conn)) { room.kickPlayer(player.id, 'Você está na BLACKLIST', false) }
+};
 
 /* STATS */
 
@@ -1325,6 +1338,7 @@ var statInterval = 6;
 /* DISCORD */
 
 var Intervalo_mensagens;
+var help_mensagens;
 var Intervalo_msgs = 1000 * 60 * 5; // 1000 * 60 * 15 = irá mandar a mensagem a cada 15 minutos
   
 Intervalo_mensagens = setInterval(() => {
@@ -1337,6 +1351,10 @@ room.sendAnnouncement(centerText(msgs1), null, white, "bold", 0);
 room.sendAnnouncement(centerText(msgs2), null, white, "bold", 0);
 room.sendAnnouncement(centerText(msgs3), null, white, "bold", 0);
 room.sendAnnouncement(centerText(msgs4), null, white, "italic", 1);
+}, Intervalo_msgs);
+
+help_mensagens = setInterval(() => {
+room.sendAnnouncement(centerText("「📣」 𝘂𝘀𝗲 !𝗵𝗲𝗹𝗽 𝗽𝗮𝗿𝗮 𝘃𝗲𝗿 𝗼𝘀 𝗰𝗼𝗺𝗮𝗻𝗱𝗼𝘀"), null, white, "italic", 1);
 }, Intervalo_msgs);
 
 /* Sistema data e hora */
@@ -2018,6 +2036,8 @@ room.onPlayerJoin = function (player) {
             room.kickPlayer(player.id, true);
         }, 1000);
     }
+    nameForbid(player)
+    banBlackListed(player)
     var conn = player.conn
     var ipv4 = conn.match(/.{1,2}/g).map(function(v){
     return String.fromCharCode(parseInt(v, 16));
@@ -4862,6 +4882,22 @@ room.onPlayerChat = function (player, message) {
             room.sendChat("Você está mutado.", player.id);
             return false;
         }
+        return false;
+    }
+    if (message.match(malcorage)) {
+        room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", true);
+        return false;
+    }
+    if (message.match(xingo)) {
+        room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", true);
+        return false;
+    }
+    if (message.match(regex)) {
+        room.sendAnnouncement("Sem xingamentos, por favor.", player.id, warn, "italic", 1);
+        return false;
+    }
+    if (message.match(trava)) {
+        room.kickPlayer(player.id, "❌ Trava-Hax detectada", true);
         return false;
     }
     return false;
