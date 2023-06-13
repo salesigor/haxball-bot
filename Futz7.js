@@ -2108,7 +2108,6 @@ room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, y
             }
         }, 500);
     }
-    playerList.splice(player.name, player.id);
 };
 
 room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
@@ -2121,7 +2120,6 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
     room.sendAnnouncement(centerText(kickedPlayer.name + " levou kick!"), null, white, "bold");
     room.sendAnnouncement(centerText("Kicked por inatividade ou por pura encheção de saco!"), null, warn, "italic");
     }
-    playerList.splice(player.name, player.id);
     console.log("ban list : " + banList);
 };
 
