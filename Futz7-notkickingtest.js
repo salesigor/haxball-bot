@@ -4754,20 +4754,31 @@ room.onTeamGoal = function (team) {
     activePlay = false;
     getPlayersGoalCount();
     if (lastPlayersTouched[0] != null && lastPlayersTouched[0].team == team) {
+        let goalMaker = lastPlayersTouched[0].id;
 		room.sendAnnouncement(centerText("TOCA A MÚÚSICAAA, É GOOOOOL!!!"), null, green, "bold");
 		room.sendAnnouncement(centerText("         ⚽ Gol de " + lastPlayersTouched[0].name + " ⚽"), null, white, "bold");
 		room.sendAnnouncement(centerText("Velocidade do Chute: " + ballSpeed.toPrecision(4).toString() + " km/h"), null, white, "normal");
 		if (lastPlayersTouched[1] != null && lastPlayersTouched[1].team == team) {
+            let goalAssist = lastPlayersTouched[1].id;
 			room.sendAnnouncement(centerText("👟 Assistência: " + lastPlayersTouched[1].name + " 👟"), null, white, "bold");
-		}
+            setTimeout(function () {
+                room.setPlayerAvatar(goalAssist, "🎯")
+                setTimeout(function () {
+                    room.setPlayerAvatar(goalAssist, "🤝")
+                    setTimeout(function () {
+                        room.setPlayerAvatar(goalAssist, null)
+                    }, 1000);
+                }, 1200);
+            }, 500);
+        }
 		if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
             setTimeout(function () {
-                room.setPlayerAvatar(lastPlayersTouched[0].id, "🎯")
+                room.setPlayerAvatar(goalMaker, "🎯")
                 setTimeout(function () {
-                    room.setPlayerAvatar(lastPlayersTouched[0].id, "🔥")
+                    room.setPlayerAvatar(goalMaker, "🔥")
                     setTimeout(function () {
-                        room.setPlayerAvatar(lastPlayersTouched[0].id, null)
+                        room.setPlayerAvatar(goalMaker, null)
                     }, 750);
                 }, 1200);
             }, 500);
@@ -4802,11 +4813,11 @@ room.onTeamGoal = function (team) {
         else if (team === 2) {
 			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
             setTimeout(function () {
-                room.setPlayerAvatar(lastPlayersTouched[0].id, "🎯")
+                room.setPlayerAvatar(goalMaker, "🎯")
                 setTimeout(function () {
-                    room.setPlayerAvatar(lastPlayersTouched[0].id, "🔥")
+                    room.setPlayerAvatar(goalMaker, "🔥")
                     setTimeout(function () {
-                        room.setPlayerAvatar(lastPlayersTouched[0].id, null)
+                        room.setPlayerAvatar(goalMaker, null)
                     }, 750);
                 }, 1200);
             }, 500);
@@ -4847,11 +4858,11 @@ room.onTeamGoal = function (team) {
         if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
             setTimeout(function () {
-                room.setPlayerAvatar(lastPlayersTouched[0].id, "🤦‍♂️")
+                room.setPlayerAvatar(goalMaker, "🤦‍♂️")
                 setTimeout(function () {
-                    room.setPlayerAvatar(lastPlayersTouched[0].id, "🤡")
+                    room.setPlayerAvatar(goalMaker, "🤡")
                     setTimeout(function () {
-                        room.setPlayerAvatar(lastPlayersTouched[0].id, null)
+                        room.setPlayerAvatar(goalMaker, null)
                     }, 100);
                 }, 1200);
             }, 500);
@@ -4886,11 +4897,11 @@ room.onTeamGoal = function (team) {
         else if (team === 2) {
 			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
             setTimeout(function () {
-                room.setPlayerAvatar(lastPlayersTouched[0].id, "🤦‍♂️")
+                room.setPlayerAvatar(goalMaker, "🤦‍♂️")
                 setTimeout(function () {
-                    room.setPlayerAvatar(lastPlayersTouched[0].id, "🤡")
+                    room.setPlayerAvatar(goalMaker, "🤡")
                     setTimeout(function () {
-                        room.setPlayerAvatar(lastPlayersTouched[0].id, null)
+                        room.setPlayerAvatar(goalMaker, null)
                     }, 100);
                 }, 1200);
             }, 500);
