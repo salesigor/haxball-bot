@@ -4480,64 +4480,64 @@ room.onPlayerChat = function (player, message) {
         if (["amo"].includes(message[1].toLowerCase())) {
             if (["o"].includes(message[2].toLowerCase())) {
                 if (["Malco", "Malco"].includes(message[3].toLowerCase())) {
-                    setPlayerAvatar(player.id, "❌")
+                    room.setPlayerAvatar(player.id, "❌")
                     setTimeout(function () {
                         setPlayerAvatar(player.id, "-M")
+                    }, 250);
+                    setTimeout(function () {
+                        room.setPlayerAvatar(player.id, "MA")
+                    }, 500);
+                    setTimeout(function () {
+                        room.setPlayerAvatar(player.id, "AL")
+                    }, 750);
+                    setTimeout(function () {
+                        room.setPlayerAvatar(player.id, "LC")
                     }, 1000);
                     setTimeout(function () {
-                        setPlayerAvatar(player.id, "MA")
-                    }, 1000);
+                        room.setPlayerAvatar(player.id, "CO")
+                    }, 1250);
                     setTimeout(function () {
-                        setPlayerAvatar(player.id, "AL")
-                    }, 1000);
+                        room.setPlayerAvatar(player.id, "O-")
+                    }, 1500);
                     setTimeout(function () {
-                        setPlayerAvatar(player.id, "LC")
-                    }, 1000);
+                        room.setPlayerAvatar(player.id, "❌")
+                    }, 1750);
                     setTimeout(function () {
-                        setPlayerAvatar(player.id, "CO")
-                    }, 1000);
-                    setTimeout(function () {
-                        setPlayerAvatar(player.id, "O-")
-                    }, 1000);
-                    setTimeout(function () {
-                        setPlayerAvatar(player.id, "❌")
-                    }, 1000);
-                    setTimeout(function () {
-                        setPlayerAvatar(player.id, null)
-                    }, 1000);
+                        room.setPlayerAvatar(player.id, null)
+                    }, 2000);
                 }
                 if (["Soberbo", "soberbo"].includes(message[3].toLowerCase())) {
-                    setPlayerAvatar(player.id, "🍫")
+                    room.setPlayerAvatar(player.id, "🍫")
                     setTimeout(function () {
-                        setPlayerAvatar(player.id, "-S")
+                        room.setPlayerAvatar(player.id, "-S")
+                    }, 250);
+                    setTimeout(function () {
+                        room.setPlayerAvatar(player.id, "SO")
+                    }, 500);
+                    setTimeout(function () {
+                        room.setPlayerAvatar(player.id, "OB")
+                    }, 750);
+                    setTimeout(function () {
+                        room.setPlayerAvatar(player.id, "BE")
                     }, 1000);
                     setTimeout(function () {
-                        setPlayerAvatar(player.id, "SO")
-                    }, 1000);
+                        room.setPlayerAvatar(player.id, "ER")
+                    }, 1250);
                     setTimeout(function () {
-                        setPlayerAvatar(player.id, "OB")
-                    }, 1000);
+                        room.setPlayerAvatar(player.id, "RB-")
+                    }, 1500);
                     setTimeout(function () {
-                        setPlayerAvatar(player.id, "BE")
-                    }, 1000);
+                        room.setPlayerAvatar(player.id, "BO")
+                    }, 1750);
                     setTimeout(function () {
-                        setPlayerAvatar(player.id, "ER")
-                    }, 1000);
+                        room.setPlayerAvatar(player.id, "O-")
+                    }, 2000);
                     setTimeout(function () {
-                        setPlayerAvatar(player.id, "RB-")
-                    }, 1000);
+                        room.setPlayerAvatar(player.id, "🍫")
+                    }, 2250);
                     setTimeout(function () {
-                        setPlayerAvatar(player.id, "BO")
-                    }, 1000);
-                    setTimeout(function () {
-                        setPlayerAvatar(player.id, "O-")
-                    }, 1000);
-                    setTimeout(function () {
-                        setPlayerAvatar(player.id, "🍫")
-                    }, 1000);
-                    setTimeout(function () {
-                        setPlayerAvatar(player.id, null)
-                    }, 1000);
+                        room.setPlayerAvatar(player.id, null)
+                    }, 2500);
                 }
             }
         }
@@ -4763,6 +4763,15 @@ room.onTeamGoal = function (team) {
 		if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
             setTimeout(function () {
+                room.setPlayerAvatar(lastPlayersTouched[0].id, "🎯")
+                setTimeout(function () {
+                    room.setPlayerAvatar(lastPlayersTouched[0].id, "🔥")
+                    setTimeout(function () {
+                        room.setPlayerAvatar(lastPlayersTouched[0].id, null)
+                    }, 750);
+                }, 1200);
+            }, 500);
+            setTimeout(function () {
                 room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
                 setTimeout(function () {
                     room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
@@ -4792,6 +4801,15 @@ room.onTeamGoal = function (team) {
 		}
         else if (team === 2) {
 			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
+            setTimeout(function () {
+                room.setPlayerAvatar(lastPlayersTouched[0].id, "🎯")
+                setTimeout(function () {
+                    room.setPlayerAvatar(lastPlayersTouched[0].id, "🔥")
+                    setTimeout(function () {
+                        room.setPlayerAvatar(lastPlayersTouched[0].id, null)
+                    }, 750);
+                }, 1200);
+            }, 500);
             setTimeout(function () {
                 room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
                 setTimeout(function () {
@@ -4829,6 +4847,15 @@ room.onTeamGoal = function (team) {
         if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
             setTimeout(function () {
+                room.setPlayerAvatar(lastPlayersTouched[0].id, "🤦‍♂️")
+                setTimeout(function () {
+                    room.setPlayerAvatar(lastPlayersTouched[0].id, "🤡")
+                    setTimeout(function () {
+                        room.setPlayerAvatar(lastPlayersTouched[0].id, null)
+                    }, 100);
+                }, 1200);
+            }, 500);
+            setTimeout(function () {
                 room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
                 setTimeout(function () {
                     room.setTeamColors(1, gol5.angle, gol5.textcolor, [gol5.color1, gol5.color2, gol5.color3]);
@@ -4858,6 +4885,15 @@ room.onTeamGoal = function (team) {
 		}
         else if (team === 2) {
 			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
+            setTimeout(function () {
+                room.setPlayerAvatar(lastPlayersTouched[0].id, "🤦‍♂️")
+                setTimeout(function () {
+                    room.setPlayerAvatar(lastPlayersTouched[0].id, "🤡")
+                    setTimeout(function () {
+                        room.setPlayerAvatar(lastPlayersTouched[0].id, null)
+                    }, 100);
+                }, 1200);
+            }, 500);
             setTimeout(function () {
                 room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
                 setTimeout(function () {
