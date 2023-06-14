@@ -2269,659 +2269,364 @@ room.onPlayerChat = function (player, message) {
             }
         }
     }
-    if (["auto", "fila"].includes(message[0].toLowerCase())) {
-        if (choose === true && teamS.length > 1) {    
-            if (player.id === teamR[0].id) {
-                if (teamR[1].id === null) {
-                    room.sendAnnouncement(centerText(teamR[0].name + " escolheu AUTO"), null, white, "bold");
-                    room.sendAnnouncement(centerText("Os escalados foram " + teamS[0].name + " e " + teamS[1].name), null, white, "normal");
-                    room.setPlayerTeam(teamS[0].id, Team.RED);
-                    room.setPlayerTeam(teamS[1].id, Team.RED);
-                }
-                else if (teamR[1].id != null && teamR[2] === null) {
-                    room.sendAnnouncement(centerText(teamR[0].name + " escolheu AUTO"), null, white, "bold");
-                    room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
-                    room.setPlayerTeam(teamS[0].id, Team.RED);
-                }
-            }
-            if (player.id == teamB[0].id && redFirst === false) {
-                if (teamB[1].id === null) {
-                    room.sendAnnouncement(centerText(teamB[0].name + " escolheu AUTO"), null, white, "bold");
-                    room.sendAnnouncement(centerText("Os escalados foram " + teamS[0].name + " e " + teamS[1].name), null, white, "normal");
-                    room.setPlayerTeam(teamS[0].id, Team.BLUE);
-                    room.setPlayerTeam(teamS[1].id, Team.BLUE);
-                }
-                else if (teamB[1].id != null && teamR[2] === null) {
-                    room.sendAnnouncement(centerText(teamB[0].name + " escolheu AUTO"), null, white, "bold");
-                    room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
-                    room.setPlayerTeam(teamS[0].id, Team.BLUE);
+    if (player.id == teamR[0]) {
+        if (choose === true) {
+            if (["auto", "fila"].includes(message[0].toLowerCase())) {
+                if (teamS.length > 1) {    
+                    if (player.id === teamR[0].id) {
+                        if (teamR.length = 2) {
+                            room.sendAnnouncement(centerText(teamR[0].name + " escolheu AUTO"), null, white, "bold");
+                            room.sendAnnouncement(centerText("Os escalados foram " + teamS[0].name + " e " + teamS[1].name), null, white, "normal");
+                            room.setPlayerTeam(teamS[0].id, Team.RED);
+                            room.setPlayerTeam(teamS[1].id, Team.RED);
+                        }
+                        else if (teamR.length = 1) {
+                            room.sendAnnouncement(centerText(teamR[0].name + " escolheu AUTO"), null, white, "bold");
+                            room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
+                            room.setPlayerTeam(teamS[0].id, Team.RED);
+                        }
+                    }
                 }
             }
-            else if (player.id === teamB[0].id && redFirst === true) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else {return false;}
-        }
-        else if (player.id === (teamR[0].id || teamB[0].id) && choose === false) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["rand", "random"].includes(message[0].toLowerCase())) {
-        var randred1 = Math.floor(Math.random() * teamS.length);
-        var randred2 = Math.floor(Math.random() * teamS.length);
-        var randblue1 = Math.floor(Math.random() * teamS.length);
-        var randblue2 = Math.floor(Math.random() * teamS.length);
-        if (choose == true && teamS.length > 2) {    
-            if (player.id === teamR[0].id) {
-                if (teamR[1].id === null) {
-                    room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
-                    room.sendAnnouncement(centerText("Os escalados foram " + teamS[randred1].name + " e " + teamS[randred2].name), null, white, "normal");
-                    room.setPlayerTeam(teamS[randred1].id, Team.RED);
-                    room.setPlayerTeam(teamS[randred2].id, Team.RED);
+            if (["rand", "random"].includes(message[0].toLowerCase())) {
+                var randred1 = Math.floor(Math.random() * teamS.length);
+                var randred2 = Math.floor(Math.random() * teamS.length);
+                if (choose == true && teamS.length >= 2) {    
+                    if (player.id === teamR[0].id) {
+                        if (teamR.length = 1) {
+                            room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
+                            room.sendAnnouncement(centerText("Os escalados foram " + teamS[randred1].name + " e " + teamS[randred2].name), null, white, "normal");
+                            room.setPlayerTeam(teamS[randred1].id, Team.RED);
+                            room.setPlayerTeam(teamS[randred2].id, Team.RED);
+                        }
+                        else if (teamR.length = 2) {
+                            room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
+                            room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
+                            room.setPlayerTeam(teamS[randred1].id, Team.RED);
+                        }
+                    }
                 }
-                else if (teamR[1].id != null && teamR[2].id === null) {
-                    room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
-                    room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
-                    room.setPlayerTeam(teamS[randred1].id, Team.RED);
+                else if (teamS.length < 2) {
+                    room.sendAnnouncement(centerText("Jogadores insuficientes para RANDOM"), null, warn, "italic");
                 }
             }
-            if (player.id === teamB[0].id && redFirst === false) {
-                if (teamB[1] === null) {
-                    room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");
-                    room.sendAnnouncement(centerText("Os escalados foram " + teamS[randblue1].name + " e " + teamS[randblue2].name), null, white, "normal");
-                    room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
-                    room.setPlayerTeam(teamS[randblue2].id, Team.BLUE);
-                }
-                else if (teamB[1] != null && teamR[2] === null) {
-                    room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");
-                    room.sendAnnouncement(centerText("O escalado é " + teamS[randblue1].name), null, white, "normal");
-                    room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
-                }
-            }
-            if (player.id === (teamR[0].id || teamB[0].id) && choose === false) {
-                room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-            }
-            if (player.id === teamB[0].id && redFirst === true) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else {return false;}
-        }
-        else if (player.id === (teamR[0].id || teamB[0].id) && teamS.length < 2) {
-            room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["1"].includes(message[0].toLowerCase()) && teamS.length >= 1) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
+            if (["1"].includes(message[0].toLowerCase()) && teamS.length >= 1) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[0].name), null, white, "bold");
                 room.setPlayerTeam(teamS[0].id, Team.RED);
             }
-            else if (player.id == teamB[0].id) {
+            if (["2"].includes(message[0].toLowerCase()) && teamS.length >= 2) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[1].name), null, white, "bold");
+                room.setPlayerTeam(teamS[1].id, Team.RED);
+            }
+            if (["3"].includes(message[0].toLowerCase()) && teamS.length >= 3) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[2].name), null, white, "bold");
+                room.setPlayerTeam(teamS[2].id, Team.RED);
+            }
+            if (["4"].includes(message[0].toLowerCase()) && teamS.length >= 4) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[3].name), null, white, "bold");
+                room.setPlayerTeam(teamS[3].id, Team.RED);
+            }
+            if (["5"].includes(message[0].toLowerCase()) && teamS.length >= 5) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[4].name), null, white, "bold");
+                room.setPlayerTeam(teamS[4].id, Team.RED);
+            }
+            if (["6"].includes(message[0].toLowerCase()) && teamS.length >= 6) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[5].name), null, white, "bold");
+                room.setPlayerTeam(teamS[5].id, Team.RED);
+            }
+            if (["7"].includes(message[0].toLowerCase()) && teamS.length >= 7) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[6].name), null, white, "bold");
+                room.setPlayerTeam(teamS[6].id, Team.RED);
+            }
+            if (["8"].includes(message[0].toLowerCase()) && teamS.length >= 8) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[7].name), null, white, "bold");
+                room.setPlayerTeam(teamS[7].id, Team.RED);
+            }
+            if (["9"].includes(message[0].toLowerCase()) && teamS.length >= 9) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[8].name), null, white, "bold");
+                room.setPlayerTeam(teamS[8].id, Team.RED);
+            }
+            if (["10"].includes(message[0].toLowerCase()) && teamS.length >= 10) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[9].name), null, white, "bold");
+                room.setPlayerTeam(teamS[9].id, Team.RED);
+            }
+            if (["11"].includes(message[0].toLowerCase()) && teamS.length >= 11) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[10].name), null, white, "bold");
+                room.setPlayerTeam(teamS[10].id, Team.RED);
+            }
+            if (["12"].includes(message[0].toLowerCase()) && teamS.length >= 12) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[11].name), null, white, "bold");
+                room.setPlayerTeam(teamS[11].id, Team.RED);
+            }
+            if (["13"].includes(message[0].toLowerCase()) && teamS.length >= 13) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[12].name), null, white, "bold");
+                room.setPlayerTeam(teamS[12].id, Team.RED);
+            }
+            if (["14"].includes(message[0].toLowerCase()) && teamS.length >= 14) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[13].name), null, white, "bold");
+                room.setPlayerTeam(teamS[13].id, Team.RED);
+            }
+            if (["15"].includes(message[0].toLowerCase()) && teamS.length >= 15) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[14].name), null, white, "bold");
+                room.setPlayerTeam(teamS[14].id, Team.RED);
+            }
+            if (["16"].includes(message[0].toLowerCase()) && teamS.length >= 16) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[15].name), null, white, "bold");
+                room.setPlayerTeam(teamS[15].id, Team.RED);
+            }
+            if (["17"].includes(message[0].toLowerCase()) && teamS.length >= 17) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[16].name), null, white, "bold");
+                room.setPlayerTeam(teamS[16].id, Team.RED);
+            }
+            if (["18"].includes(message[0].toLowerCase()) && teamS.length >= 18) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[17].name), null, white, "bold");
+                room.setPlayerTeam(teamS[17].id, Team.RED);
+            }
+            if (["19"].includes(message[0].toLowerCase()) && teamS.length >= 19) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[18].name), null, white, "bold");
+                room.setPlayerTeam(teamS[18].id, Team.RED);
+            }
+            if (["20"].includes(message[0].toLowerCase()) && teamS.length >= 20) {
+                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[19].name), null, white, "bold");
+                room.setPlayerTeam(teamS[19].id, Team.RED);
+            }
+        }
+    }
+    if (player.id == teamB[0]) {
+        if (choose === true) {
+            if (["auto", "fila"].includes(message[0].toLowerCase())) {
+                if (teamS.length > 1) {    
+                    if (redFirst === false) {
+                        if (teamB[1].id === null) {
+                            room.sendAnnouncement(centerText(teamB[0].name + " escolheu AUTO"), null, white, "bold");
+                            room.sendAnnouncement(centerText("Os escalados foram " + teamS[0].name + " e " + teamS[1].name), null, white, "normal");
+                            room.setPlayerTeam(teamS[0].id, Team.BLUE);
+                            room.setPlayerTeam(teamS[1].id, Team.BLUE);
+                        }
+                        else if (teamB[1].id != null && teamR[2] === null) {
+                            room.sendAnnouncement(centerText(teamB[0].name + " escolheu AUTO"), null, white, "bold");
+                            room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
+                            room.setPlayerTeam(teamS[0].id, Team.BLUE);
+                        }
+                    }
+                    else if (redFirst === true) {
+                        room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+                    }
+                }
+            }
+            if (["rand", "random"].includes(message[0].toLowerCase())) {
+                var randblue1 = Math.floor(Math.random() * teamS.length);
+                var randblue2 = Math.floor(Math.random() * teamS.length);
+                if (teamS.length >= 2) {
+                    if (redFirst === false) {
+                        if (teamB[1] === null) {
+                            room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");
+                            room.sendAnnouncement(centerText("Os escalados foram " + teamS[randblue1].name + " e " + teamS[randblue2].name), null, white, "normal");
+                            room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
+                            room.setPlayerTeam(teamS[randblue2].id, Team.BLUE);
+                        }
+                        else if (teamB[1] != null && teamR[2] === null) {
+                            room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");
+                            room.sendAnnouncement(centerText("O escalado é " + teamS[randblue1].name), null, white, "normal");
+                            room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
+                        }
+                    }
+                    if (redFirst === true) {
+                        room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+                    }
+                }
+                else if (teamS.length < 2) {
+                    room.sendAnnouncement(centerText("Jogadores insuficientes para RANDOM"), null, warn, "italic");
+                }
+            }
+            if (["1"].includes(message[0].toLowerCase()) && teamS.length >= 1) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[0].name), null, white, "bold");
                     room.setPlayerTeam(teamS[0].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[0].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                if (redFirst == true) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-        else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["2"].includes(message[0].toLowerCase()) && teamS.length >= 2) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[1].name), null, white, "bold");
-                room.setPlayerTeam(teamS[1].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["2"].includes(message[0].toLowerCase()) && teamS.length >= 2) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[1].name), null, white, "bold");
                     room.setPlayerTeam(teamS[1].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[1].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["3"].includes(message[0].toLowerCase()) && teamS.length >= 3) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[2].name), null, white, "bold");
-                room.setPlayerTeam(teamS[2].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["3"].includes(message[0].toLowerCase()) && teamS.length >= 3) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[2].name), null, white, "bold");
                     room.setPlayerTeam(teamS[2].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[2].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["4"].includes(message[0].toLowerCase()) && teamS.length >= 4) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[3].name), null, white, "bold");
-                room.setPlayerTeam(teamS[3].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["4"].includes(message[0].toLowerCase()) && teamS.length >= 4) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[3].name), null, white, "bold");
                     room.setPlayerTeam(teamS[3].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[3].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["5"].includes(message[0].toLowerCase()) && teamS.length >= 5) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[4].name), null, white, "bold");
-                room.setPlayerTeam(teamS[4].id, Team.RED);
+            if (["5"].includes(message[0].toLowerCase()) && teamS.length >= 5) {
+                    if (redFirst == false) {
+                        room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[4].name), null, white, "bold");
+                        room.setPlayerTeam(teamS[4].id, Team.BLUE);
+                    }
+                    else if (redFirst == true && player.id == teamB[0].id) {
+                        room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+                    }
             }
-            else if (player.id == teamB[0].id) {
-                if (redFirst == false) {
-                    room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[4].name), null, white, "bold");
-                    room.setPlayerTeam(teamS[4].id, Team.BLUE);
-                }
+            if (["6"].includes(message[0].toLowerCase()) && teamS.length >= 6) {
+                    if (redFirst == false) {
+                        room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[5].name), null, white, "bold");
+                        room.setPlayerTeam(teamS[5].id, Team.BLUE);
+                    }
+                    else if (redFirst == true && player.id == teamB[0].id) {
+                        room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
+                    }
             }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[4].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
-                }
-            }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["6"].includes(message[0].toLowerCase()) && teamS.length >= 6) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[5].name), null, white, "bold");
-                room.setPlayerTeam(teamS[5].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
-                if (redFirst == false) {
-                    room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[5].name), null, white, "bold");
-                    room.setPlayerTeam(teamS[5].id, Team.BLUE);
-                }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[5].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
-                }
-            }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["7"].includes(message[0].toLowerCase()) && teamS.length >= 7) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[6].name), null, white, "bold");
-                room.setPlayerTeam(teamS[6].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["7"].includes(message[0].toLowerCase()) && teamS.length >= 7) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[6].name), null, white, "bold");
                     room.setPlayerTeam(teamS[6].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[6].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["8"].includes(message[0].toLowerCase()) && teamS.length >= 8) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[7].name), null, white, "bold");
-                room.setPlayerTeam(teamS[7].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["8"].includes(message[0].toLowerCase()) && teamS.length >= 8) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[7].name), null, white, "bold");
                     room.setPlayerTeam(teamS[7].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[7].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["9"].includes(message[0].toLowerCase()) && teamS.length >= 9) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[8].name), null, white, "bold");
-                room.setPlayerTeam(teamS[8].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["9"].includes(message[0].toLowerCase()) && teamS.length >= 9) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[8].name), null, white, "bold");
                     room.setPlayerTeam(teamS[8].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[8].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["10"].includes(message[0].toLowerCase()) && teamS.length >= 10) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[9].name), null, white, "bold");
-                room.setPlayerTeam(teamS[9].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["10"].includes(message[0].toLowerCase()) && teamS.length >= 10) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[9].name), null, white, "bold");
                     room.setPlayerTeam(teamS[9].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[9].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["11"].includes(message[0].toLowerCase()) && teamS.length >= 11) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[10].name), null, white, "bold");
-                room.setPlayerTeam(teamS[10].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["11"].includes(message[0].toLowerCase()) && teamS.length >= 11) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[10].name), null, white, "bold");
                     room.setPlayerTeam(teamS[10].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[10].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["12"].includes(message[0].toLowerCase()) && teamS.length >= 12) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[11].name), null, white, "bold");
-                room.setPlayerTeam(teamS[11].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["12"].includes(message[0].toLowerCase()) && teamS.length >= 12) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[11].name), null, white, "bold");
                     room.setPlayerTeam(teamS[11].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[11].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["13"].includes(message[0].toLowerCase()) && teamS.length >= 13) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[12].name), null, white, "bold");
-                room.setPlayerTeam(teamS[12].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["13"].includes(message[0].toLowerCase()) && teamS.length >= 13) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[12].name), null, white, "bold");
                     room.setPlayerTeam(teamS[12].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[12].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["14"].includes(message[0].toLowerCase()) && teamS.length >= 14) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[13].name), null, white, "bold");
-                room.setPlayerTeam(teamS[13].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["14"].includes(message[0].toLowerCase()) && teamS.length >= 14) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[13].name), null, white, "bold");
                     room.setPlayerTeam(teamS[13].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[13].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["15"].includes(message[0].toLowerCase()) && teamS.length >= 15) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[14].name), null, white, "bold");
-                room.setPlayerTeam(teamS[14].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["15"].includes(message[0].toLowerCase()) && teamS.length >= 15) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[14].name), null, white, "bold");
                     room.setPlayerTeam(teamS[14].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[14].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["16"].includes(message[0].toLowerCase()) && teamS.length >= 16) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[15].name), null, white, "bold");
-                room.setPlayerTeam(teamS[15].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["16"].includes(message[0].toLowerCase()) && teamS.length >= 16) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[15].name), null, white, "bold");
                     room.setPlayerTeam(teamS[15].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[1].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["17"].includes(message[0].toLowerCase()) && teamS.length >= 17) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[16].name), null, white, "bold");
-                room.setPlayerTeam(teamS[16].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["17"].includes(message[0].toLowerCase()) && teamS.length >= 17) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[16].name), null, white, "bold");
                     room.setPlayerTeam(teamS[16].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[16].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["18"].includes(message[0].toLowerCase()) && teamS.length >= 18) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[17].name), null, white, "bold");
-                room.setPlayerTeam(teamS[17].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["18"].includes(message[0].toLowerCase()) && teamS.length >= 18) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[17].name), null, white, "bold");
                     room.setPlayerTeam(teamS[17].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[17].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["19"].includes(message[0].toLowerCase()) && teamS.length >= 19) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[18].name), null, white, "bold");
-                room.setPlayerTeam(teamS[18].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["19"].includes(message[0].toLowerCase()) && teamS.length >= 19) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[18].name), null, white, "bold");
                     room.setPlayerTeam(teamS[18].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[18].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
-        }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
-    }
-    if (["20"].includes(message[0].toLowerCase()) && teamS.length >= 20) {
-        if (choose == true) {    
-            if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[19].name), null, white, "bold");
-                room.setPlayerTeam(teamS[19].id, Team.RED);
-            }
-            else if (player.id == teamB[0].id) {
+            if (["20"].includes(message[0].toLowerCase()) && teamS.length >= 20) {
                 if (redFirst == false) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[19].name), null, white, "bold");
                     room.setPlayerTeam(teamS[19].id, Team.BLUE);
                 }
-            }
-            else if (redFirst == true && player.id == teamB[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
-            }
-            else if (player.id === (teamR[0].id || teamB[0].id)) {
-                if (teamS[19].id == null) {
-                    room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
+                else if (redFirst == true && player.id == teamB[0].id) {
+                    room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
                 }
             }
-            else {return false;}
         }
-         else if (choose == false && player.id === (teamR[0].id || teamB[0].id)) {
-            room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
-        }
-        else {return false;}
-        return false;
     }
     if (["2x"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             if (message[1] == null) {
                 room.setCustomStadium(smallStadium);
             }
-            else {return false}
         }
-        return false;
     }
     if (["3x"].includes(message[0].toLowerCase())) {
         if (player.admin) {
@@ -2932,7 +2637,6 @@ room.onPlayerChat = function (player, message) {
                 room.setCustomStadium(mediumBlue);
             }
         }
-        return false;
     }
     if (["5x"].includes(message[0].toLowerCase())) {
         if (player.admin) {
@@ -2940,7 +2644,6 @@ room.onPlayerChat = function (player, message) {
             room.setCustomStadium(bigStadium);
             }
         }
-        return false;
     }
     if (["!comofaz"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Trocar Uniforme:"), player.id, yellow, "bold");
@@ -4061,12 +3764,13 @@ room.onPlayerChat = function (player, message) {
             adminPassword = "true";
             console.log("adminPassword : " + adminPassword);
         }
+        return false;
     }
     if (["!bb", "!bye", "!flw"].includes(message[0].toLowerCase())) {
         room.kickPlayer(player.id, "se foi!", false);
         return false;
     }
-    if (["!clean", "!limpar", "!clear"].includes(message[0].toLowerCase())) {
+    if (["!clean", "!limpar", "!clear", "clean", "clear"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             function repeatAction(action, times) {
                 for (var i = 0; i < times; i++) {
@@ -4081,7 +3785,6 @@ room.onPlayerChat = function (player, message) {
                 room.sendAnnouncement(centerText(player.name + " limpou o chat"), null, yellow, "italic");
             }, 500);
         }
-        return false;
     }
     if (["rr", "!rr"].includes(message[0].toLowerCase())) {
         if (player.admin) {
@@ -4095,13 +3798,11 @@ room.onPlayerChat = function (player, message) {
                 rr = false;
             }, 1000);
         }
-        return false;
     }
     if (["go", "play", "bora"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             room.startGame();
         }
-        return false;
     }
     if (["stop"].includes(message[0].toLowerCase())) {
         if (player.admin) {
@@ -4775,22 +4476,88 @@ room.onPlayerChat = function (player, message) {
             }
         }
     }
+    if (["eu", "Eu"].includes(message[0].toLowerCase())) {
+        if (["amo"].includes(message[1].toLowerCase())) {
+            if (["o"].includes(message[2].toLowerCase())) {
+                if (["Malco", "Malco"].includes(message[3].toLowerCase())) {
+                    setPlayerAvatar(player.id, "❌")
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "-M")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "MA")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "AL")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "LC")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "CO")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "O-")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "❌")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, null)
+                    }, 1000);
+                }
+                if (["Soberbo", "soberbo"].includes(message[3].toLowerCase())) {
+                    setPlayerAvatar(player.id, "🍫")
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "-S")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "SO")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "OB")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "BE")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "ER")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "RB-")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "BO")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "O-")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, "🍫")
+                    }, 1000);
+                    setTimeout(function () {
+                        setPlayerAvatar(player.id, null)
+                    }, 1000);
+                }
+            }
+        }
+    }
     if (message[0][0] == "!") {
         return false;
     }
-    if(badasses.includes(player.conn)) {
+    if (badasses.includes(player.conn)) {
         room.sendAnnouncement("Dono | " + player.name + ": " + mensagem, null, lightgrey, "bold", 2);
         return false;
     }
-    if(supervisors.includes(player.conn)) {
+    if (supervisors.includes(player.conn)) {
         room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, indigo, "bold", 1);
         return false;
     }
-    else if (player.admin) {
+    if (player.admin) {
         room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, offYellow, "bold", 2);
         return false;
     }
-    else if (player.team === Team.RED) {
+    if (player.team === Team.RED) {
         if (redChat == true) {
             if (player.id === teamR[0].id) {
             room.sendAnnouncement(nameHome + " | 👑 | " + player.name + ": " + mensagem, null, red, "bold", 1);
@@ -4805,7 +4572,7 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
-    else if (player.team === Team.BLUE) {
+    if (player.team === Team.BLUE) {
         if (blueChat == true) {
             if (player.id === teamR[0].id) {
                 room.sendAnnouncement(nameGuest + " | 👑 | " + player.name + ": " + mensagem, null, blue, "bold", 1);
@@ -4820,7 +4587,7 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
-    else if (player.team === Team.SPECTATORS) {
+    if (player.team === Team.SPECTATORS) {
         if (specChat == true) {
             room.sendAnnouncement(player.name + ": " + mensagem, null, white, "normal", 1);
         }
@@ -5137,7 +4904,8 @@ room.onPositionsReset = function () {
 room.onRoomLink = function (url) {
     const roomURL = url;
     linkinho = url;
-    sendRoomLinkToDiscord(botVersion + "\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL)}; 
+    sendRoomLinkToDiscord(botVersion + "\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL)
+}; 
 
 room.onPlayerAdminChange = function (changedPlayer, byPlayer) {
     if (muteList.includes(changedPlayer.name) && changedPlayer.admin) {
