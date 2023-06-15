@@ -3943,21 +3943,21 @@ room.onPlayerChat = function (player, message) {
     if (["gk"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText(player.name + " vai de gk!"), null, white, "bold");
         setTimeout(function () {
-            room.setPlayerAvatar(goalMaker, "GK")
+            room.setPlayerAvatar(player.id, "GK")
             setTimeout(function () {
-                room.setPlayerAvatar(goalMaker, "☢️")
+                room.setPlayerAvatar(player.id, "☢️")
                 setTimeout(function () {
-                    room.setPlayerAvatar(goalMaker, "GK")
+                    room.setPlayerAvatar(player.id, "GK")
                     setTimeout(function () {
-                        room.setPlayerAvatar(goalMaker, "☢️")
+                        room.setPlayerAvatar(player.id, "☢️")
                         setTimeout(function () {
-                            room.setPlayerAvatar(goalMaker, null)
+                            room.setPlayerAvatar(player.id, null)
                         }, 1800);
                     }, 1800);
                 }, 1200);
             }, 600);
         }, 10);
-        if (badGKListnameasses.includes(player.name)) {}
+        if (GKListname.includes(player.name)) {}
         else {GKListname.push(player.name);}
     }
     if (["gk?", "gklist"].includes(message[0].toLowerCase())) {
