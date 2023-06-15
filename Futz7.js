@@ -3961,6 +3961,7 @@ room.onPlayerChat = function (player, message) {
         else {GKListname.push(player.name);}
     }
     if (["gk?", "gklist"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("☢️ Gks disponiveis: "), null, white, "normal");
         room.sendAnnouncement(centerText(GKListname.toString()), null, white, "normal");
     }
     if (["!brabo"].includes(message[0].toLowerCase())) {
