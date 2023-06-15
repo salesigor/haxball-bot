@@ -1318,6 +1318,13 @@ var goalsRp3 = 0;
 var goalsBp1 = 0;
 var goalsBp2 = 0;
 var goalsBp3 = 0;
+// assists count
+var assistsRp1 = 0;
+var assistsRp2 = 0;
+var assistsRp3 = 0;
+var assistsBp1 = 0;
+var assistsBp2 = 0;
+var assistsBp3 = 0;
 //
 var goalsHome = [];
 var goalsGuest = [];
@@ -1654,6 +1661,33 @@ function getPlayersGoalCount() {
     }
 };
 
+function getPlayersAssistCount() {
+    if (teamR.length == 1) {
+        if (lastPlayersTouched[1].id == teamR[0].id) {assistsRp1++;}
+    }
+    else if (teamR.length == 2) {
+        if (lastPlayersTouched[1].id == teamR[0].id) {assistsRp1++;}
+        if (lastPlayersTouched[1].id == teamR[1].id) {assistsRp2++;}
+    }
+    else if (teamR.length == 3) {
+        if (lastPlayersTouched[1].id == teamR[0].id) {assistsRp1++;}
+        if (lastPlayersTouched[1].id == teamR[1].id) {assistsRp2++;}
+        if (lastPlayersTouched[1].id == teamR[2].id) {assistsRp3++;}
+    }
+    else if (teamB.length == 1) {
+        if (lastPlayersTouched[1].id == teamB[0].id) {assistsBp1++;}
+    }
+    else if (teamB.length == 2) {
+        if (lastPlayersTouched[1].id == teamB[0].id) {assistsBp1++;}
+        if (lastPlayersTouched[1].id == teamB[1].id) {assistsBp2++;}
+    }
+    else if (teamB.length == 3) {
+        if (lastPlayersTouched[1].id == teamB[0].id) {assistsBp1++;}
+        if (lastPlayersTouched[1].id == teamB[1].id) {assistsBp2++;}
+        if (lastPlayersTouched[1].id == teamB[2].id) {assistsBp3++;}
+    }
+};
+
 function checkTime() {
     const scores = room.getScores();
     if (Math.abs(scores.time - scores.timeLimit) <= 0.01 && scores.timeLimit != 0) {
@@ -1721,10 +1755,10 @@ function endGame(winner) { // no stopGame() function in it
         "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
         (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
         (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "Partidas sem perder: " + streak + "\n" + "\n" + 
-        "🔴 Escalação " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s)\n"
-         + redp2 + " - " + goalsRp2 + " gol(s)\n" + redp3 + " - " + goalsRp3 + " gol(s)\n" +  "\n" + 
-        "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s)\n"
-         + bluep2 + " - " + goalsBp2 + " gol(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s)")
+        "🔴 Escalação " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
+         + redp2 + " - " + goalsRp2 + " gol(s), " + assistsRp2 + " assist(s)\n" + redp3 + " - " + goalsRp3 + " gol(s), " + assistsRp3 + " assist(s)\n" +  "\n" + 
+        "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
+         + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)")
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
@@ -1748,10 +1782,10 @@ function endGame(winner) { // no stopGame() function in it
         "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
         (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
         (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "Partidas sem perder: " + streak + "\n" + "\n" + 
-        "🔴 Escalação " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s)\n"
-         + redp2 + " - " + goalsRp2 + " gol(s)\n" + redp3 + " - " + goalsRp3 + " gol(s)\n" +  "\n" + 
-        "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s)\n"
-         + bluep2 + " - " + goalsBp2 + " gol(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s)")
+        "🔴 Escalação " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
+         + redp2 + " - " + goalsRp2 + " gol(s), " + assistsRp2 + " assist(s)\n" + redp3 + " - " + goalsRp3 + " gol(s), " + assistsRp3 + " assist(s)\n" +  "\n" + 
+        "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
+         + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)")
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
@@ -1775,10 +1809,10 @@ function endGame(winner) { // no stopGame() function in it
         "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
         (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
         (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "Partidas sem perder: " + streak + "\n" + "\n" + 
-        "🔴 Escalação " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s)\n"
-         + redp2 + " - " + goalsRp2 + " gol(s)\n" + redp3 + " - " + goalsRp3 + " gol(s)\n" +  "\n" + 
-        "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s)\n"
-         + bluep2 + " - " + goalsBp2 + " gol(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s)")
+        "🔴 Escalação " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
+         + redp2 + " - " + goalsRp2 + " gol(s), " + assistsRp2 + " assist(s)\n" + redp3 + " - " + goalsRp3 + " gol(s), " + assistsRp3 + " assist(s)\n" +  "\n" + 
+        "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
+         + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)")
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText(teamR[0].name + " e " + teamB[0].name + "escolhem"), null, white, "bold");
@@ -2091,7 +2125,7 @@ room.onPlayerLeave = function (player) {
                 choose = true;
                 room.sendAnnouncement(centerText("Quem entra, " + teamR[0].name + "?"), null, white, "bold");
                 room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
-room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
+                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("*** 20segundos para a escolha automatica ***"), null, warn, "italic");
                 }, 700);
@@ -2101,7 +2135,7 @@ room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, y
                 choose = true;
                 room.sendAnnouncement(centerText("Quem entra, " + teamB[0].name + "?"), null, white, "bold");
                 room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
-room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
+                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("*** 20segundos para a escolha automatica ***"), null, warn, "italic");
                 }, 700);
@@ -4668,6 +4702,12 @@ room.onGameStart = function (byPlayer) {
         goalsBp1 = 0;
         goalsBp2 = 0;
         goalsBp3 = 0;
+        assistsRp1 = 0;
+        assistsRp2 = 0;
+        assistsRp3 = 0;
+        assistsBp1 = 0;
+        assistsBp2 = 0;
+        assistsBp3 = 0;
     }, 1000);
 };
 
@@ -4758,30 +4798,31 @@ room.onTeamGoal = function (team) {
 		room.sendAnnouncement(centerText("TOCA A MÚÚSICAAA, É GOOOOOL!!!"), null, green, "bold");
 		room.sendAnnouncement(centerText("         ⚽ Gol de " + lastPlayersTouched[0].name + " ⚽"), null, white, "bold");
 		room.sendAnnouncement(centerText("Velocidade do Chute: " + ballSpeed.toPrecision(4).toString() + " km/h"), null, white, "normal");
+        setTimeout(function () {
+            room.setPlayerAvatar(goalMaker, "🎯")
+            setTimeout(function () {
+                room.setPlayerAvatar(goalMaker, "🔥")
+                setTimeout(function () {
+                    room.setPlayerAvatar(goalMaker, null)
+                }, 2000);
+            }, 800);
+        }, 10);
 		if (lastPlayersTouched[1] != null && lastPlayersTouched[1].team == team) {
             let goalAssist = lastPlayersTouched[1].id;
+            getPlayersAssistCount();
 			room.sendAnnouncement(centerText("👟 Assistência: " + lastPlayersTouched[1].name + " 👟"), null, white, "bold");
             setTimeout(function () {
-                room.setPlayerAvatar(goalAssist, "🎯")
+                room.setPlayerAvatar(goalAssist, "🤝")
                 setTimeout(function () {
-                    room.setPlayerAvatar(goalAssist, "🤝")
+                    room.setPlayerAvatar(goalAssist, "👟")
                     setTimeout(function () {
                         room.setPlayerAvatar(goalAssist, null)
-                    }, 1000);
-                }, 1200);
-            }, 500);
+                    }, 1500);
+                }, 600);
+            }, 10);
         }
 		if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
-            setTimeout(function () {
-                room.setPlayerAvatar(goalMaker, "🎯")
-                setTimeout(function () {
-                    room.setPlayerAvatar(goalMaker, "🔥")
-                    setTimeout(function () {
-                        room.setPlayerAvatar(goalMaker, null)
-                    }, 750);
-                }, 1200);
-            }, 500);
             setTimeout(function () {
                 room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
                 setTimeout(function () {
@@ -4812,15 +4853,6 @@ room.onTeamGoal = function (team) {
 		}
         else if (team === 2) {
 			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
-            setTimeout(function () {
-                room.setPlayerAvatar(goalMaker, "🎯")
-                setTimeout(function () {
-                    room.setPlayerAvatar(goalMaker, "🔥")
-                    setTimeout(function () {
-                        room.setPlayerAvatar(goalMaker, null)
-                    }, 750);
-                }, 1200);
-            }, 500);
             setTimeout(function () {
                 room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
                 setTimeout(function () {
@@ -4855,17 +4887,18 @@ room.onTeamGoal = function (team) {
 		room.sendAnnouncement(centerText("🤦‍♂️ É GOOOOOL CONTRA!! 🤦‍♂️"), null, yellow, "bold");
 		room.sendAnnouncement(centerText("🤡 Gol de " + lastPlayersTouched[0].name + " 🤡"), null, white, "bold");
 		room.sendAnnouncement(centerText("Velocidade do Chute: " + ballSpeed.toPrecision(4).toString() + " km/h"), null, white, "normal");
+        let goalMaker = lastPlayersTouched[0].id;
+        setTimeout(function () {
+            room.setPlayerAvatar(goalMaker, "🤦‍♂️")
+            setTimeout(function () {
+                room.setPlayerAvatar(goalMaker, "🤡")
+                setTimeout(function () {
+                    room.setPlayerAvatar(goalMaker, null)
+                }, 2000);
+            }, 600);
+        }, 10);
         if (team === 1) {
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
-            setTimeout(function () {
-                room.setPlayerAvatar(goalMaker, "🤦‍♂️")
-                setTimeout(function () {
-                    room.setPlayerAvatar(goalMaker, "🤡")
-                    setTimeout(function () {
-                        room.setPlayerAvatar(goalMaker, null)
-                    }, 100);
-                }, 1200);
-            }, 500);
             setTimeout(function () {
                 room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
                 setTimeout(function () {
@@ -4896,15 +4929,6 @@ room.onTeamGoal = function (team) {
 		}
         else if (team === 2) {
 			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
-            setTimeout(function () {
-                room.setPlayerAvatar(goalMaker, "🤦‍♂️")
-                setTimeout(function () {
-                    room.setPlayerAvatar(goalMaker, "🤡")
-                    setTimeout(function () {
-                        room.setPlayerAvatar(goalMaker, null)
-                    }, 100);
-                }, 1200);
-            }, 500);
             setTimeout(function () {
                 room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
                 setTimeout(function () {
