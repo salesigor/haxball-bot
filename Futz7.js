@@ -1164,13 +1164,14 @@ const bel = {'name': 'Bélgica', "type": Uniform, "emoji": '', "angle": 0, "text
 const hol = {'name': 'Holanda', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0xFFFFFF, "color1": 0xF25100, "color2": 0xF25100, "color3": 0xF25100};
 // clubes de zueira
 const girl = { "name": 'Barbies', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0x520131, "color1": 0xba2f82, "color2": 0xba2f82, "color3": 0xba2f82};
-const vip1 = { "name": '👑 Søbєrαηøs 👑', "type": Uniform, "emoji": '', "angle": 60, "textcolor": 0x990DA8, "color1": 0x5E0061, "color2": 0x000000, "color3": 0x000000};
 const inv = { "name": '🟨 Iηvicŧus 🟨', "type": Uniform, "emoji": '', "angle": 0, "textcolor": 0x8e6600, "color1": 0xdb9d00, "color2": 0xdb9d00, "color3": 0xdb9d00};
-const messi = { "name": 'ɪɴᴛ', "type": Uniform, "emoji": '', "angle": 45, "textcolor": 0x42FFFF, "color1": 0xA8ABA9, "color2": 0xA3A3A3, "color3": 0x969696};
-const vip2 = { "name": 'Vip 2', "type": Uniform, "emoji": '', "angle": 60, "textcolor": 0xFFFFFF, "color1": 0x3DFF1F, "color2": 0xE1E809, "color3": 0x00FF11};
-const vip3 = { "name": 'Vip 3', "type": Uniform, "emoji": '', "angle": 45, "textcolor": 0x42FFFF, "color1": 0xA8ABA9, "color2": 0xA3A3A3, "color3": 0x969696};
-const vip4 = { "name": 'Vip 4', "type": Uniform, "emoji": '', "angle": 1, "textcolor": 0x42FFFF, "color1": 0x000000, "color2": 0x781861, "color3": 0xDAFFC3};
-const vip5 = { "name": 'Bambobees', "type": Uniform, "emoji": '', "angle": 180, "textcolor": 0x42FFFF, "color1": 0x474747, "color2": 0xFFDD00, "color3": 0x000000};  
+const mia = { "name": '𝐈𝐧𝐭𝐞𝐫 𝐌𝐢𝐚𝐦𝐢', "type": Uniform, "emoji": '', "angle": 45, "textcolor": 0xFCA4B6, "color1": 0x141414, "color2": 0x141414, "color3": 0x141414}; // Time do messi uni 1
+const mia2 = { "name": '𝐈𝐧𝐭𝐞𝐫 𝐌𝐢𝐚𝐦𝐢', "type": Uniform, "emoji": '', "angle": 45, "textcolor": 0x141414, "color1": 0xFCA4B6, "color2": 0xFCA4B6, "color3": 0xFCA4B6}; // Time do messi uni 1
+const v1 = { "name": '👑 Søbєrαηøs 👑', "type": Uniform, "emoji": '', "angle": 60, "textcolor": 0x990DA8, "color1": 0x5E0061, "color2": 0x000000, "color3": 0x000000};
+const v2 = { "name": 'Vip 2', "type": Uniform, "emoji": '', "angle": 60, "textcolor": 0xFFFFFF, "color1": 0x3DFF1F, "color2": 0xE1E809, "color3": 0x00FF11};
+const v3 = { "name": 'Vip 3', "type": Uniform, "emoji": '', "angle": 45, "textcolor": 0x42FFFF, "color1": 0xA8ABA9, "color2": 0xA3A3A3, "color3": 0x969696};
+const v4 = { "name": 'Vip 4', "type": Uniform, "emoji": '', "angle": 1, "textcolor": 0x42FFFF, "color1": 0x000000, "color2": 0x781861, "color3": 0xDAFFC3};
+const v5 = { "name": 'Bambobees', "type": Uniform, "emoji": '', "angle": 180, "textcolor": 0x42FFFF, "color1": 0x474747, "color2": 0xFFDD00, "color3": 0x474747};
 // GOL comemoração
 const gol1 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
 const gol12 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0xFFFFFF, "color3": 0x2ebdff};
@@ -3089,17 +3090,37 @@ room.onPlayerChat = function (player, message) {
                 nameHome = girl.name;
                 acronymHome = girl;
             }
-            else if (message[2] == "vip") {
-                nameHome = vip1.name;
-                acronymHome = vip1;
-            }
             else if (message[2] == "inv") {
                 nameHome = inv.name;
                 acronymHome = inv;
             }
-            else if (message[2] == "messi") {
-                nameHome = messi.name;
-                acronymHome = messi;
+            else if (message[2] == "mia") {
+                nameHome = mia.name;
+                acronymHome = mia;
+            }
+            else if (message[2] == "mia2") {
+                nameHome = mia2.name;
+                acronymHome = mia2;
+            }
+            else if (message[2] == "v1") {
+                nameHome = v1.name;
+                acronymHome = v1;
+            }
+            else if (message[2] == "v2") {
+                nameHome = v2.name;
+                acronymHome = v2;
+            }
+            else if (message[2] == "v3") {
+                nameHome = v3.name;
+                acronymHome = v3;
+            }
+            else if (message[2] == "v4") {
+                nameHome = v4.name;
+                acronymHome = v4;
+            }
+            else if (message[2] == "v5") {
+                nameHome = v5.name;
+                acronymHome = v5;
             }
             room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
             setTimeout(function () {
@@ -3254,17 +3275,37 @@ room.onPlayerChat = function (player, message) {
                 nameGuest = girl.name;
                 acronymGuest = girl;
             }
-            else if (message[2] == "vip") {
-                nameGuest = vip1.name;
-                acronymGuest = vip1;
-            }
             else if (message[2] == "inv") {
                 nameGuest = inv.name;
                 acronymGuest = inv;
             }
-            else if (message[2] == "messi") {
-                nameGuest = messi.name;
-                acronymGuest = messi;
+            else if (message[2] == "mia") {
+                nameGuest = mia.name;
+                acronymGuest = mia;
+            }
+            else if (message[2] == "mia2") {
+                nameGuest = mia2.name;
+                acronymGuest = mia2;
+            }
+            else if (message[2] == "v1") {
+                nameGuest = v1.name;
+                acronymGuest = v1;
+            }
+            else if (message[2] == "v2") {
+                nameGuest = v2.name;
+                acronymGuest = v2;
+            }
+            else if (message[2] == "v3") {
+                nameGuest = v3.name;
+                acronymGuest = v3;
+            }
+            else if (message[2] == "v4") {
+                nameGuest = v4.name;
+                acronymGuest = v4;
+            }
+            else if (message[2] == "v5") {
+                nameGuest = v5.name;
+                acronymGuest = v5;
             }
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             setTimeout(function () {
@@ -4473,7 +4514,6 @@ room.onPlayerChat = function (player, message) {
     }
     if (message[0][0] == "!") {
         return false;
-    } return false;
     }
     if (player.admin) {
         if (player.id === badassID) {
@@ -4515,7 +4555,6 @@ room.onPlayerChat = function (player, message) {
         }
         else if (redChat == false) {
             room.sendChat("Você está mutado.", player.id);
-            return false;
         }
         return false;
     }
@@ -4561,7 +4600,8 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     return false;
-};
+    };
+}
 
 room.onPlayerActivity = function (player) {
 };
