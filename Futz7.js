@@ -3531,7 +3531,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("𝘿𝙄𝘼𝙕"), null, yellow, "bold");
         }, 5000);
     }
-    if (["!soberano"].includes(message[0].toLowerCase())) {
+    if (["!soberano", "soberano"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("👑 SOBERANO é rei 👑"), null, white, "bold");
         }, 10);
@@ -3730,10 +3730,10 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("Lista de GKs foi esvaziada"), null, yellow, "itallc");
         }
     }
-    if (["!brabo"].includes(message[0].toLowerCase())) {
+    if (["!brabo", "brabo"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText(player.name + " é braboooo!"), null, white, "bold");
     }
-    if (["!ain"].includes(message[0].toLowerCase())) {
+    if (["!ain", "ain"].includes(message[0].toLowerCase())) {
         var messages = [
             "AINN, PAI PARAAA!",
             "AIN, ZÉ DA MANGA!",
@@ -3744,7 +3744,7 @@ room.onPlayerChat = function (player, message) {
         var announcement = messages[randomIndex];
         room.sendAnnouncement(player.name + ": " + announcement, null, yellow, "bold");
     }
-    if (["!gol"].includes(message[0].toLowerCase())) {
+    if (["!gol", "gol"].includes(message[0].toLowerCase())) {
         var messages = [
             "LAAAAÇO! ⚽",
             "GOLAAAAÇO! ⚽",
@@ -3755,7 +3755,7 @@ room.onPlayerChat = function (player, message) {
         var announcement = messages[randomIndex];
         room.sendAnnouncement(player.name + ": " + announcement, null, white, "bold");
     }
-    if (["!chupa"].includes(message[0].toLowerCase())) {
+    if (["!chupa", "chupa"].includes(message[0].toLowerCase())) {
         var messages = [
             "Chupaaa!",
             "Chupaaa!",
