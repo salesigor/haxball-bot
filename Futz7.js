@@ -1377,7 +1377,7 @@ function dataehora(){
     ano=data.getFullYear(),
     horas=data.getHours().toString().padStart(2, '0'),
     minutos=data.getMinutes().toString().padStart(2, '0');
-    return `${dia}/${mes} de ${ano}, ás ${horas}:${minutos}`;
+    return `${dia}/${mes} ás ${horas}:${minutos}`;
 };
   
 function getDateInfo(){
