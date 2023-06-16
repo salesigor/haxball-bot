@@ -1368,6 +1368,11 @@ help_mensagens = setInterval(() => {
 room.sendAnnouncement(centerText("「📣」 𝘂𝘀𝗲 !𝗵𝗲𝗹𝗽 𝗽𝗮𝗿𝗮 𝘃𝗲𝗿 𝗼𝘀 𝗰𝗼𝗺𝗮𝗻𝗱𝗼𝘀"), null, white, "italic", 1);
 }, Intervalo_msgs2);
 
+function joinDiscord(url) {
+    const janelinhaNova = window.open(url, "_blank");
+    janelinhaNova.focus()
+};
+
 /* Sistema data e hora */
   
 function dataehora(){
@@ -1387,7 +1392,7 @@ function getDateInfo(){
     ano=data.getFullYear(),
     horas=data.getHours().toString().padStart(2, '0'),
     minutos=data.getMinutes().toString().padStart(2, '0');
-    return `${dia} do ${mes} de ${ano}, ás ${horas}:${minutos}`;
+    return `${dia}/${mes}/${ano} ás ${horas}:${minutos}`;
 };
 
 /* WEBHOOKS */ 
@@ -1620,23 +1625,23 @@ function getPlayersGoalCount() {
     if (teamR.length == 1) {
         if (lastPlayersTouched[0].id == teamR[0].id) {goalsRp1++;}
     }
-    else if (teamR.length == 2) {
+    if (teamR.length == 2) {
         if (lastPlayersTouched[0].id == teamR[0].id) {goalsRp1++;}
         if (lastPlayersTouched[0].id == teamR[1].id) {goalsRp2++;}
     }
-    else if (teamR.length == 3) {
+    if (teamR.length == 3) {
         if (lastPlayersTouched[0].id == teamR[0].id) {goalsRp1++;}
         if (lastPlayersTouched[0].id == teamR[1].id) {goalsRp2++;}
         if (lastPlayersTouched[0].id == teamR[2].id) {goalsRp3++;}
     }
-    else if (teamB.length == 1) {
+    if (teamB.length == 1) {
         if (lastPlayersTouched[0].id == teamB[0].id) {goalsBp1++;}
     }
-    else if (teamB.length == 2) {
+    if (teamB.length == 2) {
         if (lastPlayersTouched[0].id == teamB[0].id) {goalsBp1++;}
         if (lastPlayersTouched[0].id == teamB[1].id) {goalsBp2++;}
     }
-    else if (teamB.length == 3) {
+    if (teamB.length == 3) {
         if (lastPlayersTouched[0].id == teamB[0].id) {goalsBp1++;}
         if (lastPlayersTouched[0].id == teamB[1].id) {goalsBp2++;}
         if (lastPlayersTouched[0].id == teamB[2].id) {goalsBp3++;}
@@ -1647,23 +1652,23 @@ function getPlayersAssistCount() {
     if (teamR.length == 1) {
         if (lastPlayersTouched[1].id == teamR[0].id) {assistsRp1++;}
     }
-    else if (teamR.length == 2) {
+    if (teamR.length == 2) {
         if (lastPlayersTouched[1].id == teamR[0].id) {assistsRp1++;}
         if (lastPlayersTouched[1].id == teamR[1].id) {assistsRp2++;}
     }
-    else if (teamR.length == 3) {
+    if (teamR.length == 3) {
         if (lastPlayersTouched[1].id == teamR[0].id) {assistsRp1++;}
         if (lastPlayersTouched[1].id == teamR[1].id) {assistsRp2++;}
         if (lastPlayersTouched[1].id == teamR[2].id) {assistsRp3++;}
     }
-    else if (teamB.length == 1) {
+    if (teamB.length == 1) {
         if (lastPlayersTouched[1].id == teamB[0].id) {assistsBp1++;}
     }
-    else if (teamB.length == 2) {
+    if (teamB.length == 2) {
         if (lastPlayersTouched[1].id == teamB[0].id) {assistsBp1++;}
         if (lastPlayersTouched[1].id == teamB[1].id) {assistsBp2++;}
     }
-    else if (teamB.length == 3) {
+    if (teamB.length == 3) {
         if (lastPlayersTouched[1].id == teamB[0].id) {assistsBp1++;}
         if (lastPlayersTouched[1].id == teamB[1].id) {assistsBp2++;}
         if (lastPlayersTouched[1].id == teamB[2].id) {assistsBp3++;}
@@ -2137,12 +2142,12 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
         banList.push([kickedPlayer.name, kickedPlayer.id]);
         room.sendAnnouncement(centerText(kickedPlayer.name + " levou ban!"), null, white, "bold");
         room.sendAnnouncement(centerText("Banned por não seguir as REGRAS!"), null, warn, "italic");
+        console.log("ban list : " + banList);
     }
-    else {
-    room.sendAnnouncement(centerText(kickedPlayer.name + " levou kick!"), null, white, "bold");
-    room.sendAnnouncement(centerText("Kicked por inatividade ou por pura encheção de saco!"), null, warn, "italic");
+    if (ban == false) {
+        room.sendAnnouncement(centerText(kickedPlayer.name + " levou kick!"), null, white, "bold");
+        room.sendAnnouncement(centerText("Kicked por inatividade ou por pura encheção de saco!"), null, warn, "italic");
     }
-    console.log("ban list : " + banList);
 };
 
 /* PLAYER ACTIVITY */
@@ -3441,6 +3446,13 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("▒█▄▄▀ ▄█▄ ▒█▄▄▄█ ▒█▄▄█ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄▀"), null, white, "bold", 0);
         room.sendAnnouncement(centerText(" https://discord.gg/AR7ypuzJG8 "), null, white, "bold", 1);
     }
+    if (["!join" , "join"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("VoCê será redirecionado para o discord"), null, green, "italic");
+        setTimeout(function () {
+            joinDiscord("https://discord.gg/AR7ypuzJG8");
+            window.open("https://discord.gg/AR7ypuzJG8");
+        }, 500);
+    }
     if (["!lenda", "lenda"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
     }
@@ -3702,7 +3714,7 @@ room.onPlayerChat = function (player, message) {
             }, 600);
         }, 10);
         if (GKListname.includes(player.name)) {}
-        else {GKListname.push(player.name + "\n");}
+        else {GKListname.push("\n" + player.name);}
     }
     if (["gk?", "gklist"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("☢️ Gks disponiveis: "), null, white, "normal");
@@ -3795,6 +3807,7 @@ room.onPlayerChat = function (player, message) {
             room.setPlayerAdmin(player.id, true);
             adminPassword = "true";
             console.log("adminPassword : " + adminPassword);
+            return false;
         }
     }
     if (["!bb", "!bye", "!flw"].includes(message[0].toLowerCase())) {
@@ -4543,7 +4556,7 @@ room.onPlayerChat = function (player, message) {
     }
     if (supervisorsID.includes(player.id)) {
         room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 1);
-       
+    };
     if (player.team === Team.RED) {
         if (redChat == true) {
             if (player.id === teamR[0].id) {
@@ -4583,24 +4596,23 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
-    if (message.match(malcorage)) {
+    if (message.includes(malcorage)) {
         room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", true);
         return false;
     }
-    if (message.match(xingo)) {
+    if (message.includes(xingo)) {
         room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", true);
         return false;
     }
-    if (message.match(regex)) {
+    if (message.includes(regex)) {
         room.sendAnnouncement("Sem xingamentos, por favor.", player.id, warn, "italic", 1);
         return false;
     }
-    if (message.match(trava)) {
+    if (message.includes(trava)) {
         room.kickPlayer(player.id, "❌ Trava-Hax detectada", true);
         return false;
     }
     return false;
-    };
 }
 
 room.onPlayerActivity = function (player) {
