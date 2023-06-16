@@ -3334,6 +3334,7 @@ room.onPlayerChat = function (player, message) {
             room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             room.sendAnnouncement(centerText("_____uniformes_destravados_____"), null, yellow, "italic");
+            return false;
         }
     }
     if (["!rand"].includes(message[0].toLowerCase())) {
