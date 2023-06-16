@@ -2931,6 +2931,9 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
         }, 100);
     }
+    if (["!afk"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("comando !AFK indisponível"), player.id, warn, "italic");
+    }
     if (["!uniforme"].includes(message[0].toLowerCase())) {
         if (message[1] == null) {
             room.sendAnnouncement("_______________________________________", null, yellow, "bold");
@@ -3138,7 +3141,7 @@ room.onPlayerChat = function (player, message) {
                 room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
-        else if (message[1] == "blue") {
+        if (message[1] == "blue") {
             if (message[2] == "bar") {
                 nameGuest = bar.name;
                 acronymGuest = bar;
@@ -3326,6 +3329,11 @@ room.onPlayerChat = function (player, message) {
                 room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
                 room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
+        }
+        if (message[1] == null) {
+            room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+            room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+            room.sendAnnouncement(centerText("_____uniformes_destravados_____"), null, yellow, "italic");
         }
     }
     if (["!rand"].includes(message[0].toLowerCase())) {
