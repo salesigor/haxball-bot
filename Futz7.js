@@ -2059,14 +2059,14 @@ room.onPlayerJoin = function (player) {
             room.kickPlayer(player.id, true);
         }, 1000);
     }
-    if(cartaoamarelo.includes(player.conn)) {
+    /*if(cartaoamarelo.includes(player.conn)) {
         room.sendAnnouncement(centerText("🟨 O player " + player.name + " está pendurado! 🟨"), null, warn, "normal");
         setTimeout(function () {
             room.sendAnnouncement(centerText("você levou cartão amarelo 🟨 na sua ultima estadia na sala!"), player.id, warn, "italic");
             room.sendAnnouncement(centerText("SUJEITO À BAN temporário"), player.id, warn, "normal");
             room.kickPlayer(player.id, true);
         }, 1000);
-    }
+    }*/
     nameForbid(player)
     var conn = player.conn
     var ipv4 = conn.match(/.{1,2}/g).map(function(v){
