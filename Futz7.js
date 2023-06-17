@@ -4575,6 +4575,7 @@ room.onPlayerChat = function (player, message) {
     }
     if (supervisorsID.includes(player.id)) {
         room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 1);
+        return false;
     };
     if (player.team === Team.RED) {
         if (redChat == true) {
