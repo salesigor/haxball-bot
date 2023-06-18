@@ -1377,7 +1377,7 @@ function joinDiscord(url) {
 
 /* Sistema data e hora */
   
-function dataehora(){
+function dataehora() {
    let data = new Date(),
    dia=data.getDate().toString().padStart(2, '0'),
     mes=(data.getMonth()+1).toString().padStart(2, '0'),
@@ -1387,7 +1387,7 @@ function dataehora(){
     return `${dia}/${mes} ás ${horas}:${minutos}`;
 };
   
-function getDateInfo(){
+function getDateInfo() {
     let data = new Date(),
     dia=data.getDate().toString().padStart(2, '0'),
     mes=(data.getMonth()+1).toString().padStart(2, '0'),
@@ -1441,6 +1441,18 @@ function sendScoresToDiscord(message) {
     var params = {
         avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1113881527181398087/image.png', // Avatar WEBHOOK
         username: 'Soberbo', // Nome WEBHOOK
+        content: message
+    };
+    request.send(JSON.stringify(params));
+};
+
+function sendHattricksToDiscord(message) {
+    var request = new XMLHttpRequest();
+    request.open("POST","https://discord.com/api/webhooks/1119855439295819776/IQzj6ICC9p0vxXQQwE7rRjvRXELnH90NvJzXB7DNxx8H2KvY1EpQ1ieDdKWx3Qj9M1cj"); // Webhook Link
+    request.setRequestHeader('Content-type', 'application/json');
+    var params = {
+        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1119854937241813002/image.png', // Avatar WEBHOOK
+        username: 'Hat Trick Counter', // Nome WEBHOOK
         content: message
     };
     request.send(JSON.stringify(params));
@@ -1677,6 +1689,33 @@ function getPlayersAssistCount() {
     }
 };
 
+function hatTrickCount() {
+    if (goalsRp1 == 3) {
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+    }
+    if (goalsRp2 == 3) {
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+    }
+    if (goalsRp2 == 3) {
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[3].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+    }
+    if (goalsBp1 == 3) {
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+    }
+    if (goalsBp2 == 3) {
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+    }
+    if (goalsBp3 == 3) {
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+    }
+};
+
 function checkTime() {
     const scores = room.getScores();
     if (Math.abs(scores.time - scores.timeLimit) <= 0.01 && scores.timeLimit != 0) {
@@ -1732,6 +1771,7 @@ function endGame(winner) { // no stopGame() function in it
     Rposs = Rposs / (Rposs + Bposs);
     Bposs = 1 - Rposs;
     lastWinner = winner;
+    hatTrickCount();
     if (winner == Team.RED) {
         streak++;
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
@@ -2298,7 +2338,7 @@ room.onPlayerChat = function (player, message) {
                     room.setPlayerTeam(teamS[0].id, Team.RED);
                     room.setPlayerTeam(teamS[1].id, Team.RED);
                 }
-                else if (teamR[1].id != null && teamR[2] === null) {
+                else if (teamR[1].id = null && teamR[2].id === null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu AUTO"), null, white, "bold");
                     room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
                     room.setPlayerTeam(teamS[0].id, Team.RED);
@@ -2311,7 +2351,7 @@ room.onPlayerChat = function (player, message) {
                     room.setPlayerTeam(teamS[0].id, Team.BLUE);
                     room.setPlayerTeam(teamS[1].id, Team.BLUE);
                 }
-                else if (teamB[1].id != null && teamR[2] === null) {
+                else if (teamB[1].id != null && teamR[2].id === null) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escolheu AUTO"), null, white, "bold");
                     room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
                     room.setPlayerTeam(teamS[0].id, Team.BLUE);
@@ -2335,7 +2375,7 @@ room.onPlayerChat = function (player, message) {
         var randblue2 = Math.floor(Math.random() * teamS.length);
         if (choose == true && teamS.length > 2) {    
             if (player.id === teamR[0].id) {
-                if (teamR[1].id === null) {
+                if (teamR[1].id == null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
                     room.sendAnnouncement(centerText("Os escalados foram " + teamS[randred1].name + " e " + teamS[randred2].name), null, white, "normal");
                     room.setPlayerTeam(teamS[randred1].id, Team.RED);
@@ -2348,13 +2388,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (player.id === teamB[0].id && redFirst === false) {
-                if (teamB[1] === null) {
+                if (teamB[1].id == null) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");
                     room.sendAnnouncement(centerText("Os escalados foram " + teamS[randblue1].name + " e " + teamS[randblue2].name), null, white, "normal");
                     room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
                     room.setPlayerTeam(teamS[randblue2].id, Team.BLUE);
                 }
-                else if (teamB[1] != null && teamR[2] === null) {
+                else if (teamB[1].id != null && teamR[2].id === null) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");
                     room.sendAnnouncement(centerText("O escalado é " + teamS[randblue1].name), null, white, "normal");
                     room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
@@ -3746,6 +3786,7 @@ room.onPlayerChat = function (player, message) {
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
         room.sendAnnouncement(player.name + ": " + announcement, null, yellow, "bold");
+        return false;
     }
     if (["!gol", "gol"].includes(message[0].toLowerCase())) {
         var messages = [
@@ -3757,6 +3798,7 @@ room.onPlayerChat = function (player, message) {
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
         room.sendAnnouncement(player.name + ": " + announcement, null, white, "bold");
+        return false;
     }
     if (["!chupa", "chupa"].includes(message[0].toLowerCase())) {
         var messages = [
@@ -3771,6 +3813,7 @@ room.onPlayerChat = function (player, message) {
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
         room.sendAnnouncement(player.name + ": " + announcement, null, white, "bold");
+        return false;
     }
     if (["!verdade"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText(player.name + " é ruim pra caramba!"), null, yellow, "bold");
@@ -4688,6 +4731,12 @@ room.onGameStart = function (byPlayer) {
         goalsBp1 = 0;
         goalsBp2 = 0;
         goalsBp3 = 0;
+        assistsBp1 = 0;
+        assistsBp2 = 0;
+        assistsBp3 = 0;
+        assistsRp1 = 0;
+        assistsRp2 = 0;
+        assistsRp3 = 0;
     }, 1000);
 };
 
