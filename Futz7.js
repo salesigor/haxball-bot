@@ -1690,27 +1690,27 @@ function getPlayersAssistCount() {
 };
 
 function hatTrickCount() {
-    if (goalsRp1 == 3) {
+    if (goalsRp1 == 3 && teamR.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
         nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
-    if (goalsRp2 == 3) {
+    if (goalsRp2 == 3 && teamR.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
         nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
-    if (goalsRp2 == 3) {
+    if (goalsRp2 == 3 && teamR.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[3].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
         nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
-    if (goalsBp1 == 3) {
+    if (goalsBp1 == 3 && teamB.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
         nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
-    if (goalsBp2 == 3) {
+    if (goalsBp2 == 3 && teamB.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
         nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
-    if (goalsBp3 == 3) {
+    if (goalsBp3 == 3 && teamB.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
         nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
