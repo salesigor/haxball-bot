@@ -1182,9 +1182,9 @@ const gol4 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0
 const gol5 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0xFFFFFF, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
 //
 const seleçoes = [ale, arg, bra, esp, por, ita, uru, fra, ing, bel, hol];
-const euroClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM];
+const euroClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, mia];
 const sulaClubes = [cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
-const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
+const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv, mia];
 var defaultHome = bar
 var defaultGuest = rea
 var nameHome = defaultHome.name;
@@ -1238,18 +1238,15 @@ const soberbo = ['3139312E3133352E3231362E313330', '3137392E33342E38332E3634']; 
 const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533']; // malco
 const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539']; // Gustaxs__, Chiquinho, 𝕃 . 𝕄𝕖𝕤𝕤𝕚
 const blacklistconn = [
-    '3137392E3231382E32312E323337','34352E3233332E3231332E313233', '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730'
-]; // Alcione, Alcione, o anticristo, Arthur MM, ᱦiᱮ∀Ʀd, Schneider
+    '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730'
+]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider
 const cartaoamarelo = [
     '3138392E38352E32392E3739', '3138392E38352E32392E3733'
 ]; // 𝘿𝙄𝘼𝙕
 var blacklist = [
-    {Nick: "Alcione", Auth: "jVqwiajXjEm4VST3cR3gxkAkUKnNb-hUH7DF4PV1T7U", Conn: "34352E3233332E3231332E313233"},
     {Nick: "Arthur MM", Auth: "YD0Jm8MmB9G9YJCwJEEoIcC1SvD3Q2811xT9T-NTmVw", Conn: "3137372E35372E3135302E313736"},
     {Nick: "ᱦiᱮ∀Ʀd", Auth: "YJINpE0p70-sAT-nTx10vI5VvHyQ-jkZ1C-zi6dI2us", Conn: "3136372E3234392E39332E313135"},
     {Nick: "Schneider", Auth: "_nsAyl-n61ELIOJghIDiHojx-parT0N19K374jqygqo", Conn: "3137372E37362E3232342E3730"},
-    {Nick: "Alcione, o anticristo", Auth: "l6CTEtHr4eiv6xwCfvFow6dqEkTxuKRKhWUWgVkmFzY", Conn: "3137392E3231382E32312E323337"},
-    {Nick: "Alcione", Auth: "l6CTEtHr4eiv6xwCfvFow6dqEkTxuKRKhWUWgVkmFzY", Conn: "3137392E3231382E32312E323337"},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
@@ -1287,15 +1284,12 @@ let forbid = ['macaco', 'adolf hitler', 'nazismo', 'cuzao', 'cuzão', 'autista',
 
 let trava = ["㧫璧 觭䢜潇ကᩨ쀡ఈ泄찉넾﫤㏭ 緺", "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", "㧫", "璧", "懈౩䊀脁潡䣚⾤㸼짠ब", "뗲᭾ 띀急蔹⹉ꆣせㆉ였鷀Ú錘陈搳窇㉕"];
 
-let
-regex = ["fdp", "cu", "carai", "cuzao", "porra", "arrombado", "cu preto", "lixo", "autista", "lixeira", "verme", "Horrível", "seu merda", "filho da puta",
+let regex = ["fdp", "cu", "carai", "cuzao", "porra", "arrombado", "cu preto", "lixo", "autista", "lixeira", "verme", "Horrível", "seu merda", "filho da puta",
 "caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu", "crl", "cadeirante", "caderante"];
 
-let
-xingo = ["seu preto", "seu macaco", "macaco", "seu negro", "pretinho", "resto de aborto", "seu mcc", "Negrinho", "carvão", "nazista", "Nazista"];
+let xingo = ["seu preto", "seu macaco", "macaco", "seu negro", "pretinho", "resto de aborto", "seu mcc", "Negrinho", "carvão", "nazista", "Nazista"];
 
-let
-malcorage = ["Manco", "manco", "Malco lixo", "malco lixo", "Malco ruim", "malco ruim", "malco fudido", "manko"];
+let malcorage = ["Manco", "manco", "Malco lixo", "malco lixo", "Malco ruim", "malco ruim", "malco fudido", "manko"];
 
 function nameForbid(player) {
     if (forbid.includes(player.name)) { room.kickPlayer(player.id, 'nick proibido nessa sala', true) }
@@ -1521,6 +1515,26 @@ function pointDistance(p1, p2) {
 };
 
 /* BUTTONS */
+
+function alwaysOnTeam() {
+    if (teamS.length == 0) {
+        return;
+    }
+    else {
+        if (teamR.length == 0) {
+            if (teamS.length > 1) {
+                room.setPlayerTeam(teamS[0].id, Team.RED);
+            }
+            return;
+        }
+        if (teamB.length == 0) {
+            if (teamS.length > 1) {
+                room.setPlayerTeam(teamS[0].id, Team.BLUE);
+            }
+            return;
+        }
+    }
+};
 
 function topBtn() {
     if (teamS.length == 0) {
@@ -4743,7 +4757,7 @@ room.onGameStart = function (byPlayer) {
 room.onGameStop = function (byPlayer) {
     if (byPlayer && byPlayer.id == 0) {let goalsRp1 = 0;
         if (rr == false) {
-            const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
+            const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv, mia];
             let randHome = Math.floor(Math.random() * allClubes.length);
             let randGuest = Math.floor(Math.random() * allClubes.length);
             updateTeams();
@@ -5035,4 +5049,5 @@ room.onGameTick = function () {
     checkTime();
     getLastTouchOfTheBall();
     getStats();
+    alwaysOnTeam();
 };
