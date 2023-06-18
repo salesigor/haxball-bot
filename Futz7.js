@@ -4955,7 +4955,8 @@ room.onPositionsReset = function () {
 room.onRoomLink = function (url) {
     const roomURL = url;
     linkinho = url;
-    sendRoomLinkToDiscord(botVersion + "\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL)}; 
+    sendRoomLinkToDiscord(botVersion + "\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL)
+}; 
 
 room.onPlayerAdminChange = function (changedPlayer, byPlayer) {
     if (muteList.includes(changedPlayer.name) && changedPlayer.admin) {
