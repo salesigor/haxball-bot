@@ -1222,7 +1222,8 @@ var players;
 var teamR;
 var teamB;
 var teamS;
-let lastPlayerJoined = "";
+let lastPlayerJoinedID = "";
+let lastPlayerJoinedNAME = "";
 let playertoban = "";
 let redp1 = "";
 let redp2 = "";
@@ -1256,6 +1257,8 @@ var blacklist = [
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
 ];
+var blacklistconnID = [];
+var pendurados = [];
 var playerList = [];
 var conns = [];
 var playerConn = [];
@@ -1286,20 +1289,20 @@ let trava = ["㧫璧 觭䢜潇ကᩨ쀡ఈ泄찉넾﫤㏭ 緺", "▓▓
 
 let
 regex = ["fdp", "cu", "carai", "cuzao", "porra", "arrombado", "cu preto", "lixo", "autista", "lixeira", "verme", "Horrível", "seu merda", "filho da puta",
-"caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu", "crl"];
+"caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu", "crl", "cadeirante", "caderante"];
 
 let
-xingo = ["seu preto", "seu macaco", "macaco", "seu negro", "pretinho", "resto de aborto", "seu mcc", "Negrinho", "carvão"];
+xingo = ["seu preto", "seu macaco", "macaco", "seu negro", "pretinho", "resto de aborto", "seu mcc", "Negrinho", "carvão", "nazista", "Nazista"];
 
 let
-malcorage = ["Manco", "manco", "Malco lixo", "malco lixo", "Malco ruim", "malco ruim"];
+malcorage = ["Manco", "manco", "Malco lixo", "malco lixo", "Malco ruim", "malco ruim", "malco fudido", "manko"];
 
 function nameForbid(player) {
-    if (forbid.includes(player.name)) { room.kickPlayer(player.id, 'nick proibido nessa sala', false) }
+    if (forbid.includes(player.name)) { room.kickPlayer(player.id, 'nick proibido nessa sala', true) }
 };
 
 function banBlackListed(player) {
-    if (blacklistconn.includes(player.conn)) { room.kickPlayer(player.id, 'Você está na BLACKLIST', false) }
+    if (blacklistconnID.includes(player.id)) { room.kickPlayer(player.id, 'Você está na BLACKLIST', true) }
 };
 
 /* STATS */
@@ -2031,6 +2034,8 @@ function findGK() { // Função que procura o GK da partida.
 /* PLAYER MOVEMENT */
 
 room.onPlayerJoin = function (player) {
+    nameForbid(player);
+    banBlackListed(player);
     var messages = [
         "👋 Salve, " + player.name + "!",
         "👋 Eae, " + player.name + "!",
@@ -2055,42 +2060,31 @@ room.onPlayerJoin = function (player) {
     if(blacklistconn.includes(player.conn)) {
         room.sendAnnouncement(centerText("O player " + player.name + " deve ser banido agora!"), null, warn, "bold");
         room.sendAnnouncement(centerText("você está na blacklist e será banido!"), player.id, warn, "italic");
-        setTimeout(function () {
-            room.kickPlayer(player.id, true);
-        }, 1000);
+        blacklistconnID.push(player.id);
     }
-    /*if(cartaoamarelo.includes(player.conn)) {
-        room.sendAnnouncement(centerText("🟨 O player " + player.name + " está pendurado! 🟨"), null, warn, "normal");
+    if(cartaoamarelo.includes(player.conn)) {
+        let forkedPlayer = player.name;
+        pendurados.push(" 🟨 " + forkedPlayer);
+        room.sendAnnouncement(centerText("🟨 O player " + forkedPlayer + " está pendurado! 🟨"), null, warn, "normal");
         setTimeout(function () {
             room.sendAnnouncement(centerText("você levou cartão amarelo 🟨 na sua ultima estadia na sala!"), player.id, warn, "italic");
             room.sendAnnouncement(centerText("SUJEITO À BAN temporário"), player.id, warn, "normal");
-            room.kickPlayer(player.id, true);
         }, 1000);
-    }*/
-    nameForbid(player)
+    }
     var conn = player.conn
     var ipv4 = conn.match(/.{1,2}/g).map(function(v){
     return String.fromCharCode(parseInt(v, 16));
     }).join('');
-    var conn = player.conn
-    var ipv4 = conn.match(/.{1,2}/g).map(function(v){
-        return String.fromCharCode(parseInt(v, 16));
-        }).join('');
-    sendAnnouncementToDiscord(
-        "```"+"📝Informações do jogador, conn, auth, IP e data ⏰" + "\n"+
-
-    "🛸 Nick: " + player.name + "\n" +
-    "🌐 Conn: " + player.conn  +
-    "\n" + "🔥 Auth:  " + player.auth + "\n"+
-    "🌏 Ipv4: " + (ipv4) + "\n" +
-    "📅 Data: " + `${getDateInfo()}` +"```");
+    sendAnnouncementToDiscord("```"+"📝Informações do jogador, conn, auth, IP e data ⏰" + "\n" + "🛸 Nick: " + player.name +"\n" + 
+    "🌐 Conn: " + player.conn + "\n" + "🔥 Auth: "+ player.auth + "\n" + "🌏 Ipv4: " + (ipv4) + "\n" + "📅 Data: " + `${getDateInfo()}` +"```");
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
     updateTeams();
     updateAdmins();
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
     playerList.push(player.name, player.id);
-    lastPlayerJoined = player;
+    lastPlayerJoinedID = player.id;
+    lastPlayerJoinedNAME = player.name;
 };
 
 room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
@@ -2196,10 +2190,10 @@ room.onPlayerChat = function (player, message) {
                 "📅 Data: " + `${getDateInfo()}`);
                 console.log("ban list : " + banList);
             }
-            else if (message[1] == "last") {
-                room.sendAnnouncement(centerText("Pronto!\nUsuário" + lastPlayerJoined.name + "banido"), player.id, warn, "italic");
-                room.kickPlayer(lastPlayerJoined.id,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8",true);
-                banList.push(lastPlayerJoined.name, lastPlayerJoined.id);
+            if (message[1] == "last") {
+                room.sendAnnouncement(centerText("Pronto!\nUsuário" + lastPlayerJoinedNAME + "banido"), player.id, warn, "italic");
+                room.kickPlayer(lastPlayerJoinedID,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8", true);
+                banList.push(lastPlayerJoinedNAME, lastPlayerJoinedID);
                 sendAnnouncementToDiscord("🔴 Jogador Banido:" + "\n"+
                 "🛸 Nick: " + bannedName + "\n" +
                 "🌐 Conn: " + bannedId.conn + "\n" +
@@ -3876,6 +3870,10 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
+    if (["!pendurados", "pendurados"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("Jogadores Pendurados"), player.id, white, "bold");
+        room.sendAnnouncement(centerText(pendurados), player.id, white, "normal");
+    }
     if (["!avatar", "avatar"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             const pID = message[1];
@@ -4616,24 +4614,27 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
-    if (message.includes(malcorage)) {
+    if (mensagem.includes(malcorage)) {
         room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", true);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou mal do REI MALCO"), null, warn, "italic");
         return false;
     }
-    if (message.includes(xingo)) {
+    if (mensagem.includes(xingo)) {
         room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", true);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
         return false;
     }
-    if (message.includes(regex)) {
+    if (mensagem.includes(regex)) {
         room.sendAnnouncement("Sem xingamentos, por favor.", player.id, warn, "italic", 1);
         return false;
     }
-    if (message.includes(trava)) {
+    if (mensagem.includes(trava)) {
         room.kickPlayer(player.id, "❌ Trava-Hax detectada", true);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
         return false;
     }
     return false;
-}
+};
 
 room.onPlayerActivity = function (player) {
 };
