@@ -25,7 +25,7 @@ const timeLimit = 3;
 room.setScoreLimit(scoreLimit);
 room.setTimeLimit(timeLimit);
 room.setTeamsLock(true);
-var adminPassword = "true";
+var adminPassword = "manco";
 console.log("adminPassword : " + adminPassword);
 
 /* STADIUM */
@@ -1235,8 +1235,8 @@ let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
 const soberbo = ['3139312E3133352E3231362E313330', '3137392E33342E38332E3634']; // soberbo
-const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533']; // malco
-const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539']; // Gustaxs__, Chiquinho, 𝕃 . 𝕄𝕖𝕤𝕤𝕚
+const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533', '3137372E36382E32342E313239']; // malco
+const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539', '3138392E38352E32392E323434']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™, ɪɴᴛ|𝘿𝙄𝘼𝙕
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider
@@ -1497,6 +1497,154 @@ function biggestAssistant() {
         }
     }
     return biggestAssistPlayer;
+};
+
+// Função para contar o número de jogos para cada jogador
+function countGames() {
+    // Verificar se os dois times têm 3 jogadores
+    if (teamR.length === 3 && teamB.length === 3) {
+        for (let i = 0; i < 3; i++) {
+        incrementGames(teamR[0]);
+        incrementGames(teamR[1]);
+        incrementGames(teamR[2]);
+        incrementGames(teamB[0]);
+        incrementGames(teamB[1]);
+        incrementGames(teamB[2]);
+        }
+    }
+    if (teamR.length === 2 && teamB.length === 2) {
+        for (let i = 0; i < 3; i++) {
+        incrementGames(teamR[0]);
+        incrementGames(teamR[1]);
+        incrementGames(teamB[0]);
+        incrementGames(teamB[1]);
+        }
+    }
+};
+
+// Função auxiliar para incrementar o número de jogos para um jogador
+function incrementGames(player) {
+    const playerName = player.name;
+    const key = `jogos_${playerName}`;
+    const currentGames = getStoredGames(player); // Obter o valor atual de jogos do jogador
+    const newGames = currentGames + 1; // Incrementar em 1
+    localStorage.setItem(key, newGames.toString()); // Armazenar o novo valor no localStorage
+};
+
+// Função auxiliar para obter o número de jogos armazenado no localStorage para um jogador
+function getStoredGames(player) {
+    const playerName = player.name;
+    const key = `jogos_${playerName}`;
+    const games = localStorage.getItem(key);
+    return parseInt(games) || 0; // Retorna 0 se não houver jogos armazenados
+};
+
+// Função para contar as vitórias para o timeR
+function countWinsTeamR() {
+    // Verificar se o timeR tem 3 jogadores
+    if (teamR.length === 3) {
+        for (let i = 0; i < 3; i++) {
+        incrementWins(teamR[0]);
+        incrementWins(teamR[1]);
+        incrementWins(teamR[2]);
+        }
+    }
+    if (teamR.length === 2) {
+        for (let i = 0; i < 3; i++) {
+        incrementWins(teamR[0]);
+        incrementWins(teamR[1]);
+        }
+    }
+};
+
+// Função para contar as vitórias para o timeB
+function countWinsTeamB() {
+    // Verificar se o timeB tem 3 jogadores
+    if (teamB.length === 3) {
+        for (let i = 0; i < 3; i++) {
+        incrementWins(teamB[0]);
+        incrementWins(teamB[1]);
+        incrementWins(teamB[2]);
+        }
+    }
+    if (teamB.length === 2) {
+        for (let i = 0; i < 3; i++) {
+        incrementWins(teamB[0]);
+        incrementWins(teamB[1]);
+        }
+    }
+};
+
+// Função auxiliar para incrementar o número de vitórias para um jogador
+function incrementWins(player) {
+    const playerName = player.name;
+    const key = `vitórias_${playerName}`;
+    const currentWins = parseInt(localStorage.getItem(key)) || 0; // Obter o valor atual de vitórias do jogador
+    const newWins = currentWins + 1; // Incrementar em 1
+    localStorage.setItem(key, newWins.toString()); // Armazenar o novo valor no localStorage
+};
+
+// Função auxiliar para obter o número de vitórias armazenado no localStorage para um jogador
+    function getStoredWins(player) {
+    const playerName = player.name;
+    const key = `vitórias_${playerName}`;
+    const wins = localStorage.getItem(key);
+    return parseInt(wins) || 0; // Retorna 0 se não houver vitórias armazenadas
+};
+  
+// Função para contar as derrotas para o timeR
+function countLossesTeamR() {
+    const teamR = room.getTeamPlayers(TeamID.Red);
+    // Verificar se o timeR tem 3 jogadores
+    if (teamR.length === 3) {
+        for (let i = 0; i < 3; i++) {
+            incrementLosses(teamR[0]);
+            incrementLosses(teamR[1]);
+            incrementLosses(teamR[2]);
+        }
+    }
+    if (teamR.length === 2) {
+        for (let i = 0; i < 3; i++) {
+            incrementLosses(teamR[0]);
+            incrementLosses(teamR[1]);
+        }
+    }
+};
+
+// Função para contar as derrotas para o timeB
+function countLossesTeamB() {
+    const teamB = room.getTeamPlayers(TeamID.Blue);
+    // Verificar se o timeB tem 3 jogadores
+    if (teamB.length === 3) {
+        for (let i = 0; i < 3; i++) {
+            incrementLosses(teamB[0]);
+            incrementLosses(teamB[1]);
+            incrementLosses(teamB[2]);
+        }
+    }
+    if (teamB.length === 2) {
+        for (let i = 0; i < 3; i++) {
+            incrementLosses(teamB[0]);
+            incrementLosses(teamB[1]);
+        }
+    }
+};
+
+// Função auxiliar para incrementar o número de derrotas para um jogador
+function incrementLosses(player) {
+    const playerName = player.name;
+    const key = `derrotas_${playerName}`;
+    const currentLosses = parseInt(localStorage.getItem(key)) || 0; // Obter o valor atual de derrotas do jogador
+    const newLosses = currentLosses + 1; // Incrementar em 1
+    localStorage.setItem(key, newLosses.toString()); // Armazenar o novo valor no localStorage
+};
+
+// Função auxiliar para obter o número de derrotas armazenado no localStorage para um jogador
+function getStoredLosses(player) {
+    const playerName = player.name;
+    const key = `derrotas_${playerName}`;
+    const losses = localStorage.getItem(key);
+    return parseInt(losses) || 0; // Retorna 0 se não houver derrotas armazenadas
 };
   
 
@@ -1909,6 +2057,8 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
+        countWinsTeamR();
+        countLossesTeamB();
         sendScoresToDiscord("____________________\n🏆-- FIM DE PARTIDA -- 🏆\n____________________" + "\n" + " " + "\n" + 
         "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
         (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
@@ -1936,6 +2086,8 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
+        countWinsTeamB();
+        countLossesTeamR();
         sendScoresToDiscord("____________________\n🏆-- FIM DE PARTIDA -- 🏆\n____________________" + "\n" + " " + "\n" + 
         "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
         (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
@@ -2374,7 +2526,7 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (["!me"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, somente para você.
-        room.sendAnnouncement("[📄] " + player.name + " stats:  ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player), null, white, "bold"); 
+        room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player), null, white, "bold"); 
         /*
         var stats;
         localStorage.getItem(getAuth(player)) ? stats = JSON.parse(localStorage.getItem(getAuth(player))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00"]; 
@@ -3996,7 +4148,7 @@ room.onPlayerChat = function (player, message) {
     if (["!admin", "adm", "admin"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
             room.setPlayerAdmin(player.id, true);
-            adminPassword = "true";
+            adminPassword = "manco";
             console.log("adminPassword : " + adminPassword);
             return false;
         }
@@ -4872,6 +5024,7 @@ room.onGameStart = function (byPlayer) {
         assistsRp1 = 0;
         assistsRp2 = 0;
         assistsRp3 = 0;
+        countGames();
     }, 1000);
 };
 
