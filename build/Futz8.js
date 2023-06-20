@@ -2057,8 +2057,6 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
-        countWinsTeamR();
-        countLossesTeamB();
         sendScoresToDiscord("____________________\n🏆-- FIM DE PARTIDA -- 🏆\n____________________" + "\n" + " " + "\n" + 
         "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
         (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
@@ -2086,8 +2084,6 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
-        countWinsTeamB();
-        countLossesTeamR();
         sendScoresToDiscord("____________________\n🏆-- FIM DE PARTIDA -- 🏆\n____________________" + "\n" + " " + "\n" + 
         "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
         (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
