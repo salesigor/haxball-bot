@@ -1325,7 +1325,7 @@ var assistsBp1 = 0;
 var assistsBp2 = 0;
 var assistsBp3 = 0;
 //
-let teamgoaler = "";
+let increes = "";
 var goalsHome = [];
 var goalsGuest = [];
 var allBlues = []; // This is to count the players who should be counted for the stats. This includes players who left after the game has started, doesn't include those who came too late or ...
@@ -1394,6 +1394,33 @@ function getDateInfo() {
 
 /* DATA STORAGE */
 
+//autocontrole
+function um(player) {
+    const playerName = player.name;
+    const key = `goals_${playerName}`;
+    const currentGoals = getStoredGoals(player);
+    const newGoals = currentGoals + 1;
+    localStorage.setItem(key, newGoals.toString());
+    room.sendAnnouncement(centerText(`O jogador ${playerName} recebeu um Gol! Total de Gols: ${newGoals}`), null, green, "bold");
+};
+function dois(player) {
+    const playerName = player.name;
+    const key = `hattrick_${playerName}`;
+    const currentHatTricks = localStorage.getItem(key);
+    const newHatTricks = (currentHatTricks ? parseInt(currentHatTricks) : 0) + 1;
+    localStorage.setItem(key, newHatTricks);
+    room.sendAnnouncement(centerText(`O jogador ${playerName} recebeu um Hat Trick! Total de Hat Tricks: ${newHatTricks}`), null, green, "bold");
+    console.log(`O jogador ${playerName} fez um Hat Trick! Total de Hat Tricks: ${newHatTricks}`);
+};
+function tres(player) {
+    const playerName = player.name;
+    const key = `assists_${playerName}`;
+    const currentAssists = getStoredAssists(player);
+    const newAssists = currentAssists + 1;
+    localStorage.setItem(key, newAssists.toString());
+    room.sendAnnouncement(centerText(`O jogador ${playerName} recebeu uma Assistencia! Total de Assistencias: ${newAssists}`), null, green, "bold");
+};
+
 // Função para armazenar dados de Hat Tricks no localStorage
 function storeHatTrick(player) {
     const playerName = player.name;
@@ -1428,7 +1455,7 @@ function findPlayerWithMostHatTricks(players) {
         const hatTricks = parseInt(localStorage.getItem(key)) || 0;
         if (hatTricks > maxHatTricks) {
         maxHatTricks = hatTricks;
-        playerWithMostHatTricks = player;
+        playerWithMostHatTricks = player.name;
         }
     }
     return playerWithMostHatTricks;
@@ -1461,7 +1488,7 @@ function getBiggestGoaler(players) {
 
         if (goals > maxGoals) {
         maxGoals = goals;
-        biggestGoaler = player;
+        biggestGoaler = player.name;
         }
     }
     return biggestGoaler;
@@ -1493,7 +1520,7 @@ function biggestAssistant() {
         const assists = getStoredAssists(player);
         if (assists > biggestAssists) {
         biggestAssists = assists;
-        biggestAssistPlayer = player;
+        biggestAssistPlayer = player.name;
         }
     }
     return biggestAssistPlayer;
@@ -1503,22 +1530,18 @@ function biggestAssistant() {
 function countGames() {
     // Verificar se os dois times têm 3 jogadores
     if (teamR.length === 3 && teamB.length === 3) {
-        for (let i = 0; i < 3; i++) {
         incrementGames(teamR[0]);
         incrementGames(teamR[1]);
         incrementGames(teamR[2]);
         incrementGames(teamB[0]);
         incrementGames(teamB[1]);
         incrementGames(teamB[2]);
-        }
     }
     if (teamR.length === 2 && teamB.length === 2) {
-        for (let i = 0; i < 3; i++) {
         incrementGames(teamR[0]);
         incrementGames(teamR[1]);
         incrementGames(teamB[0]);
         incrementGames(teamB[1]);
-        }
     }
 };
 
@@ -1543,17 +1566,13 @@ function getStoredGames(player) {
 function countWinsTeamR() {
     // Verificar se o timeR tem 3 jogadores
     if (teamR.length === 3) {
-        for (let i = 0; i < 3; i++) {
         incrementWins(teamR[0]);
         incrementWins(teamR[1]);
         incrementWins(teamR[2]);
-        }
     }
     if (teamR.length === 2) {
-        for (let i = 0; i < 3; i++) {
         incrementWins(teamR[0]);
         incrementWins(teamR[1]);
-        }
     }
 };
 
@@ -1561,17 +1580,13 @@ function countWinsTeamR() {
 function countWinsTeamB() {
     // Verificar se o timeB tem 3 jogadores
     if (teamB.length === 3) {
-        for (let i = 0; i < 3; i++) {
         incrementWins(teamB[0]);
         incrementWins(teamB[1]);
         incrementWins(teamB[2]);
-        }
     }
     if (teamB.length === 2) {
-        for (let i = 0; i < 3; i++) {
         incrementWins(teamB[0]);
         incrementWins(teamB[1]);
-        }
     }
 };
 
@@ -1597,17 +1612,13 @@ function countLossesTeamR() {
     const teamR = room.getTeamPlayers(TeamID.Red);
     // Verificar se o timeR tem 3 jogadores
     if (teamR.length === 3) {
-        for (let i = 0; i < 3; i++) {
             incrementLosses(teamR[0]);
             incrementLosses(teamR[1]);
             incrementLosses(teamR[2]);
-        }
     }
     if (teamR.length === 2) {
-        for (let i = 0; i < 3; i++) {
             incrementLosses(teamR[0]);
             incrementLosses(teamR[1]);
-        }
     }
 };
 
@@ -1616,17 +1627,13 @@ function countLossesTeamB() {
     const teamB = room.getTeamPlayers(TeamID.Blue);
     // Verificar se o timeB tem 3 jogadores
     if (teamB.length === 3) {
-        for (let i = 0; i < 3; i++) {
             incrementLosses(teamB[0]);
             incrementLosses(teamB[1]);
             incrementLosses(teamB[2]);
-        }
     }
     if (teamB.length === 2) {
-        for (let i = 0; i < 3; i++) {
             incrementLosses(teamB[0]);
             incrementLosses(teamB[1]);
-        }
     }
 };
 
@@ -1704,6 +1711,18 @@ function sendHattricksToDiscord(message) {
     var params = {
         avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1119854937241813002/image.png', // Avatar WEBHOOK
         username: 'Hat Trick Counter', // Nome WEBHOOK
+        content: message
+    };
+    request.send(JSON.stringify(params));
+};
+
+function sendCountsToDiscord(message) {
+    var request = new XMLHttpRequest();
+    request.open("POST","https://discord.com/api/webhooks/1120552694415892552/iUCLCLI-YntRYafE1RFq2KP_plUvuh9XFWNmKq11luFNKlR5rupOV_iOCJPP9dwTbkTs"); // Webhook Link
+    request.setRequestHeader('Content-type', 'application/json');
+    var params = {
+        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1119854937241813002/image.png', // Avatar WEBHOOK
+        username: 'Data Counter', // Nome WEBHOOK
         content: message
     };
     request.send(JSON.stringify(params));
@@ -1863,15 +1882,25 @@ function blueToRedBtn() {
 
 /* GAME FUNCTIONS */
 
-function getPlayerNameByID(playerID) {
-    for (let i = 0; i < playerList.length; i++) {
-      const player = playerList[i];
-      if (player.id === playerID) {
-        playertoban = player;
-      }
+function getPlayer(playerId) {
+// Itera sobre os jogadores na playerList para encontrar o jogador com o ID correspondente
+    for (const player of playerList) {
+        if (player.id === playerId) {
+            return player;
+        }
     }
-    return null; // Retorna null caso não encontre um jogador com o ID correspondente
-};
+    // Retorna null se o jogador não for encontrado
+    return null;
+}
+
+// Função para obter nome do jogador pelo ID
+function getPlayerName(playerId) {
+    const player = getPlayer(playerId);
+    if (player) {
+    return player.nome;
+    }
+    return null;
+}
 
 function getPlayersList() {
     if (teamR.length == 1) {
@@ -2071,6 +2100,8 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
             room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
             choose = true;
+            countWinsTeamR();
+            countLossesTeamB();
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
             }, 1000);
@@ -2098,6 +2129,8 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
             room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
             choose = true;
+            countWinsTeamB();
+            countLossesTeamR();
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
             }, 1000);
@@ -2396,10 +2429,11 @@ room.onPlayerJoin = function (player) {
     "🌐 Conn: " + player.conn + "\n" + "🔥 Auth: "+ player.auth + "\n" + "🌏 Ipv4: " + (ipv4) + "\n" + "📅 Data: " + `${getDateInfo()}` +"```");
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
+    sendCountsToDiscord("Nome: " + player.name + "\nGols: " + getStoredGoals(player) + "\nAssists: " + getStoredAssists(player) + "\nHat-tricks: " + getHatTrick(player));
     updateTeams();
     updateAdmins();
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
-    playerList.push(player.name, player.id);
+    playerList.push({ "nome": player.name, "id": player.id});
     lastPlayerJoinedID = player.id;
     lastPlayerJoinedNAME = player.name;
 };
@@ -4487,6 +4521,32 @@ room.onPlayerChat = function (player, message) {
                 room.sendAnnouncement(teamS[17].name + " ---> Nº 18 --- | ID - " + teamS[17].id, null, white, "normal", 0);
                 room.sendAnnouncement(teamS[18].name + " ---> Nº 19 --- | ID - " + teamS[18].id, null, white, "normal", 0);
                 room.sendAnnouncement(teamS[19].name + " ---> Nº 20 --- | ID - " + teamS[19].id, null, white, "normal", 0);
+            }
+        }
+        return false;
+    }
+    if (["set"].includes(message[0].toLowerCase())) {
+        if (player.admin) {
+            if (message[2] == "gols") {
+                let vezes = parseInt(message[1]);
+                let increes = getPlayer(message[3]);
+                for (let i = 0; i < vezes; i++) {
+                    storeGoals(increes);
+                }
+            }
+            if (message[2] == "hat") {
+                let vezes = parseInt(message[1]);
+                let increes = getPlayer(message[3]);
+                for (let i = 0; i < vezes; i++) {
+                    storeHatTrick(increes);
+                }
+            }
+            if (message[2] == "assist") {
+                let vezes = parseInt(message[1]);
+                let increes = getPlayer(message[3]);
+                for (let i = 0; i < vezes; i++) {
+                    storeAssist(increes);
+                }
             }
         }
         return false;
