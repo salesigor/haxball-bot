@@ -1237,7 +1237,7 @@ let badassID = "";
 var supervisorsID = [];
 const soberbo = ['3139312E3133352E3231362E313330', '3137392E33342E38332E3634']; // soberbo
 const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533', '3137372E36382E32342E313239']; // malco
-const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539', '3138392E38352E32392E323434']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™, ɪɴᴛ|𝘿𝙄𝘼𝙕
+const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider
@@ -1431,15 +1431,10 @@ function joguin(joguins, player) {
 function storeHatTrick(player) {
     const playerName = player.name;
     const key = `hattrick_${playerName}`;
-    // Obtém a quantidade atual de Hat Tricks do jogador
-    const currentHatTricks = localStorage.getItem(key);
-    // Incrementa a quantidade de Hat Tricks em 1
-    const newHatTricks = (currentHatTricks ? parseInt(currentHatTricks) : 0) + 1;
-    // Armazena o novo Hat Trick no localStorage
+    const currentHatTricks = getHatTrick(player);
+    const newHatTricks = currentHatTricks + 1;
     localStorage.setItem(key, newHatTricks);
-    // Exibe mensagem no console informando o Hat Trick feito pelo jogador
-    room.sendAnnouncement(centerText(`O jogador ${playerName} fez um Hat Trick! Total de Hat Tricks: ${newHatTricks}`), player.id, green, "bold");
-    console.log(`O jogador ${playerName} fez um Hat Trick! Total de Hat Tricks: ${newHatTricks}`);
+    room.sendAnnouncement(centerText(`O jogador ${playerName} fez um Hat Trick! Total de Hat Tricks: ${newHatTricks}`), null, green, "bold");
 };
 
 // Função para recuperar a quantidade de Hat Tricks de um jogador do localStorage
