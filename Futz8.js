@@ -1326,6 +1326,8 @@ var assistsBp1 = 0;
 var assistsBp2 = 0;
 var assistsBp3 = 0;
 //
+let scoreb = 0;
+let scorer = 0;
 let increes = "";
 var goalsHome = [];
 var goalsGuest = [];
@@ -1654,7 +1656,34 @@ function getStoredLosses(player) {
     const losses = localStorage.getItem(key);
     return parseInt(losses) || 0; // Retorna 0 se não houver derrotas armazenadas
 };
-  
+
+function storeCleanSheets(player) {
+    const playerName = player.name;
+    const key = `clean_sheets_${playerName}`;
+    const currentCleanSheets = getStoredCleanSheets(player);
+    const newCleanSheets = currentCleanSheets + 1;
+    localStorage.setItem(key, newCleanSheets.toString());
+    
+    // Incrementa as clean sheets do goleiro
+    if (player.role === "gk") {
+      cleanSheets++;
+    }
+};
+
+function getStoredCleanSheets(player) {
+    const playerName = player.name;
+    const key = `clean_sheets_${playerName}`;
+    const cleanSheets = localStorage.getItem(key);
+    return parseInt(cleanSheets) || 0; // Retorna 0 se não houver clean sheets armazenadas
+};
+
+function calculateWinPercentage(player) {
+    const wins = getStoredWins(player);
+    const losses = getStoredLosses(player);
+    const totalGames = wins + losses;
+    const winPercentage = (wins / totalGames) * 100;
+    return winPercentage.toFixed(2); // Retorna a porcentagem de aproveitamento com duas casas decimais
+};
 
 /* WEBHOOKS */ 
 
@@ -2014,32 +2043,32 @@ function getPlayersAssistCount() {
 function hatTrickCount() {
     if (goalsRp1 == 3 && teamR.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
-        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamR[0]);
     }
     if (goalsRp2 == 3 && teamR.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
-        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamR[1]);
     }
     if (goalsRp2 == 3 && teamR.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[3].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
-        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamR[2]);
     }
     if (goalsBp1 == 3 && teamB.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
-        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamB[0]);
     }
     if (goalsBp2 == 3 && teamB.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
-        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamB[1]);
     }
     if (goalsBp3 == 3 && teamB.length == 3) {
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
-        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamB[2]);
     }
 };
@@ -2105,6 +2134,10 @@ function endGame(winner) { // no stopGame() function in it
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
+        if (scores.blue == 0) {
+			storeCleanSheets(teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))])
+            room.sendAnnouncement(centerText("🏆 " + teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " catou muito! "), null, white, "bold");
+		}
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
@@ -2134,6 +2167,10 @@ function endGame(winner) { // no stopGame() function in it
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
+        if (scores.red == 0) {
+			storeCleanSheets(teamB[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))])
+            room.sendAnnouncement(centerText("🏆 " + teamB[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " catou muito! "), null, white, "bold");
+		}
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
@@ -2163,6 +2200,11 @@ function endGame(winner) { // no stopGame() function in it
         room.sendAnnouncement(centerText("💤 Limite de TEMPO! 💤"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
+        if (scores.red == 0) {
+			storeCleanSheets(teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))]);
+			storeCleanSheets(teamB[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))]);
+            room.sendAnnouncement(centerText("🏆 " + teamB[GKList.slice(maxPlayers, 2 * maxPlayers).findIndex(p => p == Math.max(...GKList.slice(maxPlayers, 2 * maxPlayers)))].name + " e " + teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " cataram muito! "), null, white, "bold");
+		}
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
@@ -2476,31 +2518,6 @@ room.onPlayerLeave = function (player) {
     updateTeams();
     updateAdmins();
     room.sendAnnouncement(centerText(player.name + " vazou!"), null, white, "bold");
-    if (teamR.length =! teamB.length) {
-        setTimeout(function () {
-            room.pauseGame(true);
-            if (teamR.length < teamB.length) {
-                room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
-                choose = true;
-                room.sendAnnouncement(centerText("Quem entra, " + teamR[0].name + "?"), null, white, "bold");
-                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
-                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
-                setTimeout(function () {
-                    room.sendAnnouncement(centerText("*** 20segundos para a escolha automatica ***"), null, warn, "italic");
-                }, 700);
-            }
-            else if (teamR.length > teamB.length) {
-                room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
-                choose = true;
-                room.sendAnnouncement(centerText("Quem entra, " + teamB[0].name + "?"), null, white, "bold");
-                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
-                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
-                setTimeout(function () {
-                    room.sendAnnouncement(centerText("*** 20segundos para a escolha automatica ***"), null, warn, "italic");
-                }, 700);
-            }
-        }, 500);
-    }
 };
 
 room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
@@ -2578,7 +2595,7 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (["!me", "!eu", "stats"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, somente para você.
-        room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player), null, white, "bold"); 
+        room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player) + ", Taxa de vitórias: " + calculateWinPercentage(player) + "%, 🤚 CS%: " + getStoredCleanSheets(player), null, white, "bold"); 
         /*
         var stats;
         localStorage.getItem(getAuth(player)) ? stats = JSON.parse(localStorage.getItem(getAuth(player))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00"]; 
@@ -5127,6 +5144,8 @@ room.onGameStart = function (byPlayer) {
         assistsRp1 = 0;
         assistsRp2 = 0;
         assistsRp3 = 0;
+        scorer = 0;
+        scoreb = o;
         countGames();
     }, 1000);
 };
@@ -5245,6 +5264,7 @@ room.onTeamGoal = function (team) {
             }, 10);
         }
 		if (team === 1) {
+            scorer++;
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
             setTimeout(function () {
                 room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
@@ -5275,6 +5295,7 @@ room.onTeamGoal = function (team) {
             }, 0);
 		}
         else if (team === 2) {
+            scoreb++;
 			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
             setTimeout(function () {
                 room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
