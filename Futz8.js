@@ -1303,8 +1303,7 @@ function banBlackListed(player) {
 /* STATS */
 
 var game = "";
-// var GKList = new Array(2 * maxPlayers).fill(0);
-var GKList = ["", ""];
+var GKList = new Array(2 * maxPlayers).fill(0);
 var Rposs = 0;
 var Bposs = 0;
 var point = [{ "x": 0, "y": 0 }, { "x": 0, "y": 0 }];
@@ -1651,26 +1650,6 @@ function getStoredLosses(player) {
     const key = `derrotas_${playerName}`;
     const losses = localStorage.getItem(key);
     return parseInt(losses) || 0; // Retorna 0 se não houver derrotas armazenadas
-};
-
-function storeCleanSheets(player) {
-    const playerName = player.name;
-    const key = `clean_sheets_${playerName}`;
-    const currentCleanSheets = getStoredCleanSheets(player);
-    const newCleanSheets = currentCleanSheets + 1;
-    localStorage.setItem(key, newCleanSheets.toString());
-    
-    // Incrementa as clean sheets do goleiro
-    if (player.role === "gk") {
-      cleanSheets++;
-    }
-};
-
-function getStoredCleanSheets(player) {
-    const playerName = player.name;
-    const key = `clean_sheets_${playerName}`;
-    const cleanSheets = localStorage.getItem(key);
-    return parseInt(cleanSheets) || 0; // Retorna 0 se não houver clean sheets armazenadas
 };
 
 function calculateWinPercentage(player) {
@@ -2130,10 +2109,6 @@ function endGame(winner) { // no stopGame() function in it
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
-        if (scores.blue == 0) {
-			storeCleanSheets(teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))])
-            room.sendAnnouncement(centerText("🏆 " + teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " catou muito! "), null, white, "bold");
-		}
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
@@ -2163,10 +2138,6 @@ function endGame(winner) { // no stopGame() function in it
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
-        if (scores.red == 0) {
-			storeCleanSheets(teamB[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))])
-            room.sendAnnouncement(centerText("🏆 " + teamB[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " catou muito! "), null, white, "bold");
-		}
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
@@ -2196,11 +2167,6 @@ function endGame(winner) { // no stopGame() function in it
         room.sendAnnouncement(centerText("💤 Limite de TEMPO! 💤"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
-        if (scores.red == 0) {
-			storeCleanSheets(teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))]);
-			storeCleanSheets(teamB[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))]);
-            room.sendAnnouncement(centerText("🏆 " + teamB[GKList.slice(maxPlayers, 2 * maxPlayers).findIndex(p => p == Math.max(...GKList.slice(maxPlayers, 2 * maxPlayers)))].name + " e " + teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " cataram muito! "), null, white, "bold");
-		}
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
