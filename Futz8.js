@@ -2017,32 +2017,32 @@ function getPlayersAssistCount() {
 
 function hatTrickCount() {
     if (goalsRp1 == 3 && teamR.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamR[0]);
     }
     if (goalsRp2 == 3 && teamR.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamR[1]);
     }
     if (goalsRp2 == 3 && teamR.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[3].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamR[2]);
     }
     if (goalsBp1 == 3 && teamB.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamB[0]);
     }
     if (goalsBp2 == 3 && teamB.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamB[1]);
     }
     if (goalsBp3 == 3 && teamB.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
         storeHatTrick(teamB[2]);
     }
