@@ -1,6 +1,6 @@
 /* ROOM */
 
-const botVersion = "Futz 8";
+const botVersion = "Futz7";
 const roomName = "⚽ FutZ 3x3 🏆 | Cola na humildade 🎯";
 /* NOMES SUGERIDOS:
 1: 🏆 3x3 Futsal ⚽ | Cola na humildade
@@ -25,8 +25,7 @@ const timeLimit = 3;
 room.setScoreLimit(scoreLimit);
 room.setTimeLimit(timeLimit);
 room.setTeamsLock(true);
-let keyCommand = generateRandomPassword();
-var adminPassword = generateAdminRandomPassword();
+var adminPassword = "true";
 console.log("adminPassword : " + adminPassword);
 
 /* STADIUM */
@@ -1236,8 +1235,8 @@ let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
 const soberbo = ['3139312E3133352E3231362E313330', '3137392E33342E38332E3634']; // soberbo
-const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533', '3137372E36382E32342E313239']; // malco
-const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
+const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533']; // malco
+const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539']; // Gustaxs__, Chiquinho, 𝕃 . 𝕄𝕖𝕤𝕤𝕚
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider
@@ -1303,7 +1302,8 @@ function banBlackListed(player) {
 /* STATS */
 
 var game = "";
-var GKList = new Array(2 * maxPlayers).fill(0);
+// var GKList = new Array(2 * maxPlayers).fill(0);
+var GKList = ["", ""];
 var Rposs = 0;
 var Bposs = 0;
 var point = [{ "x": 0, "y": 0 }, { "x": 0, "y": 0 }];
@@ -1325,9 +1325,6 @@ var assistsBp1 = 0;
 var assistsBp2 = 0;
 var assistsBp3 = 0;
 //
-let scoreb = 0;
-let scorer = 0;
-let increes = "";
 var goalsHome = [];
 var goalsGuest = [];
 var allBlues = []; // This is to count the players who should be counted for the stats. This includes players who left after the game has started, doesn't include those who came too late or ...
@@ -1394,243 +1391,6 @@ function getDateInfo() {
     return `${dia}/${mes}/${ano} ás ${horas}:${minutos}`;
 };
 
-/* DATA STORAGE */
-
-//autocontrole
-function generateAdminRandomPassword() {
-    const passwordLength = 4; // comprimento da senha
-    let password = "";
-    for (let i = 0; i < passwordLength; i++) {
-      const randomDigit = Math.floor(Math.random() * 10); // gera um número aleatório entre 0 e 9
-      password += randomDigit.toString(); // adiciona o número à senha como uma string
-    }
-    sendAdminCommandsToDiscord('Senha: ' + adminPassword);
-    return password;
-};
-function generateRandomPassword() {
-    const passwordLength = 4; // comprimento da senha
-    let password = "";
-    for (let i = 0; i < passwordLength; i++) {
-      const randomDigit = Math.floor(Math.random() * 10); // gera um número aleatório entre 0 e 9
-      password += randomDigit.toString(); // adiciona o número à senha como uma string
-    }
-    sendKeyToDiscord("  \n                  Howto:\n set <game> <goal> <assist> <hattrick> <key>\n add <number> <gols/assists/hats/jogos> <key>\n \n Last Key:   " + password + "    \n  ");
-    return password;
-};
-function golzin(gols, player) {
-    const playerName = player.name;
-    const key = `goals_${playerName}`;
-    localStorage.setItem(key, parseInt(gols)); // Armazenar o novo valor no localStorage
-};
-function assistizinha(assists, player) {
-    const playerName = player.name;
-    const key = `assists_${playerName}`;
-    localStorage.setItem(key, parseInt(assists)); // Armazenar o novo valor no localStorage
-};
-function hatzinho(hatTricks, player) {
-    const playerName = player.name;
-    const key = `hattrick_${playerName}`;
-    localStorage.setItem(key, parseInt(hatTricks)); // Armazenar o novo valor no localStorage
-};
-function joguin(joguins, player) {
-    const playerName = player.name;
-    const key = `jogos_${playerName}`;
-    localStorage.setItem(key, parseInt(joguins)); // Armazenar o novo valor no localStorage
-};
-
-function storeHatTrick(player) {
-    const playerName = player.name;
-    const key = `hattrick_${playerName}`;
-    const currentHatTricks = getHatTrick(player);
-    const newHatTricks = currentHatTricks + 1;
-    localStorage.setItem(key, newHatTricks);
-    room.sendAnnouncement(centerText(`O jogador ${playerName} fez um Hat Trick! Total de Hat Tricks: ${newHatTricks}`), null, green, "bold");
-};
-function getHatTrick(player) {
-    const playerName = player.name;
-    const key = `hattrick_${playerName}`;
-    const value = localStorage.getItem(key);
-    // Exibe mensagem no console informando o Hat Trick feito pelo jogador
-    return parseInt(value) || 0;
-};
-function findPlayerWithMostHatTricks(players) {
-    let maxHatTricks = 0;
-    let playerWithMostHatTricks = null;
-    for (let i = 0; i < players.length; i++) {
-        const player = players[i];
-        const playerName = player.name;
-        const key = `hattrick_${playerName}`;
-        const hatTricks = parseInt(localStorage.getItem(key)) || 0;
-        if (hatTricks > maxHatTricks) {
-        maxHatTricks = hatTricks;
-        playerWithMostHatTricks = player.name;
-        }
-    }
-    return playerWithMostHatTricks;
-};
-function storeGoals(player) {
-    const playerName = player.name;
-    const key = `goals_${playerName}`;
-    const currentGoals = getStoredGoals(player); // Obter o valor atual de gols do jogador
-    const newGoals = currentGoals + 1; // Incrementar em 1
-    localStorage.setItem(key, newGoals.toString()); // Armazenar o novo valor no localStorage
-};
-function getStoredGoals(player) {
-    const playerName = player.name;
-    const key = `goals_${playerName}`;
-    const goals = localStorage.getItem(key);
-    return parseInt(goals) || 0;
-};
-function getBiggestGoaler(players) {
-    let maxGoals = 0;
-    let biggestGoaler = null;
-    for (let i = 0; i < players.length; i++) {
-        const player = players[i];
-        const goals = getStoredGoals(player);
-
-        if (goals > maxGoals) {
-        maxGoals = goals;
-        biggestGoaler = player.name;
-        }
-    }
-    return biggestGoaler;
-};
-function storeAssist(player) {
-    const playerName = player.name;
-    const key = `assists_${playerName}`;
-    const currentAssists = getStoredAssists(player); // Obter o valor atual de assistências do jogador
-    const newAssists = currentAssists + 1; // Incrementar em 1
-    localStorage.setItem(key, newAssists.toString()); // Armazenar o novo valor no localStorage
-};
-function getStoredAssists(player) {
-    const playerName = player.name;
-    const key = `assists_${playerName}`;
-    const assists = localStorage.getItem(key);
-    return parseInt(assists) || 0; // Retorna 0 se não houver assistências armazenadas
-};
-function biggestAssistant() {
-    let biggestAssistPlayer = null;
-    let biggestAssists = -1;
-    for (let i = 0; i < room.getPlayerList().length; i++) {
-        const player = room.getPlayerList()[i];
-        const assists = getStoredAssists(player);
-        if (assists > biggestAssists) {
-        biggestAssists = assists;
-        biggestAssistPlayer = player.name;
-        }
-    }
-    return biggestAssistPlayer;
-};
-function countGames() {
-    // Verificar se os dois times têm 3 jogadores
-    if (teamR.length === 3 && teamB.length === 3) {
-        incrementGames(teamR[0]);
-        incrementGames(teamR[1]);
-        incrementGames(teamR[2]);
-        incrementGames(teamB[0]);
-        incrementGames(teamB[1]);
-        incrementGames(teamB[2]);
-    }
-    if (teamR.length === 2 && teamB.length === 2) {
-        incrementGames(teamR[0]);
-        incrementGames(teamR[1]);
-        incrementGames(teamB[0]);
-        incrementGames(teamB[1]);
-    }
-};
-function incrementGames(player) {
-    const playerName = player.name;
-    const key = `jogos_${playerName}`;
-    const currentGames = getStoredGames(player); // Obter o valor atual de jogos do jogador
-    const newGames = currentGames + 1; // Incrementar em 1
-    localStorage.setItem(key, newGames.toString()); // Armazenar o novo valor no localStorage
-};
-function getStoredGames(player) {
-    const playerName = player.name;
-    const key = `jogos_${playerName}`;
-    const games = localStorage.getItem(key);
-    return parseInt(games) || 0; // Retorna 0 se não houver jogos armazenados
-};
-function countWinsTeamR() {
-    // Verificar se o timeR tem 3 jogadores
-    if (teamR.length === 3) {
-        incrementWins(teamR[0]);
-        incrementWins(teamR[1]);
-        incrementWins(teamR[2]);
-    }
-    if (teamR.length === 2) {
-        incrementWins(teamR[0]);
-        incrementWins(teamR[1]);
-    }
-};
-function countWinsTeamB() {
-    if (teamB.length === 3) {
-        incrementWins(teamB[0]);
-        incrementWins(teamB[1]);
-        incrementWins(teamB[2]);
-    }
-    if (teamB.length === 2) {
-        incrementWins(teamB[0]);
-        incrementWins(teamB[1]);
-    }
-};
-function incrementWins(player) {
-    const playerName = player.name;
-    const key = `vitórias_${playerName}`;
-    const currentWins = parseInt(localStorage.getItem(key)) || 0; // Obter o valor atual de vitórias do jogador
-    const newWins = currentWins + 1; // Incrementar em 1
-    localStorage.setItem(key, newWins.toString()); // Armazenar o novo valor no localStorage
-};
-function getStoredWins(player) {
-    const playerName = player.name;
-    const key = `vitórias_${playerName}`;
-    const wins = localStorage.getItem(key);
-    return parseInt(wins) || 0; // Retorna 0 se não houver vitórias armazenadas
-};
-function countLossesTeamR() {
-    if (teamR.length === 3) {
-        incrementLosses(teamR[0]);
-        incrementLosses(teamR[1]);
-        incrementLosses(teamR[2]);
-    }
-    if (teamR.length === 2) {
-        incrementLosses(teamR[0]);
-        incrementLosses(teamR[1]);
-    }
-};
-function countLossesTeamB() {
-    if (teamB.length === 3) {
-        incrementLosses(teamB[0]);
-        incrementLosses(teamB[1]);
-        incrementLosses(teamB[2]);
-    }
-    if (teamB.length === 2) {
-        incrementLosses(teamB[0]);
-        incrementLosses(teamB[1]);
-    }
-};
-function incrementLosses(player) {
-    const playerName = player.name;
-    const key = `derrotas_${playerName}`;
-    const currentLosses = getStoredLosses(player); // Obter o valor atual de derrotas do jogador
-    const newLosses = currentLosses + 1; // Incrementar em 1
-    localStorage.setItem(key, newLosses.toString()); // Armazenar o novo valor no localStorage
-};
-function getStoredLosses(player) {
-    const playerName = player.name;
-    const key = `derrotas_${playerName}`;
-    const losses = localStorage.getItem(key);
-    return parseInt(losses) || 0; // Retorna 0 se não houver derrotas armazenadas
-};
-function calculateWinPercentage(player) {
-    const wins = getStoredWins(player);
-    const losses = getStoredLosses(player);
-    const totalGames = wins + losses;
-    const winPercentage = (wins / totalGames) * 100;
-    const winPercentageString = parseInt(winPercentage.toFixed(2)).toString();
-    return winPercentageString;
-};
-
 /* WEBHOOKS */ 
 
 function sendAnnouncementToDiscord(message) {
@@ -1687,54 +1447,6 @@ function sendHattricksToDiscord(message) {
     var params = {
         avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1119854937241813002/image.png', // Avatar WEBHOOK
         username: 'Hat Trick Counter', // Nome WEBHOOK
-        content: message
-    };
-    request.send(JSON.stringify(params));
-};
-
-function sendCountsToDiscord(message) {
-    var request = new XMLHttpRequest();
-    request.open("POST","https://discord.com/api/webhooks/1120552694415892552/iUCLCLI-YntRYafE1RFq2KP_plUvuh9XFWNmKq11luFNKlR5rupOV_iOCJPP9dwTbkTs"); // Webhook Link
-    request.setRequestHeader('Content-type', 'application/json');
-    var params = {
-        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1119854937241813002/image.png', // Avatar WEBHOOK
-        username: 'Data Counter', // Nome WEBHOOK
-        content: message
-    };
-    request.send(JSON.stringify(params));
-};
-
-function sendKeyToDiscord(message) {
-    var request = new XMLHttpRequest();
-    request.open("POST","https://discord.com/api/webhooks/1120737971189067776/QLqVNa0RR7Of3XgcFfWRuXrQhoMIm8wFAsrZfDyjOG20fz9n9N2BFOyg2rKax-Lr7NPL"); // Webhook Link
-    request.setRequestHeader('Content-type', 'application/json');
-    var params = {
-        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1120758521735172137/image.png', // Avatar WEBHOOK
-        username: 'secret-key', // Nome WEBHOOK
-        content: message
-    };
-    request.send(JSON.stringify(params));
-};
-
-function sendCommandsToDiscord(message) {
-    var request = new XMLHttpRequest();
-    request.open("POST","https://discord.com/api/webhooks/1121138526021488651/IXWaKqLJpbAbBa5jQuyk4lk1-K_4VuI1loqqXrLXAynvdspIllo4bkePy15SACT_Z8iA"); // Webhook Link
-    request.setRequestHeader('Content-type', 'application/json');
-    var params = {
-        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1121137833982304327/image.png', // Avatar WEBHOOK
-        username: 'Player Commands', // Nome WEBHOOK
-        content: message
-    };
-    request.send(JSON.stringify(params));
-};
-
-function sendAdminCommandsToDiscord(message) {
-    var request = new XMLHttpRequest();
-    request.open("POST","https://discord.com/api/webhooks/1121137538879475842/vy43P0kqYM2n5ArOygOH8Nd5cArsVIss2y7nva2z5vPW1ybbnlbS2EUof_cvftOdrsAq"); // Webhook Link
-    request.setRequestHeader('Content-type', 'application/json');
-    var params = {
-        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1121137833982304327/image.png', // Avatar WEBHOOK
-        username: 'Admin Commands', // Nome WEBHOOK
         content: message
     };
     request.send(JSON.stringify(params));
@@ -1894,34 +1606,15 @@ function blueToRedBtn() {
 
 /* GAME FUNCTIONS */
 
-function getPlayer(playerId) {
-// Itera sobre os jogadores na playerList para encontrar o jogador com o ID correspondente
-    for (const player of playerList) {
-        if (player.id === playerId) {
-            return player;
-        }
-    }
-    // Retorna null se o jogador não for encontrado
-    return null;
-};
-
-function getPlayerObjectByName(playerName) {
-    for (const player of playerList) {
-      if (player.nome === playerName) {
-        return player;
+function getPlayerNameByID(playerID) {
+    for (let i = 0; i < playerList.length; i++) {
+      const player = playerList[i];
+      if (player.id === playerID) {
+        playertoban = player;
       }
     }
-    return null;
+    return null; // Retorna null caso não encontre um jogador com o ID correspondente
 };
-
-// Função para obter nome do jogador pelo ID
-function getPlayerName(playerId) {
-    const player = getPlayer(playerId);
-    if (player) {
-    return player.nome;
-    }
-    return null;
-}
 
 function getPlayersList() {
     if (teamR.length == 1) {
@@ -2012,34 +1705,28 @@ function getPlayersAssistCount() {
 
 function hatTrickCount() {
     if (goalsRp1 == 3 && teamR.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
-        storeHatTrick(teamR[0]);
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
     if (goalsRp2 == 3 && teamR.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
-        storeHatTrick(teamR[1]);
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
     if (goalsRp2 == 3 && teamR.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
-        storeHatTrick(teamR[2]);
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[3].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
     if (goalsBp1 == 3 && teamB.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
-        storeHatTrick(teamB[0]);
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
     if (goalsBp2 == 3 && teamB.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
-        storeHatTrick(teamB[1]);
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
     if (goalsBp3 == 3 && teamB.length == 3) {
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
-        storeHatTrick(teamB[2]);
+        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!" + "\n" + " " + "\n" + 
+        nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + "\n" + dataehora())
     }
 };
 
@@ -2121,8 +1808,6 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
             room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
             choose = true;
-            countWinsTeamR();
-            countLossesTeamB();
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
             }, 1000);
@@ -2150,8 +1835,6 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
             room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
             choose = true;
-            countWinsTeamB();
-            countLossesTeamR();
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
             }, 1000);
@@ -2450,11 +2133,10 @@ room.onPlayerJoin = function (player) {
     "🌐 Conn: " + player.conn + "\n" + "🔥 Auth: "+ player.auth + "\n" + "🌏 Ipv4: " + (ipv4) + "\n" + "📅 Data: " + `${getDateInfo()}` +"```");
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
-    sendCountsToDiscord(".  \n📄   Nome: " + player.name + "\n🎮   Jogos: " + getStoredGames(player) + "\n⚽️   Gols: " + getStoredGoals(player) + "\n👟   Assistências: " + getStoredAssists(player) + "\n🏆   Hat-tricks: " + getHatTrick(player));
     updateTeams();
     updateAdmins();
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
-    playerList.push({"object": player, "nome": player.name, "id": player.id});
+    playerList.push(player.name, player.id);
     lastPlayerJoinedID = player.id;
     lastPlayerJoinedNAME = player.name;
 };
@@ -2475,6 +2157,31 @@ room.onPlayerLeave = function (player) {
     updateTeams();
     updateAdmins();
     room.sendAnnouncement(centerText(player.name + " vazou!"), null, white, "bold");
+    if (teamR.length =! teamB.length) {
+        setTimeout(function () {
+            room.pauseGame(true);
+            if (teamR.length < teamB.length) {
+                room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
+                choose = true;
+                room.sendAnnouncement(centerText("Quem entra, " + teamR[0].name + "?"), null, white, "bold");
+                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("*** 20segundos para a escolha automatica ***"), null, warn, "italic");
+                }, 700);
+            }
+            else if (teamR.length > teamB.length) {
+                room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
+                choose = true;
+                room.sendAnnouncement(centerText("Quem entra, " + teamB[0].name + "?"), null, white, "bold");
+                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("*** 20segundos para a escolha automatica ***"), null, warn, "italic");
+                }, 700);
+            }
+        }, 500);
+    }
 };
 
 room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
@@ -2498,7 +2205,7 @@ room.onPlayerChat = function (player, message) {
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
-        room.sendAnnouncement(centerText("!me, !goat, !help, !tag, !uniforme, !gklist, !regras, !discord,\n!list, !vs, !verdade, !bb, !bye, !flw"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("!help, !tag, !uniforme, !gklist, !regras, !discord,\n!list, !vs, !verdade, !bb, !bye, !flw"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !brabo"), player.id, yellow, "normal");
         room.sendAnnouncement(centerText("Uniformes:"), player.id, yellow, "bold");
@@ -2551,19 +2258,13 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
-    if (["!me", "!eu", "stats"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, somente para você.
-        room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player) + ", Taxa de vitórias: " + calculateWinPercentage(player) + "%", null, white, "bold"); 
+    if (["!me"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, somente para você.
+        room.sendAnnouncement(centerText("Esta função ainda não está disponível. Lamento"), player.id, warn, "italic");
         /*
         var stats;
         localStorage.getItem(getAuth(player)) ? stats = JSON.parse(localStorage.getItem(getAuth(player))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00"]; 
         room.sendAnnouncement("[📄] Seus stats: 🎮 Jogos: " + stats[Ss.GA] + ", ✅ Vitórias: " + stats[Ss.WI] + ", ❌ Derrotas: " + stats[Ss.LS] + ", 🏆 Taxa de vitórias: " + stats[Ss.WR] + "%, ⚽️ Gols: " + stats[Ss.GL] + ", 👟 Assistências: " + stats[Ss.AS] + ", 🧤 GK: " + stats[Ss.GK] + ", 🤚 CS: " + stats[Ss.CS] + ", 🤚 CS%: " + stats[Ss.CP] + "%", player.id, white, "normal"); 
         */
-        return false;
-    }
-    if (["!goat", "goat", "!best"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, somente para você.
-        room.sendAnnouncement(centerText("🐐 THE GOAT 🐐"), null, white, "bold");
-        room.sendAnnouncement(centerText("top players ranking"), null, yellow, "italic");
-        room.sendAnnouncement("MAIS GOLS: " + getBiggestGoaler(players) + ", MAIS ASSISTS: " + biggestAssistant(player) + ", MAIS HAT-TRICKS: " + findPlayerWithMostHatTricks(players), player.id, white, "bold"); 
         return false;
     }
     if (["!stats"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, mostra para todos da sala.
@@ -2645,26 +2346,26 @@ room.onPlayerChat = function (player, message) {
     if (["auto", "fila"].includes(message[0].toLowerCase())) {
         if (choose === true && teamS.length > 1) {    
             if (player.id === teamR[0].id) {
-                if (teamR.length == 1) {
+                if (teamR[1].id === null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu AUTO"), null, white, "bold");
                     room.sendAnnouncement(centerText("Os escalados foram " + teamS[0].name + " e " + teamS[1].name), null, white, "normal");
                     room.setPlayerTeam(teamS[0].id, Team.RED);
                     room.setPlayerTeam(teamS[1].id, Team.RED);
                 }
-                else if (teamR.length == 2) {
+                else if (teamR[1].id = null && teamR[2].id === null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu AUTO"), null, white, "bold");
                     room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
                     room.setPlayerTeam(teamS[0].id, Team.RED);
                 }
             }
             if (player.id == teamB[0].id && redFirst === false) {
-                if (teamB.length == 1) {
+                if (teamB[1].id === null) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escolheu AUTO"), null, white, "bold");
                     room.sendAnnouncement(centerText("Os escalados foram " + teamS[0].name + " e " + teamS[1].name), null, white, "normal");
                     room.setPlayerTeam(teamS[0].id, Team.BLUE);
                     room.setPlayerTeam(teamS[1].id, Team.BLUE);
                 }
-                else if (teamB.length == 2) {
+                else if (teamB[1].id != null && teamR[2].id === null) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escolheu AUTO"), null, white, "bold");
                     room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
                     room.setPlayerTeam(teamS[0].id, Team.BLUE);
@@ -2687,41 +2388,41 @@ room.onPlayerChat = function (player, message) {
         var randblue1 = Math.floor(Math.random() * teamS.length);
         var randblue2 = Math.floor(Math.random() * teamS.length);
         if (choose == true && teamS.length > 2) {    
-            if (player.id == teamR[0].id) {
-                if (teamR.length == 1) {
+            if (player.id === teamR[0].id) {
+                if (teamR[1].id == null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
                     room.sendAnnouncement(centerText("Os escalados foram " + teamS[randred1].name + " e " + teamS[randred2].name), null, white, "normal");
                     room.setPlayerTeam(teamS[randred1].id, Team.RED);
                     room.setPlayerTeam(teamS[randred2].id, Team.RED);
                 }
-                else if (teamR.length == 2) {
+                else if (teamR[1].id != null && teamR[2].id === null) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
                     room.sendAnnouncement(centerText("O escalado é " + teamS[0].name), null, white, "normal");
                     room.setPlayerTeam(teamS[randred1].id, Team.RED);
                 }
             }
-            if (player.id == teamB[0].id && redFirst == false) {
-                if (teamB.length == 1) {
+            if (player.id === teamB[0].id && redFirst === false) {
+                if (teamB[1].id == null) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");
                     room.sendAnnouncement(centerText("Os escalados foram " + teamS[randblue1].name + " e " + teamS[randblue2].name), null, white, "normal");
                     room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
                     room.setPlayerTeam(teamS[randblue2].id, Team.BLUE);
                 }
-                else if (teamB.length == 2) {
+                else if (teamB[1].id != null && teamR[2].id === null) {
                     room.sendAnnouncement(centerText(teamB[0].name + " escolheu RAND"), null, white, "bold");
                     room.sendAnnouncement(centerText("O escalado é " + teamS[randblue1].name), null, white, "normal");
                     room.setPlayerTeam(teamS[randblue1].id, Team.BLUE);
                 }
             }
-            if (player.id == (teamR[0].id || teamB[0].id) && choose === false) {
+            if (player.id === (teamR[0].id || teamB[0].id) && choose === false) {
                 room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
             }
-            if (player.id == teamB[0].id && redFirst == true) {
+            if (player.id === teamB[0].id && redFirst === true) {
                 room.sendAnnouncement(centerText(teamR[0].name + " deve escolher primeiro. Aguarde sua vez"), null, warn, "italic");
             }
             else {return false;}
         }
-        else if (player.id == (teamR[0].id || teamB[0].id) && teamS.length < 2) {
+        else if (player.id === (teamR[0].id || teamB[0].id) && teamS.length < 2) {
             room.sendAnnouncement(centerText("Não posso encontrar este player na fila"), null, warn, "italic");
         }
         else {return false;}
@@ -4174,7 +3875,7 @@ room.onPlayerChat = function (player, message) {
     if (["!admin", "adm", "admin"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
             room.setPlayerAdmin(player.id, true);
-            adminPassword = "manco";
+            adminPassword = "true";
             console.log("adminPassword : " + adminPassword);
             return false;
         }
@@ -4518,57 +4219,6 @@ room.onPlayerChat = function (player, message) {
                 room.sendAnnouncement(teamS[18].name + " ---> Nº 19 --- | ID - " + teamS[18].id, null, white, "normal", 0);
                 room.sendAnnouncement(teamS[19].name + " ---> Nº 20 --- | ID - " + teamS[19].id, null, white, "normal", 0);
             }
-        }
-        return false;
-    }
-    if (["set"].includes(message[0].toLowerCase())) {
-        if (message[5] == keyCommand) {
-            let joguins = parseInt(message[1]);
-            let gols = parseInt(message[2]);
-            let assists = parseInt(message[3]);
-            let hatTricks = parseInt(message[4]);
-            for (let i = 0; i < gols; i++) {
-                joguin(joguins, player);
-            }
-            for (let i = 0; i < gols; i++) {
-                golzin(gols, player);
-            }
-            for (let i = 0; i < assists; i++) {
-                assistizinha(assists, player);
-            }
-            for (let i = 0; i < hatTricks; i++) {
-                hatzinho(hatTricks, player);
-            }
-            room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player), null, white, "bold"); 
-            keyCommand = generateRandomPassword();
-        }
-        return false;
-    }
-    if (["add"].includes(message[0].toLowerCase())) {
-        if (message[3] == keyCommand) {
-            let vezes = parseInt(message[1]);
-            if (message[2] == "gols") {
-                for (let i = 0; i < vezes; i++) {
-                    storeGoals(player);
-                }
-            }
-            if (message[2] == "assists") {
-                for (let i = 0; i < vezes; i++) {
-                    storeAssist(player);
-                }
-            }
-            if (message[2] == "hats") {
-                for (let i = 0; i < vezes; i++) {
-                    storeHatTrick(player);
-                }
-            }
-            if (message[2] == "jogos") {
-                for (let i = 0; i < vezes; i++) {
-                    incrementGames(player);
-                }
-            }
-            room.sendAnnouncement("[📄] " + player.name + " | 🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player), null, white, "bold"); 
-            keyCommand = generateRandomPassword();
         }
         return false;
     }
@@ -5101,9 +4751,6 @@ room.onGameStart = function (byPlayer) {
         assistsRp1 = 0;
         assistsRp2 = 0;
         assistsRp3 = 0;
-        scorer = 0;
-        scoreb = o;
-        countGames();
     }, 1000);
 };
 
@@ -5188,9 +4835,7 @@ room.onGameUnpause = function (byPlayer) {
 room.onTeamGoal = function (team) {
     const scores = room.getScores();
     activePlay = false;
-    teamgoaler = team;
     getPlayersGoalCount();
-    storeGoals(lastPlayersTouched[0]);
     if (lastPlayersTouched[0] != null && lastPlayersTouched[0].team == team) {
         let goalMaker = lastPlayersTouched[0].id;
 		room.sendAnnouncement(centerText("TOCA A MÚÚSICAAA, É GOOOOOL!!!"), null, green, "bold");
@@ -5208,7 +4853,6 @@ room.onTeamGoal = function (team) {
 		if (lastPlayersTouched[1] != null && lastPlayersTouched[1].team == team) {
             let goalAssist = lastPlayersTouched[1].id;
             getPlayersAssistCount();
-            storeAssist(lastPlayersTouched[1]);
 			room.sendAnnouncement(centerText("👟 Assistência: " + lastPlayersTouched[1].name + " 👟"), null, white, "bold");
             setTimeout(function () {
                 room.setPlayerAvatar(goalAssist, "🤝")
@@ -5221,7 +4865,6 @@ room.onTeamGoal = function (team) {
             }, 10);
         }
 		if (team === 1) {
-            scorer++;
 			goalsHome.push(lastPlayersTouched[0].name + " " + getTime(scores));
             setTimeout(function () {
                 room.setTeamColors(1, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
@@ -5252,7 +4895,6 @@ room.onTeamGoal = function (team) {
             }, 0);
 		}
         else if (team === 2) {
-            scoreb++;
 			goalsGuest.push(lastPlayersTouched[0].name + " " + getTime(scores));
             setTimeout(function () {
                 room.setTeamColors(2, gol4.angle, gol4.textcolor, [gol4.color1, gol4.color2, gol4.color3]);
@@ -5376,27 +5018,7 @@ room.onPositionsReset = function () {
 room.onRoomLink = function (url) {
     const roomURL = url;
     linkinho = url;
-    sendRoomLinkToDiscord(botVersion + "\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL);
-    sendCommandsToDiscord(' | ' + botVersion + ' |\n.\n'+
-        '!me ou "stats", "goat" (ranking da sala), !help, !tag, !uniforme, !gklist ou "gk?", gk (Entra para lista de GKs), !regras, !discord, !list (lista os player da fila), !vs, !verdade, !bb, !bye, !flw\n.\n'+
-        'Comemorações:\n'+
-        '!gol, !ain, !chupa, !lenda, !smith, !gk, !brabo\n.\n'+
-        'Uniformes:\n'+
-        '!seleçoes, !clubes, !euro, !sula --> Obs* Peça à um membro da Staff para alterar para você.\n.\n'
-    );
-    sendAdminCommandsToDiscord(' | ' + botVersion + ' |\n.\n' + 
-        'rr, go/play/bora\n!who <r/b/rb>\n!ban <nome>\n!clearbans,\n!comofaz\n!clean, !limpar\n!mute <red/blue/spec> <30/1>\n!list <red/blue/spec>'+
-        'Mapas:\n'+
-        '!2x, !3x <blue>, !5x'+
-        'Choose Mode:\n'+
-        '!choose <on/off>, !redfirst <on/off>\n'+
-        'Troca de uniforme:\n'+
-        '!uni, !rand <red/blue> (clubes), !selecrand <red/blue>\n'+
-        'Zueras:\n'+
-        'Times: v1 (Soberanos), Inv (Invictus), girl (Barbies)'+
-        'Size:\n'+
-        'anao, normal, gordao\n!size <r1/b1> <big/normal/small>\n.\nSenha: ' + adminPassword
-    );
+    sendRoomLinkToDiscord(botVersion + "\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL)
 }; 
 
 room.onPlayerAdminChange = function (changedPlayer, byPlayer) {
