@@ -1612,8 +1612,6 @@ function getStoredWins(player) {
   
 // Função para contar as derrotas para o timeR
 function countLossesTeamR() {
-    const teamR = room.getTeamPlayers(TeamID.Red);
-    // Verificar se o timeR tem 3 jogadores
     if (teamR.length === 3) {
             incrementLosses(teamR[0]);
             incrementLosses(teamR[1]);
@@ -1627,8 +1625,6 @@ function countLossesTeamR() {
 
 // Função para contar as derrotas para o timeB
 function countLossesTeamB() {
-    const teamB = room.getTeamPlayers(TeamID.Blue);
-    // Verificar se o timeB tem 3 jogadores
     if (teamB.length === 3) {
             incrementLosses(teamB[0]);
             incrementLosses(teamB[1]);
