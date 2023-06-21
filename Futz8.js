@@ -1914,6 +1914,15 @@ function getPlayerObjectByName(playerName) {
     return null;
 };
 
+function checkAndStartGame() {
+    if (teamR.length === 3 && teamB.length === 3) {
+        setTimeout(function () {
+            room.startGame();
+        }, 300);
+        
+    }
+};
+
 // Função para obter nome do jogador pelo ID
 function getPlayerName(playerId) {
     const player = getPlayer(playerId);
@@ -2467,6 +2476,7 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
     if (changedPlayer.team == Team.SPECTATORS) {
         updateList(Math.max(teamR.findIndex((p) => p.id == changedPlayer.id), teamB.findIndex((p) => p.id == changedPlayer.id), teamS.findIndex((p) => p.id == changedPlayer.id)), changedPlayer.team);
     }
+    checkAndStartGame();
     updateTeams();
 };
 
@@ -3817,7 +3827,9 @@ room.onPlayerChat = function (player, message) {
         }, 500);
     }
     if (["!lenda", "lenda"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
+        }, 100);
     }
     if (["!bar"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
@@ -4174,7 +4186,7 @@ room.onPlayerChat = function (player, message) {
     if (["!admin", "adm", "admin"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
             room.setPlayerAdmin(player.id, true);
-            adminPassword = "manco";
+            adminPassword = generateAdminRandomPassword();
             console.log("adminPassword : " + adminPassword);
             return false;
         }
