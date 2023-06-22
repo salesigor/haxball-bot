@@ -1558,18 +1558,21 @@ function getStoredAssists(player) {
     return parseInt(assists) || 0; // Retorna 0 se não houver assistências armazenadas
 };
 function countGames() {
-    // Verificar se os dois times têm 3 jogadores
-    if (teamR.length === 3 && teamB.length === 3) {
+    if (teamR.length == 3) {
         incrementGames(teamR[0]);
         incrementGames(teamR[1]);
         incrementGames(teamR[2]);
+    }
+    if (teamB.length == 3) {
         incrementGames(teamB[0]);
         incrementGames(teamB[1]);
         incrementGames(teamB[2]);
     }
-    if (teamR.length === 2 && teamB.length === 2) {
+    if (teamR.length == 2) {
         incrementGames(teamR[0]);
         incrementGames(teamR[1]);
+    }
+    if (teamB.length == 2) {
         incrementGames(teamB[0]);
         incrementGames(teamB[1]);
     }
