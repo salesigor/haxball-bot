@@ -4270,8 +4270,8 @@ room.onPlayerChat = function (player, message) {
     if (["!admin", "adm", "admin"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
             room.setPlayerAdmin(player.id, true);
-            adminPassword = generateAdminRandomPassword();
-            generateAdminRandomPassword();
+            senhanovinha = generateAdminRandomPassword();
+            adminPassword = senhanovinha;
             console.log("adminPassword : " + adminPassword);
             return false;
         }
