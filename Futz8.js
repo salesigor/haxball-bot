@@ -5494,15 +5494,15 @@ room.onRoomLink = function (url) {
         '!seleçoes, !clubes, !euro, !sula --> Obs* Peça à um membro da Staff para alterar para você.\n.\n'
     );
     sendAdminCommandsToDiscord(' | ' + botVersion + ' |\n.\n' + 
-        'rr, go/play/bora\n!who <r/b/rb>\n!ban <nome>\n!clearbans,\n!comofaz\n!clean, !limpar\n!mute <red/blue/spec> <30/1>\n!list <red/blue/spec>'+
+        'rr (reinicia a partida), go/play/bora (inicia a partida), stop (encerra a partida)\n!who <r/b/rb>\n!ban <nome>\n!clearbans,\n!comofaz\n!clean, !limpar\n!mute <red/blue/spec> <30/1>\n!list <red/blue/spec>\n.\n'+
         'Mapas:\n'+
-        '!2x, !3x <blue>, !5x'+
+        '!2x, !3x <blue>, !5x\n.\n'+
         'Choose Mode:\n'+
-        '!choose <on/off>, !redfirst <on/off>\n'+
+        '!choose <on/off>, !redfirst <on/off>\n.\n'+
         'Troca de uniforme:\n'+
-        '!uni, !rand <red/blue> (clubes), !selecrand <red/blue>\n'+
+        '!uni, !rand <red/blue> (clubes), !selecrand <red/blue>\n.\n'+
         'Zueras:\n'+
-        'Times: v1 (Soberanos), Inv (Invictus), girl (Barbies)'+
+        'Times: v1 (Soberanos), Inv (Invictus), girl (Barbies)\n.\n'+
         'Size:\n'+
         'anao, normal, gordao\n!size <r1/b1> <big/normal/small>\n.\nSenha: ' + adminPassword
     );
