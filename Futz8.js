@@ -2007,6 +2007,31 @@ function checkAndStartGame() {
         }, 2500);
         setTimeout(function () {
             room.startGame();
+            room.pauseGame(false);
+        }, 4500);
+    }
+    if (teamR.length === 4 && teamB.length === 4) {
+        room.setPlayerTeam(teamR[3].id, Team.SPECTATORS);
+        room.setPlayerTeam(teamB[3].id, Team.SPECTATORS);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO PROGRAMADO -- 🤖"), null, yellow, "bold");
+            choose = false;
+        }, 10);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Atenção players!"), null, white, "normal", 2);
+        }, 600);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("1"), null, lightgrey, "bold");
+        }, 1500);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("2"), null, yellow, "bold");
+        }, 2500);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("3"), null, green, "bold", 2);
+        }, 2500);
+        setTimeout(function () {
+            room.startGame();
+            room.pauseGame(false);
         }, 4500);
     }
 };
@@ -5374,10 +5399,8 @@ room.onGamePause = function (byPlayer) {
         setTimeout(function () {
             if (teamR.length != 3 || teamB.length != 3) {
                 IIIx();
-            }
-            setTimeout(function () {
                 checkAndResumeGame();
-            }, 1000);
+            }
         }, 15000);
         
     }
