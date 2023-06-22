@@ -1437,7 +1437,85 @@ function joguin(joguins, player) {
     const key = `jogos_${playerName}`;
     localStorage.setItem(key, parseInt(joguins)); // Armazenar o novo valor no localStorage
 };
-
+// THE GOAT
+function findPlayerWithMostHatTricks(players) {
+    let maxHatTricks = 0;
+    let playerWithMostHatTricks = null;
+    for (let i = 0; i < players.length; i++) {
+        const player = players[i];
+        const playerName = player.name;
+        const key = `hattrick_${playerName}`;
+        const hatTricks = parseInt(localStorage.getItem(key)) || 0;
+        if (hatTricks > maxHatTricks) {
+            maxHatTricks = hatTricks;
+            playerWithMostHatTricks = player.name;
+        }
+    }
+    return playerWithMostHatTricks;
+};
+function getBiggestGoaler(players) {
+    let maxGoals = 0;
+    let biggestGoaler = null;
+    for (let i = 0; i < players.length; i++) {
+        const player = players[i];
+        const goals = getStoredGoals(player);
+        if (goals > maxGoals) {
+            maxGoals = goals;
+            biggestGoaler = player.name;
+        }
+    }
+    return biggestGoaler;
+};
+function getBiggestAssistant(players) {
+    let biggestAssistPlayer = null;
+    let biggestAssists = -1;
+    for (let i = 0; i < players.length; i++) {
+        const player = players[i];
+        const assists = getStoredAssists(player);
+        if (assists > biggestAssists) {
+            biggestAssists = assists;
+            biggestAssistPlayer = player.name;
+        }
+    }
+    return biggestAssistPlayer;
+};
+function getPlayerWithMostWins(players) {
+    let maxWins = 0;
+    let playerWithMostWins = null;
+    for (let i = 0; i < players.length; i++) {
+        const player = players[i];
+        const playerName = player.name;
+        const key = `vitórias_${playerName}`;
+        const wins = parseInt(localStorage.getItem(key)) || 0;
+        if (wins > maxWins) {
+            maxWins = wins;
+            playerWithMostWins = player.name;
+        }
+    }
+    return playerWithMostWins;
+};
+function ddd(playerName) {
+    const key = `vitórias_${playerName}`;
+    const wins = localStorage.getItem(key);
+    return parseInt(wins) || 0; // Retorna 0 se não houver vitórias armazenadas
+};
+function ccc(playerName) {
+    const key = `hattrick_${playerName}`;
+    const value = localStorage.getItem(key);
+    // Exibe mensagem no console informando o Hat Trick feito pelo jogador
+    return parseInt(value) || 0;
+};
+function aaa(playerName) {
+    const key = `goals_${playerName}`;
+    const goals = localStorage.getItem(key);
+    return parseInt(goals) || 0;
+};
+function bbb(playerName) {
+    const key = `assists_${playerName}`;
+    const assists = localStorage.getItem(key);
+    return parseInt(assists) || 0; // Retorna 0 se não houver assistências armazenadas
+}
+//
 function storeHatTrick(player) {
     const playerName = player.name;
     const key = `hattrick_${playerName}`;
@@ -1453,21 +1531,6 @@ function getHatTrick(player) {
     // Exibe mensagem no console informando o Hat Trick feito pelo jogador
     return parseInt(value) || 0;
 };
-function findPlayerWithMostHatTricks(players) {
-    let maxHatTricks = 0;
-    let playerWithMostHatTricks = null;
-    for (let i = 0; i < players.length; i++) {
-        const player = players[i];
-        const playerName = player.name;
-        const key = `hattrick_${playerName}`;
-        const hatTricks = parseInt(localStorage.getItem(key)) || 0;
-        if (hatTricks > maxHatTricks) {
-        maxHatTricks = hatTricks;
-        playerWithMostHatTricks = player.name;
-        }
-    }
-    return playerWithMostHatTricks;
-};
 function storeGoals(player) {
     const playerName = player.name;
     const key = `goals_${playerName}`;
@@ -1481,20 +1544,6 @@ function getStoredGoals(player) {
     const goals = localStorage.getItem(key);
     return parseInt(goals) || 0;
 };
-function getBiggestGoaler(players) {
-    let maxGoals = 0;
-    let biggestGoaler = null;
-    for (let i = 0; i < players.length; i++) {
-        const player = players[i];
-        const goals = getStoredGoals(player);
-
-        if (goals > maxGoals) {
-        maxGoals = goals;
-        biggestGoaler = player.name;
-        }
-    }
-    return biggestGoaler;
-};
 function storeAssist(player) {
     const playerName = player.name;
     const key = `assists_${playerName}`;
@@ -1507,19 +1556,6 @@ function getStoredAssists(player) {
     const key = `assists_${playerName}`;
     const assists = localStorage.getItem(key);
     return parseInt(assists) || 0; // Retorna 0 se não houver assistências armazenadas
-};
-function biggestAssistant() {
-    let biggestAssistPlayer = null;
-    let biggestAssists = -1;
-    for (let i = 0; i < room.getPlayerList().length; i++) {
-        const player = room.getPlayerList()[i];
-        const assists = getStoredAssists(player);
-        if (assists > biggestAssists) {
-        biggestAssists = assists;
-        biggestAssistPlayer = player.name;
-        }
-    }
-    return biggestAssistPlayer;
 };
 function countGames() {
     // Verificar se os dois times têm 3 jogadores
@@ -2601,7 +2637,7 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
-    if (["!me", "!eu", "stats"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, somente para você.
+    if (["!me", "!eu", "stats"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player) + ", Taxa de vitórias: " + calculateWinPercentage(player) + "%", null, white, "bold"); 
         /*
         var stats;
@@ -2610,10 +2646,17 @@ room.onPlayerChat = function (player, message) {
         */
         return false;
     }
-    if (["!goat", "goat", "!best"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, somente para você.
+    if (["!goat", "goat", "!best"].includes(message[0].toLowerCase())) {
+        let maisgols = getBiggestGoaler(players);
+        let maisassists = getBiggestAssistant(players);
+        let maishats =findPlayerWithMostHatTricks(players);
+        let maiswins = getPlayerWithMostWins(players);
         room.sendAnnouncement(centerText("🐐 THE GOAT 🐐"), null, white, "bold");
         room.sendAnnouncement(centerText("top players ranking"), null, yellow, "italic");
-        room.sendAnnouncement("MAIS GOLS: " + getBiggestGoaler(players) + ", MAIS ASSISTS: " + biggestAssistant(player) + ", MAIS HAT-TRICKS: " + findPlayerWithMostHatTricks(players), player.id, white, "bold"); 
+        room.sendAnnouncement(centerText("MAIS GOLS ⚽ --> " + maisgols + " ("+ aaa(maisgols) + ")"), null, white, "bold");
+        room.sendAnnouncement(centerText("MAIS ASSISTS 👟 --> " + maisassists + " ("+ bbb(maisassists) + ")"), null, white, "bold");
+        room.sendAnnouncement(centerText("MAIS HAT-TRICKS 🏆 --> " + maishats + " ("+ ccc(maishats) + ")"), null, white, "bold");
+        room.sendAnnouncement(centerText("MAIS VITÓRIAS ✅ --> " + maiswins + " ("+ ddd(maiswins) + ")"), null, white, "bold");
         return false;
     }
     if (["!stats"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, mostra para todos da sala.
@@ -4284,8 +4327,14 @@ room.onPlayerChat = function (player, message) {
     }
     if (["!avatar", "avatar"].includes(message[0].toLowerCase())) {
         if (player.admin) {
-            const pID = parseInt(message[1]);
-            room.setPlayerAvatar(pID, message[2]);
+            if (message[2] == "null") {
+                const pID = parseInt(message[1]);
+                room.setPlayerAvatar(pID, null);
+            }
+            else {
+                const pID = parseInt(message[1]);
+                room.setPlayerAvatar(pID, message[2]);
+            }
         }
         return false;
     }
