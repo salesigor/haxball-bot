@@ -5455,7 +5455,6 @@ room.onTeamGoal = function (team) {
                                     setTimeout(function () {
                                         room.setTeamColors(2, gol2.angle, gol2.textcolor, [gol2.color1, gol2.color2, gol2.color3]);
                                         setTimeout(function () {
-                                            room.setPlayerDiscProperties(player.id, {radius: 15, invMass: 30 / 30});
                                             setTimeout(function () {
                                                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                                             }, 0);
