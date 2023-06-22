@@ -2113,6 +2113,9 @@ function endGame(winner) { // no stopGame() function in it
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
+        if (scores.blue == 0) {
+        room.sendAnnouncement(centerText(teamR[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " catou muito!"), null, white, "bold");
+        }
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
@@ -2142,6 +2145,9 @@ function endGame(winner) { // no stopGame() function in it
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
+        if (scores.red == 0) {
+            room.sendAnnouncement(centerText(teamB[GKList.slice(0, maxPlayers).findIndex(p => p == Math.max(...GKList.slice(0, maxPlayers)))].name + " catou muito!"), null, white, "bold");
+        }
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
@@ -3694,7 +3700,7 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
-    if (["!rand"].includes(message[0].toLowerCase())) {
+    if (["!rand", "unix", "ra"].includes(message[0].toLowerCase())) {
         const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv];
         var randHome = Math.floor(Math.random() * allClubes.length);
         var randGuest = Math.floor(Math.random() * allClubes.length);
@@ -4244,9 +4250,8 @@ room.onPlayerChat = function (player, message) {
     }
     if (["!avatar", "avatar"].includes(message[0].toLowerCase())) {
         if (player.admin) {
-            const pID = message[1];
-            const pIDreal = pID.replace(/["]/g, '');
-            room.setPlayerAvatar(pIDreal, message[2]);
+            const pID = parseInt(message[1]);
+            room.setPlayerAvatar(pID, message[2]);
         }
         return false;
     }
@@ -4579,7 +4584,17 @@ room.onPlayerChat = function (player, message) {
                     incrementGames(player);
                 }
             }
-            room.sendAnnouncement("[📄] " + player.name + " | 🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player), null, white, "bold"); 
+            if (message[2] == "win") {
+                for (let i = 0; i < vezes; i++) {
+                    incrementWins(player);
+                }
+            }
+            if (message[2] == "loss") {
+                for (let i = 0; i < vezes; i++) {
+                    incrementLosses(player);
+                }
+            }
+            room.sendAnnouncement("[📄] " + player.name + " | 🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player) + ", Taxa de vitórias: " + calculateWinPercentage(player) + "%", null, white, "bold"); 
             keyCommand = generateRandomPassword();
         }
         return false;
@@ -5070,6 +5085,7 @@ room.onPlayerBallKick = function (player) {
 /* GAME MANAGEMENT */
 
 room.onGameStart = function (byPlayer) {
+	GKList = new Array(2 * maxPlayers).fill(0);
     activePlay = false;
     Rposs = 0;
     Bposs = 0;
