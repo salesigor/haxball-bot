@@ -1863,6 +1863,40 @@ function alwaysOnTeam() {
     }
 };
 
+function IIIx() {
+    if (teamS.length == 0) {
+        return;
+    }
+    else {
+        if (teamR.length == 1) {
+            if (teamS.length > 2) {
+                room.setPlayerTeam(teamS[0].id, Team.RED);
+                room.setPlayerTeam(teamS[1].id, Team.RED);
+            }
+            return;
+        }
+        if (teamR.length == 2) {
+            if (teamS.length > 1) {
+                room.setPlayerTeam(teamS[0].id, Team.RED);
+            }
+            return;
+        }
+        if (teamB.length == 1) {
+            if (teamS.length > 2) {
+                room.setPlayerTeam(teamS[0].id, Team.BLUE);
+                room.setPlayerTeam(teamS[1].id, Team.BLUE);
+            }
+            return;
+        }
+        if (teamB.length == 2) {
+            if (teamS.length > 1) {
+                room.setPlayerTeam(teamS[0].id, Team.BLUE);
+            }
+            return;
+        }
+    }
+};
+
 function topBtn() {
     if (teamS.length == 0) {
         return;
@@ -1956,21 +1990,36 @@ function getPlayerObjectByName(playerName) {
 function checkAndStartGame() {
     if (teamR.length === 3 && teamB.length === 3) {
         setTimeout(function () {
-            room.sendAnnouncement(centerText("INÍCIO AUTOMÁTICO PROGRAMADO"), null, yellow, "bold");
+            room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO PROGRAMADO -- 🤖"), null, yellow, "bold");
             choose = false;
-        }, 500);
+        }, 10);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Atenção players!"), null, white, "normal", 2);
+        }, 600);
         setTimeout(function () {
             room.sendAnnouncement(centerText("1"), null, lightgrey, "bold");
-        }, 1000);
+        }, 1500);
         setTimeout(function () {
             room.sendAnnouncement(centerText("2"), null, yellow, "bold");
-        }, 2000);
+        }, 2500);
         setTimeout(function () {
-            room.sendAnnouncement(centerText("3"), null, green, "bold");
-        }, 3000);
+            room.sendAnnouncement(centerText("3"), null, green, "bold", 2);
+        }, 2500);
         setTimeout(function () {
             room.startGame();
-        }, 4000);
+        }, 4500);
+    }
+};
+
+function checkAndPauseGame() {
+    if (teamR.length !== teamB.length) {
+      setTimeout(() => { room.pauseGame(true); }, 500);
+    }
+};
+
+function checkAndResumeGame() {
+    if (teamR.length === teamB.length) {
+        setTimeout(() => { room.pauseGame(false); }, 500);
     }
 };
 
@@ -2566,10 +2615,13 @@ room.onPlayerLeave = function (player) {
     updateList(Math.max(teamR.findIndex((p) => p.id == player.id), teamB.findIndex((p) => p.id == player.id), teamS.findIndex((p) => p.id == player.id)), player.team);
     updateTeams();
     updateAdmins();
+    checkAndPauseGame();
     room.sendAnnouncement(centerText(player.name + " vazou!"), null, white, "bold");
 };
 
 room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
+    updateTeams();
+    checkAndPauseGame();
     if (ban == true) {
         banList.push([kickedPlayer.name, kickedPlayer.id]);
         room.sendAnnouncement(centerText(kickedPlayer.name + " levou ban!"), null, white, "bold");
@@ -5226,7 +5278,7 @@ room.onGameStart = function (byPlayer) {
 };
 
 room.onGameStop = function (byPlayer) {
-    if (byPlayer && byPlayer.id == 0) {let goalsRp1 = 0;
+    if (byPlayer && byPlayer.id == 0) {
         if (rr == false) {
             const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv, mia];
             let randHome = Math.floor(Math.random() * allClubes.length);
@@ -5280,15 +5332,30 @@ room.onGameStop = function (byPlayer) {
 room.onGamePause = function (byPlayer) {
     room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
     choose = true;
-    setTimeout(function () {
-        var messages = [
-            "Opa, vamos ter que levar para o VAR analizar...",
-            "VAR está coferindo o lance...",
-        ];
-        var randomIndex = Math.floor(Math.random() * messages.length);
-        var announcement = messages[randomIndex];
-        room.sendAnnouncement(centerText(announcement), null, yellow, "bold", 0);
-    }, 1500);
+    if (byPlayer && byPlayer.id == 0) {
+        room.sendAnnouncement(centerText("Opa... Capitão, puxa outro aí!"), null, yellow, "bold");
+        room.sendAnnouncement(centerText("*** 15 segundos para escolha AUTOMÁTICA ***"), null, warn, "italic", 0);
+        setTimeout(function () {
+            if (teamR.length != 3 || teamB.length != 3) {
+                IIIx();
+            }
+            setTimeout(function () {
+                checkAndResumeGame();
+            }, 1000);
+        }, 15000);
+        
+    }
+    else {
+        setTimeout(function () {
+            var messages = [
+                "Opa, vamos ter que levar para o VAR analizar...",
+                "VAR está coferindo o lance...",
+            ];
+            var randomIndex = Math.floor(Math.random() * messages.length);
+            var announcement = messages[randomIndex];
+            room.sendAnnouncement(centerText(announcement), null, yellow, "bold", 0);
+        }, 1500);
+    }
 };
 
 room.onGameUnpause = function (byPlayer) {
