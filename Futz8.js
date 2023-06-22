@@ -4381,6 +4381,42 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
+    if (["!timeout", "!javolto"].includes(message[0].toLowerCase())) {
+        if (player.admin) {
+            redChat = false;
+            blueChat = false;
+            specChat = false;
+            room.pauseGame(true);
+            room.sendAnnouncement(centerText(" "), null, white, "bold", 0);
+            setTimeout(() => {
+                room.sendAnnouncement(centerText(" "), null, white, "bold", 0);
+                room.sendAnnouncement(centerText(" "), null, white, "bold", 0);
+                room.sendAnnouncement(centerText("TEREMOS UMA ATUALIZAÇÃO"), null, yellow, "bold", 2);
+                setTimeout(() => {
+                    room.sendAnnouncement(centerText("A sala será derrubada e logo voltaremos!"), null, warn, "bold");
+                }, 100);
+            }, 500);
+        }
+        return false;
+    }
+    if (["!xau", "!adeus","!fechar"].includes(message[0].toLowerCase())) {
+        if (player.admin) {
+            redChat = false;
+            blueChat = false;
+            specChat = false;
+            room.pauseGame(true);
+            room.sendAnnouncement(centerText(" "), null, white, "bold", 0);
+            setTimeout(() => {
+                room.sendAnnouncement(centerText(" "), null, white, "bold", 0);
+                room.sendAnnouncement(centerText(" "), null, white, "bold", 0);
+                room.sendAnnouncement(centerText("POR HOJE É ISSO, RAPA"), null, yellow, "bold", 2);
+                setTimeout(() => {
+                    room.sendAnnouncement(centerText("A sala será derrubada agora!"), null, warn, "bold");
+                }, 100);
+            }, 500);
+        }
+        return false;
+    }
     if (["!pendurados", "pendurados"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Jogadores Pendurados"), player.id, white, "bold");
         room.sendAnnouncement(centerText(pendurados), player.id, white, "normal");
