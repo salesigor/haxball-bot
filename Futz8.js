@@ -1917,9 +1917,21 @@ function getPlayerObjectByName(playerName) {
 function checkAndStartGame() {
     if (teamR.length === 3 && teamB.length === 3) {
         setTimeout(function () {
+            room.sendAnnouncement(centerText("INÍCIO AUTOMÁTICO PROGRAMADO"), null, yellow, "bold");
+            choose = false;
+        }, 500);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("1"), null, blue, "bold");
+        }, 100);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("2"), null, yellow, "bold");
+        }, 2000);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("3"), null, green, "bold");
+        }, 3000);
+        setTimeout(function () {
             room.startGame();
-        }, 300);
-        
+        }, 4000);
     }
 };
 
@@ -2134,6 +2146,20 @@ function endGame(winner) { // no stopGame() function in it
             countLossesTeamB();
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
+                setTimeout(function () {
+                    if (teamB.length == 1) {
+                        blueToSpecBtn();
+                        setTimeout(function () {
+                            topBtn();
+                            setTimeout(function () {
+                                room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
+                                room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
+                                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+                                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
+                            }, 600);
+                        }, 300);
+                    }
+                }, 21000);
             }, 1000);
         }, 4000);
     }
@@ -2163,6 +2189,20 @@ function endGame(winner) { // no stopGame() function in it
             countLossesTeamR();
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
+                setTimeout(function () {
+                    if (teamB.length == 1) {
+                        blueToSpecBtn();
+                        setTimeout(function () {
+                            topBtn();
+                            setTimeout(function () {
+                                room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
+                                room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
+                                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
+                                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
+                            }, 600);
+                        }, 300);
+                    }
+                }, 21000);
             }, 1000);
         }, 4000);
     }
@@ -2268,6 +2308,7 @@ function updateTeams() {
     teamR = players.filter(p => p.team === Team.RED);
     teamB = players.filter(p => p.team === Team.BLUE);
     teamS = players.filter(p => p.team === Team.SPECTATORS);
+    checkAndStartGame();
 };
 
 function updateAdmins() {
