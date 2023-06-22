@@ -1957,8 +1957,8 @@ function checkAndStartGame() {
             choose = false;
         }, 500);
         setTimeout(function () {
-            room.sendAnnouncement(centerText("1"), null, blue, "bold");
-        }, 100);
+            room.sendAnnouncement(centerText("1"), null, lightgrey, "bold");
+        }, 1000);
         setTimeout(function () {
             room.sendAnnouncement(centerText("2"), null, yellow, "bold");
         }, 2000);
@@ -1966,9 +1966,6 @@ function checkAndStartGame() {
             room.sendAnnouncement(centerText("3"), null, green, "bold");
         }, 3000);
         setTimeout(function () {
-            if (pauseGame === true) {
-                room.pauseGame(false);
-            }
             room.startGame();
         }, 4000);
     }
@@ -2349,6 +2346,7 @@ function updateTeams() {
     teamS = players.filter(p => p.team === Team.SPECTATORS);
     if (choose === true) {
         checkAndStartGame();
+        alwaysOnTeam();
     }
 };
 
@@ -2606,8 +2604,8 @@ room.onPlayerChat = function (player, message) {
     if (["!clearbans"].includes(message[0].toLowerCase())) {
         if (connections.includes(player.conn)) {
             room.clearBans();
+            /*room.sendChat("/clear_bans", null);*/
             room.sendAnnouncement(centerText(player.name + " limpou a lista de banimentos."), player.id, yellow, "normal");
-            sendAnnouncementToDiscord(player.name + " limpou a lista de banimentos.");
         }
     }
     if (["!ban", "ban"].includes(message[0].toLowerCase())) {
