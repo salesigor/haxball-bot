@@ -1404,7 +1404,7 @@ function generateAdminRandomPassword() {
       const randomDigit = Math.floor(Math.random() * 10); // gera um número aleatório entre 0 e 9
       password += randomDigit.toString(); // adiciona o número à senha como uma string
     }
-    sendAdminCommandsToDiscord('Senha: ' + adminPassword);
+    sendAdminCommandsToDiscord('Senha: ' + password);
     return password;
 };
 function generateRandomPassword() {
@@ -4270,8 +4270,12 @@ room.onPlayerChat = function (player, message) {
     if (["!admin", "adm", "admin"].includes(message[0].toLowerCase())) {
         if (message[1] == adminPassword) {
             room.setPlayerAdmin(player.id, true);
-            senhanovinha = generateAdminRandomPassword();
-            adminPassword = senhanovinha;
+            adminPassword = generateAdminRandomPassword();
+            console.log("adminPassword : " + adminPassword);
+            return false;
+        }
+        if (message[1] == "reset") {
+            adminPassword = generateAdminRandomPassword();
             console.log("adminPassword : " + adminPassword);
             return false;
         }
