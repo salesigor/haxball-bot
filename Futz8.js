@@ -2476,7 +2476,6 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
     if (changedPlayer.team == Team.SPECTATORS) {
         updateList(Math.max(teamR.findIndex((p) => p.id == changedPlayer.id), teamB.findIndex((p) => p.id == changedPlayer.id), teamS.findIndex((p) => p.id == changedPlayer.id)), changedPlayer.team);
     }
-    checkAndStartGame();
     updateTeams();
 };
 
