@@ -2004,7 +2004,7 @@ function checkAndStartGame() {
         }, 2500);
         setTimeout(function () {
             room.sendAnnouncement(centerText("3"), null, green, "bold", 2);
-        }, 2500);
+        }, 3500);
         setTimeout(function () {
             room.startGame();
             room.pauseGame(false);
