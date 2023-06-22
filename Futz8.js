@@ -1237,7 +1237,7 @@ let badassID = "";
 var supervisorsID = [];
 const soberbo = ['3139312E3133352E3231362E313330', '3137392E33342E38332E3634']; // soberbo
 const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533', '3137372E36382E32342E313239']; // malco
-const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
+const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539', '3137372E37352E35362E323034']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™, o two
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider
@@ -1966,6 +1966,9 @@ function checkAndStartGame() {
             room.sendAnnouncement(centerText("3"), null, green, "bold");
         }, 3000);
         setTimeout(function () {
+            if (pauseGame === true) {
+                room.pauseGame(false);
+            }
             room.startGame();
         }, 4000);
     }
@@ -2344,7 +2347,9 @@ function updateTeams() {
     teamR = players.filter(p => p.team === Team.RED);
     teamB = players.filter(p => p.team === Team.BLUE);
     teamS = players.filter(p => p.team === Team.SPECTATORS);
-    checkAndStartGame();
+    if (choose === true) {
+        checkAndStartGame();
+    }
 };
 
 function updateAdmins() {
@@ -2569,10 +2574,6 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
         room.sendAnnouncement(centerText(kickedPlayer.name + " levou ban!"), null, white, "bold");
         room.sendAnnouncement(centerText("Banned por não seguir as REGRAS!"), null, warn, "italic");
         console.log("ban list : " + banList);
-    }
-    if (ban == false) {
-        room.sendAnnouncement(centerText(kickedPlayer.name + " levou kick!"), null, white, "bold");
-        room.sendAnnouncement(centerText("Kicked por inatividade ou por pura encheção de saco!"), null, warn, "italic");
     }
 };
 
@@ -4270,12 +4271,14 @@ room.onPlayerChat = function (player, message) {
         if (message[1] == adminPassword) {
             room.setPlayerAdmin(player.id, true);
             adminPassword = generateAdminRandomPassword();
+            generateAdminRandomPassword();
             console.log("adminPassword : " + adminPassword);
             return false;
         }
     }
     if (["!bb", "!bye", "!flw"].includes(message[0].toLowerCase())) {
-        room.kickPlayer(player.id, "se foi!", false);
+        room.kickPlayer(player.id, "Até a próxima!", false);
+        room.sendAnnouncement(centerText(player.name + " deu AUTO KICK!"), null, warn, "normal");
         return false;
     }
     if (["!clean", "!limpar", "!clear"].includes(message[0].toLowerCase())) {
