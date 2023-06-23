@@ -1349,9 +1349,11 @@ var statInterval = 6;
 
 var Intervalo_mensagens;
 var help_mensagens;
+var var_mensage;
 var Intervalo_msgs = 1000 * 60 * 5; // 1000 * 60 * 15 = irá mandar a mensagem a cada 15 minutos
 var Intervalo_msgs2 = 1000 * 60 * 3; // 1000 * 60 * 15 = irá mandar a mensagem a cada X minutos
-  
+var Intervalo_msgs3 = 1000 * 60 * 8;
+
 Intervalo_mensagens = setInterval(() => {
 const msgs1 = ["▒█▀▀▄ ▀█▀ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▄"];
 const msgs2 = ["▒█░▒█ ▒█░ ░▀▀▀▄▄ ▒█░░░ ▒█░░▒█ ▒█▄▄▀ ▒█░▒█"];
@@ -1365,8 +1367,12 @@ room.sendAnnouncement(centerText(msgs4), null, white, "italic", 1);
 }, Intervalo_msgs);
 
 help_mensagens = setInterval(() => {
-room.sendAnnouncement(centerText("「📣」 𝘂𝘀𝗲 !𝗵𝗲𝗹𝗽 𝗽𝗮𝗿𝗮 𝘃𝗲𝗿 𝗼𝘀 𝗰𝗼𝗺𝗮𝗻𝗱𝗼𝘀"), null, white, "italic", 1);
+room.sendAnnouncement(centerText("「📣」 𝘂𝘀𝗲 !𝗵𝗲𝗹𝗽 𝗽𝗮𝗿𝗮 𝘃𝗲𝗿 𝗼𝘀 𝗰𝗼𝗺𝗮𝗻𝗱𝗼𝘀"), null, yellow, "italic", 1);
 }, Intervalo_msgs2);
+
+var_mensage = setInterval(() => {
+    room.sendAnnouncement(centerText("「📹」Se algo estiver errado, chame o 'var'!"), null, white, "italic", 1);
+}, Intervalo_msgs3);
 
 function joinDiscord(url) {
     const janelinhaNova = window.open(url, "_blank");
@@ -4288,6 +4294,13 @@ room.onPlayerChat = function (player, message) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("🍫... SOBEEEERBOOOOOOO! ...🍫"), null, white, "normal");
         }, 3500);
+    }
+    if (["var"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(" VAR 📹 --> analizando...", null, white, "bold");
+        setTimeout(function () {
+            checkAndPauseGame();
+            alwaysOnTeam();
+        }, 300);
     }
     if (["!gk"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("GOLEIROOO!"), null, white, "bold");
