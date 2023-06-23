@@ -1197,7 +1197,7 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 
 /* OPTIONS */
 
-var afkLimit = 20;
+var afkLimit = 1;
 var drawTimeLimit = 1; //minutos
 var maxTeamSize = 3;
 var yellow = 0xffeb15;
