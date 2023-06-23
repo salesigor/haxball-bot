@@ -1240,16 +1240,16 @@ const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3
 const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539', '3137372E37352E35362E323034']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™, o two
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337'
-]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III
+]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III, MACACO
 const cartaoamarelo = [
-    '3138392E38352E32392E3739', '3138392E38352E32392E3733', '3138392E38352E32392E323434'
+    '3138392E38352E32392E3739', '3138392E38352E32392E3733', '3138392E38352E32392E323434', '3138372E36302E3231372E313934'
 ]; // 𝘿𝙄𝘼𝙕
 var blacklist = [
     {Nick: "Arthur MM", Auth: "YD0Jm8MmB9G9YJCwJEEoIcC1SvD3Q2811xT9T-NTmVw", Conn: "3137372E35372E3135302E313736"},
     {Nick: "ᱦiᱮ∀Ʀd", Auth: "YJINpE0p70-sAT-nTx10vI5VvHyQ-jkZ1C-zi6dI2us", Conn: "3136372E3234392E39332E313135"},
     {Nick: "Schneider", Auth: "_nsAyl-n61ELIOJghIDiHojx-parT0N19K374jqygqo", Conn: "3137372E37362E3232342E3730"},
     {Nick: "Alcione III", Auth: "l6CTEtHr4eiv6xwCfvFow6dqEkTxuKRKhWUWgVkmFzY", Conn: "3137392E3231382E32312E323337"},
-    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "MACACO", Auth: "aPIbu-KVDln_AP66WDgrgZYP7QdNWvDsvNQ6WU8whbA", Conn: "3138372E36302E3231372E313934"},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
