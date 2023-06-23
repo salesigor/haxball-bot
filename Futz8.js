@@ -5144,9 +5144,10 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (["!blacklist", "blacklist"].includes(message[0].toLowerCase())) {
-            room.sendAnnouncement(centerText("BLACK LIST"), null, warn, "bold", 0);
+        setTimeout(() => {
+            room.sendAnnouncement(centerText("☢️ --- BLACK LIST --- ☢️"), null, warn, "bold", 0);
             room.sendAnnouncement(centerText(blacklistnames), null, white, "italic");
-        return false;
+        }, 300);
     }
     if (["!diminuir", "anao", "anão"].includes(message[0].toLowerCase())) {
         room.setPlayerDiscProperties(player.id, {radius: 12, invMass:  20 / 30});
