@@ -1270,6 +1270,7 @@ var goldenGoal = false;
 var activePlay = false;
 var muteList = [];
 let muted = false;
+let capchat = false;
 let redChat = true;
 let blueChat = true;
 let specChat = true;
@@ -1992,6 +1993,7 @@ function checkAndStartGame() {
         if (teamR.length === 2 && teamB.length === 2) {
             setTimeout(function () {
                 room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO PROGRAMADO -- 🤖"), null, yellow, "bold");
+                capchat = false;
                 choose = false;
             }, 10);
             setTimeout(function () {
@@ -2014,6 +2016,7 @@ function checkAndStartGame() {
         if (teamR.length === 1 && teamB.length === 1) {
             setTimeout(function () {
                 room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO PROGRAMADO -- 🤖"), null, yellow, "bold");
+                capchat = false;
                 choose = false;
             }, 10);
             setTimeout(function () {
@@ -2037,6 +2040,7 @@ function checkAndStartGame() {
     if (teamR.length === 3 && teamB.length === 3) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO PROGRAMADO -- 🤖"), null, yellow, "bold");
+            capchat = false;
             choose = false;
         }, 10);
         setTimeout(function () {
@@ -2061,6 +2065,7 @@ function checkAndStartGame() {
         room.setPlayerTeam(teamB[3].id, Team.SPECTATORS);
         setTimeout(function () {
             room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO PROGRAMADO -- 🤖"), null, yellow, "bold");
+            capchat = false;
             choose = false;
         }, 10);
         setTimeout(function () {
@@ -2312,6 +2317,7 @@ function endGame(winner) { // no stopGame() function in it
             countWinsTeamR();
             countLossesTeamB();
             setTimeout(function () {
+            capchat = true;
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
                 setTimeout(function () {
                     if (teamB.length == 1) {
@@ -2347,6 +2353,7 @@ function endGame(winner) { // no stopGame() function in it
         "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
          + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)")
         setTimeout(function () {
+            capchat = true;
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
             room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
@@ -5126,7 +5133,7 @@ room.onPlayerChat = function (player, message) {
         room.setPlayerDiscProperties(player.id, {radius: 12, invMass:  20 / 30});
         return false;
     }
-    if (["!mute"].includes(message[0].toLowerCase())) {
+    if (["!mute", "mute"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             if (message[1] == "red") {
                 if (message[2] == "30") {
@@ -5220,9 +5227,10 @@ room.onPlayerChat = function (player, message) {
                     blueChat = true;
                     specChat = true;
                     muted = true;
+                    capchat = false;
                     room.sendAnnouncement(centerText("Chat ATIVADO"), null, warn, "italic");
                 }
-                else if (muted === true) {
+                if (muted === true) {
                     redChat = false;
                     blueChat = false;
                     specChat = false;
@@ -5267,39 +5275,54 @@ room.onPlayerChat = function (player, message) {
     };
     if (player.team === Team.RED) {
         if (redChat == true) {
-            if (player.id === teamR[0].id) {
+            if (teamR[0]) {
             room.sendAnnouncement(nameHome + " | 👑 | " + player.name + ": " + mensagem, null, red, "bold", 1);
             }
             else {
-            room.sendAnnouncement(nameHome + " | " + player.name + ": " + mensagem, null, red, "bold", 1);
+                if (capchat = false) {
+                room.sendAnnouncement(nameHome + " | " + player.name + ": " + mensagem, null, red, "bold", 1);
+                }
+                if (capchat = true) {
+                    room.sendAnnouncement("[PV] aguarde o capitão escalar o time", player.id, warn, "italic", 0);
+                }
             }
         }
         else if (redChat == false) {
-            room.sendChat("Você está mutado.", player.id);
+            room.sendAnnouncement("Você está mutado.", player.id, warn, "italic", 0);
         }
         return false;
     }
     if (player.team === Team.BLUE) {
         if (blueChat == true) {
-            if (player.id === teamR[0].id) {
+            if (teamR[0]) {
                 room.sendAnnouncement(nameGuest + " | 👑 | " + player.name + ": " + mensagem, null, blue, "bold", 1);
             }
             else {
-                room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "bold", 1);
+                if (capchat = false) {
+                    room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "bold", 1);
+                }
+                if (capchat = true) {
+                    room.sendAnnouncement("[PV] aguarde o capitão escalar o time", player.id, warn, "italic", 0);
+                }
             }
         }
         else if (blueChat == false) {
-            room.sendChat("Você está mutado.", player.id);
+            room.sendAnnouncement("Você está mutado.", player.id, warn, "italic", 0);
             return false;
         }
         return false;
     }
     if (player.team === Team.SPECTATORS) {
         if (specChat == true) {
-            room.sendAnnouncement(player.name + ": " + mensagem, null, white, "normal", 1);
+            if (capchat = false) {
+                room.sendAnnouncement(player.name + ": " + mensagem, null, white, "normal", 1);
+            }
+            if (capchat = true) {
+                room.sendAnnouncement("[PV] aguarde o capitão escalar o time", player.id, warn, "italic", 0);
+            }
         }
         else if (specChat == false) {
-            room.sendChat("Você está mutado.", player.id);
+            room.sendAnnouncement("Você está mutado.", player.id, warn, "italic", 0);
             return false;
         }
         return false;
@@ -5723,5 +5746,4 @@ room.onGameTick = function () {
     getLastTouchOfTheBall();
     getStats();
     alwaysOnTeam();
-    handleInactivity();
 };
