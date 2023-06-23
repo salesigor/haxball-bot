@@ -1197,7 +1197,7 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 
 /* OPTIONS */
 
-var afkLimit = 1 / 2;
+var afkLimit = 20;
 var drawTimeLimit = 1; //minutos
 var maxTeamSize = 3;
 var yellow = 0xffeb15;
@@ -1235,20 +1235,20 @@ let bluep3 = "";
 let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
-const soberbo = ['3139312E3133352E3231362E313330', '3137392E33342E38332E3634']; // soberbo
+const soberbo = ['3139312E3133352E3231362E313330', '3137392E33342E38332E3634', '3137392E33342E38362E323331']; // soberbo
 const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533', '3137372E36382E32342E313239']; // malco
 const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539', '3137372E37352E35362E323034']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™, o two
 const blacklistconn = [
-    '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730'
-]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider
+    '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337'
+]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III
 const cartaoamarelo = [
-    '3138392E38352E32392E3739', '3138392E38352E32392E3733'
+    '3138392E38352E32392E3739', '3138392E38352E32392E3733', '3138392E38352E32392E323434'
 ]; // 𝘿𝙄𝘼𝙕
 var blacklist = [
     {Nick: "Arthur MM", Auth: "YD0Jm8MmB9G9YJCwJEEoIcC1SvD3Q2811xT9T-NTmVw", Conn: "3137372E35372E3135302E313736"},
     {Nick: "ᱦiᱮ∀Ʀd", Auth: "YJINpE0p70-sAT-nTx10vI5VvHyQ-jkZ1C-zi6dI2us", Conn: "3136372E3234392E39332E313135"},
     {Nick: "Schneider", Auth: "_nsAyl-n61ELIOJghIDiHojx-parT0N19K374jqygqo", Conn: "3137372E37362E3232342E3730"},
-    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "Alcione III", Auth: "l6CTEtHr4eiv6xwCfvFow6dqEkTxuKRKhWUWgVkmFzY", Conn: "3137392E3231382E32312E323337"},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
@@ -1988,6 +1988,52 @@ function getPlayerObjectByName(playerName) {
 };
 
 function checkAndStartGame() {
+    if (teamS.length <= 2) {
+        if (teamR.length === 2 && teamB.length === 2) {
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO PROGRAMADO -- 🤖"), null, yellow, "bold");
+                choose = false;
+            }, 10);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("Atenção players!"), null, white, "normal", 2);
+            }, 600);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("1"), null, lightgrey, "bold");
+            }, 1500);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("2"), null, yellow, "bold");
+            }, 2500);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("3"), null, green, "bold", 2);
+            }, 3500);
+            setTimeout(function () {
+                room.startGame();
+                room.pauseGame(false);
+            }, 4500);
+        }
+        if (teamR.length === 1 && teamB.length === 1) {
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO PROGRAMADO -- 🤖"), null, yellow, "bold");
+                choose = false;
+            }, 10);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("Atenção players!"), null, white, "normal", 2);
+            }, 600);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("1"), null, lightgrey, "bold");
+            }, 1500);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("2"), null, yellow, "bold");
+            }, 2500);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("3"), null, green, "bold", 2);
+            }, 3500);
+            setTimeout(function () {
+                room.startGame();
+                room.pauseGame(false);
+            }, 4500);
+        }
+    }
     if (teamR.length === 3 && teamB.length === 3) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO PROGRAMADO -- 🤖"), null, yellow, "bold");
@@ -2047,6 +2093,14 @@ function checkAndResumeGame() {
         setTimeout(() => { room.pauseGame(false); }, 500);
     }
 };
+
+function checkTeamSizeAndChangeMap() {
+    if (teamR.length === 1 && teamB.length === 1) {
+      room.setCustomStadium(smallStadium);
+    } else if (teamR.length >= 2 && teamB.length >= 2) {
+      room.setCustomStadium(mediumStadium);
+    }
+}
 
 // Função para obter nome do jogador pelo ID
 function getPlayerName(playerId) {
@@ -2355,8 +2409,16 @@ function endGame(winner) { // no stopGame() function in it
     }
 };
 
-function handleInactivity() { // handles inactivity : players will be kicked after afkLimit
-    if (countAFK && (teamR.length + teamB.length) > 1) {
+function getActivity(player) {
+    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.ACT] : null;
+};
+
+function setActivity(player, value) {
+    extendedP.filter((a) => a[0] == player.id).forEach((player) => player[eP.ACT] = value);
+};
+
+function handleInactivity() {
+    if ((teamR.length + teamB.length) > 1) {
         for (var i = 0; i < teamR.length; i++) {
             setActivity(teamR[i], getActivity(teamR[i]) + 1);
         }
@@ -2365,13 +2427,13 @@ function handleInactivity() { // handles inactivity : players will be kicked aft
         }
     }
     for (var i = 0; i < extendedP.length; i++) {
-        if (extendedP[i][eP.ACT] == 60 * (2 / 3 * afkLimit)) {
-            room.sendChat("⛔ ¡@" + room.getPlayer(extendedP[i][eP.ID]).name + ", se mova ou fale no Chat em " + Math.floor(afkLimit / 3) + " segundos ou irá para a fila!", extendedP[i][eP.ID]);
+        if (extendedP[i][eP.ACT] == 20 * 60 * (2 / 3 * afkLimit)) {
+            room.sendAnnouncement(centerText("⛔ ¡@" + room.getPlayer(extendedP[i][eP.ID]).name + ", se mova ou fale no Chat em " + Math.floor(afkLimit / 3) + " segundos ou irá para a fila!", extendedP[i][eP.ID]), null, green, "bold"); 
         }
-        if (extendedP[i][eP.ACT] >= 60 * afkLimit) {
+        if (extendedP[i][eP.ACT] >= 20 * 60 * afkLimit) {
             extendedP[i][eP.ACT] = 0;
             if (room.getScores().time <= afkLimit - 0.5) {
-                setTimeout(() => { !inChooseMode ? quickRestart() : room.stopGame(); }, 10);
+                setTimeout(() => {room.stopGame();}, 10);
             }
             room.setPlayerTeam(extendedP[i][eP.ID], Team.SPECTATORS);
         }
@@ -2384,18 +2446,6 @@ function getAFK(player) {
 
 function setAFK(player, value) {
     extendedP.filter((a) => a[0] == player.id).forEach((player) => player[eP.AFK] = value);
-};
-
-function getAuth(player) {
-    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.AUTH] : null;
-};
-
-function getActivity(player) {
-    return extendedP.filter((a) => a[0] == player.id) != null ? extendedP.filter((a) => a[0] == player.id)[0][eP.ACT] : null;
-};
-
-function setActivity(player, value) {
-extendedP.filter((a) => a[0] == player.id).forEach((player) => player[eP.ACT] = value);
 };
 
 function getGK(player) {
@@ -2621,6 +2671,7 @@ room.onPlayerJoin = function (player) {
     updateAdmins();
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
     playerList.push({"object": player, "nome": player.name, "id": player.id});
+    extendedP.push([player.id, player.auth, player.conn, false, 0, 0, false]);
     lastPlayerJoinedID = player.id;
     lastPlayerJoinedNAME = player.name;
 };
@@ -2634,6 +2685,7 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
         updateList(Math.max(teamR.findIndex((p) => p.id == changedPlayer.id), teamB.findIndex((p) => p.id == changedPlayer.id), teamS.findIndex((p) => p.id == changedPlayer.id)), changedPlayer.team);
     }
     updateTeams();
+    checkTeamSizeAndChangeMap();
 };
 
 room.onPlayerLeave = function (player) {
@@ -5671,4 +5723,5 @@ room.onGameTick = function () {
     getLastTouchOfTheBall();
     getStats();
     alwaysOnTeam();
+    handleInactivity();
 };
