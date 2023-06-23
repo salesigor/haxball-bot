@@ -1238,6 +1238,7 @@ var supervisorsID = [];
 const soberbo = ['3139312E3133352E3231362E313330', '3137392E33342E38332E3634', '3137392E33342E38362E323331']; // soberbo
 const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533', '3137372E36382E32342E313239']; // malco
 const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539', '3137372E37352E35362E323034']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™, o two
+const blacklistnames = ["Arthur MM - ᱦiᱮ∀Ʀd - Schneider - Alcione III - MACACO"];
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III, MACACO
@@ -5140,6 +5141,11 @@ room.onPlayerChat = function (player, message) {
     }
     if (["!normal", "normal"].includes(message[0].toLowerCase())) {
         room.setPlayerDiscProperties(player.id, {radius: 15, invMass:  20 / 30});
+        return false;
+    }
+    if (["!blacklist", "blacklist"].includes(message[0].toLowerCase())) {
+            room.sendAnnouncement(centerText("BLACK LIST"), null, warn, "bold", 0);
+            room.sendAnnouncement(centerText(blacklistnames), null, white, "italic");
         return false;
     }
     if (["!diminuir", "anao", "anão"].includes(message[0].toLowerCase())) {
