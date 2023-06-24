@@ -1,4 +1,4 @@
-# Haxball Bot
+# Bem Vindos à Futz - Haxball Server
 
 Este é um bot para Haxball, um jogo online de futebol em sala.
 

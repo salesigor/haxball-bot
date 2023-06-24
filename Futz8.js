@@ -1566,21 +1566,17 @@ function getStoredAssists(player) {
     return parseInt(assists) || 0; // Retorna 0 se não houver assistências armazenadas
 };
 function countGames() {
-    if (teamR.length == 3) {
+    if (teamR.length === 3 && teamB.length === 3) {
         incrementGames(teamR[0]);
         incrementGames(teamR[1]);
         incrementGames(teamR[2]);
-    }
-    if (teamB.length == 3) {
         incrementGames(teamB[0]);
         incrementGames(teamB[1]);
         incrementGames(teamB[2]);
     }
-    if (teamR.length == 2) {
+    if (teamR.length === 2 && teamB.length === 2) {
         incrementGames(teamR[0]);
         incrementGames(teamR[1]);
-    }
-    if (teamB.length == 2) {
         incrementGames(teamB[0]);
         incrementGames(teamB[1]);
     }
@@ -1599,7 +1595,6 @@ function getStoredGames(player) {
     return parseInt(games) || 0; // Retorna 0 se não houver jogos armazenados
 };
 function countWinsTeamR() {
-    // Verificar se o timeR tem 3 jogadores
     if (teamR.length === 3) {
         incrementWins(teamR[0]);
         incrementWins(teamR[1]);
@@ -5415,6 +5410,7 @@ room.onGameStart = function (byPlayer) {
 	}
     getPlayersList();
     setTimeout(function () {
+        countGames();
         goalsRp1 = 0;
         goalsRp2 = 0;
         goalsRp3 = 0;
@@ -5428,8 +5424,7 @@ room.onGameStart = function (byPlayer) {
         assistsRp2 = 0;
         assistsRp3 = 0;
         scorer = 0;
-        scoreb = o;
-        countGames();
+        scoreb = 0;
     }, 1000);
 };
 
