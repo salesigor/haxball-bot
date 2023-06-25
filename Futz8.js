@@ -1991,7 +1991,7 @@ function getPlayerObjectByName(playerName) {
 };
 
 function checkAndStartGame() {
-    if (teamS.length <= 2) {
+    if (teamS.length < 2) {
         if (teamR.length === 2 && teamB.length === 2) {
             setTimeout(function () {
                 room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO PROGRAMADO -- 🤖"), null, yellow, "bold");
@@ -2062,31 +2062,6 @@ function checkAndStartGame() {
             room.pauseGame(false);
         }, 4500);
     }
-    if (teamR.length === 4 && teamB.length === 4) {
-        room.setPlayerTeam(teamR[3].id, Team.SPECTATORS);
-        room.setPlayerTeam(teamB[3].id, Team.SPECTATORS);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO PROGRAMADO -- 🤖"), null, yellow, "bold");
-            capchat = false;
-            choose = false;
-        }, 10);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("Atenção players!"), null, white, "normal", 2);
-        }, 600);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("1"), null, lightgrey, "bold");
-        }, 1500);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("2"), null, yellow, "bold");
-        }, 2500);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("3"), null, green, "bold", 2);
-        }, 2500);
-        setTimeout(function () {
-            room.startGame();
-            room.pauseGame(false);
-        }, 4500);
-    }
 };
 
 function checkAndPauseGame() {
@@ -2107,7 +2082,20 @@ function checkTeamSizeAndChangeMap() {
     } else if (teamR.length >= 2 && teamB.length >= 2) {
       room.setCustomStadium(mediumStadium);
     }
-}
+};
+
+function checkTeamSizeLimit() {
+    if (teamR.length === 4) {
+        room.setPlayerTeam(teamR[3].id, Team.SPECTATORS);
+        room.sendAnnouncement(centerText("Reduzindo time " + nameHome + "."), null, warn, "italic");
+        room.sendAnnouncement(centerText("Máximo suportado: 3 players por equipe"), null, warn, "normal");
+    }
+    if (teamB.length === 4) {
+        room.setPlayerTeam(teamB[3].id, Team.SPECTATORS);
+        room.sendAnnouncement(centerText("Reduzindo time " + nameGuest + "."), null, warn, "italic");
+        room.sendAnnouncement(centerText("Máximo suportado: 3 players por equipe"), null, warn, "normal");
+    }
+};
 
 // Função para obter nome do jogador pelo ID
 function getPlayerName(playerId) {
@@ -2309,15 +2297,15 @@ function endGame(winner) { // no stopGame() function in it
         "🔴 Escalação " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
          + redp2 + " - " + goalsRp2 + " gol(s), " + assistsRp2 + " assist(s)\n" + redp3 + " - " + goalsRp3 + " gol(s), " + assistsRp3 + " assist(s)\n" +  "\n" + 
         "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
-         + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)")
+         + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)");
+        countWinsTeamR();
+        countLossesTeamB();
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
             room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
             room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
             choose = true;
-            countWinsTeamR();
-            countLossesTeamB();
             setTimeout(function () {
             capchat = true;
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
@@ -2325,7 +2313,6 @@ function endGame(winner) { // no stopGame() function in it
                     if (teamB.length == 1) {
                         blueToSpecBtn();
                         setTimeout(function () {
-                            topBtn();
                             setTimeout(function () {
                                 room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
                                 room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
@@ -2353,7 +2340,9 @@ function endGame(winner) { // no stopGame() function in it
         "🔴 Escalação " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
          + redp2 + " - " + goalsRp2 + " gol(s), " + assistsRp2 + " assist(s)\n" + redp3 + " - " + goalsRp3 + " gol(s), " + assistsRp3 + " assist(s)\n" +  "\n" + 
         "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
-         + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)")
+         + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)");
+        countWinsTeamB();
+        countLossesTeamR();
         setTimeout(function () {
             capchat = true;
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
@@ -2361,15 +2350,12 @@ function endGame(winner) { // no stopGame() function in it
             room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), null, white, "normal");
             room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), null, yellow, "italic");
             choose = true;
-            countWinsTeamB();
-            countLossesTeamR();
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
                 setTimeout(function () {
                     if (teamB.length == 1) {
                         blueToSpecBtn();
                         setTimeout(function () {
-                            topBtn();
                             setTimeout(function () {
                                 room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
                                 room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
@@ -2695,6 +2681,7 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
     }
     updateTeams();
     checkTeamSizeAndChangeMap();
+    checkTeamSizeLimit();
 };
 
 room.onPlayerLeave = function (player) {
@@ -2712,6 +2699,12 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
         banList.push([kickedPlayer.name, kickedPlayer.id]);
         room.sendAnnouncement(centerText(kickedPlayer.name + " levou ban!"), null, white, "bold");
         room.sendAnnouncement(centerText("Banned por não seguir as REGRAS!"), null, warn, "italic");
+        console.log("ban list : " + banList);
+        sendAdminCommandsToDiscord("🔴 Jogador Banido:" + "\n"+
+        "🛸 Nick: " + bannedName + "\n" +
+        "🌐 Conn: " + bannedId.conn + "\n" +
+        "🔥 Auth:  " + bannedId.auth + "\n" +
+        "📅 Data: " + `${getDateInfo()}`);
         console.log("ban list : " + banList);
     }
 };
@@ -2745,7 +2738,8 @@ room.onPlayerChat = function (player, message) {
     if (["!clearbans", "!limparbans"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             room.clearBans();
-            room.sendAnnouncement(centerText(player.name + " limpou a lista de banimentos."), player.id, yellow, "normal");
+            room.sendAnnouncement(centerText(player.name + " limpou a lista de banimentos."), null, warn, "normal");
+            console.log("ban list : " + banList);
         }
     }
     if (["!ban", "ban"].includes(message[0].toLowerCase())) {
@@ -2755,7 +2749,7 @@ room.onPlayerChat = function (player, message) {
                 room.sendAnnouncement(centerText("Pronto!\nUsuário" + playertoban.name + "banido"), player.id, warn, "italic");
                 room.kickPlayer(playertoban.id,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8 ",true);
                 banList.push(playertoban.name, playertoban.id);
-                sendAnnouncementToDiscord("🔴 Jogador Banido:" + "\n"+
+                sendAdminCommandsToDiscord("🔴 Jogador Banido:" + "\n"+
                 "🛸 Nick: " + playertoban.name + "\n" +
                 "🌐 Conn: " + playertoban.conn + "\n" +
                 "🔥 Auth:  " + playertoban.auth + "\n" +
@@ -2766,7 +2760,7 @@ room.onPlayerChat = function (player, message) {
                 room.sendAnnouncement(centerText("Pronto!\nUsuário" + lastPlayerJoinedNAME + "banido"), player.id, warn, "italic");
                 room.kickPlayer(lastPlayerJoinedID,"Você foi banido, saiba mais em https://discord.gg/AR7ypuzJG8", true);
                 banList.push(lastPlayerJoinedNAME, lastPlayerJoinedID);
-                sendAnnouncementToDiscord("🔴 Jogador Banido:" + "\n"+
+                sendAdminCommandsToDiscord("🔴 Jogador Banido:" + "\n"+
                 "🛸 Nick: " + bannedName + "\n" +
                 "🌐 Conn: " + bannedId.conn + "\n" +
                 "🔥 Auth:  " + bannedId.auth + "\n" +
@@ -4000,6 +3994,7 @@ room.onPlayerChat = function (player, message) {
     }
     if (["!vs", "vs"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+        return false;
     }
     if (["!seleçoes"].includes(message[0].toLowerCase())) {
             room.sendAnnouncement("_______________________________________", null, yellow, "bold");
@@ -4312,8 +4307,8 @@ room.onPlayerChat = function (player, message) {
         var messages2 = [
             player.name + " ficou bravo..",
             player.name + " não curtiu, em..",
-            player.name + " ficou chateado..",
-            player.name + " ficou puto.."
+            player.name + " ficou puto..",
+            "Te entendo, " + player.name + " foi feio..."
         ];
         var randomIndex1 = Math.floor(Math.random() * messages1.length);
         var announcement1 = messages1[randomIndex1];
@@ -4326,6 +4321,19 @@ room.onPlayerChat = function (player, message) {
         setTimeout(function () {
             room.sendAnnouncement(centerText(announcement2), null, white, "bold");
         }, 600);
+    }
+    if (["?"].includes(message[0].toLowerCase())) {
+        var messages = [
+            "Me parece que nosso amigo " + player.name + " não entendeu...",
+            "Alguém explica o lance pro " + player.name,
+            "Te entendo, " + player.name + " foi feio..."
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        room.sendAnnouncement(centerText(announcement), null, yellow, "bold", 0);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
     }
     if (["gk"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
@@ -4350,9 +4358,11 @@ room.onPlayerChat = function (player, message) {
         else {GKListname.push(" " + player.name);}
     }
     if (["gk?", "gklist", "gklista"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement("☢️ Gks disponiveis: ", null, white, "normal");
-        room.sendAnnouncement(GKListname.toString(), null, yellow, "normal");
-        if (["clean", "clear", "rr"].includes(message[0].toLowerCase())) {
+        setTimeout(function () {
+            room.sendAnnouncement("☢️ Gks disponiveis: ", null, white, "bold");
+            room.sendAnnouncement(GKListname.toString(), null, yellow, "normal");
+        }, 20);
+        if (["clean", "clear", "rr"].includes(message[1].toLowerCase())) {
             room.sendAnnouncement(centerText("Lista de GKs foi esvaziada"), null, yellow, "itallc");
         }
     }
@@ -5738,7 +5748,7 @@ room.onRoomLink = function (url) {
     const roomURL = url;
     linkinho = url;
     sendRoomLinkToDiscord(botVersion + "\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL);
-    sendCommandsToDiscord(' | ' + botVersion + ' |\n.\n'+
+    /*sendCommandsToDiscord(' | ' + botVersion + ' |\n.\n'+
         '!me ou "stats", "goat" (ranking da sala), !help, !tag, !uniforme, !gklist ou "gk?", gk (Entra para lista de GKs), !regras, !discord, !list (lista os player da fila), !vs, !verdade, !bb, !bye, !flw\n.\n'+
         'Comemorações:\n'+
         '!gol, !ain, !chupa, !lenda, !smith, !gk, !brabo\n.\n'+
@@ -5757,7 +5767,7 @@ room.onRoomLink = function (url) {
         'Times: v1 (Soberanos), Inv (Invictus), girl (Barbies)\n.\n'+
         'Size:\n'+
         'anao, normal, gordao\n!size <r1/b1> <big/normal/small>\n.\nSenha: ' + adminPassword
-    );
+    );*/
 }; 
 
 room.onPlayerAdminChange = function (changedPlayer, byPlayer) {
@@ -5774,13 +5784,13 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
     }
     else if (byPlayer && byPlayer.id == 0)  {
         var messages = [
-            "Esse é o estádio que vai dar jogo.",
-            "Mapa mudou, agora da jogão!",
-            "Santiago Bernabéu? Não, aqui é futsal!"
+            "Atualizando mapa...",
+            "Mapa atualizado!",
+            "Um pequeno ajuste para comportar os players..."
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
-        room.sendAnnouncement(centerText(announcement), null, yellow, "bold", 0);
+        room.sendAnnouncement(centerText(announcement), null, yellow, "italic", 0);
     }
 };
 
