@@ -4297,7 +4297,7 @@ room.onPlayerChat = function (player, message) {
     if (["!gk"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("GOLEIROOO!"), null, white, "bold");
     }
-    if (["mds", "q"].includes(message[0].toLowerCase())) {
+    if (["mds"].includes(message[0].toLowerCase())) {
         var messages1 = [
             "Vixe, chat",
             "Ae, rapa",
@@ -4305,16 +4305,15 @@ room.onPlayerChat = function (player, message) {
             " ",
         ];
         var messages2 = [
-            player.name + " ficou bravo..",
-            player.name + " não curtiu, em..",
-            player.name + " ficou puto..",
+            player.name + " ficou bravo...",
+            player.name + " não curtiu, em...",
+            player.name + " ficou puto...",
             "Te entendo, " + player.name + " foi feio..."
         ];
         var randomIndex1 = Math.floor(Math.random() * messages1.length);
         var announcement1 = messages1[randomIndex1];
         var randomIndex2 = Math.floor(Math.random() * messages2.length);
         var announcement2 = messages2[randomIndex2];
-        room.sendAnnouncement(centerText(announcement), null, yellow, "bold", 0);
         setTimeout(function () {
             room.sendAnnouncement(centerText(announcement1), null, white, "bold");
         }, 300);
@@ -4322,15 +4321,14 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement2), null, white, "bold");
         }, 600);
     }
-    if (["?"].includes(message[0].toLowerCase())) {
+    if (["?", "q"].includes(message[0].toLowerCase())) {
         var messages = [
-            "Me parece que nosso amigo " + player.name + " não entendeu...",
+            "Me parece que nosso amigo " + player.name + " não entendeu o lance.",
             "Alguém explica o lance pro " + player.name,
             "Te entendo, " + player.name + " foi feio..."
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
-        room.sendAnnouncement(centerText(announcement), null, yellow, "bold", 0);
         setTimeout(function () {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 300);
