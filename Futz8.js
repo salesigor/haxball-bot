@@ -2743,9 +2743,8 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["!clearbans"].includes(message[0].toLowerCase())) {
-        if (connections.includes(player.conn)) {
+        if (player.admin) {
             room.clearBans();
-            /*room.sendChat("/clear_bans", null);*/
             room.sendAnnouncement(centerText(player.name + " limpou a lista de banimentos."), player.id, yellow, "normal");
         }
     }
