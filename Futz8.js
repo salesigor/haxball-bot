@@ -2742,7 +2742,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("Times: vip (Soberanos), Inv (Invictus), girl"), player.id, yellow, "normal");
         }
     }
-    if (["!clearbans"].includes(message[0].toLowerCase())) {
+    if (["!clearbans", "!limparbans"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             room.clearBans();
             room.sendAnnouncement(centerText(player.name + " limpou a lista de banimentos."), player.id, yellow, "normal");
@@ -4051,7 +4051,7 @@ room.onPlayerChat = function (player, message) {
     if (["!lenda", "lenda"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
-        }, 100);
+        }, 20);
     }
     if (["!bar"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
@@ -4291,17 +4291,46 @@ room.onPlayerChat = function (player, message) {
         }, 3500);
     }
     if (["var"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(" VAR 📹 --> analizando...", null, white, "bold");
+        room.sendAnnouncement(centerText(player.name + "chamou o VAR"), null, yellow, "normal");
         setTimeout(function () {
+            room.sendAnnouncement(centerText(" VAR 📹 --> analizando..."), null, white, "bold");
             checkAndPauseGame();
             alwaysOnTeam();
         }, 300);
+        return false;
     }
     if (["!gk"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("GOLEIROOO!"), null, white, "bold");
     }
+    if (["mds", "q"].includes(message[0].toLowerCase())) {
+        var messages1 = [
+            "Vixe, chat",
+            "Ae, rapa",
+            " ",
+            " ",
+        ];
+        var messages2 = [
+            player.name + " ficou bravo..",
+            player.name + " não curtiu, em..",
+            player.name + " ficou chateado..",
+            player.name + " ficou puto.."
+        ];
+        var randomIndex1 = Math.floor(Math.random() * messages1.length);
+        var announcement1 = messages1[randomIndex1];
+        var randomIndex2 = Math.floor(Math.random() * messages2.length);
+        var announcement2 = messages2[randomIndex2];
+        room.sendAnnouncement(centerText(announcement), null, yellow, "bold", 0);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement1), null, white, "bold");
+        }, 300);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement2), null, white, "bold");
+        }, 600);
+    }
     if (["gk"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText(player.name + " vai de gk!"), null, white, "bold");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(player.name + " vai de gk!"), null, white, "bold");
+        }, 20);
         setTimeout(function () {
             room.setPlayerAvatar(player.id, "GK")
             setTimeout(function () {
