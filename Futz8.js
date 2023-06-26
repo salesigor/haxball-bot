@@ -2870,7 +2870,7 @@ room.onPlayerChat = function (player, message) {
         */
         return false;
     }
-    if (["!choose"].includes(message[0].toLowerCase())) {
+    if (["!choose", "choose", "chose"].includes(message[0].toLowerCase())) {
         if (message[1] == "on") {
             room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
             choose = true;
@@ -3777,10 +3777,8 @@ room.onPlayerChat = function (player, message) {
             }
             room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
             setTimeout(function () {
-                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
-                room.sendAnnouncement(centerText("Uniforme do time RED foi atualizado. Agora é " + nameHome), null, yellow, "bold");
+                room.sendAnnouncement(centerText("_____troca_de_uniformes_____"), null, yellow, "italic");
                 room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
-                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
         if (message[1] == "blue") {
@@ -3966,10 +3964,8 @@ room.onPlayerChat = function (player, message) {
             }
             room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
             setTimeout(function () {
-                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
-                room.sendAnnouncement(centerText("Uniforme do time BLUE foi atualizado. Agora é " + nameGuest), null, yellow, "bold");
+                room.sendAnnouncement(centerText("_____troca_de_uniformes_____"), null, yellow, "italic");
                 room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
-                room.sendAnnouncement(centerText("_________________________________"), null, green, "bold");
             }, 500);
         }
         if (message[1] == null) {
@@ -4397,8 +4393,30 @@ room.onPlayerChat = function (player, message) {
         var messages = [
             "Vixe, subiu pra cabeça",
             "Calmou, " + player.name,
-            " ",
-            " ",
+            "kkkk Desumildou, já " + player.name + "?"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (mensagem.includes(["gg"])) {
+        var messages = [
+            "Assino até PREMIERE pra assistir jogos assim...",
+            "Jogão, né " + player.name + "?"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (mensagem.includes(["mb", "mals"])) {
+        var messages = [
+            "Xi, essa foi vacilo...",
+            "Moscou, " + player.name + "...",
+            "Tem que se retratar agora, " + player.name + "!"
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
@@ -5377,12 +5395,12 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (malcorage.includes(mensagem)) {
-        room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", true);
-        room.sendAnnouncement(centerText("Player " + player.name + " falou mal do REI MALCO"), null, warn, "italic");
+        room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", false);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou mal do 𝐌𝐚𝐥𝐜𝐨"), null, warn, "italic");
         return false;
     }
     if (xingo.includes(mensagem)) {
-        room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", true);
+        room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", false);
         room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
         return false;
     }
@@ -5392,7 +5410,7 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (trava.includes(mensagem)) {
-        room.kickPlayer(player.id, "❌ Trava-Hax detectada", true);
+        room.kickPlayer(player.id, "❌ Trava-Hax detectada", false);
         room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
         return false;
     }
