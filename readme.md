@@ -12,6 +12,9 @@ O objetivo deste bot é realizar várias tarefas automatizadas dentro do jogo, c
 
 ## Oque o Futz Bot faz?
 
+#### Anúncios em sala:
+![Fim de Partida](https://media.discordapp.net/attachments/1108404626614665228/1117292179971375114/image.png?width=279&height=107)
+![Exibe o melhor player na sala](https://cdn.discordapp.com/attachments/1113830556967379064/1122888903033114705/image.png)
 O bot possui as seguintes funcionalidades:
 
 - Armazenamento de estatísticas dos jogadores, como gols, assistências e hat-tricks.
