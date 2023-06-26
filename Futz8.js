@@ -2097,6 +2097,49 @@ function checkTeamSizeLimit() {
     }
 };
 
+function registrarStreak() {
+    var playerNames = [];
+    var playerNamestext = [];
+    if (teamR.length === 3) {
+        playerNames = [teamR[0].name, teamR[1].name, teamR[2].name];
+        playerNamestext = [teamR[0].name + ", " + teamR[1].name + " e " + teamR[2].name];
+        var key = "streak_" + playerNames.join("_");
+        localStorage.setItem(key, streak);
+        localStorage.setItem(key + "_players", JSON.stringify(playerNamestext));
+    }
+};
+  
+function obterRecordeStreak() {
+    var maxStreak = 0;
+    var playersInRecordStreak = [];
+    var streakCount = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      if (key.startsWith("streak_")) {
+        streakCount = parseInt(localStorage.getItem(key));
+        if (streakCount > maxStreak) {
+          maxStreak = streakCount;
+          playersInRecordStreak = JSON.parse(localStorage.getItem(key + "_players"));
+        }
+      }
+    }
+    return { streak: maxStreak, players: playersInRecordStreak };
+};
+
+function verificarQuebraRecorde(streak) {
+    var streakRecord = obterRecordeStreak().streak;
+    if (streak > streakRecord) {
+        room.sendAnnouncement(centerText("🏆⚽ -- " + nameHome + " faz história na FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("Novo record de STREAk"), null, white, "bold");
+        room.sendAnnouncement(centerText(obterRecordeStreak().players), null, white, "bold");
+        room.sendAnnouncement(centerText("Estão à " + obterRecordeStreak().streak + " sem perder!"), null, white, "bold");
+        sendScoresToDiscord("🏆⚽ Record de STREAK (partidas sem perder)\n.\n" + obterRecordeStreak().players + "\nStreak; " + obterRecordeStreak().streak)
+        return true; // O recorde de streak foi quebrado
+    } else {
+        return false; // O recorde de streak não foi quebrado
+    }
+};
+
 // Função para obter nome do jogador pelo ID
 function getPlayerName(playerId) {
     const player = getPlayer(playerId);
@@ -2196,7 +2239,7 @@ function getPlayersAssistCount() {
 function hatTrickCount() {
     if (goalsRp1 === 3 && teamR.length === 3) {
         storeHatTrick(teamR[0]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
         room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
         room.sendAnnouncement(centerText(teamR[0].name + " agora tem " + getHatTrick(teamR[0]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
@@ -2204,7 +2247,7 @@ function hatTrickCount() {
     }
     if (goalsRp2 === 3 && teamR.length === 3) {
         storeHatTrick(teamR[1]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
         room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
         room.sendAnnouncement(centerText(teamR[1].name + " agora tem " + getHatTrick(teamR[1]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
@@ -2212,7 +2255,7 @@ function hatTrickCount() {
     }
     if (goalsRp2 === 3 && teamR.length === 3) {
         storeHatTrick(teamR[2]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
         room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
         room.sendAnnouncement(centerText(teamR[2].name + " agora tem " + getHatTrick(teamR[2]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
@@ -2220,7 +2263,7 @@ function hatTrickCount() {
     }
     if (goalsBp1 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[0]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
         room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
         room.sendAnnouncement(centerText(teamB[0].name + " agora tem " + getHatTrick(teamB[0]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
@@ -2228,7 +2271,7 @@ function hatTrickCount() {
     }
     if (goalsBp2 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[1]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
         room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
         room.sendAnnouncement(centerText(teamB[1].name + " agora tem " + getHatTrick(teamB[1]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
@@ -2236,7 +2279,7 @@ function hatTrickCount() {
     }
     if (goalsBp3 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[2]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
         room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
         room.sendAnnouncement(centerText(teamB[2].name + " agora tem " + getHatTrick(teamB[2]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
@@ -2302,6 +2345,7 @@ function endGame(winner) { // no stopGame() function in it
     hatTrickCount();
     if (winner == Team.RED) {
         streak++;
+        registrarStreak();
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
@@ -2345,6 +2389,7 @@ function endGame(winner) { // no stopGame() function in it
     }
     else if (winner == Team.BLUE) {
         streak = 1;
+        registrarStreak();
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
@@ -2735,7 +2780,7 @@ room.onPlayerChat = function (player, message) {
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
-        room.sendAnnouncement(centerText("!me, !goat, !help, !tag, !uniforme, !gklist, !regras, !discord,\n!list, !vs, !verdade, !bb, !bye, !flw"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("!me, !goat, !streak, !help, !tag, !uniforme, !gklist, !regras, !discord,\n!list, !vs, !verdade, !bb, !bye, !flw"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !brabo"), player.id, yellow, "normal");
         room.sendAnnouncement(centerText("Uniformes:"), player.id, yellow, "bold");
@@ -2808,6 +2853,12 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("MAIS ASSISTS 👟 --> " + maisassists + " ("+ bbb(maisassists) + ")"), null, white, "bold");
         room.sendAnnouncement(centerText("MAIS HAT-TRICKS 🏆 --> " + maishats + " ("+ ccc(maishats) + ")"), null, white, "bold");
         room.sendAnnouncement(centerText("MAIS VITÓRIAS ✅ --> " + maiswins + " ("+ ddd(maiswins) + ")"), null, white, "bold");
+        return false;
+    }
+    if (["!streak", "streak"].includes(message[0].toLowerCase())) {
+        room.sendAnnouncement(centerText("MELHOR TRIO DA FUTZ"), null, yellow, "bold");
+        room.sendAnnouncement(centerText(obterRecordeStreak().players), null, white, "bold");
+        room.sendAnnouncement(centerText("Tiveram " + obterRecordeStreak().streak + " vitórias consecutivas!"), null, white, "normal");
         return false;
     }
     if (["!stats"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, mostra para todos da sala.
