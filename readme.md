@@ -18,13 +18,16 @@ O objetivo deste bot é realizar várias tarefas automatizadas dentro do jogo, c
 ![Fim de Partida](https://media.discordapp.net/attachments/1108404626614665228/1117292179971375114/image.png?width=279&height=107)
 ![Exibe o melhor player na sala](https://cdn.discordapp.com/attachments/1113830556967379064/1122888903033114705/image.png)
 
-O bot possui as seguintes funcionalidades:
+- Estatisticas de cada jogador.
+- O melhor jogador em sala.
+- Streak (vitórias consecutivas).
 
+O server possui o próprio [Discord Server](https://discord.gg/AR7ypuzJG8) com as seguintes funcionalidades:
 
-- Armazenamento de estatísticas dos jogadores, como gols, assistências e hat-tricks.
-- Contabilização dos gols feitos por cada jogador.
-- Contabilização das assistências feitas por cada jogador.
-- Identificação do jogador com maior número de gols e assistências.
+- Anúncio de link direto para a sala.
+- Anúncio de partidas com vitórias e derrotas.
+- Anúncio de hat-tricks feito por jogaroes.
+- Anúncio de partidas com vitórias e derrotas.
 - Contagem de vitórias e derrotas para cada jogador.
 
 ## Contribuindo
