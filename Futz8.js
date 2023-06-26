@@ -2194,35 +2194,53 @@ function getPlayersAssistCount() {
 };
 
 function hatTrickCount() {
-    if (goalsRp1 == 3 && teamR.length == 3) {
+    if (goalsRp1 === 3 && teamR.length === 3) {
         storeHatTrick(teamR[0]);
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+        room.sendAnnouncement(centerText(teamR[0].name + " agora tem " + getHatTrick(teamR[0]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
-    if (goalsRp2 == 3 && teamR.length == 3) {
+    if (goalsRp2 === 3 && teamR.length === 3) {
         storeHatTrick(teamR[1]);
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+        room.sendAnnouncement(centerText(teamR[1].name + " agora tem " + getHatTrick(teamR[1]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
-    if (goalsRp2 == 3 && teamR.length == 3) {
+    if (goalsRp2 === 3 && teamR.length === 3) {
         storeHatTrick(teamR[2]);
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+        room.sendAnnouncement(centerText(teamR[2].name + " agora tem " + getHatTrick(teamR[2]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
-    if (goalsBp1 == 3 && teamB.length == 3) {
+    if (goalsBp1 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[0]);
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+        room.sendAnnouncement(centerText(teamB[0].name + " agora tem " + getHatTrick(teamB[0]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
-    if (goalsBp2 == 3 && teamB.length == 3) {
+    if (goalsBp2 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[1]);
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+        room.sendAnnouncement(centerText(teamB[1].name + " agora tem " + getHatTrick(teamB[1]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
-    if (goalsBp3 == 3 && teamB.length == 3) {
+    if (goalsBp3 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[2]);
+        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra histórtia da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+        room.sendAnnouncement(centerText(teamB[2].name + " agora tem " + getHatTrick(teamB[2]) + " hat-tricks"), null, white, "normal");
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora())
+        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
 };
 
@@ -4297,7 +4315,7 @@ room.onPlayerChat = function (player, message) {
     if (["!gk"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("GOLEIROOO!"), null, white, "bold");
     }
-    if (["mds"].includes(message[0].toLowerCase())) {
+    if (["mds"].includes(messagem.toLowerCase())) {
         var messages1 = [
             "Vixe, chat",
             "Ae, rapa",
@@ -4319,6 +4337,19 @@ room.onPlayerChat = function (player, message) {
         }, 300);
         setTimeout(function () {
             room.sendAnnouncement(centerText(announcement2), null, white, "bold");
+        }, 600);
+    }
+    if (["ez", "facil", "fácil", "easy"].includes(mensagem)) {
+        var messages = [
+            "Vixe, subiu pra cabeça",
+            "Calmou, " + player.name,
+            " ",
+            " ",
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 600);
     }
     if (["?", "q"].includes(message[0].toLowerCase())) {
@@ -5291,6 +5322,26 @@ room.onPlayerChat = function (player, message) {
             }
         }
     }
+    if (malcorage.includes(mensagem)) {
+        room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", true);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou mal do REI MALCO"), null, warn, "italic");
+        return false;
+    }
+    if (xingo.includes(mensagem)) {
+        room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", true);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
+        return false;
+    }
+    if (regex.includes(mensagem)) {
+        room.sendAnnouncement("Eae, " + player.name, null, warn, "italic", 0);
+        room.sendAnnouncement("Sem palavrões, por favor.", null, warn, "italic", 1);
+        return false;
+    }
+    if (trava.includes(mensagem)) {
+        room.kickPlayer(player.id, "❌ Trava-Hax detectada", true);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
+        return false;
+    }
     if (message[0][0] == "!") {
         return false;
     }
@@ -5376,25 +5427,6 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement("Você está mutado.", player.id, warn, "italic", 0);
             return false;
         }
-        return false;
-    }
-    if (mensagem.includes(malcorage)) {
-        room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", true);
-        room.sendAnnouncement(centerText("Player " + player.name + " falou mal do REI MALCO"), null, warn, "italic");
-        return false;
-    }
-    if (mensagem.includes(xingo)) {
-        room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", true);
-        room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
-        return false;
-    }
-    if (mensagem.includes(regex)) {
-        room.sendAnnouncement("Sem xingamentos, por favor.", player.id, warn, "italic", 1);
-        return false;
-    }
-    if (mensagem.includes(trava)) {
-        room.kickPlayer(player.id, "❌ Trava-Hax detectada", true);
-        room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
         return false;
     }
     return false;
