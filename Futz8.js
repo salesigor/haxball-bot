@@ -1283,7 +1283,7 @@ let rr = false; // serve para restartar o game com o comnado rr
 
 // WELL BEING
 
-let forbid = ['macaco', 'adolf hitler', 'nazismo', 'cuzao', 'cuzão', 'autista', 'cu', 'hitler', 'Manco', 'Malco', 'manco', 'malco'];
+let forbid = ['macaco', 'adolf hitler', 'nazismo', 'cuzao', 'cuzão', 'autista', 'cu', 'hitler', 'Manco', 'Malco', 'manco', 'malco', 'Macaco', 'Hitler', 'mancos', 'Mancos'];
 
 let trava = ["㧫璧 觭䢜潇ကᩨ쀡ఈ泄찉넾﫤㏭ 緺", "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", "㧫", "璧", "懈౩䊀脁潡䣚⾤㸼짠ब", "뗲᭾ 띀急蔹⹉ꆣせㆉ였鷀Ú錘陈搳窇㉕"];
 
@@ -1295,11 +1295,11 @@ let xingo = ["seu preto", "seu macaco", "macaco", "seu negro", "pretinho", "rest
 let malcorage = ["Manco", "manco", "Malco lixo", "malco lixo", "Malco ruim", "malco ruim", "malco fudido", "manko"];
 
 function nameForbid(player) {
-    if (forbid.includes(player.name)) { room.kickPlayer(player.id, 'nick proibido nessa sala', true) }
+    if (forbid.includes(player.name)) { room.kickPlayer(player.id, 'nick proibido nessa sala', false) }
 };
 
 function banBlackListed(player) {
-    if (blacklistconnID.includes(player.id)) { room.kickPlayer(player.id, 'Você está na BLACKLIST', true) }
+    if (blacklistconnID.includes(player.id) || player.id.includes(blacklistconnID)) { room.kickPlayer(player.id, 'Você está na BLACKLIST, saiba mais em https://discord.gg/AR7ypuzJG8', true) }
 };
 
 /* STATS */
@@ -2681,7 +2681,6 @@ function findGK() { // Função que procura o GK da partida.
 
 room.onPlayerJoin = function (player) {
     nameForbid(player);
-    banBlackListed(player);
     var messages = [
         "👋 Salve, " + player.name + "!",
         "👋 Eae, " + player.name + "!",
@@ -2707,6 +2706,7 @@ room.onPlayerJoin = function (player) {
         room.sendAnnouncement(centerText("O player " + player.name + " deve ser banido agora!"), null, warn, "bold");
         room.sendAnnouncement(centerText("você está na blacklist e será banido!"), player.id, warn, "italic");
         blacklistconnID.push(player.id);
+        banBlackListed(player);
     }
     if(cartaoamarelo.includes(player.conn)) {
         let forkedPlayer = player.name;
@@ -2762,14 +2762,13 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
     if (ban == true) {
         banList.push([kickedPlayer.name, kickedPlayer.id]);
         room.sendAnnouncement(centerText(kickedPlayer.name + " levou ban!"), null, white, "bold");
-        room.sendAnnouncement(centerText("Banned por não seguir as REGRAS!"), null, warn, "italic");
+        room.sendAnnouncement(centerText("Banido por não seguir as REGRAS!"), null, warn, "italic");
         console.log("ban list : " + banList);
         sendAdminCommandsToDiscord("🔴 Jogador Banido:" + "\n"+
-        "🛸 Nick: " + bannedName + "\n" +
-        "🌐 Conn: " + bannedId.conn + "\n" +
-        "🔥 Auth:  " + bannedId.auth + "\n" +
+        "🛸 Nick: " + kickedPlayer.name + "\n" +
+        "🌐 Conn: " + kickedPlayer.conn + "\n" +
+        "🔥 Auth:  " + kickedPlayer.auth + "\n" +
         "📅 Data: " + `${getDateInfo()}`);
-        console.log("ban list : " + banList);
     }
 };
 
@@ -4356,7 +4355,7 @@ room.onPlayerChat = function (player, message) {
         }, 3500);
     }
     if (["var"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText(player.name + "chamou o VAR"), null, yellow, "normal");
+        room.sendAnnouncement(centerText(player.name + " chamou o VAR"), null, yellow, "normal");
         setTimeout(function () {
             room.sendAnnouncement(centerText(" VAR 📹 --> analizando..."), null, white, "bold");
             checkAndPauseGame();
@@ -4367,7 +4366,10 @@ room.onPlayerChat = function (player, message) {
     if (["!gk"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("GOLEIROOO!"), null, white, "bold");
     }
-    if (["mds"].includes(messagem.toLowerCase())) {
+    if (mensagem.includes([" "])) {
+        return false;
+    }
+    if (mensagem.includes(["mds"])) {
         var messages1 = [
             "Vixe, chat",
             "Ae, rapa",
@@ -4391,7 +4393,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement2), null, white, "bold");
         }, 600);
     }
-    if (["ez", "facil", "fácil", "easy"].includes(mensagem)) {
+    if (mensagem.includes(["ez", "facil", "fácil", "easy"])) {
         var messages = [
             "Vixe, subiu pra cabeça",
             "Calmou, " + player.name,
