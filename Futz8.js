@@ -2123,17 +2123,17 @@ function obterRecordeStreak() {
         }
       }
     }
-    return { streak: maxStreak, players: playersInRecordStreak };
+    return { streakers: maxStreak, jogadores: playersInRecordStreak };
 };
 
 function verificarQuebraRecorde(streak) {
-    var streakRecord = obterRecordeStreak().streak;
+    var streakRecord = obterRecordeStreak().streakers;
     if (streak > streakRecord) {
         room.sendAnnouncement(centerText("🏆⚽ -- " + nameHome + " faz história na FUTZ! -- ⚽🏆"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Novo record de STREAk"), null, white, "bold");
-        room.sendAnnouncement(centerText(obterRecordeStreak().players), null, white, "bold");
-        room.sendAnnouncement(centerText("Estão à " + obterRecordeStreak().streak + " sem perder!"), null, white, "bold");
-        sendScoresToDiscord("🏆⚽ Record de STREAK (partidas sem perder)\n.\n" + obterRecordeStreak().players + "\nStreak; " + obterRecordeStreak().streak)
+        room.sendAnnouncement(centerText(obterRecordeStreak().jogadores), null, white, "bold");
+        room.sendAnnouncement(centerText("Estão à " + obterRecordeStreak().streakers + " sem perder!"), null, white, "bold");
+        sendScoresToDiscord("🏆⚽ Record de STREAK (partidas sem perder)\n.\n" + obterRecordeStreak().jogadores + "\nStreak; " + obterRecordeStreak().streakers)
         return true; // O recorde de streak foi quebrado
     } else {
         return false; // O recorde de streak não foi quebrado
@@ -2346,6 +2346,7 @@ function endGame(winner) { // no stopGame() function in it
     if (winner == Team.RED) {
         streak++;
         registrarStreak();
+        verificarQuebraRecorde(streak);
         room.sendAnnouncement(centerText("🏆 FIM DE PARTIDA 🏆"), null, yellow, "bold");
         room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "bold");
         room.sendAnnouncement(centerText((Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + (Bposs * 100).toPrecision(3).toString() + "% "), null, white, "bold");
@@ -2856,9 +2857,9 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (["!streak", "streak"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("MELHOR TRIO DA FUTZ"), null, yellow, "bold");
-        room.sendAnnouncement(centerText(obterRecordeStreak().players), null, white, "bold");
-        room.sendAnnouncement(centerText("Tiveram " + obterRecordeStreak().streak + " vitórias consecutivas!"), null, white, "normal");
+        room.sendAnnouncement(centerText("🏆⚽ -- MELHOR TRIO DA FUTZ -- ⚽🏆"), null, yellow, "bold");
+        room.sendAnnouncement(centerText(obterRecordeStreak().jogadores), null, white, "bold");
+        room.sendAnnouncement(centerText("Tiveram " + obterRecordeStreak().streakers + " vitórias consecutivas!"), null, white, "normal");
         return false;
     }
     if (["!stats"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, mostra para todos da sala.
