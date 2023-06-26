@@ -1284,15 +1284,17 @@ let rr = false; // serve para restartar o game com o comnado rr
 // WELL BEING
 
 let forbid = ['macaco', 'adolf hitler', 'nazismo', 'cuzao', 'cuzão', 'autista', 'cu', 'hitler', 'Manco', 'Malco', 'manco', 'malco', 'Macaco', 'Hitler', 'mancos', 'Mancos'];
-
 let trava = ["㧫璧 觭䢜潇ကᩨ쀡ఈ泄찉넾﫤㏭ 緺", "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", "㧫", "璧", "懈౩䊀脁潡䣚⾤㸼짠ब", "뗲᭾ 띀急蔹⹉ꆣせㆉ였鷀Ú錘陈搳窇㉕"];
-
 let regex = ["fdp", "cu", "carai", "cuzao", "porra", "arrombado", "cu preto", "lixo", "autista", "lixeira", "verme", "Horrível", "seu merda", "filho da puta",
 "caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu", "crl", "cadeirante", "caderante"];
-
 let xingo = ["seu preto", "seu macaco", "macaco", "seu negro", "pretinho", "resto de aborto", "seu mcc", "Negrinho", "carvão", "nazista", "Nazista"];
-
 let malcorage = ["Manco", "manco", "Malco lixo", "malco lixo", "Malco ruim", "malco ruim", "malco fudido", "manko"];
+let chorao = ["mds"];
+let confuso = ["?", "q"];
+let seacha = ["ez", "facil", "fácil", "easy", "ganhamos", "ganhamo", "ganhamu"];
+let naoconfia = ["perdemos", "perdemo"];
+let sorry = ["mb", "mals", "foi mal"];
+let agradece = ["gg"];
 
 function nameForbid(player) {
     if (forbid.includes(player.name)) { room.kickPlayer(player.id, 'nick proibido nessa sala', false) }
@@ -2102,7 +2104,7 @@ function registrarStreak() {
     var playerNamestext = [];
     if (teamR.length === 3) {
         playerNames = [teamR[0].name, teamR[1].name, teamR[2].name];
-        playerNamestext = [teamR[0].name + ", " + teamR[1].name + " e " + teamR[2].name];
+        playerNamestext = ["🏴‍☠️ Cap --> " + teamR[0].name + ", --> " + teamR[1].name + " e --> " + teamR[2].name];
         var key = "streak_" + playerNames.join("_");
         localStorage.setItem(key, streak);
         localStorage.setItem(key + "_players", JSON.stringify(playerNamestext));
@@ -2133,7 +2135,7 @@ function verificarQuebraRecorde(streak) {
         room.sendAnnouncement(centerText("Novo record de STREAk"), null, white, "bold");
         room.sendAnnouncement(centerText(obterRecordeStreak().jogadores), null, white, "bold");
         room.sendAnnouncement(centerText("Estão à " + obterRecordeStreak().streakers + " sem perder!"), null, white, "bold");
-        sendScoresToDiscord("🏆⚽ Record de STREAK (partidas sem perder)\n.\n" + obterRecordeStreak().jogadores + "\nStreak; " + obterRecordeStreak().streakers)
+        sendScoresToDiscord("🏆⚽ Record de STREAK (partidas sem perder)\n.\n" + "🏴‍☠️ Cap --> " + teamR[0].name + ", --> " + teamR[1].name + " e --> " + teamR[2].name + "\nStreak; " + streak)
         return true; // O recorde de streak foi quebrado
     } else {
         return false; // O recorde de streak não foi quebrado
@@ -4362,80 +4364,6 @@ room.onPlayerChat = function (player, message) {
     if (["!gk"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("GOLEIROOO!"), null, white, "bold");
     }
-    if (mensagem.includes([" "])) {
-        return false;
-    }
-    if (mensagem.includes(["mds"])) {
-        var messages1 = [
-            "Vixe, chat",
-            "Ae, rapa",
-            " ",
-            " ",
-        ];
-        var messages2 = [
-            player.name + " ficou bravo...",
-            player.name + " não curtiu, em...",
-            player.name + " ficou puto...",
-            "Te entendo, " + player.name + " foi feio..."
-        ];
-        var randomIndex1 = Math.floor(Math.random() * messages1.length);
-        var announcement1 = messages1[randomIndex1];
-        var randomIndex2 = Math.floor(Math.random() * messages2.length);
-        var announcement2 = messages2[randomIndex2];
-        setTimeout(function () {
-            room.sendAnnouncement(centerText(announcement1), null, white, "bold");
-        }, 300);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText(announcement2), null, white, "bold");
-        }, 600);
-    }
-    if (mensagem.includes(["ez", "facil", "fácil", "easy"])) {
-        var messages = [
-            "Vixe, subiu pra cabeça",
-            "Calmou, " + player.name,
-            "kkkk Desumildou, já " + player.name + "?"
-        ];
-        var randomIndex = Math.floor(Math.random() * messages.length);
-        var announcement = messages[randomIndex];
-        setTimeout(function () {
-            room.sendAnnouncement(centerText(announcement), null, white, "bold");
-        }, 600);
-    }
-    if (mensagem.includes(["gg"])) {
-        var messages = [
-            "Assino até PREMIERE pra assistir jogos assim...",
-            "Jogão, né " + player.name + "?"
-        ];
-        var randomIndex = Math.floor(Math.random() * messages.length);
-        var announcement = messages[randomIndex];
-        setTimeout(function () {
-            room.sendAnnouncement(centerText(announcement), null, white, "bold");
-        }, 600);
-    }
-    if (mensagem.includes(["mb", "mals"])) {
-        var messages = [
-            "Xi, essa foi vacilo...",
-            "Moscou, " + player.name + "...",
-            "Tem que se retratar agora, " + player.name + "!"
-        ];
-        var randomIndex = Math.floor(Math.random() * messages.length);
-        var announcement = messages[randomIndex];
-        setTimeout(function () {
-            room.sendAnnouncement(centerText(announcement), null, white, "bold");
-        }, 600);
-    }
-    if (["?", "q"].includes(message[0].toLowerCase())) {
-        var messages = [
-            "Me parece que nosso amigo " + player.name + " não entendeu o lance.",
-            "Alguém explica o lance pro " + player.name,
-            "Te entendo, " + player.name + " foi feio..."
-        ];
-        var randomIndex = Math.floor(Math.random() * messages.length);
-        var announcement = messages[randomIndex];
-        setTimeout(function () {
-            room.sendAnnouncement(centerText(announcement), null, white, "bold");
-        }, 300);
-    }
     if (["gk"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
             room.sendAnnouncement(centerText(player.name + " vai de gk!"), null, white, "bold");
@@ -5394,6 +5322,89 @@ room.onPlayerChat = function (player, message) {
             }
         }
     }
+    if (chorao.includes(mensagem)) {
+        var messages1 = [
+            "Vixe, chat",
+            "Ae, rapa",
+            " ",
+            " ",
+        ];
+        var messages2 = [
+            player.name + " ficou bravo...",
+            player.name + " não curtiu, em...",
+            player.name + " ficou puto...",
+            "Te entendo, " + player.name + " foi feio..."
+        ];
+        var randomIndex1 = Math.floor(Math.random() * messages1.length);
+        var announcement1 = messages1[randomIndex1];
+        var randomIndex2 = Math.floor(Math.random() * messages2.length);
+        var announcement2 = messages2[randomIndex2];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement1), null, white, "bold");
+        }, 300);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement2), null, white, "bold");
+        }, 600);
+    }
+    if (seacha.includes(mensagem)) {
+        var messages = [
+            "Vixe, subiu pra cabeça",
+            "Calmou, " + player.name,
+            "kkkk Desumildou, já " + player.name + "?"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (agradece.includes(mensagem)) {
+        var messages = [
+            "Assino até PREMIERE pra assistir jogos assim...",
+            "Jogão, né " + player.name + "?"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (sorry.includes(mensagem)) {
+        var messages = [
+            "Xi, essa foi vacilo...",
+            "Moscou, " + player.name + "...",
+            "Tem que se retratar agora, " + player.name + "!"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (confuso.includes(message[0].toLowerCase())) {
+        var messages = [
+            "Me parece que nosso amigo " + player.name + " não entendeu o lance.",
+            "Alguém explica o lance pro " + player.name,
+            "Te entendo, " + player.name + " foi feio..."
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (naoconfia.includes(message[0].toLowerCase())) {
+        var messages = [
+            "O mano " + player.name + " não tá acreditando na equipe.",
+            "Qual foi " + player.name + "? Da seus pulos!",
+            "Se liga no " + player.name + " mandando a ZIKA REVERSA kkk"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
     if (malcorage.includes(mensagem)) {
         room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", false);
         room.sendAnnouncement(centerText("Player " + player.name + " falou mal do 𝐌𝐚𝐥𝐜𝐨"), null, warn, "italic");
@@ -5449,7 +5460,7 @@ room.onPlayerChat = function (player, message) {
     };
     if (player.team === Team.RED) {
         if (redChat == true) {
-            if (teamR[0]) {
+            if (teamR[0].id == player.id) {
             room.sendAnnouncement(nameHome + " | 👑 | " + player.name + ": " + mensagem, null, red, "bold", 1);
             }
             else {
@@ -5468,7 +5479,7 @@ room.onPlayerChat = function (player, message) {
     }
     if (player.team === Team.BLUE) {
         if (blueChat == true) {
-            if (teamR[0]) {
+            if (teamR[0].id == player.id) {
                 room.sendAnnouncement(nameGuest + " | 👑 | " + player.name + ": " + mensagem, null, blue, "bold", 1);
             }
             else {
