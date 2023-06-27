@@ -1525,6 +1525,35 @@ function bbb(playerName) {
     const assists = localStorage.getItem(key);
     return parseInt(assists) || 0; // Retorna 0 se não houver assistências armazenadas
 }
+// ZOEIRAS
+function namoradosfieis(goaler, assistant) {
+    var lodiaz = "3138392E38352E32392E323434"; // conn do diaz
+    var lanoche = "3138392E33342E31372E313539"; // conn do messi
+    if (goaler.conn === lodiaz && assistant.conn === lanoche) {
+        var messages = [
+            "Que lindo esse casal!",
+            goaler.name + " + " + assistant.name + " = Amor Eterno ❤️",
+            "Não dá pra julgar o amor deles quando fazem gols, né?"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 800);
+    }
+    if (goaler.conn === lanoche && assistant.conn === lodiaz) {
+        var messages = [
+            "Que lindo esse casal!",
+            goaler.name + " + " + assistant.name + " = Amor Eterno ❤️",
+            "Não dá pra julgar o amor deles quando fazem gols, né?"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 800);
+    }
+};
 //
 function storeHatTrick(player) {
     const playerName = player.name;
@@ -5675,6 +5704,7 @@ room.onTeamGoal = function (team) {
     activePlay = false;
     teamgoaler = team;
     getPlayersGoalCount();
+    namoradosfieis(lastPlayersTouched[0], lastPlayersTouched[1]);
     storeGoals(lastPlayersTouched[0]);
     if (lastPlayersTouched[0] != null && lastPlayersTouched[0].team == team) {
         let goalMaker = lastPlayersTouched[0].id;
