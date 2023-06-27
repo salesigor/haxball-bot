@@ -1245,6 +1245,8 @@ const blacklistconn = [
 const cartaoamarelo = [
     '3138392E38352E32392E3739', '3138392E38352E32392E3733', '3138392E38352E32392E323434', '3138372E36302E3231372E313934'
 ]; // 𝘿𝙄𝘼𝙕
+var lodiaz = "3138392E38352E32392E323434"; // conn do 𝘿𝙄𝘼𝙕
+var lanoche = "3138392E33342E31372E313539"; // conn do 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 var blacklist = [
     {Nick: "Arthur MM", Auth: "YD0Jm8MmB9G9YJCwJEEoIcC1SvD3Q2811xT9T-NTmVw", Conn: "3137372E35372E3135302E313736"},
     {Nick: "ᱦiᱮ∀Ʀd", Auth: "YJINpE0p70-sAT-nTx10vI5VvHyQ-jkZ1C-zi6dI2us", Conn: "3136372E3234392E39332E313135"},
@@ -1527,8 +1529,6 @@ function bbb(playerName) {
 }
 // ZOEIRAS
 function namoradosfieis(goaler, assistant) {
-    var lodiaz = "3138392E38352E32392E323434"; // conn do diaz
-    var lanoche = "3138392E33342E31372E313539"; // conn do messi
     if (goaler.conn === lodiaz && assistant.conn === lanoche) {
         var messages = [
             "Que lindo esse casal!",
@@ -1898,31 +1898,31 @@ function alwaysOnTeam() {
 };
 
 function IIIx() {
-    if (teamS.length == 0) {
+    if (teamS.length === 0) {
         return;
     }
     else {
-        if (teamR.length == 1) {
+        if (teamR.length === 1) {
             if (teamS.length > 2) {
                 room.setPlayerTeam(teamS[0].id, Team.RED);
                 room.setPlayerTeam(teamS[1].id, Team.RED);
             }
             return;
         }
-        if (teamR.length == 2) {
+        if (teamR.length === 2) {
             if (teamS.length > 1) {
                 room.setPlayerTeam(teamS[0].id, Team.RED);
             }
             return;
         }
-        if (teamB.length == 1) {
+        if (teamB.length === 1) {
             if (teamS.length > 2) {
                 room.setPlayerTeam(teamS[0].id, Team.BLUE);
                 room.setPlayerTeam(teamS[1].id, Team.BLUE);
             }
             return;
         }
-        if (teamB.length == 2) {
+        if (teamB.length === 2) {
             if (teamS.length > 1) {
                 room.setPlayerTeam(teamS[0].id, Team.BLUE);
             }
@@ -2734,7 +2734,7 @@ room.onPlayerJoin = function (player) {
         }, 1000);
     }
     if(blacklistconn.includes(player.conn)) {
-        room.sendAnnouncement(centerText("O player " + player.name + " deve ser banido agora!"), null, warn, "bold");
+        room.sendAnnouncement(centerText("Ae, rapa... Se despeçam do " + player.name + ". Ele ta de saída!"), null, white, "bold");
         room.sendAnnouncement(centerText("você está na blacklist e será banido!"), player.id, warn, "italic");
         blacklistconnID.push(player.id);
         banBlackListed(player);
@@ -2759,6 +2759,10 @@ room.onPlayerJoin = function (player) {
     sendCountsToDiscord(".  \n📄   Nome: " + player.name + "\n🎮   Jogos: " + getStoredGames(player) + "\n⚽️   Gols: " + getStoredGoals(player) + "\n👟   Assistências: " + getStoredAssists(player) + "\n🏆   Hat-tricks: " + getHatTrick(player));
     updateTeams();
     updateAdmins();
+    setTimeout(function () {
+        alwaysOnTeam();
+        IIIx();
+    }, 1000);
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
     playerList.push({"object": player, "nome": player.name, "id": player.id});
     extendedP.push([player.id, player.auth, player.conn, false, 0, 0, false]);
@@ -4385,8 +4389,13 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText(player.name + " chamou o VAR"), null, yellow, "normal");
         setTimeout(function () {
             room.sendAnnouncement(centerText(" VAR 📹 --> analizando..."), null, white, "bold");
-            checkAndPauseGame();
-            alwaysOnTeam();
+            setTimeout(function () {
+                checkAndPauseGame();
+                IIIx();
+                alwaysOnTeam();
+                checkAndStartGame();
+                checkAndResumeGame()
+            }, 300);
         }, 300);
         return false;
     }
@@ -4549,12 +4558,20 @@ room.onPlayerChat = function (player, message) {
             rr = true;
             setTimeout(function () {
                 room.stopGame();
-                room.startGame();
-                room.sendAnnouncement(centerText("A Partida foi reniciada"), null, warn, "bold");
-            }, 500);
+                setTimeout(function () {
+                    IIIx();
+                    checkTeamSizeAndChangeMap();
+                    setTimeout(function () {
+                    room.startGame();
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("A Partida foi reniciada"), null, warn, "bold")
+                        }, 10);
+                    }, 20);
+                }, 10);;
+            }, 200);
             setTimeout(function () {
                 rr = false;
-            }, 1000);
+            }, 500);
         }
         return false;
     }
@@ -5333,21 +5350,21 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (message[1] == null) {
-                if (muted === false) {
+                if (muted == false) {
                     redChat = true;
                     blueChat = true;
                     specChat = true;
                     muted = true;
-                    capchat = false;
                     room.sendAnnouncement(centerText("Chat ATIVADO"), null, warn, "italic");
                 }
-                if (muted === true) {
+                else {
                     redChat = false;
                     blueChat = false;
                     specChat = false;
                     muted = false;
                     room.sendAnnouncement(centerText("Chat DESATIVADO"), null, warn, "italic");
                 }
+                return false;
             }
         }
     }
@@ -5493,15 +5510,10 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(nameHome + " | 👑 | " + player.name + ": " + mensagem, null, red, "bold", 1);
             }
             else {
-                if (capchat = false) {
                 room.sendAnnouncement(nameHome + " | " + player.name + ": " + mensagem, null, red, "bold", 1);
-                }
-                if (capchat = true) {
-                    room.sendAnnouncement("[PV] aguarde o capitão escalar o time", player.id, warn, "italic", 0);
-                }
             }
         }
-        else if (redChat == false) {
+        if (redChat == false) {
             room.sendAnnouncement("Você está mutado.", player.id, warn, "italic", 0);
         }
         return false;
@@ -5512,34 +5524,21 @@ room.onPlayerChat = function (player, message) {
                 room.sendAnnouncement(nameGuest + " | 👑 | " + player.name + ": " + mensagem, null, blue, "bold", 1);
             }
             else {
-                if (capchat = false) {
-                    room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "bold", 1);
-                }
-                if (capchat = true) {
-                    room.sendAnnouncement("[PV] aguarde o capitão escalar o time", player.id, warn, "italic", 0);
-                }
+                room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "bold", 1);
             }
         }
-        else if (blueChat == false) {
+        if (blueChat == false) {
             room.sendAnnouncement("Você está mutado.", player.id, warn, "italic", 0);
-            return false;
         }
         return false;
     }
     if (player.team === Team.SPECTATORS) {
         if (specChat == true) {
-            if (capchat = false) {
-                room.sendAnnouncement(player.name + ": " + mensagem, null, white, "normal", 1);
-            }
-            if (capchat = true) {
-                room.sendAnnouncement("[PV] aguarde o capitão escalar o time", player.id, warn, "italic", 0);
-            }
+            room.sendAnnouncement(player.name + ": " + mensagem, null, white, "normal", 1);
         }
         else if (specChat == false) {
             room.sendAnnouncement("Você está mutado.", player.id, warn, "italic", 0);
-            return false;
         }
-        return false;
     }
     return false;
 };
