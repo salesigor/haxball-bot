@@ -1907,6 +1907,9 @@ function IIIx() {
                 room.setPlayerTeam(teamS[0].id, Team.RED);
                 room.setPlayerTeam(teamS[1].id, Team.RED);
             }
+            if (teamS.length > 1) {
+                room.setPlayerTeam(teamS[0].id, Team.RED);
+            }
             return;
         }
         if (teamR.length === 2) {
@@ -1919,6 +1922,9 @@ function IIIx() {
             if (teamS.length > 2) {
                 room.setPlayerTeam(teamS[0].id, Team.BLUE);
                 room.setPlayerTeam(teamS[1].id, Team.BLUE);
+            }
+            if (teamS.length > 1) {
+                room.setPlayerTeam(teamS[0].id, Team.BLUE);
             }
             return;
         }
@@ -4389,13 +4395,7 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText(player.name + " chamou o VAR"), null, yellow, "normal");
         setTimeout(function () {
             room.sendAnnouncement(centerText(" VAR 📹 --> analizando..."), null, white, "bold");
-            setTimeout(function () {
-                checkAndPauseGame();
-                IIIx();
-                alwaysOnTeam();
-                checkAndStartGame();
-                checkAndResumeGame()
-            }, 300);
+            setTimeout(function () { checkAndPauseGame(); alwaysOnTeam(); IIIx(); checkAndStartGame(); checkAndResumeGame(); }, 50);
         }, 300);
         return false;
     }
