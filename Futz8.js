@@ -1237,7 +1237,7 @@ let badassID = "";
 var supervisorsID = [];
 const soberbo = ['3139312E3133352E3231362E313330', '3137392E33342E38332E3634', '3137392E33342E38362E323331']; // soberbo
 const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533', '3137372E36382E32342E313239']; // malco
-const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539', '3137372E37352E35362E323034']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™, o two
+const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539', '3137372E37352E35362E323231']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™, o two
 const blacklistnames = ["Arthur MM - ᱦiᱮ∀Ʀd - Schneider - Alcione III - MACACO"];
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337'
@@ -1285,10 +1285,10 @@ let rr = false; // serve para restartar o game com o comnado rr
 
 // WELL BEING
 
-let forbid = ['macaco', 'adolf hitler', 'nazismo', 'cuzao', 'cuzão', 'autista', 'cu', 'hitler', 'Manco', 'Malco', 'manco', 'malco', 'Macaco', 'Hitler', 'mancos', 'Mancos'];
+let forbid = ['macaco', 'adolf hitler', 'nazismo', 'cuzao', 'cuzão', 'autista', 'cu', 'hitler', 'Manco', 'Malco', 'manco', 'malco', 'Macaco', 'Hitler', 'mancos', 'Mancos', "Pênis"];
 let trava = ["㧫璧 觭䢜潇ကᩨ쀡ఈ泄찉넾﫤㏭ 緺", "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", "㧫", "璧", "懈౩䊀脁潡䣚⾤㸼짠ब", "뗲᭾ 띀急蔹⹉ꆣせㆉ였鷀Ú錘陈搳窇㉕"];
 let regex = ["fdp", "cu", "carai", "cuzao", "porra", "arrombado", "cu preto", "lixo", "autista", "lixeira", "verme", "Horrível", "seu merda", "filho da puta",
-"caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu", "crl", "cadeirante", "caderante"];
+"caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu", "crl", "cadeirante", "caderante", "nigga"];
 let xingo = ["seu preto", "seu macaco", "macaco", "seu negro", "pretinho", "resto de aborto", "seu mcc", "Negrinho", "carvão", "nazista", "Nazista"];
 let malcorage = ["Manco", "manco", "Malco lixo", "malco lixo", "Malco ruim", "malco ruim", "malco fudido", "manko"];
 let chorao = ["mds"];
