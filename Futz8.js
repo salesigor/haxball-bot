@@ -1288,7 +1288,7 @@ let rr = false; // serve para restartar o game com o comnado rr
 let forbid = ['macaco', 'adolf hitler', 'nazismo', 'cuzao', 'cuzão', 'autista', 'cu', 'hitler', 'Manco', 'Malco', 'manco', 'malco', 'Macaco', 'Hitler', 'mancos', 'Mancos', "Pênis"];
 let trava = ["㧫璧 觭䢜潇ကᩨ쀡ఈ泄찉넾﫤㏭ 緺", "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", "㧫", "璧", "懈౩䊀脁潡䣚⾤㸼짠ब", "뗲᭾ 띀急蔹⹉ꆣせㆉ였鷀Ú錘陈搳窇㉕"];
 let regex = ["fdp", "cu", "carai", "cuzao", "porra", "arrombado", "cu preto", "lixo", "autista", "lixeira", "verme", "Horrível", "seu merda", "filho da puta",
-"caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu", "crl", "cadeirante", "caderante", "nigga"];
+"caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu", "crl", "cadeirante", "caderante", "nigga", "prr"];
 let xingo = ["seu preto", "seu macaco", "macaco", "seu negro", "pretinho", "resto de aborto", "seu mcc", "Negrinho", "carvão", "nazista", "Nazista"];
 let malcorage = ["Manco", "manco", "Malco lixo", "malco lixo", "Malco ruim", "malco ruim", "malco fudido", "manko"];
 let chorao = ["mds"];
@@ -7703,7 +7703,6 @@ room.onPlayerChat = function (player, message) {
     if (player.team === Team.RED) {
         if (redChat == true) {
             if (player.id === teamR[0].id) {
-                room.sendAnnouncement(nameHome + " | 👑 | " + player.name + ": " + mensagem, null, red, "bold", 1);
                 if (message[0] == "bar") {
                     nameHome = bar.name;
                     acronymHome = bar;
@@ -7711,6 +7710,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "rea") {
                     nameHome = rea.name;
@@ -7719,6 +7719,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "mci") {
                     nameHome = mci.name;
@@ -7727,6 +7728,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "atm") {
                     nameHome = atm.name;
@@ -7735,6 +7737,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "psg") {
                     nameHome = psg.name;
@@ -7743,6 +7746,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "liv") {
                     nameHome = liv.name;
@@ -7751,6 +7755,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "che") {
                     nameHome = che.name;
@@ -7759,6 +7764,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "juv") {
                     nameHome = juv.name;
@@ -7767,6 +7773,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "bay") {
                     nameHome = bay.name;
@@ -7775,86 +7782,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
-                }
-                if (message[0] == "bra") {
-                    nameHome = bra.name;
-                    acronymHome = bra;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                if (message[0] == "ale") {
-                    nameHome = ale.name;
-                    acronymHome = ale;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                if (message[0] == "arg") {
-                    nameHome = arg.name;
-                    acronymHome = arg;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                if (message[0] == "esp") {
-                    nameHome = esp.name;
-                    acronymHome = esp;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                if (message[0] == "por") {
-                    nameHome = por.name;
-                    acronymHome = por;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                if (message[0] == "ita") {
-                    nameHome = ita.name;
-                    acronymHome = ita;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                if (message[0] == "uru") {
-                    nameHome = uru.name;
-                    acronymHome = uru;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                if (message[0] == "fra") {
-                    nameHome = fra.name;
-                    acronymHome = fra;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                if (message[0] == "ing") {
-                    nameHome = ing.name;
-                    acronymHome = ing;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                if (message[0] == "bel") {
-                    nameHome = bel.name;
-                    acronymHome = bel;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
+                    return false;
                 }
                 if (message[0] == "bor") {
                     nameHome = bor.name;
@@ -7863,6 +7791,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "mil") {
                     nameHome = mil.name;
@@ -7871,6 +7800,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "intM") {
                     nameHome = intM.name;
@@ -7879,14 +7809,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
-                }
-                if (message[0] == "hol") {
-                    nameHome = hol.name;
-                    acronymHome = hol;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
+                    return false;
                 }
                 if (message[0] == "cor") {
                     nameHome = cor.name;
@@ -7895,6 +7818,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "spfc") {
                     nameHome = spfc.name;
@@ -7903,6 +7827,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "pal") {
                     nameHome = pal.name;
@@ -7911,6 +7836,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "sfc") {
                     nameHome = sfc.name;
@@ -7919,6 +7845,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "fla") {
                     nameHome = fla.name;
@@ -7927,6 +7854,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "vas") {
                     nameHome = vas.name;
@@ -7935,6 +7863,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "flu") {
                     nameHome = flu.name;
@@ -7943,6 +7872,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "gre") {
                     nameHome = gre.name;
@@ -7951,6 +7881,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "int") {
                     nameHome = int.name;
@@ -7959,6 +7890,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "cru") {
                     nameHome = cru.name;
@@ -7967,6 +7899,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "boc") {
                     nameHome = boc.name;
@@ -7975,6 +7908,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "riv") {
                     nameHome = riv.name;
@@ -7983,14 +7917,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
-                }
-                if (message[0] == "girl") {
-                    nameHome = girl.name;
-                    acronymHome = girl;
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
-                    }, 500);
+                    return false;
                 }
                 if (message[0] == "mia") {
                     nameHome = mia.name;
@@ -7999,6 +7926,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "mia2") {
                     nameHome = mia2.name;
@@ -8007,6 +7935,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "v1") {
                     nameHome = v1.name;
@@ -8015,6 +7944,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "v2") {
                     nameHome = v2.name;
@@ -8023,6 +7953,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "v3") {
                     nameHome = v3.name;
@@ -8031,6 +7962,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "v4") {
                     nameHome = v4.name;
@@ -8039,6 +7971,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "v5") {
                     nameHome = v5.name;
@@ -8047,6 +7980,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 if (message[0] == "vik") {
                     nameHome = vik.name;
@@ -8055,7 +7989,9 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
+                room.sendAnnouncement(nameHome + " | 👑 | " + player.name + ": " + mensagem, null, red, "bold", 1);
             }
             else {
                 room.sendAnnouncement(nameHome + " | " + player.name + ": " + mensagem, null, red, "bold", 1);
@@ -8069,7 +8005,6 @@ room.onPlayerChat = function (player, message) {
     if (player.team === Team.BLUE) {
         if (blueChat == true) {
             if (player.id === teamB[0].id) {
-                room.sendAnnouncement(nameGuest + " | 👑 | " + player.name + ": " + mensagem, null, blue, "bold", 1);
                 if (message[0] == "bar") {
                     nameGuest = bar.name;
                     acronymGuest = bar;
@@ -8077,6 +8012,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "rea") {
                     nameGuest = rea.name;
@@ -8085,6 +8021,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "mci") {
                     nameGuest = mci.name;
@@ -8093,6 +8030,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "atm") {
                     nameGuest = atm.name;
@@ -8101,6 +8039,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "psg") {
                     nameGuest = psg.name;
@@ -8109,6 +8048,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "liv") {
                     nameGuest = liv.name;
@@ -8117,6 +8057,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "che") {
                     nameGuest = che.name;
@@ -8125,6 +8066,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "juv") {
                     nameGuest = juv.name;
@@ -8133,6 +8075,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "bay") {
                     nameGuest = bay.name;
@@ -8141,86 +8084,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
-                }
-                else if (message[0] == "bra") {
-                    nameGuest = bra.name;
-                    acronymGuest = bra;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                else if (message[0] == "ale") {
-                    nameGuest = ale.name;
-                    acronymGuest = ale;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                else if (message[0] == "arg") {
-                    nameGuest = arg.name;
-                    acronymGuest = arg;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                else if (message[0] == "esp") {
-                    nameGuest = esp.name;
-                    acronymGuest = esp;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                else if (message[0] == "por") {
-                    nameGuest = por.name;
-                    acronymGuest = por;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                else if (message[0] == "ita") {
-                    nameGuest = ita.name;
-                    acronymGuest = ita;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                else if (message[0] == "uru") {
-                    nameGuest = uru.name;
-                    acronymGuest = uru;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                else if (message[0] == "fra") {
-                    nameGuest = fra.name;
-                    acronymGuest = fra;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                else if (message[0] == "ing") {
-                    nameGuest = ing.name;
-                    acronymGuest = ing;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
-                }
-                else if (message[0] == "bel") {
-                    nameGuest = bel.name;
-                    acronymGuest = bel;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
+                    return false;
                 }
                 else if (message[0] == "bor") {
                     nameGuest = bor.name;
@@ -8229,6 +8093,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "mil") {
                     nameGuest = mil.name;
@@ -8237,6 +8102,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "intM") {
                     nameGuest = intM.name;
@@ -8245,14 +8111,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
-                }
-                else if (message[0] == "hol") {
-                    nameGuest = hol.name;
-                    acronymGuest = hol;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
+                    return false;
                 }
                 else if (message[0] == "cor") {
                     nameGuest = cor.name;
@@ -8261,6 +8120,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "spfc") {
                     nameGuest = spfc.name;
@@ -8269,6 +8129,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "pal") {
                     nameGuest = pal.name;
@@ -8277,6 +8138,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "sfc") {
                     nameGuest = sfc.name;
@@ -8285,6 +8147,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "fla") {
                     nameGuest = fla.name;
@@ -8293,6 +8156,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "vas") {
                     nameGuest = vas.name;
@@ -8301,6 +8165,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "flu") {
                     nameGuest = flu.name;
@@ -8309,6 +8174,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "gre") {
                     nameGuest = gre.name;
@@ -8317,6 +8183,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "int") {
                     nameGuest = int.name;
@@ -8325,6 +8192,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "cru") {
                     nameGuest = cru.name;
@@ -8333,6 +8201,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "boc") {
                     nameGuest = boc.name;
@@ -8341,6 +8210,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "riv") {
                     nameGuest = riv.name;
@@ -8349,14 +8219,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
-                }
-                else if (message[0] == "girl") {
-                    nameGuest = girl.name;
-                    acronymGuest = girl;
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
-                    }, 500);
+                    return false;
                 }
                 else if (message[0] == "mia") {
                     nameGuest = mia.name;
@@ -8365,6 +8228,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "mia2") {
                     nameGuest = mia2.name;
@@ -8373,6 +8237,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "v1") {
                     nameGuest = v1.name;
@@ -8381,6 +8246,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "v2") {
                     nameGuest = v2.name;
@@ -8389,6 +8255,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "v3") {
                     nameGuest = v3.name;
@@ -8397,6 +8264,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "v4") {
                     nameGuest = v4.name;
@@ -8405,6 +8273,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "v5") {
                     nameGuest = v5.name;
@@ -8413,6 +8282,7 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
                 else if (message[0] == "vik") {
                     nameGuest = vik.name;
@@ -8421,7 +8291,9 @@ room.onPlayerChat = function (player, message) {
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
+                    return false;
                 }
+                room.sendAnnouncement(nameGuest + " | 👑 | " + player.name + ": " + mensagem, null, blue, "bold", 1);
             }
             else {
                 room.sendAnnouncement(nameGuest + " | " + player.name + ": " + mensagem, null, blue, "bold", 1);
