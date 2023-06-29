@@ -1237,7 +1237,7 @@ let badassID = "";
 var supervisorsID = [];
 const soberbo = ['3139312E3133352E3231362E313330', '3137392E33342E38332E3634', '3137392E33342E38362E323331']; // soberbo
 const badass = ['3137372E3130322E3133372E31', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533', '3137372E36382E32342E313239']; // malco
-const supervisors = ['3137372E38312E37362E313930','3138392E33302E39342E313931', '3138392E33342E31372E313539', '3137372E37352E35362E323231']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™, o two
+const supervisors = ['3137372E38312E37362E313930','3138392E33302E38342E323335', '3138392E33342E31372E313539', '3137372E37352E35362E323231']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™, o two
 const blacklistnames = ["Arthur MM - ᱦiᱮ∀Ʀd - Schneider - Alcione III - MACACO"];
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337'
@@ -1303,7 +1303,7 @@ function nameForbid(player) {
 };
 
 function banBlackListed(player) {
-    if (blacklistconnID.includes(player.id) || player.id.includes(blacklistconnID)) { room.kickPlayer(player.id, 'Você está na BLACKLIST, saiba mais em https://discord.gg/AR7ypuzJG8', true) }
+    if (blacklistconnID.includes(player.id) || player.id.includes(blacklistconnID)) { banidao = true; room.kickPlayer(player.id, 'Você está na BLACKLIST, saiba mais em https://discord.gg/AR7ypuzJG8', true) }
 };
 
 /* STATS */
@@ -1349,6 +1349,7 @@ var statNumber = 0; // This allows the room to be given stat information every X
 var endGameVariable = false; // This variable with the one below helps distinguish the cases where games are stopped because they have finished to the ones where games are stopped due to player movements or resetting teams
 var resettingTeams = false;
 var statInterval = 6;
+let banidao = false;
 
 /* DISCORD */
 
@@ -2813,21 +2814,28 @@ room.onPlayerLeave = function (player) {
     updateTeams();
     updateAdmins();
     checkAndPauseGame();
-    room.sendAnnouncement(centerText(player.name + " vazou!"), null, white, "bold");
+    if (banidao == false) {
+        room.sendAnnouncement(centerText(player.name + " vazou!"), null, white, "bold");
+    }
 };
 
 room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
     updateTeams();
     checkAndPauseGame();
+    let jowbownathanCONN = kickedPlayer.conn;
+    let jowbownathanAUTH = kickedPlayer.auth;
     if (ban == true) {
         banList.push([kickedPlayer.name, kickedPlayer.id]);
         room.sendAnnouncement(centerText(kickedPlayer.name + " levou ban!"), null, white, "bold");
         room.sendAnnouncement(centerText("Banido por não seguir as REGRAS!"), null, warn, "italic");
+        setTimeout(function () {
+            banidao = false;
+        }, 20);
         console.log("ban list : " + banList);
         sendAdminCommandsToDiscord("🔴 Jogador Banido:" + "\n"+
         "🛸 Nick: " + kickedPlayer.name + "\n" +
-        "🌐 Conn: " + kickedPlayer.conn + "\n" +
-        "🔥 Auth:  " + kickedPlayer.auth + "\n" +
+        "🌐 Conn: " + jowbownathanCONN + "\n" +
+        "🔥 Auth:  " + jowbownathanAUTH + "\n" +
         "📅 Data: " + `${getDateInfo()}`);
     }
 };
