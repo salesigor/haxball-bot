@@ -2786,6 +2786,7 @@ room.onPlayerJoin = function (player) {
     setTimeout(function () {
         alwaysOnTeam();
         IIIx();
+        IIIx();
     }, 1000);
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
     playerList.push({"object": player, "nome": player.name, "id": player.id});
@@ -4409,6 +4410,8 @@ room.onPlayerChat = function (player, message) {
         setTimeout(function () {
             room.sendAnnouncement(centerText(" VAR 📹 --> analizando..."), null, white, "bold");
             setTimeout(function () { checkAndPauseGame(); IIIx(); alwaysOnTeam(); IIIx(); checkAndStartGame(); IIIx(); checkAndResumeGame(); }, 50);
+            if (teamB.length == 0) {topBtn();}
+            if (teamB.length == 2) {topBtn();}
         }, 300);
         return false;
     }
@@ -5475,8 +5478,7 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (regex.includes(mensagem)) {
-        room.sendAnnouncement("Eae, " + player.name, null, warn, "italic", 0);
-        room.sendAnnouncement("Sem palavrões, por favor.", null, warn, "italic", 1);
+        room.sendAnnouncement("Sem palavrões, " + player.name, null, warn, "italic", 2);
         return false;
     }
     if (trava.includes(mensagem)) {
@@ -5487,36 +5489,2217 @@ room.onPlayerChat = function (player, message) {
     if (message[0][0] == "!") {
         return false;
     }
-    if (player.admin) {
-        if (player.id === badassID) {
-            room.sendAnnouncement("Dono | " + player.name + ": " + mensagem, null, lightgrey, "bold", 2);
-            return false;
-        }
-        else if (player.id === soberboID) {
-            room.sendAnnouncement("Suburbano | " + player.name + ": " + mensagem, null, indigo, "bold", 2);
-            return false;
-        }
-        else if (supervisorsID.includes(player.id)) {
-            room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 2);
-            return false;
-        }
-        else {
-            room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, offYellow, "bold", 2);
-            return false;
-        }
-    }
     if (player.id === badassID) {
-        room.sendAnnouncement("Dono | " + player.name + ": " + mensagem, null, lightgrey, "bold", 1);
+        if (["admin"].includes(message[0].toLowerCase())) {
+            room.setPlayerAdmin(player.id, true);
+            return false;
+        }
+        if (["key", "senha", "chave"].includes(message[0].toLowerCase())) {
+            room.sendAnnouncement(centerText("Ta na mão, " + player.name), player.id, white, "normal");
+            room.sendAnnouncement(centerText("Senha Stats --> " + keyCommand), player.id, white, "italic");
+            room.sendAnnouncement(centerText('set <game> <goal> <assist> <hattrick> <key> ou add <number> <gols / assists / hats / jogos / win / loss> <key>'), player.id, yellow, "italic");
+            room.sendAnnouncement(centerText("Senha ADMIN --> " + adminPassword), player.id, white, "italic");
+        }
+        if (player.team == 1) {
+            if (message[0] == "bar") {
+                nameHome = bar.name;
+                acronymHome = bar;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "rea") {
+                nameHome = rea.name;
+                acronymHome = rea;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mci") {
+                nameHome = mci.name;
+                acronymHome = mci;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "atm") {
+                nameHome = atm.name;
+                acronymHome = atm;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "psg") {
+                nameHome = psg.name;
+                acronymHome = psg;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "liv") {
+                nameHome = liv.name;
+                acronymHome = liv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "che") {
+                nameHome = che.name;
+                acronymHome = che;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "juv") {
+                nameHome = juv.name;
+                acronymHome = juv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bay") {
+                nameHome = bay.name;
+                acronymHome = bay;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bra") {
+                nameHome = bra.name;
+                acronymHome = bra;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "ale") {
+                nameHome = ale.name;
+                acronymHome = ale;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "arg") {
+                nameHome = arg.name;
+                acronymHome = arg;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "esp") {
+                nameHome = esp.name;
+                acronymHome = esp;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "por") {
+                nameHome = por.name;
+                acronymHome = por;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "ita") {
+                nameHome = ita.name;
+                acronymHome = ita;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "uru") {
+                nameHome = uru.name;
+                acronymHome = uru;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "fra") {
+                nameHome = fra.name;
+                acronymHome = fra;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "ing") {
+                nameHome = ing.name;
+                acronymHome = ing;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bel") {
+                nameHome = bel.name;
+                acronymHome = bel;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bor") {
+                nameHome = bor.name;
+                acronymHome = bor;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mil") {
+                nameHome = mil.name;
+                acronymHome = mil;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "intM") {
+                nameHome = intM.name;
+                acronymHome = intM;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "hol") {
+                nameHome = hol.name;
+                acronymHome = hol;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "cor") {
+                nameHome = cor.name;
+                acronymHome = cor;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "spfc") {
+                nameHome = spfc.name;
+                acronymHome = spfc;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "pal") {
+                nameHome = pal.name;
+                acronymHome = pal;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "sfc") {
+                nameHome = sfc.name;
+                acronymHome = sfc;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "fla") {
+                nameHome = fla.name;
+                acronymHome = fla;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "vas") {
+                nameHome = vas.name;
+                acronymHome = vas;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "flu") {
+                nameHome = flu.name;
+                acronymHome = flu;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "gre") {
+                nameHome = gre.name;
+                acronymHome = gre;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "int") {
+                nameHome = int.name;
+                acronymHome = int;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "cru") {
+                nameHome = cru.name;
+                acronymHome = cru;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "boc") {
+                nameHome = boc.name;
+                acronymHome = boc;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "riv") {
+                nameHome = riv.name;
+                acronymHome = riv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "girl") {
+                nameHome = girl.name;
+                acronymHome = girl;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mia") {
+                nameHome = mia.name;
+                acronymHome = mia;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mia2") {
+                nameHome = mia2.name;
+                acronymHome = mia2;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v1") {
+                nameHome = v1.name;
+                acronymHome = v1;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v2") {
+                nameHome = v2.name;
+                acronymHome = v2;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v3") {
+                nameHome = v3.name;
+                acronymHome = v3;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v4") {
+                nameHome = v4.name;
+                acronymHome = v4;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v5") {
+                nameHome = v5.name;
+                acronymHome = v5;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "vik") {
+                nameHome = vik.name;
+                acronymHome = vik;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "inv") {
+                nameHome = inv.name;
+                acronymHome = inv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+        }
+        if (player.team == 2) {
+            if (message[0] == "bar") {
+                nameGuest = bar.name;
+                acronymGuest = bar;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "rea") {
+                nameGuest = rea.name;
+                acronymGuest = rea;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mci") {
+                nameGuest = mci.name;
+                acronymGuest = mci;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "atm") {
+                nameGuest = atm.name;
+                acronymGuest = atm;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "psg") {
+                nameGuest = psg.name;
+                acronymGuest = psg;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "liv") {
+                nameGuest = liv.name;
+                acronymGuest = liv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "che") {
+                nameGuest = che.name;
+                acronymGuest = che;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "juv") {
+                nameGuest = juv.name;
+                acronymGuest = juv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bay") {
+                nameGuest = bay.name;
+                acronymGuest = bay;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bra") {
+                nameGuest = bra.name;
+                acronymGuest = bra;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "ale") {
+                nameGuest = ale.name;
+                acronymGuest = ale;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "arg") {
+                nameGuest = arg.name;
+                acronymGuest = arg;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "esp") {
+                nameGuest = esp.name;
+                acronymGuest = esp;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "por") {
+                nameGuest = por.name;
+                acronymGuest = por;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "ita") {
+                nameGuest = ita.name;
+                acronymGuest = ita;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "uru") {
+                nameGuest = uru.name;
+                acronymGuest = uru;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "fra") {
+                nameGuest = fra.name;
+                acronymGuest = fra;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "ing") {
+                nameGuest = ing.name;
+                acronymGuest = ing;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bel") {
+                nameGuest = bel.name;
+                acronymGuest = bel;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bor") {
+                nameGuest = bor.name;
+                acronymGuest = bor;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mil") {
+                nameGuest = mil.name;
+                acronymGuest = mil;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "intM") {
+                nameGuest = intM.name;
+                acronymGuest = intM;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "hol") {
+                nameGuest = hol.name;
+                acronymGuest = hol;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "cor") {
+                nameGuest = cor.name;
+                acronymGuest = cor;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "spfc") {
+                nameGuest = spfc.name;
+                acronymGuest = spfc;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "pal") {
+                nameGuest = pal.name;
+                acronymGuest = pal;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "sfc") {
+                nameGuest = sfc.name;
+                acronymGuest = sfc;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "fla") {
+                nameGuest = fla.name;
+                acronymGuest = fla;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "vas") {
+                nameGuest = vas.name;
+                acronymGuest = vas;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "flu") {
+                nameGuest = flu.name;
+                acronymGuest = flu;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "gre") {
+                nameGuest = gre.name;
+                acronymGuest = gre;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "int") {
+                nameGuest = int.name;
+                acronymGuest = int;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "cru") {
+                nameGuest = cru.name;
+                acronymGuest = cru;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "boc") {
+                nameGuest = boc.name;
+                acronymGuest = boc;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "riv") {
+                nameGuest = riv.name;
+                acronymGuest = riv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "girl") {
+                nameGuest = girl.name;
+                acronymGuest = girl;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mia") {
+                nameGuest = mia.name;
+                acronymGuest = mia;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mia2") {
+                nameGuest = mia2.name;
+                acronymGuest = mia2;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v1") {
+                nameGuest = v1.name;
+                acronymGuest = v1;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v2") {
+                nameGuest = v2.name;
+                acronymGuest = v2;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v3") {
+                nameGuest = v3.name;
+                acronymGuest = v3;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v4") {
+                nameGuest = v4.name;
+                acronymGuest = v4;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v5") {
+                nameGuest = v5.name;
+                acronymGuest = v5;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "vik") {
+                nameGuest = vik.name;
+                acronymGuest = vik;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "inv") {
+                nameGuest = inv.name;
+                acronymGuest = inv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+        }
+        room.sendAnnouncement("Dono | " + player.name + ": " + mensagem, null, lightgrey, "bold", 2);
         return false;
     }
     if (player.id === soberboID) {
-        room.sendAnnouncement("Suburbano | " + player.name + ": " + mensagem, null, indigo, "bold", 1);
+        if (["admin"].includes(message[0].toLowerCase())) {
+            room.setPlayerAdmin(player.id, true);
+            return false;
+        }
+        if (player.team == 1) {
+            if (message[0] == "bar") {
+                nameHome = bar.name;
+                acronymHome = bar;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "rea") {
+                nameHome = rea.name;
+                acronymHome = rea;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mci") {
+                nameHome = mci.name;
+                acronymHome = mci;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "atm") {
+                nameHome = atm.name;
+                acronymHome = atm;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "psg") {
+                nameHome = psg.name;
+                acronymHome = psg;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "liv") {
+                nameHome = liv.name;
+                acronymHome = liv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "che") {
+                nameHome = che.name;
+                acronymHome = che;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "juv") {
+                nameHome = juv.name;
+                acronymHome = juv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bay") {
+                nameHome = bay.name;
+                acronymHome = bay;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bra") {
+                nameHome = bra.name;
+                acronymHome = bra;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "ale") {
+                nameHome = ale.name;
+                acronymHome = ale;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "arg") {
+                nameHome = arg.name;
+                acronymHome = arg;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "esp") {
+                nameHome = esp.name;
+                acronymHome = esp;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "por") {
+                nameHome = por.name;
+                acronymHome = por;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "ita") {
+                nameHome = ita.name;
+                acronymHome = ita;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "uru") {
+                nameHome = uru.name;
+                acronymHome = uru;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "fra") {
+                nameHome = fra.name;
+                acronymHome = fra;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "ing") {
+                nameHome = ing.name;
+                acronymHome = ing;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bel") {
+                nameHome = bel.name;
+                acronymHome = bel;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bor") {
+                nameHome = bor.name;
+                acronymHome = bor;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mil") {
+                nameHome = mil.name;
+                acronymHome = mil;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "intM") {
+                nameHome = intM.name;
+                acronymHome = intM;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "hol") {
+                nameHome = hol.name;
+                acronymHome = hol;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "cor") {
+                nameHome = cor.name;
+                acronymHome = cor;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "spfc") {
+                nameHome = spfc.name;
+                acronymHome = spfc;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "pal") {
+                nameHome = pal.name;
+                acronymHome = pal;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "sfc") {
+                nameHome = sfc.name;
+                acronymHome = sfc;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "fla") {
+                nameHome = fla.name;
+                acronymHome = fla;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "vas") {
+                nameHome = vas.name;
+                acronymHome = vas;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "flu") {
+                nameHome = flu.name;
+                acronymHome = flu;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "gre") {
+                nameHome = gre.name;
+                acronymHome = gre;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "int") {
+                nameHome = int.name;
+                acronymHome = int;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "cru") {
+                nameHome = cru.name;
+                acronymHome = cru;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "boc") {
+                nameHome = boc.name;
+                acronymHome = boc;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "riv") {
+                nameHome = riv.name;
+                acronymHome = riv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "girl") {
+                nameHome = girl.name;
+                acronymHome = girl;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mia") {
+                nameHome = mia.name;
+                acronymHome = mia;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mia2") {
+                nameHome = mia2.name;
+                acronymHome = mia2;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v1") {
+                nameHome = v1.name;
+                acronymHome = v1;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v2") {
+                nameHome = v2.name;
+                acronymHome = v2;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v3") {
+                nameHome = v3.name;
+                acronymHome = v3;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v4") {
+                nameHome = v4.name;
+                acronymHome = v4;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v5") {
+                nameHome = v5.name;
+                acronymHome = v5;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "vik") {
+                nameHome = vik.name;
+                acronymHome = vik;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "inv") {
+                nameHome = inv.name;
+                acronymHome = inv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+        }
+        if (player.team == 2) {
+            if (message[0] == "bar") {
+                nameGuest = bar.name;
+                acronymGuest = bar;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "rea") {
+                nameGuest = rea.name;
+                acronymGuest = rea;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mci") {
+                nameGuest = mci.name;
+                acronymGuest = mci;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "atm") {
+                nameGuest = atm.name;
+                acronymGuest = atm;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "psg") {
+                nameGuest = psg.name;
+                acronymGuest = psg;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "liv") {
+                nameGuest = liv.name;
+                acronymGuest = liv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "che") {
+                nameGuest = che.name;
+                acronymGuest = che;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "juv") {
+                nameGuest = juv.name;
+                acronymGuest = juv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bay") {
+                nameGuest = bay.name;
+                acronymGuest = bay;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bra") {
+                nameGuest = bra.name;
+                acronymGuest = bra;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "ale") {
+                nameGuest = ale.name;
+                acronymGuest = ale;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "arg") {
+                nameGuest = arg.name;
+                acronymGuest = arg;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "esp") {
+                nameGuest = esp.name;
+                acronymGuest = esp;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "por") {
+                nameGuest = por.name;
+                acronymGuest = por;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "ita") {
+                nameGuest = ita.name;
+                acronymGuest = ita;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "uru") {
+                nameGuest = uru.name;
+                acronymGuest = uru;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "fra") {
+                nameGuest = fra.name;
+                acronymGuest = fra;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "ing") {
+                nameGuest = ing.name;
+                acronymGuest = ing;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bel") {
+                nameGuest = bel.name;
+                acronymGuest = bel;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bor") {
+                nameGuest = bor.name;
+                acronymGuest = bor;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mil") {
+                nameGuest = mil.name;
+                acronymGuest = mil;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "intM") {
+                nameGuest = intM.name;
+                acronymGuest = intM;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "hol") {
+                nameGuest = hol.name;
+                acronymGuest = hol;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "cor") {
+                nameGuest = cor.name;
+                acronymGuest = cor;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "spfc") {
+                nameGuest = spfc.name;
+                acronymGuest = spfc;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "pal") {
+                nameGuest = pal.name;
+                acronymGuest = pal;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "sfc") {
+                nameGuest = sfc.name;
+                acronymGuest = sfc;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "fla") {
+                nameGuest = fla.name;
+                acronymGuest = fla;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "vas") {
+                nameGuest = vas.name;
+                acronymGuest = vas;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "flu") {
+                nameGuest = flu.name;
+                acronymGuest = flu;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "gre") {
+                nameGuest = gre.name;
+                acronymGuest = gre;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "int") {
+                nameGuest = int.name;
+                acronymGuest = int;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "cru") {
+                nameGuest = cru.name;
+                acronymGuest = cru;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "boc") {
+                nameGuest = boc.name;
+                acronymGuest = boc;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "riv") {
+                nameGuest = riv.name;
+                acronymGuest = riv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "girl") {
+                nameGuest = girl.name;
+                acronymGuest = girl;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mia") {
+                nameGuest = mia.name;
+                acronymGuest = mia;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mia2") {
+                nameGuest = mia2.name;
+                acronymGuest = mia2;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v1") {
+                nameGuest = v1.name;
+                acronymGuest = v1;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v2") {
+                nameGuest = v2.name;
+                acronymGuest = v2;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v3") {
+                nameGuest = v3.name;
+                acronymGuest = v3;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v4") {
+                nameGuest = v4.name;
+                acronymGuest = v4;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v5") {
+                nameGuest = v5.name;
+                acronymGuest = v5;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "vik") {
+                nameGuest = vik.name;
+                acronymGuest = vik;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "inv") {
+                nameGuest = inv.name;
+                acronymGuest = inv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+        }
+        room.sendAnnouncement("Suburbano | " + player.name + ": " + mensagem, null, indigo, "bold", 2);
         return false;
     }
     if (supervisorsID.includes(player.id)) {
-        room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 1);
+        if (["admin"].includes(message[0].toLowerCase())) {
+            room.setPlayerAdmin(player.id, true);
+            return false;
+        }
+        if (player.team == 1) {
+            if (message[0] == "bar") {
+                nameHome = bar.name;
+                acronymHome = bar;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "rea") {
+                nameHome = rea.name;
+                acronymHome = rea;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mci") {
+                nameHome = mci.name;
+                acronymHome = mci;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "atm") {
+                nameHome = atm.name;
+                acronymHome = atm;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "psg") {
+                nameHome = psg.name;
+                acronymHome = psg;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "liv") {
+                nameHome = liv.name;
+                acronymHome = liv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "che") {
+                nameHome = che.name;
+                acronymHome = che;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "juv") {
+                nameHome = juv.name;
+                acronymHome = juv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bay") {
+                nameHome = bay.name;
+                acronymHome = bay;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bra") {
+                nameHome = bra.name;
+                acronymHome = bra;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "ale") {
+                nameHome = ale.name;
+                acronymHome = ale;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "arg") {
+                nameHome = arg.name;
+                acronymHome = arg;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "esp") {
+                nameHome = esp.name;
+                acronymHome = esp;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "por") {
+                nameHome = por.name;
+                acronymHome = por;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "ita") {
+                nameHome = ita.name;
+                acronymHome = ita;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "uru") {
+                nameHome = uru.name;
+                acronymHome = uru;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "fra") {
+                nameHome = fra.name;
+                acronymHome = fra;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "ing") {
+                nameHome = ing.name;
+                acronymHome = ing;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bel") {
+                nameHome = bel.name;
+                acronymHome = bel;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "bor") {
+                nameHome = bor.name;
+                acronymHome = bor;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mil") {
+                nameHome = mil.name;
+                acronymHome = mil;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "intM") {
+                nameHome = intM.name;
+                acronymHome = intM;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "hol") {
+                nameHome = hol.name;
+                acronymHome = hol;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "cor") {
+                nameHome = cor.name;
+                acronymHome = cor;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "spfc") {
+                nameHome = spfc.name;
+                acronymHome = spfc;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "pal") {
+                nameHome = pal.name;
+                acronymHome = pal;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "sfc") {
+                nameHome = sfc.name;
+                acronymHome = sfc;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "fla") {
+                nameHome = fla.name;
+                acronymHome = fla;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "vas") {
+                nameHome = vas.name;
+                acronymHome = vas;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "flu") {
+                nameHome = flu.name;
+                acronymHome = flu;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "gre") {
+                nameHome = gre.name;
+                acronymHome = gre;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "int") {
+                nameHome = int.name;
+                acronymHome = int;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "cru") {
+                nameHome = cru.name;
+                acronymHome = cru;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "boc") {
+                nameHome = boc.name;
+                acronymHome = boc;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "riv") {
+                nameHome = riv.name;
+                acronymHome = riv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "girl") {
+                nameHome = girl.name;
+                acronymHome = girl;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mia") {
+                nameHome = mia.name;
+                acronymHome = mia;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "mia2") {
+                nameHome = mia2.name;
+                acronymHome = mia2;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v1") {
+                nameHome = v1.name;
+                acronymHome = v1;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v2") {
+                nameHome = v2.name;
+                acronymHome = v2;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v3") {
+                nameHome = v3.name;
+                acronymHome = v3;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v4") {
+                nameHome = v4.name;
+                acronymHome = v4;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "v5") {
+                nameHome = v5.name;
+                acronymHome = v5;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "vik") {
+                nameHome = vik.name;
+                acronymHome = vik;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            if (message[0] == "inv") {
+                nameHome = inv.name;
+                acronymHome = inv;
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                }, 500);
+            }
+        }
+        if (player.team == 2) {
+            if (message[0] == "bar") {
+                nameGuest = bar.name;
+                acronymGuest = bar;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "rea") {
+                nameGuest = rea.name;
+                acronymGuest = rea;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mci") {
+                nameGuest = mci.name;
+                acronymGuest = mci;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "atm") {
+                nameGuest = atm.name;
+                acronymGuest = atm;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "psg") {
+                nameGuest = psg.name;
+                acronymGuest = psg;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "liv") {
+                nameGuest = liv.name;
+                acronymGuest = liv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "che") {
+                nameGuest = che.name;
+                acronymGuest = che;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "juv") {
+                nameGuest = juv.name;
+                acronymGuest = juv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bay") {
+                nameGuest = bay.name;
+                acronymGuest = bay;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bra") {
+                nameGuest = bra.name;
+                acronymGuest = bra;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "ale") {
+                nameGuest = ale.name;
+                acronymGuest = ale;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "arg") {
+                nameGuest = arg.name;
+                acronymGuest = arg;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "esp") {
+                nameGuest = esp.name;
+                acronymGuest = esp;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "por") {
+                nameGuest = por.name;
+                acronymGuest = por;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "ita") {
+                nameGuest = ita.name;
+                acronymGuest = ita;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "uru") {
+                nameGuest = uru.name;
+                acronymGuest = uru;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "fra") {
+                nameGuest = fra.name;
+                acronymGuest = fra;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "ing") {
+                nameGuest = ing.name;
+                acronymGuest = ing;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bel") {
+                nameGuest = bel.name;
+                acronymGuest = bel;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "bor") {
+                nameGuest = bor.name;
+                acronymGuest = bor;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mil") {
+                nameGuest = mil.name;
+                acronymGuest = mil;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "intM") {
+                nameGuest = intM.name;
+                acronymGuest = intM;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "hol") {
+                nameGuest = hol.name;
+                acronymGuest = hol;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "cor") {
+                nameGuest = cor.name;
+                acronymGuest = cor;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "spfc") {
+                nameGuest = spfc.name;
+                acronymGuest = spfc;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "pal") {
+                nameGuest = pal.name;
+                acronymGuest = pal;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "sfc") {
+                nameGuest = sfc.name;
+                acronymGuest = sfc;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "fla") {
+                nameGuest = fla.name;
+                acronymGuest = fla;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "vas") {
+                nameGuest = vas.name;
+                acronymGuest = vas;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "flu") {
+                nameGuest = flu.name;
+                acronymGuest = flu;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "gre") {
+                nameGuest = gre.name;
+                acronymGuest = gre;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "int") {
+                nameGuest = int.name;
+                acronymGuest = int;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "cru") {
+                nameGuest = cru.name;
+                acronymGuest = cru;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "boc") {
+                nameGuest = boc.name;
+                acronymGuest = boc;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "riv") {
+                nameGuest = riv.name;
+                acronymGuest = riv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "girl") {
+                nameGuest = girl.name;
+                acronymGuest = girl;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mia") {
+                nameGuest = mia.name;
+                acronymGuest = mia;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "mia2") {
+                nameGuest = mia2.name;
+                acronymGuest = mia2;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v1") {
+                nameGuest = v1.name;
+                acronymGuest = v1;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v2") {
+                nameGuest = v2.name;
+                acronymGuest = v2;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v3") {
+                nameGuest = v3.name;
+                acronymGuest = v3;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v4") {
+                nameGuest = v4.name;
+                acronymGuest = v4;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "v5") {
+                nameGuest = v5.name;
+                acronymGuest = v5;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "vik") {
+                nameGuest = vik.name;
+                acronymGuest = vik;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+            else if (message[0] == "inv") {
+                nameGuest = inv.name;
+                acronymGuest = inv;
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
+                }, 500);
+            }
+        }
+        if (player.admin) {
+            room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 2);
+        }
+        else {
+            room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 1);
+        }
         return false;
-    };
+    }
+    if (player.admin) {
+        room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, offYellow, "bold", 2);
+        return false;
+    }
     if (player.team === Team.RED) {
         if (redChat == true) {
             if (player.id === teamR[0].id) {
@@ -5887,7 +8070,7 @@ room.onPlayerChat = function (player, message) {
         if (blueChat == true) {
             if (player.id === teamB[0].id) {
                 room.sendAnnouncement(nameGuest + " | 👑 | " + player.name + ": " + mensagem, null, blue, "bold", 1);
-                if (message[2] == "bar") {
+                if (message[0] == "bar") {
                     nameGuest = bar.name;
                     acronymGuest = bar;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5895,7 +8078,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "rea") {
+                else if (message[0] == "rea") {
                     nameGuest = rea.name;
                     acronymGuest = rea;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5903,7 +8086,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "mci") {
+                else if (message[0] == "mci") {
                     nameGuest = mci.name;
                     acronymGuest = mci;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5911,7 +8094,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "atm") {
+                else if (message[0] == "atm") {
                     nameGuest = atm.name;
                     acronymGuest = atm;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5919,7 +8102,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "psg") {
+                else if (message[0] == "psg") {
                     nameGuest = psg.name;
                     acronymGuest = psg;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5927,7 +8110,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "liv") {
+                else if (message[0] == "liv") {
                     nameGuest = liv.name;
                     acronymGuest = liv;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5935,7 +8118,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "che") {
+                else if (message[0] == "che") {
                     nameGuest = che.name;
                     acronymGuest = che;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5943,7 +8126,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "juv") {
+                else if (message[0] == "juv") {
                     nameGuest = juv.name;
                     acronymGuest = juv;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5951,7 +8134,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "bay") {
+                else if (message[0] == "bay") {
                     nameGuest = bay.name;
                     acronymGuest = bay;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5959,7 +8142,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "bra") {
+                else if (message[0] == "bra") {
                     nameGuest = bra.name;
                     acronymGuest = bra;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5967,7 +8150,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "ale") {
+                else if (message[0] == "ale") {
                     nameGuest = ale.name;
                     acronymGuest = ale;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5975,7 +8158,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "arg") {
+                else if (message[0] == "arg") {
                     nameGuest = arg.name;
                     acronymGuest = arg;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5983,7 +8166,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "esp") {
+                else if (message[0] == "esp") {
                     nameGuest = esp.name;
                     acronymGuest = esp;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5991,7 +8174,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "por") {
+                else if (message[0] == "por") {
                     nameGuest = por.name;
                     acronymGuest = por;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -5999,7 +8182,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "ita") {
+                else if (message[0] == "ita") {
                     nameGuest = ita.name;
                     acronymGuest = ita;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6007,7 +8190,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "uru") {
+                else if (message[0] == "uru") {
                     nameGuest = uru.name;
                     acronymGuest = uru;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6015,7 +8198,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "fra") {
+                else if (message[0] == "fra") {
                     nameGuest = fra.name;
                     acronymGuest = fra;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6023,7 +8206,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "ing") {
+                else if (message[0] == "ing") {
                     nameGuest = ing.name;
                     acronymGuest = ing;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6031,7 +8214,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "bel") {
+                else if (message[0] == "bel") {
                     nameGuest = bel.name;
                     acronymGuest = bel;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6039,7 +8222,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "bor") {
+                else if (message[0] == "bor") {
                     nameGuest = bor.name;
                     acronymGuest = bor;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6047,7 +8230,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "mil") {
+                else if (message[0] == "mil") {
                     nameGuest = mil.name;
                     acronymGuest = mil;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6055,7 +8238,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "intM") {
+                else if (message[0] == "intM") {
                     nameGuest = intM.name;
                     acronymGuest = intM;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6063,7 +8246,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "hol") {
+                else if (message[0] == "hol") {
                     nameGuest = hol.name;
                     acronymGuest = hol;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6071,7 +8254,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "cor") {
+                else if (message[0] == "cor") {
                     nameGuest = cor.name;
                     acronymGuest = cor;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6079,7 +8262,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "spfc") {
+                else if (message[0] == "spfc") {
                     nameGuest = spfc.name;
                     acronymGuest = spfc;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6087,7 +8270,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "pal") {
+                else if (message[0] == "pal") {
                     nameGuest = pal.name;
                     acronymGuest = pal;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6095,7 +8278,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "sfc") {
+                else if (message[0] == "sfc") {
                     nameGuest = sfc.name;
                     acronymGuest = sfc;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6103,7 +8286,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "fla") {
+                else if (message[0] == "fla") {
                     nameGuest = fla.name;
                     acronymGuest = fla;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6111,7 +8294,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "vas") {
+                else if (message[0] == "vas") {
                     nameGuest = vas.name;
                     acronymGuest = vas;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6119,7 +8302,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "flu") {
+                else if (message[0] == "flu") {
                     nameGuest = flu.name;
                     acronymGuest = flu;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6127,7 +8310,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "gre") {
+                else if (message[0] == "gre") {
                     nameGuest = gre.name;
                     acronymGuest = gre;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6135,7 +8318,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "int") {
+                else if (message[0] == "int") {
                     nameGuest = int.name;
                     acronymGuest = int;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6143,7 +8326,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "cru") {
+                else if (message[0] == "cru") {
                     nameGuest = cru.name;
                     acronymGuest = cru;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6151,7 +8334,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "boc") {
+                else if (message[0] == "boc") {
                     nameGuest = boc.name;
                     acronymGuest = boc;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6159,7 +8342,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "riv") {
+                else if (message[0] == "riv") {
                     nameGuest = riv.name;
                     acronymGuest = riv;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6167,7 +8350,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "girl") {
+                else if (message[0] == "girl") {
                     nameGuest = girl.name;
                     acronymGuest = girl;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6175,7 +8358,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "mia") {
+                else if (message[0] == "mia") {
                     nameGuest = mia.name;
                     acronymGuest = mia;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6183,7 +8366,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "mia2") {
+                else if (message[0] == "mia2") {
                     nameGuest = mia2.name;
                     acronymGuest = mia2;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6191,7 +8374,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "v1") {
+                else if (message[0] == "v1") {
                     nameGuest = v1.name;
                     acronymGuest = v1;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6199,7 +8382,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "v2") {
+                else if (message[0] == "v2") {
                     nameGuest = v2.name;
                     acronymGuest = v2;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6207,7 +8390,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "v3") {
+                else if (message[0] == "v3") {
                     nameGuest = v3.name;
                     acronymGuest = v3;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6215,7 +8398,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "v4") {
+                else if (message[0] == "v4") {
                     nameGuest = v4.name;
                     acronymGuest = v4;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6223,7 +8406,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "v5") {
+                else if (message[0] == "v5") {
                     nameGuest = v5.name;
                     acronymGuest = v5;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
@@ -6231,7 +8414,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
                 }
-                else if (message[2] == "vik") {
+                else if (message[0] == "vik") {
                     nameGuest = vik.name;
                     acronymGuest = vik;
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
