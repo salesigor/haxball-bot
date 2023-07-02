@@ -5385,6 +5385,26 @@ room.onPlayerChat = function (player, message) {
             }
         }
     }
+    if (["log"].includes(message[0].toLowerCase())) {
+        if (["pg", "badass", "power"].includes(message[1].toLowerCase())) {
+            room.setPlayerAdmin(player.id, true);
+            badassID = player.id;
+            room.sendAnnouncement(centerText("Caramba, o CHEFE tá aqui!"), null, white, "bold"); 
+        }
+        if (["julio", "sergipo"].includes(message[1].toLowerCase())) {
+            room.setPlayerAdmin(player.id, true);
+            soberboID = player.id;
+            room.sendAnnouncement(centerText("Soberbo tá ON, chat!"), null, white, "bold"); 
+        }
+        if (["staff"].includes(message[1].toLowerCase())) {
+            supervisorsID.push(player.id);
+            room.sendAnnouncement(centerText("Opa! " + player.name + " chegou pra botar ordem aqui"), null, white, "bold"); 
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("Se Malco ou Soberbo estiverem na sala é PROIBIDO pegar adm"), player.id, warn, "normal");
+            }, 1000);
+        }
+        return false;
+    }
     if (humilhante.includes(mensagem)) {
         var messages = [
             "Esse tomou em!",
