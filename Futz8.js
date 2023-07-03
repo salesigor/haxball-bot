@@ -1237,7 +1237,7 @@ let badassID = "";
 var supervisorsID = [];
 const soberbo = ['3137392E3235302E33322E3537']; // soberbo
 const badass = ['3230302E3135382E3234392E313931', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533', '3137372E36382E32342E313239']; // malco
-const supervisors = ['3137372E38312E37362E313930','3138392E33302E38342E323335', '3138392E33342E31372E313539', '3137372E37352E35362E323231']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™, o two
+const supervisors = ['3137372E38312E37362E313930','3138392E33302E38342E323335', '3138392E33342E31372E313539']; // Gustaxs__, Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 const blacklistnames = ["Arthur MM - ᱦiᱮ∀Ʀd - Schneider - Alcione III - MACACO"];
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337'
@@ -5390,18 +5390,18 @@ room.onPlayerChat = function (player, message) {
             room.setPlayerAdmin(player.id, true);
             badassID = player.id;
             room.sendAnnouncement(centerText("Caramba, o CHEFE tá aqui!"), null, white, "bold");
-            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\nConn: " + player.conn);
+            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!");
         }
         if (["julio", "sergipo"].includes(message[1].toLowerCase())) {
             room.setPlayerAdmin(player.id, true);
             soberboID = player.id;
             room.sendAnnouncement(centerText("Soberbo tá ON, chat!"), null, white, "bold");
-            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\nConn: " + player.conn);
+            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!");
         }
         if (["staff"].includes(message[1].toLowerCase())) {
             supervisorsID.push(player.id);
             room.sendAnnouncement(centerText("Opa! " + player.name + " chegou pra botar ordem aqui"), null, white, "bold");
-            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\nConn: " + player.conn);
+            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!");
             setTimeout(function () {
                 room.sendAnnouncement(centerText("Se Malco ou Soberbo estiverem na sala é PROIBIDO pegar adm"), player.id, warn, "normal");
             }, 1000);
