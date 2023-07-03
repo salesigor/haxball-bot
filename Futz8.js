@@ -1151,6 +1151,8 @@ const bor = {"name": 'Borussia Dortmund', "type": Uniform, "angle": 0, "textcolo
 const mil = {"name": 'Milan', "type": Uniform, "angle": 0, "textcolor": 0xFFFFFF, "color1": 0x850000, "color2": 0x000000, "color3": 0x850000};
 const intM = {"name": 'Inter de Milão', "type": Uniform, "angle": 0, "textcolor": 0xFFFFFF, "color1": 0x00008F, "color2": 0x000000, "color3": 0x00008F};
 const che = {"name": 'Chelsea', "type": Uniform, "angle": 0, "textcolor": 0xFFFFFF, "color1": 0x0000CD, "color2": 0xFFFFFF, "color3": 0x0000CD};
+const mia = { "name": '𝐈𝐧𝐭𝐞𝐫 𝐌𝐢𝐚𝐦𝐢', "type": Uniform, "angle": 45, "textcolor": 0xFCA4B6, "color1": 0x141414, "color2": 0x141414, "color3": 0x141414};
+const mia2 = { "name": '𝐈𝐧𝐭𝐞𝐫 𝐌𝐢𝐚𝐦𝐢', "type": Uniform, "angle": 45, "textcolor": 0x141414, "color1": 0xFCA4B6, "color2": 0xFCA4B6, "color3": 0xFCA4B6};
 // Seleções
 const ale = {'name': 'Alemanha', "type": Uniform, "angle": 90, "textcolor": 0x000000, "color1": 0xFFFFFF, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
 const arg = {'name': 'Argentina', "type": Uniform, "angle": 90, "textcolor": 0x1F374B, "color1": 0x75AADB, "color2": 0xFFFFFF, "color3": 0x75AADB};
@@ -1166,8 +1168,6 @@ const hol = {'name': 'Holanda', "type": Uniform, "angle": 0, "textcolor": 0xFFFF
 // clubes de zueira
 const girl = { "name": '👩🏻‍🦰 𝔅𝔞𝔯𝔟𝔦𝔢𝔰 👱🏻‍♀️', "type": Uniform, "angle": 60, "textcolor": 0xFFFFFF, "color1": 0xF2B3FF, "color2": 0xCAABFF, "color3": 0xCAABFF};
 const inv = { "name": '🟨 Iηvicŧus 🟨', "type": Uniform, "angle": 60, "textcolor": 0xFFE042, "color1": 0x213366, "color2": 0x2F64A1, "color3": 0x2F64A1};
-const mia = { "name": '𝐈𝐧𝐭𝐞𝐫 𝐌𝐢𝐚𝐦𝐢', "type": Uniform, "angle": 45, "textcolor": 0xFCA4B6, "color1": 0x141414, "color2": 0x141414, "color3": 0x141414}; // Time do messi uni 1
-const mia2 = { "name": '𝐈𝐧𝐭𝐞𝐫 𝐌𝐢𝐚𝐦𝐢', "type": Uniform, "angle": 45, "textcolor": 0x141414, "color1": 0xFCA4B6, "color2": 0xFCA4B6, "color3": 0xFCA4B6}; // Time do messi uni 1
 const vik = { "name": '[̲̅V̲̅i̲̅k̲̅i̲̅и̲̅g̲̅ร̲̅]', "type": Uniform, "angle": 60, "textcolor": 0x28231d, "color1": 0xa9957b, "color2": 0xa9957b, "color3": 0x756855};
 const v1 = { "name": '👑 Søbєrαηøs 👑', "type": Uniform, "angle": 60, "textcolor": 0x990DA8, "color1": 0x5E0061, "color2": 0x000000, "color3": 0x000000};
 const v2 = { "name": '🔸 🅽🅴🅾🅽 🔹', "type": Uniform, "angle": 60, "textcolor": 0xFFFFFF, "color1": 0x3DFF1F, "color2": 0xE1E809, "color3": 0x00FF11};
@@ -2270,49 +2270,61 @@ function getPlayersAssistCount() {
 function hatTrickCount() {
     if (goalsRp1 === 3 && teamR.length === 3) {
         storeHatTrick(teamR[0]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
-        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
-        room.sendAnnouncement(centerText(teamR[0].name + " agora tem " + getHatTrick(teamR[0]) + " hat-tricks"), null, white, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+            room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+            room.sendAnnouncement(centerText(teamR[0].name + " agora tem " + getHatTrick(teamR[0]) + " hat-tricks"), null, white, "normal");
+        }, 5000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
     if (goalsRp2 === 3 && teamR.length === 3) {
         storeHatTrick(teamR[1]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
-        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
-        room.sendAnnouncement(centerText(teamR[1].name + " agora tem " + getHatTrick(teamR[1]) + " hat-tricks"), null, white, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+            room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+            room.sendAnnouncement(centerText(teamR[1].name + " agora tem " + getHatTrick(teamR[1]) + " hat-tricks"), null, white, "normal");
+        }, 5000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
     if (goalsRp2 === 3 && teamR.length === 3) {
         storeHatTrick(teamR[2]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
-        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
-        room.sendAnnouncement(centerText(teamR[2].name + " agora tem " + getHatTrick(teamR[2]) + " hat-tricks"), null, white, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+            room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+            room.sendAnnouncement(centerText(teamR[2].name + " agora tem " + getHatTrick(teamR[2]) + " hat-tricks"), null, white, "normal");
+        }, 5000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
     if (goalsBp1 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[0]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
-        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
-        room.sendAnnouncement(centerText(teamB[0].name + " agora tem " + getHatTrick(teamB[0]) + " hat-tricks"), null, white, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+            room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+            room.sendAnnouncement(centerText(teamB[0].name + " agora tem " + getHatTrick(teamB[0]) + " hat-tricks"), null, white, "normal");
+        }, 5000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
     if (goalsBp2 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[1]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
-        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
-        room.sendAnnouncement(centerText(teamB[1].name + " agora tem " + getHatTrick(teamB[1]) + " hat-tricks"), null, white, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+            room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+            room.sendAnnouncement(centerText(teamB[1].name + " agora tem " + getHatTrick(teamB[1]) + " hat-tricks"), null, white, "normal");
+        }, 5000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
     if (goalsBp3 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[2]);
-        room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
-        room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
-        room.sendAnnouncement(centerText(teamB[2].name + " agora tem " + getHatTrick(teamB[2]) + " hat-tricks"), null, white, "normal");
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
+            room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
+            room.sendAnnouncement(centerText(teamB[2].name + " agora tem " + getHatTrick(teamB[2]) + " hat-tricks"), null, white, "normal");
+        }, 5000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
