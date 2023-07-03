@@ -5611,7 +5611,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bar") {
                 nameHome = bar.name;
                 acronymHome = bar;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5621,7 +5621,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "rea") {
                 nameHome = rea.name;
                 acronymHome = rea;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5631,7 +5631,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mci") {
                 nameHome = mci.name;
                 acronymHome = mci;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5641,7 +5641,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "atm") {
                 nameHome = atm.name;
                 acronymHome = atm;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5651,7 +5651,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "psg") {
                 nameHome = psg.name;
                 acronymHome = psg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5661,7 +5661,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "liv") {
                 nameHome = liv.name;
                 acronymHome = liv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5671,7 +5671,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "che") {
                 nameHome = che.name;
                 acronymHome = che;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5681,7 +5681,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "juv") {
                 nameHome = juv.name;
                 acronymHome = juv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5691,7 +5691,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bay") {
                 nameHome = bay.name;
                 acronymHome = bay;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5701,7 +5701,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bra") {
                 nameHome = bra.name;
                 acronymHome = bra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5711,7 +5711,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "ale") {
                 nameHome = ale.name;
                 acronymHome = ale;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5721,7 +5721,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "arg") {
                 nameHome = arg.name;
                 acronymHome = arg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5731,7 +5731,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "esp") {
                 nameHome = esp.name;
                 acronymHome = esp;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5741,7 +5741,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "por") {
                 nameHome = por.name;
                 acronymHome = por;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5751,7 +5751,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "ita") {
                 nameHome = ita.name;
                 acronymHome = ita;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5761,7 +5761,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "uru") {
                 nameHome = uru.name;
                 acronymHome = uru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5771,7 +5771,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "fra") {
                 nameHome = fra.name;
                 acronymHome = fra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5781,7 +5781,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "ing") {
                 nameHome = ing.name;
                 acronymHome = ing;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5791,7 +5791,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bel") {
                 nameHome = bel.name;
                 acronymHome = bel;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5801,7 +5801,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bor") {
                 nameHome = bor.name;
                 acronymHome = bor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5811,7 +5811,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mil") {
                 nameHome = mil.name;
                 acronymHome = mil;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5821,7 +5821,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "intM") {
                 nameHome = intM.name;
                 acronymHome = intM;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5831,7 +5831,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "hol") {
                 nameHome = hol.name;
                 acronymHome = hol;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5841,7 +5841,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "cor") {
                 nameHome = cor.name;
                 acronymHome = cor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5851,7 +5851,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "spfc") {
                 nameHome = spfc.name;
                 acronymHome = spfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5861,7 +5861,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "pal") {
                 nameHome = pal.name;
                 acronymHome = pal;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5871,7 +5871,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "sfc") {
                 nameHome = sfc.name;
                 acronymHome = sfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5881,7 +5881,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "fla") {
                 nameHome = fla.name;
                 acronymHome = fla;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5891,7 +5891,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "vas") {
                 nameHome = vas.name;
                 acronymHome = vas;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5901,7 +5901,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "flu") {
                 nameHome = flu.name;
                 acronymHome = flu;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5911,7 +5911,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "gre") {
                 nameHome = gre.name;
                 acronymHome = gre;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5921,7 +5921,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "int") {
                 nameHome = int.name;
                 acronymHome = int;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5931,7 +5931,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "cru") {
                 nameHome = cru.name;
                 acronymHome = cru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5941,7 +5941,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "boc") {
                 nameHome = boc.name;
                 acronymHome = boc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5951,7 +5951,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "riv") {
                 nameHome = riv.name;
                 acronymHome = riv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5961,7 +5961,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "girl") {
                 nameHome = girl.name;
                 acronymHome = girl;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5971,7 +5971,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mia") {
                 nameHome = mia.name;
                 acronymHome = mia;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5981,7 +5981,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mia2") {
                 nameHome = mia2.name;
                 acronymHome = mia2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -5991,7 +5991,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v1") {
                 nameHome = v1.name;
                 acronymHome = v1;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6001,7 +6001,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v2") {
                 nameHome = v2.name;
                 acronymHome = v2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6011,7 +6011,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v3") {
                 nameHome = v3.name;
                 acronymHome = v3;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6021,7 +6021,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v4") {
                 nameHome = v4.name;
                 acronymHome = v4;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6031,7 +6031,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v5") {
                 nameHome = v5.name;
                 acronymHome = v5;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6041,7 +6041,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "vik") {
                 nameHome = vik.name;
                 acronymHome = vik;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6051,7 +6051,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "inv") {
                 nameHome = inv.name;
                 acronymHome = inv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6063,7 +6063,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bar") {
                 nameGuest = bar.name;
                 acronymGuest = bar;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6072,7 +6072,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "rea") {
                 nameGuest = rea.name;
                 acronymGuest = rea;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6081,7 +6081,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mci") {
                 nameGuest = mci.name;
                 acronymGuest = mci;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6090,7 +6090,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "atm") {
                 nameGuest = atm.name;
                 acronymGuest = atm;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6099,7 +6099,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "psg") {
                 nameGuest = psg.name;
                 acronymGuest = psg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6108,7 +6108,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "liv") {
                 nameGuest = liv.name;
                 acronymGuest = liv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6117,7 +6117,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "che") {
                 nameGuest = che.name;
                 acronymGuest = che;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6126,7 +6126,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "juv") {
                 nameGuest = juv.name;
                 acronymGuest = juv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6135,7 +6135,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bay") {
                 nameGuest = bay.name;
                 acronymGuest = bay;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6144,7 +6144,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bra") {
                 nameGuest = bra.name;
                 acronymGuest = bra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6153,7 +6153,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "ale") {
                 nameGuest = ale.name;
                 acronymGuest = ale;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6162,7 +6162,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "arg") {
                 nameGuest = arg.name;
                 acronymGuest = arg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6171,7 +6171,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "esp") {
                 nameGuest = esp.name;
                 acronymGuest = esp;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6180,7 +6180,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "por") {
                 nameGuest = por.name;
                 acronymGuest = por;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6189,7 +6189,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "ita") {
                 nameGuest = ita.name;
                 acronymGuest = ita;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6198,7 +6198,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "uru") {
                 nameGuest = uru.name;
                 acronymGuest = uru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6207,7 +6207,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "fra") {
                 nameGuest = fra.name;
                 acronymGuest = fra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6216,7 +6216,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "ing") {
                 nameGuest = ing.name;
                 acronymGuest = ing;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6225,7 +6225,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bel") {
                 nameGuest = bel.name;
                 acronymGuest = bel;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6234,7 +6234,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bor") {
                 nameGuest = bor.name;
                 acronymGuest = bor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6243,7 +6243,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mil") {
                 nameGuest = mil.name;
                 acronymGuest = mil;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6252,7 +6252,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "intM") {
                 nameGuest = intM.name;
                 acronymGuest = intM;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6261,7 +6261,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "hol") {
                 nameGuest = hol.name;
                 acronymGuest = hol;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6270,7 +6270,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "cor") {
                 nameGuest = cor.name;
                 acronymGuest = cor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6279,7 +6279,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "spfc") {
                 nameGuest = spfc.name;
                 acronymGuest = spfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6288,7 +6288,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "pal") {
                 nameGuest = pal.name;
                 acronymGuest = pal;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6297,7 +6297,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "sfc") {
                 nameGuest = sfc.name;
                 acronymGuest = sfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6306,7 +6306,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "fla") {
                 nameGuest = fla.name;
                 acronymGuest = fla;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6315,7 +6315,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "vas") {
                 nameGuest = vas.name;
                 acronymGuest = vas;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6324,7 +6324,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "flu") {
                 nameGuest = flu.name;
                 acronymGuest = flu;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6333,7 +6333,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "gre") {
                 nameGuest = gre.name;
                 acronymGuest = gre;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6342,7 +6342,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "int") {
                 nameGuest = int.name;
                 acronymGuest = int;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6351,7 +6351,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "cru") {
                 nameGuest = cru.name;
                 acronymGuest = cru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6360,7 +6360,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "boc") {
                 nameGuest = boc.name;
                 acronymGuest = boc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6369,7 +6369,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "riv") {
                 nameGuest = riv.name;
                 acronymGuest = riv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6378,7 +6378,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "girl") {
                 nameGuest = girl.name;
                 acronymGuest = girl;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6387,7 +6387,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mia") {
                 nameGuest = mia.name;
                 acronymGuest = mia;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6396,7 +6396,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mia2") {
                 nameGuest = mia2.name;
                 acronymGuest = mia2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6405,7 +6405,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v1") {
                 nameGuest = v1.name;
                 acronymGuest = v1;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6414,7 +6414,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v2") {
                 nameGuest = v2.name;
                 acronymGuest = v2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6423,7 +6423,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v3") {
                 nameGuest = v3.name;
                 acronymGuest = v3;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6432,7 +6432,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v4") {
                 nameGuest = v4.name;
                 acronymGuest = v4;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6441,7 +6441,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v5") {
                 nameGuest = v5.name;
                 acronymGuest = v5;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6450,7 +6450,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "vik") {
                 nameGuest = vik.name;
                 acronymGuest = vik;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6459,7 +6459,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "inv") {
                 nameGuest = inv.name;
                 acronymGuest = inv; 
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6478,7 +6478,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bar") {
                 nameHome = bar.name;
                 acronymHome = bar;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6488,7 +6488,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "rea") {
                 nameHome = rea.name;
                 acronymHome = rea;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6498,7 +6498,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mci") {
                 nameHome = mci.name;
                 acronymHome = mci;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6508,7 +6508,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "atm") {
                 nameHome = atm.name;
                 acronymHome = atm;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6518,7 +6518,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "psg") {
                 nameHome = psg.name;
                 acronymHome = psg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6528,7 +6528,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "liv") {
                 nameHome = liv.name;
                 acronymHome = liv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6538,7 +6538,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "che") {
                 nameHome = che.name;
                 acronymHome = che;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6548,7 +6548,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "juv") {
                 nameHome = juv.name;
                 acronymHome = juv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6558,7 +6558,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bay") {
                 nameHome = bay.name;
                 acronymHome = bay;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6568,7 +6568,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bra") {
                 nameHome = bra.name;
                 acronymHome = bra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6578,7 +6578,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "ale") {
                 nameHome = ale.name;
                 acronymHome = ale;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6588,7 +6588,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "arg") {
                 nameHome = arg.name;
                 acronymHome = arg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6598,7 +6598,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "esp") {
                 nameHome = esp.name;
                 acronymHome = esp;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6608,7 +6608,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "por") {
                 nameHome = por.name;
                 acronymHome = por;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6618,7 +6618,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "ita") {
                 nameHome = ita.name;
                 acronymHome = ita;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6628,7 +6628,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "uru") {
                 nameHome = uru.name;
                 acronymHome = uru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6638,7 +6638,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "fra") {
                 nameHome = fra.name;
                 acronymHome = fra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6648,7 +6648,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "ing") {
                 nameHome = ing.name;
                 acronymHome = ing;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6658,7 +6658,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bel") {
                 nameHome = bel.name;
                 acronymHome = bel;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6668,7 +6668,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bor") {
                 nameHome = bor.name;
                 acronymHome = bor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6678,7 +6678,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mil") {
                 nameHome = mil.name;
                 acronymHome = mil;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6688,7 +6688,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "intM") {
                 nameHome = intM.name;
                 acronymHome = intM;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6698,7 +6698,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "hol") {
                 nameHome = hol.name;
                 acronymHome = hol;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6708,7 +6708,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "cor") {
                 nameHome = cor.name;
                 acronymHome = cor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6718,7 +6718,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "spfc") {
                 nameHome = spfc.name;
                 acronymHome = spfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6728,7 +6728,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "pal") {
                 nameHome = pal.name;
                 acronymHome = pal;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6738,7 +6738,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "sfc") {
                 nameHome = sfc.name;
                 acronymHome = sfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6748,7 +6748,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "fla") {
                 nameHome = fla.name;
                 acronymHome = fla;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6758,7 +6758,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "vas") {
                 nameHome = vas.name;
                 acronymHome = vas;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6768,7 +6768,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "flu") {
                 nameHome = flu.name;
                 acronymHome = flu;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6778,7 +6778,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "gre") {
                 nameHome = gre.name;
                 acronymHome = gre;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6788,7 +6788,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "int") {
                 nameHome = int.name;
                 acronymHome = int;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6798,7 +6798,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "cru") {
                 nameHome = cru.name;
                 acronymHome = cru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6808,7 +6808,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "boc") {
                 nameHome = boc.name;
                 acronymHome = boc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6818,7 +6818,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "riv") {
                 nameHome = riv.name;
                 acronymHome = riv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6828,7 +6828,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "girl") {
                 nameHome = girl.name;
                 acronymHome = girl;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6838,7 +6838,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mia") {
                 nameHome = mia.name;
                 acronymHome = mia;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6848,7 +6848,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mia2") {
                 nameHome = mia2.name;
                 acronymHome = mia2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6858,7 +6858,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v1") {
                 nameHome = v1.name;
                 acronymHome = v1;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6868,7 +6868,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v2") {
                 nameHome = v2.name;
                 acronymHome = v2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6878,7 +6878,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v3") {
                 nameHome = v3.name;
                 acronymHome = v3;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6888,7 +6888,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v4") {
                 nameHome = v4.name;
                 acronymHome = v4;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6898,7 +6898,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v5") {
                 nameHome = v5.name;
                 acronymHome = v5;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6908,7 +6908,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "vik") {
                 nameHome = vik.name;
                 acronymHome = vik;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6918,7 +6918,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "inv") {
                 nameHome = inv.name;
                 acronymHome = inv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -6930,7 +6930,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bar") {
                 nameGuest = bar.name;
                 acronymGuest = bar;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6939,7 +6939,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "rea") {
                 nameGuest = rea.name;
                 acronymGuest = rea;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6948,7 +6948,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mci") {
                 nameGuest = mci.name;
                 acronymGuest = mci;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6957,7 +6957,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "atm") {
                 nameGuest = atm.name;
                 acronymGuest = atm;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6966,7 +6966,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "psg") {
                 nameGuest = psg.name;
                 acronymGuest = psg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6975,7 +6975,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "liv") {
                 nameGuest = liv.name;
                 acronymGuest = liv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6984,7 +6984,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "che") {
                 nameGuest = che.name;
                 acronymGuest = che;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -6993,7 +6993,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "juv") {
                 nameGuest = juv.name;
                 acronymGuest = juv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7002,7 +7002,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bay") {
                 nameGuest = bay.name;
                 acronymGuest = bay;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7011,7 +7011,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bra") {
                 nameGuest = bra.name;
                 acronymGuest = bra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7020,7 +7020,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "ale") {
                 nameGuest = ale.name;
                 acronymGuest = ale;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7029,7 +7029,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "arg") {
                 nameGuest = arg.name;
                 acronymGuest = arg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7038,7 +7038,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "esp") {
                 nameGuest = esp.name;
                 acronymGuest = esp;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7047,7 +7047,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "por") {
                 nameGuest = por.name;
                 acronymGuest = por;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7056,7 +7056,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "ita") {
                 nameGuest = ita.name;
                 acronymGuest = ita;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7065,7 +7065,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "uru") {
                 nameGuest = uru.name;
                 acronymGuest = uru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7074,7 +7074,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "fra") {
                 nameGuest = fra.name;
                 acronymGuest = fra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7083,7 +7083,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "ing") {
                 nameGuest = ing.name;
                 acronymGuest = ing;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7092,7 +7092,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bel") {
                 nameGuest = bel.name;
                 acronymGuest = bel;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7101,7 +7101,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bor") {
                 nameGuest = bor.name;
                 acronymGuest = bor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7110,7 +7110,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mil") {
                 nameGuest = mil.name;
                 acronymGuest = mil;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7119,7 +7119,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "intM") {
                 nameGuest = intM.name;
                 acronymGuest = intM;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7128,7 +7128,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "hol") {
                 nameGuest = hol.name;
                 acronymGuest = hol;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7137,7 +7137,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "cor") {
                 nameGuest = cor.name;
                 acronymGuest = cor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7146,7 +7146,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "spfc") {
                 nameGuest = spfc.name;
                 acronymGuest = spfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7155,7 +7155,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "pal") {
                 nameGuest = pal.name;
                 acronymGuest = pal;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7164,7 +7164,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "sfc") {
                 nameGuest = sfc.name;
                 acronymGuest = sfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7173,7 +7173,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "fla") {
                 nameGuest = fla.name;
                 acronymGuest = fla;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7182,7 +7182,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "vas") {
                 nameGuest = vas.name;
                 acronymGuest = vas;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7191,7 +7191,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "flu") {
                 nameGuest = flu.name;
                 acronymGuest = flu;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7200,7 +7200,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "gre") {
                 nameGuest = gre.name;
                 acronymGuest = gre;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7209,7 +7209,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "int") {
                 nameGuest = int.name;
                 acronymGuest = int;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7218,7 +7218,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "cru") {
                 nameGuest = cru.name;
                 acronymGuest = cru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7227,7 +7227,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "boc") {
                 nameGuest = boc.name;
                 acronymGuest = boc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7236,7 +7236,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "riv") {
                 nameGuest = riv.name;
                 acronymGuest = riv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7245,7 +7245,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "girl") {
                 nameGuest = girl.name;
                 acronymGuest = girl;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7254,7 +7254,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mia") {
                 nameGuest = mia.name;
                 acronymGuest = mia;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7263,7 +7263,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mia2") {
                 nameGuest = mia2.name;
                 acronymGuest = mia2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7272,7 +7272,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v1") {
                 nameGuest = v1.name;
                 acronymGuest = v1;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7281,7 +7281,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v2") {
                 nameGuest = v2.name;
                 acronymGuest = v2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7290,7 +7290,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v3") {
                 nameGuest = v3.name;
                 acronymGuest = v3;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7299,7 +7299,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v4") {
                 nameGuest = v4.name;
                 acronymGuest = v4;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7308,7 +7308,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v5") {
                 nameGuest = v5.name;
                 acronymGuest = v5;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7317,7 +7317,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "vik") {
                 nameGuest = vik.name;
                 acronymGuest = vik;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7326,8 +7326,8 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "inv") {
                 nameGuest = inv.name;
                 acronymGuest = inv;
-                mensagem = null;
-                mensagem = null;
+                mensagem = "***";
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7346,7 +7346,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bar") {
                 nameHome = bar.name;
                 acronymHome = bar;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7356,7 +7356,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "rea") {
                 nameHome = rea.name;
                 acronymHome = rea;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7366,7 +7366,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mci") {
                 nameHome = mci.name;
                 acronymHome = mci;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7376,7 +7376,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "atm") {
                 nameHome = atm.name;
                 acronymHome = atm;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7386,7 +7386,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "psg") {
                 nameHome = psg.name;
                 acronymHome = psg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7396,7 +7396,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "liv") {
                 nameHome = liv.name;
                 acronymHome = liv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7406,7 +7406,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "che") {
                 nameHome = che.name;
                 acronymHome = che;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7416,7 +7416,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "juv") {
                 nameHome = juv.name;
                 acronymHome = juv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7426,7 +7426,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bay") {
                 nameHome = bay.name;
                 acronymHome = bay;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7436,7 +7436,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bra") {
                 nameHome = bra.name;
                 acronymHome = bra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7446,7 +7446,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "ale") {
                 nameHome = ale.name;
                 acronymHome = ale;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7456,7 +7456,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "arg") {
                 nameHome = arg.name;
                 acronymHome = arg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7466,7 +7466,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "esp") {
                 nameHome = esp.name;
                 acronymHome = esp;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7476,7 +7476,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "por") {
                 nameHome = por.name;
                 acronymHome = por;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7486,7 +7486,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "ita") {
                 nameHome = ita.name;
                 acronymHome = ita;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7496,7 +7496,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "uru") {
                 nameHome = uru.name;
                 acronymHome = uru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7506,7 +7506,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "fra") {
                 nameHome = fra.name;
                 acronymHome = fra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7516,7 +7516,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "ing") {
                 nameHome = ing.name;
                 acronymHome = ing;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7526,7 +7526,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bel") {
                 nameHome = bel.name;
                 acronymHome = bel;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7536,7 +7536,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bor") {
                 nameHome = bor.name;
                 acronymHome = bor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7546,7 +7546,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mil") {
                 nameHome = mil.name;
                 acronymHome = mil;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7556,7 +7556,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "intM") {
                 nameHome = intM.name;
                 acronymHome = intM;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7566,7 +7566,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "hol") {
                 nameHome = hol.name;
                 acronymHome = hol;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7576,7 +7576,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "cor") {
                 nameHome = cor.name;
                 acronymHome = cor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7586,7 +7586,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "spfc") {
                 nameHome = spfc.name;
                 acronymHome = spfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7596,7 +7596,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "pal") {
                 nameHome = pal.name;
                 acronymHome = pal;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7606,7 +7606,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "sfc") {
                 nameHome = sfc.name;
                 acronymHome = sfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7616,7 +7616,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "fla") {
                 nameHome = fla.name;
                 acronymHome = fla;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7626,7 +7626,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "vas") {
                 nameHome = vas.name;
                 acronymHome = vas;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7636,7 +7636,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "flu") {
                 nameHome = flu.name;
                 acronymHome = flu;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7646,7 +7646,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "gre") {
                 nameHome = gre.name;
                 acronymHome = gre;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7656,7 +7656,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "int") {
                 nameHome = int.name;
                 acronymHome = int;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7666,7 +7666,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "cru") {
                 nameHome = cru.name;
                 acronymHome = cru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7676,7 +7676,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "boc") {
                 nameHome = boc.name;
                 acronymHome = boc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7686,7 +7686,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "riv") {
                 nameHome = riv.name;
                 acronymHome = riv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7696,7 +7696,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "girl") {
                 nameHome = girl.name;
                 acronymHome = girl;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7706,7 +7706,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mia") {
                 nameHome = mia.name;
                 acronymHome = mia;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7716,7 +7716,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "mia2") {
                 nameHome = mia2.name;
                 acronymHome = mia2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7726,7 +7726,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v1") {
                 nameHome = v1.name;
                 acronymHome = v1;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7736,7 +7736,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v2") {
                 nameHome = v2.name;
                 acronymHome = v2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7746,7 +7746,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v3") {
                 nameHome = v3.name;
                 acronymHome = v3;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7756,7 +7756,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v4") {
                 nameHome = v4.name;
                 acronymHome = v4;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7766,7 +7766,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "v5") {
                 nameHome = v5.name;
                 acronymHome = v5;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7776,7 +7776,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "vik") {
                 nameHome = vik.name;
                 acronymHome = vik;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7786,7 +7786,7 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "inv") {
                 nameHome = inv.name;
                 acronymHome = inv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -7798,8 +7798,8 @@ room.onPlayerChat = function (player, message) {
             if (message[0] == "bar") {
                 nameGuest = bar.name;
                 acronymGuest = bar;
-                mensagem = null;
-                mensagem = null;
+                mensagem = "***";
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7808,7 +7808,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "rea") {
                 nameGuest = rea.name;
                 acronymGuest = rea;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7817,7 +7817,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mci") {
                 nameGuest = mci.name;
                 acronymGuest = mci;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7826,7 +7826,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "atm") {
                 nameGuest = atm.name;
                 acronymGuest = atm;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7835,7 +7835,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "psg") {
                 nameGuest = psg.name;
                 acronymGuest = psg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7844,7 +7844,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "liv") {
                 nameGuest = liv.name;
                 acronymGuest = liv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7853,7 +7853,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "che") {
                 nameGuest = che.name;
                 acronymGuest = che;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7862,7 +7862,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "juv") {
                 nameGuest = juv.name;
                 acronymGuest = juv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7871,7 +7871,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bay") {
                 nameGuest = bay.name;
                 acronymGuest = bay;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7880,7 +7880,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bra") {
                 nameGuest = bra.name;
                 acronymGuest = bra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7889,7 +7889,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "ale") {
                 nameGuest = ale.name;
                 acronymGuest = ale;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7898,7 +7898,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "arg") {
                 nameGuest = arg.name;
                 acronymGuest = arg;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7907,7 +7907,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "esp") {
                 nameGuest = esp.name;
                 acronymGuest = esp;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7916,7 +7916,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "por") {
                 nameGuest = por.name;
                 acronymGuest = por;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7925,7 +7925,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "ita") {
                 nameGuest = ita.name;
                 acronymGuest = ita;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7934,7 +7934,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "uru") {
                 nameGuest = uru.name;
                 acronymGuest = uru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7943,7 +7943,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "fra") {
                 nameGuest = fra.name;
                 acronymGuest = fra;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7952,7 +7952,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "ing") {
                 nameGuest = ing.name;
                 acronymGuest = ing;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7961,7 +7961,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bel") {
                 nameGuest = bel.name;
                 acronymGuest = bel;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7970,7 +7970,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "bor") {
                 nameGuest = bor.name;
                 acronymGuest = bor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7979,7 +7979,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mil") {
                 nameGuest = mil.name;
                 acronymGuest = mil;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7988,7 +7988,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "intM") {
                 nameGuest = intM.name;
                 acronymGuest = intM;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -7997,7 +7997,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "hol") {
                 nameGuest = hol.name;
                 acronymGuest = hol;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8006,7 +8006,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "cor") {
                 nameGuest = cor.name;
                 acronymGuest = cor;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8015,7 +8015,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "spfc") {
                 nameGuest = spfc.name;
                 acronymGuest = spfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8024,7 +8024,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "pal") {
                 nameGuest = pal.name;
                 acronymGuest = pal;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8033,7 +8033,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "sfc") {
                 nameGuest = sfc.name;
                 acronymGuest = sfc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8042,7 +8042,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "fla") {
                 nameGuest = fla.name;
                 acronymGuest = fla;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8051,7 +8051,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "vas") {
                 nameGuest = vas.name;
                 acronymGuest = vas;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8060,7 +8060,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "flu") {
                 nameGuest = flu.name;
                 acronymGuest = flu;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8069,7 +8069,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "gre") {
                 nameGuest = gre.name;
                 acronymGuest = gre;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8078,7 +8078,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "int") {
                 nameGuest = int.name;
                 acronymGuest = int;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8087,7 +8087,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "cru") {
                 nameGuest = cru.name;
                 acronymGuest = cru;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8096,7 +8096,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "boc") {
                 nameGuest = boc.name;
                 acronymGuest = boc;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8105,7 +8105,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "riv") {
                 nameGuest = riv.name;
                 acronymGuest = riv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8114,7 +8114,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "girl") {
                 nameGuest = girl.name;
                 acronymGuest = girl;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8123,7 +8123,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mia") {
                 nameGuest = mia.name;
                 acronymGuest = mia;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8132,7 +8132,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "mia2") {
                 nameGuest = mia2.name;
                 acronymGuest = mia2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8141,7 +8141,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v1") {
                 nameGuest = v1.name;
                 acronymGuest = v1;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8150,7 +8150,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v2") {
                 nameGuest = v2.name;
                 acronymGuest = v2;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8159,7 +8159,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v3") {
                 nameGuest = v3.name;
                 acronymGuest = v3;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8168,7 +8168,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v4") {
                 nameGuest = v4.name;
                 acronymGuest = v4;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8177,7 +8177,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "v5") {
                 nameGuest = v5.name;
                 acronymGuest = v5;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8186,7 +8186,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "vik") {
                 nameGuest = vik.name;
                 acronymGuest = vik;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8195,7 +8195,7 @@ room.onPlayerChat = function (player, message) {
             else if (message[0] == "inv") {
                 nameGuest = inv.name;
                 acronymGuest = inv;
-                mensagem = null;
+                mensagem = "***";
                 room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8220,7 +8220,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "bar") {
                     nameHome = bar.name;
                     acronymHome = bar;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8230,7 +8230,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "rea") {
                     nameHome = rea.name;
                     acronymHome = rea;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8240,7 +8240,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "mci") {
                     nameHome = mci.name;
                     acronymHome = mci;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8250,7 +8250,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "atm") {
                     nameHome = atm.name;
                     acronymHome = atm;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8260,7 +8260,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "psg") {
                     nameHome = psg.name;
                     acronymHome = psg;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8270,7 +8270,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "liv") {
                     nameHome = liv.name;
                     acronymHome = liv;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8280,7 +8280,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "che") {
                     nameHome = che.name;
                     acronymHome = che;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8290,7 +8290,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "juv") {
                     nameHome = juv.name;
                     acronymHome = juv;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8300,7 +8300,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "bay") {
                     nameHome = bay.name;
                     acronymHome = bay;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8310,7 +8310,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "bor") {
                     nameHome = bor.name;
                     acronymHome = bor;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8320,7 +8320,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "mil") {
                     nameHome = mil.name;
                     acronymHome = mil;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8330,7 +8330,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "intM") {
                     nameHome = intM.name;
                     acronymHome = intM;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8340,7 +8340,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "cor") {
                     nameHome = cor.name;
                     acronymHome = cor;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8350,7 +8350,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "spfc") {
                     nameHome = spfc.name;
                     acronymHome = spfc;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8360,7 +8360,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "pal") {
                     nameHome = pal.name;
                     acronymHome = pal;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8370,7 +8370,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "sfc") {
                     nameHome = sfc.name;
                     acronymHome = sfc;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8380,7 +8380,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "fla") {
                     nameHome = fla.name;
                     acronymHome = fla;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8390,7 +8390,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "vas") {
                     nameHome = vas.name;
                     acronymHome = vas;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8400,7 +8400,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "flu") {
                     nameHome = flu.name;
                     acronymHome = flu;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8410,7 +8410,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "gre") {
                     nameHome = gre.name;
                     acronymHome = gre;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8420,7 +8420,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "int") {
                     nameHome = int.name;
                     acronymHome = int;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8430,7 +8430,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "cru") {
                     nameHome = cru.name;
                     acronymHome = cru;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8440,7 +8440,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "boc") {
                     nameHome = boc.name;
                     acronymHome = boc;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8450,7 +8450,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "riv") {
                     nameHome = riv.name;
                     acronymHome = riv;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8460,7 +8460,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "mia") {
                     nameHome = mia.name;
                     acronymHome = mia;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8470,7 +8470,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "mia2") {
                     nameHome = mia2.name;
                     acronymHome = mia2;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8480,7 +8480,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "v1") {
                     nameHome = v1.name;
                     acronymHome = v1;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8490,7 +8490,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "v2") {
                     nameHome = v2.name;
                     acronymHome = v2;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8500,7 +8500,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "v3") {
                     nameHome = v3.name;
                     acronymHome = v3;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8510,7 +8510,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "v4") {
                     nameHome = v4.name;
                     acronymHome = v4;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8520,7 +8520,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "v5") {
                     nameHome = v5.name;
                     acronymHome = v5;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8530,7 +8530,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "vik") {
                     nameHome = vik.name;
                     acronymHome = vik;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
@@ -8554,7 +8554,7 @@ room.onPlayerChat = function (player, message) {
                 if (message[0] == "bar") {
                     nameGuest = bar.name;
                     acronymGuest = bar;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8564,7 +8564,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "rea") {
                     nameGuest = rea.name;
                     acronymGuest = rea;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8574,7 +8574,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "mci") {
                     nameGuest = mci.name;
                     acronymGuest = mci;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8584,7 +8584,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "atm") {
                     nameGuest = atm.name;
                     acronymGuest = atm;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8594,7 +8594,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "psg") {
                     nameGuest = psg.name;
                     acronymGuest = psg;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8604,7 +8604,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "liv") {
                     nameGuest = liv.name;
                     acronymGuest = liv;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8614,7 +8614,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "che") {
                     nameGuest = che.name;
                     acronymGuest = che;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8624,7 +8624,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "juv") {
                     nameGuest = juv.name;
                     acronymGuest = juv;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8634,7 +8634,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "bay") {
                     nameGuest = bay.name;
                     acronymGuest = bay;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8644,7 +8644,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "bor") {
                     nameGuest = bor.name;
                     acronymGuest = bor;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8654,7 +8654,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "mil") {
                     nameGuest = mil.name;
                     acronymGuest = mil;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8664,7 +8664,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "intM") {
                     nameGuest = intM.name;
                     acronymGuest = intM;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8674,7 +8674,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "cor") {
                     nameGuest = cor.name;
                     acronymGuest = cor;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8684,7 +8684,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "spfc") {
                     nameGuest = spfc.name;
                     acronymGuest = spfc;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8694,7 +8694,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "pal") {
                     nameGuest = pal.name;
                     acronymGuest = pal;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8704,7 +8704,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "sfc") {
                     nameGuest = sfc.name;
                     acronymGuest = sfc;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8714,7 +8714,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "fla") {
                     nameGuest = fla.name;
                     acronymGuest = fla;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8724,7 +8724,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "vas") {
                     nameGuest = vas.name;
                     acronymGuest = vas;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8734,7 +8734,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "flu") {
                     nameGuest = flu.name;
                     acronymGuest = flu;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8744,7 +8744,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "gre") {
                     nameGuest = gre.name;
                     acronymGuest = gre;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8754,7 +8754,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "int") {
                     nameGuest = int.name;
                     acronymGuest = int;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8764,7 +8764,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "cru") {
                     nameGuest = cru.name;
                     acronymGuest = cru;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8774,7 +8774,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "boc") {
                     nameGuest = boc.name;
                     acronymGuest = boc;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8784,7 +8784,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "riv") {
                     nameGuest = riv.name;
                     acronymGuest = riv;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8794,7 +8794,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "mia") {
                     nameGuest = mia.name;
                     acronymGuest = mia;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8804,7 +8804,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "mia2") {
                     nameGuest = mia2.name;
                     acronymGuest = mia2;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8814,7 +8814,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "v1") {
                     nameGuest = v1.name;
                     acronymGuest = v1;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8824,7 +8824,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "v2") {
                     nameGuest = v2.name;
                     acronymGuest = v2;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8834,7 +8834,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "v3") {
                     nameGuest = v3.name;
                     acronymGuest = v3;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8844,7 +8844,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "v4") {
                     nameGuest = v4.name;
                     acronymGuest = v4;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8854,7 +8854,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "v5") {
                     nameGuest = v5.name;
                     acronymGuest = v5;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
@@ -8864,7 +8864,7 @@ room.onPlayerChat = function (player, message) {
                 else if (message[0] == "vik") {
                     nameGuest = vik.name;
                     acronymGuest = vik;
-                    mensagem = null;
+                    mensagem = "***";
                     room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
