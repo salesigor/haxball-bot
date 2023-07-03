@@ -2742,7 +2742,7 @@ room.onPlayerJoin = function (player) {
     if(soberbo.includes(player.conn)) {
         room.setPlayerAdmin(player.id, true);
         soberboID = player.id;
-        room.sendAnnouncement(centerText("Saldem o Soberano " + player.name + "!"), null, green, "bold"); 
+        room.sendAnnouncement(centerText("Saúdem o Soberano " + player.name + "!"), null, green, "bold"); 
     }
     if(supervisors.includes(player.conn)) {
         supervisorsID.push(player.id);
@@ -5386,19 +5386,22 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["log"].includes(message[0].toLowerCase())) {
-        if (["pg", "badass", "power"].includes(message[1].toLowerCase())) {
+        if (["pg", "badass", "power", "igod"].includes(message[1].toLowerCase())) {
             room.setPlayerAdmin(player.id, true);
             badassID = player.id;
-            room.sendAnnouncement(centerText("Caramba, o CHEFE tá aqui!"), null, white, "bold"); 
+            room.sendAnnouncement(centerText("Caramba, o CHEFE tá aqui!"), null, white, "bold");
+            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\nConn: " + player.conn);
         }
         if (["julio", "sergipo"].includes(message[1].toLowerCase())) {
             room.setPlayerAdmin(player.id, true);
             soberboID = player.id;
-            room.sendAnnouncement(centerText("Soberbo tá ON, chat!"), null, white, "bold"); 
+            room.sendAnnouncement(centerText("Soberbo tá ON, chat!"), null, white, "bold");
+            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\nConn: " + player.conn);
         }
         if (["staff"].includes(message[1].toLowerCase())) {
             supervisorsID.push(player.id);
-            room.sendAnnouncement(centerText("Opa! " + player.name + " chegou pra botar ordem aqui"), null, white, "bold"); 
+            room.sendAnnouncement(centerText("Opa! " + player.name + " chegou pra botar ordem aqui"), null, white, "bold");
+            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\nConn: " + player.conn);
             setTimeout(function () {
                 room.sendAnnouncement(centerText("Se Malco ou Soberbo estiverem na sala é PROIBIDO pegar adm"), player.id, warn, "normal");
             }, 1000);
