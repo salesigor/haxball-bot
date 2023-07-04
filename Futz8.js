@@ -1292,7 +1292,7 @@ let trava = ["㧫璧 觭䢜潇ကᩨ쀡ఈ泄찉넾﫤㏭ 緺", "▓▓
 
 let regex = ["fdp", "cu", "carai", "cuzao", "porra", "arrombado", "cu preto", "lixo", "autista", "lixeira", "verme", "Horrível", "seu merda", "filho da puta", "vsfd",
 "caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu", "crl", "cadeirante", "caderante",
-"nigga", "prr", "CARALHO", "PORRA", "CARAI", "CUZAO", "CUZÃO", "FDP", "FILHO DA PUTA", "Cu", "CU", "CÚ", "PORR", "porr"];
+"nigga", "prr", "CARALHO", "PORRA", "CARAI", "CUZAO", "CUZÃO", "FDP", "FILHO DA PUTA", "Cu", "CU", "CÚ", "PORR", "porr", "PRRA", "fodido", "FODIDO", "CRALHO", "CARLHO"];
 
 let xingo = ["seu preto", "seu macaco", "macaco", "seu negro", "pretinho", "resto de aborto", "seu mcc", "Negrinho", "carvão", "nazista", "Nazista"];
 let malcorage = ["Manco", "manco", "Malco lixo", "malco lixo", "Malco ruim", "malco ruim", "malco fudido", "manko"];
@@ -1302,8 +1302,8 @@ let seacha = ["ez", "facil", "fácil", "easy", "ganhamos", "ganhamo", "ganhamu"]
 let naoconfia = ["perdemos", "perdemo"];
 let sorry = ["mb", "mals", "foi mal", "desculpa", "chapei", "mosquei", "vacilei", "malz"];
 let agradece = ["gg", "boa"];
-let porpouco = ["u", "uu"];
-let raivaquase = ["a", "aa", "merda"];
+let porpouco = ["u", "uu", "uuu", ];
+let raivaquase = ["a", "aa", "merda", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "A", "AA", "AAA", "AAAA",];
 let xis = ["x"];
 let perdidao = ["ue", "ué"];
 let lagadao = ["mto lag", "tolagado", "to lagado", "to lag", "lag demais", "lag dmais", "lagou", "mt lag"];
@@ -4261,9 +4261,19 @@ room.onPlayerChat = function (player, message) {
             window.open("https://discord.gg/AR7ypuzJG8");
         }, 500);
     }
-    if (["!lenda", "lenda"].includes(message[0].toLowerCase())) {
+    if (["lenda"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
+        }, 20);
+    }
+    if (["lendario", "lendário"].includes(message[0].toLowerCase())) {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🥴 LENDÁRIO 🥴"), null, white, "bold");
+        }, 20);
+    }
+    if (["lendas"].includes(message[0].toLowerCase())) {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🥴 LENDAS 🥴"), null, white, "bold");
         }, 20);
     }
     if (["!bar"].includes(message[0].toLowerCase())) {
