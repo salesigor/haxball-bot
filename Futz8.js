@@ -2017,7 +2017,7 @@ function IIIx() {
     }
     else {
         if (teamR.length === 1) {
-            if (teamS.length >= 2) {
+            if (teamS.length > 3) {
                 room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
                 setTimeout(function () {
                     room.setPlayerTeam(teamS[0].id, Team.RED);
@@ -2036,7 +2036,7 @@ function IIIx() {
                 }, 300);
                 rr = false;
             }
-            if (teamS.length >= 1) {
+            if (teamS.length > 2) {
                 room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
                 setTimeout(function () {
                     room.setPlayerTeam(teamS[0].id, Team.RED);
@@ -2057,7 +2057,7 @@ function IIIx() {
             return;
         }
         if (teamR.length === 2) {
-            if (teamS.length >= 1) {
+            if (teamS.length > 2) {
                 room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
                 setTimeout(function () {
                     room.setPlayerTeam(teamS[0].id, Team.RED);
@@ -2078,7 +2078,7 @@ function IIIx() {
             return;
         }
         if (teamB.length === 1) {
-            if (teamS.length >= 2) {
+            if (teamS.length > 3) {
                 room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
                 setTimeout(function () {
                     room.setPlayerTeam(teamS[0].id, Team.BLUE);
@@ -2097,7 +2097,7 @@ function IIIx() {
                 }, 300);
                 rr = false;
             }
-            if (teamS.length >= 1) {
+            if (teamS.length > 2) {
                 room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
                 setTimeout(function () {
                     room.setPlayerTeam(teamS[0].id, Team.BLUE);
@@ -2118,7 +2118,7 @@ function IIIx() {
             return;
         }
         if (teamB.length === 2) {
-            if (teamS.length >= 1) {
+            if (teamS.length > 2) {
                 room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
                 setTimeout(function () {
                     room.setPlayerTeam(teamS[0].id, Team.BLUE);
