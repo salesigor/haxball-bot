@@ -2132,9 +2132,9 @@ function IIIx() {
                     }, 5);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                        rr = false;
                     }, 800);
                 }, 300);
-                rr = false;
             }
             return;
         }
