@@ -1553,7 +1553,7 @@ function namoradosfieis(goaler, assistant) {
         var announcement = messages[randomIndex];
         setTimeout(function () {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
-        }, 2500);
+        }, 3000);
     }
     if (goaler.id === lanoche && assistant.id === lodiaz) {
         var messages = [
@@ -1565,7 +1565,7 @@ function namoradosfieis(goaler, assistant) {
         var announcement = messages[randomIndex];
         setTimeout(function () {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
-        }, 2500);
+        }, 3000);
     }
 };
 function igodnesses(goaler, assistant) {
@@ -1580,7 +1580,7 @@ function igodnesses(goaler, assistant) {
         var announcement = messages[randomIndex];
         setTimeout(function () {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
-        }, 2500);
+        }, 3000);
     }
     if (assistant.id === badassID) {
         var messages = [
@@ -1594,7 +1594,7 @@ function igodnesses(goaler, assistant) {
         var announcement = messages[randomIndex];
         setTimeout(function () {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
-        }, 2500);
+        }, 3000);
     }
 };
 function soberbagem(goaler, assistant) {
@@ -1609,7 +1609,7 @@ function soberbagem(goaler, assistant) {
         var announcement = messages[randomIndex];
         setTimeout(function () {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
-        }, 2500);
+        }, 3000);
     }
     if (assistant.id === soberboID) {
         var messages = [
@@ -1622,13 +1622,12 @@ function soberbagem(goaler, assistant) {
         var announcement = messages[randomIndex];
         setTimeout(function () {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
-        }, 2500);
+        }, 3000);
     }
 };
 function golcontra(goaler) {
     var messages = [
         "Se deu mal, " + goaler.name + "! 🤡",
-        "Se ferrou, " + goaler.name + "! 🤡 kkk",
         goaler.name + " aí não, pô! 🤡",
         "Calma " + goaler.name + ", não tá fácil pra ninguém...",
         "Dica pro " + goaler.name + ": Na próxima... NÃO MIRA NO SEU GOL!!",
@@ -1638,7 +1637,36 @@ function golcontra(goaler) {
     var announcement = messages[randomIndex];
     setTimeout(function () {
         room.sendAnnouncement(centerText(announcement), null, white, "bold");
-    }, 2500);
+    }, 3000);
+};
+function goldelanoche(goaler, assistant) {
+    if (goaler.id === lanoche) {
+        var messages = [
+            "Ankara, ankara, " + goaler.name + "! 🐐",
+            "kk 🐐🐐🐐🐐 " + goaler.name + " o GOAT cantou! 🐐🐐🐐🐐 kk",
+            "Respeita o " + goaler.name + ", chat! 🐐",
+            "Respeita o GOAT, chat! 🐐",
+            "Merecido! Sou fã desse cara... Quem mais?",
+            "Golzinho mixuruca, em " + goaler.name + "? kkkkkk Zuera",
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 3000);
+    }
+    if (assistant.id === lanoche) {
+        var messages = [
+            "Que passe, pae! 🐐",
+            goaler.name + " ficou fácil com esse passe do " + assistant.name + "... 🐐",
+            assistant.name + " tá pra jogo? Acho que sim, com uns passes desses..."
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 3000);
+    }
 };
 //
 function storeHatTrick(player) {
@@ -1989,34 +2017,124 @@ function IIIx() {
     }
     else {
         if (teamR.length === 1) {
-            if (teamS.length > 2) {
-                room.setPlayerTeam(teamS[0].id, Team.RED);
-                room.setPlayerTeam(teamS[1].id, Team.RED);
+            if (teamS.length >= 2) {
+                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
+                setTimeout(function () {
+                    room.setPlayerTeam(teamS[0].id, Team.RED);
+                    room.setPlayerTeam(teamS[1].id, Team.RED);
+                    rr = true;
+                    setTimeout(function () {
+                        room.stopGame();
+                        checkTeamSizeAndChangeMap();
+                        setTimeout(function () {
+                        room.startGame();
+                        }, 5);
+                    }, 5);
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                    }, 800);
+                }, 300);
+                rr = false;
             }
-            if (teamS.length > 1) {
-                room.setPlayerTeam(teamS[0].id, Team.RED);
+            if (teamS.length >= 1) {
+                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
+                setTimeout(function () {
+                    room.setPlayerTeam(teamS[0].id, Team.RED);
+                    rr = true;
+                    setTimeout(function () {
+                        room.stopGame();
+                        checkTeamSizeAndChangeMap();
+                        setTimeout(function () {
+                        room.startGame();
+                        }, 5);
+                    }, 5);
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                    }, 800);
+                }, 300);
+                rr = false;
             }
             return;
         }
         if (teamR.length === 2) {
-            if (teamS.length > 1) {
-                room.setPlayerTeam(teamS[0].id, Team.RED);
+            if (teamS.length >= 1) {
+                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
+                setTimeout(function () {
+                    room.setPlayerTeam(teamS[0].id, Team.RED);
+                    rr = true;
+                    setTimeout(function () {
+                        room.stopGame();
+                        checkTeamSizeAndChangeMap();
+                        setTimeout(function () {
+                        room.startGame();
+                        }, 5);
+                    }, 5);
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                    }, 800);
+                }, 300);
+                rr = false;
             }
             return;
         }
         if (teamB.length === 1) {
-            if (teamS.length > 2) {
-                room.setPlayerTeam(teamS[0].id, Team.BLUE);
-                room.setPlayerTeam(teamS[1].id, Team.BLUE);
+            if (teamS.length >= 2) {
+                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
+                setTimeout(function () {
+                    room.setPlayerTeam(teamS[0].id, Team.BLUE);
+                    room.setPlayerTeam(teamS[1].id, Team.BLUE);
+                    rr = true;
+                    setTimeout(function () {
+                        room.stopGame();
+                        checkTeamSizeAndChangeMap();
+                        setTimeout(function () {
+                        room.startGame();
+                        }, 5);
+                    }, 5);
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                    }, 800);
+                }, 300);
+                rr = false;
             }
-            if (teamS.length > 1) {
-                room.setPlayerTeam(teamS[0].id, Team.BLUE);
+            if (teamS.length >= 1) {
+                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
+                setTimeout(function () {
+                    room.setPlayerTeam(teamS[0].id, Team.BLUE);
+                    rr = true;
+                    setTimeout(function () {
+                        room.stopGame();
+                        checkTeamSizeAndChangeMap();
+                        setTimeout(function () {
+                        room.startGame();
+                        }, 5);
+                    }, 5);
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                    }, 800);
+                }, 300);
+                rr = false;
             }
             return;
         }
         if (teamB.length === 2) {
-            if (teamS.length > 1) {
-                room.setPlayerTeam(teamS[0].id, Team.BLUE);
+            if (teamS.length >= 1) {
+                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
+                setTimeout(function () {
+                    room.setPlayerTeam(teamS[0].id, Team.BLUE);
+                    rr = true;
+                    setTimeout(function () {
+                        room.stopGame();
+                        checkTeamSizeAndChangeMap();
+                        setTimeout(function () {
+                        room.startGame();
+                        }, 5);
+                    }, 5);
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                    }, 800);
+                }, 300);
+                rr = false;
             }
             return;
         }
@@ -2348,7 +2466,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamR[0].name + " agora tem " + getHatTrick(teamR[0]) + " hat-tricks"), null, white, "normal");
-        }, 5000);
+        }, 3000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
@@ -2358,7 +2476,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamR[1].name + " agora tem " + getHatTrick(teamR[1]) + " hat-tricks"), null, white, "normal");
-        }, 5000);
+        }, 3000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
@@ -2368,7 +2486,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamR[2].name + " agora tem " + getHatTrick(teamR[2]) + " hat-tricks"), null, white, "normal");
-        }, 5000);
+        }, 3000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
@@ -2378,7 +2496,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamB[0].name + " agora tem " + getHatTrick(teamB[0]) + " hat-tricks"), null, white, "normal");
-        }, 5000);
+        }, 3000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
@@ -2388,7 +2506,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamB[1].name + " agora tem " + getHatTrick(teamB[1]) + " hat-tricks"), null, white, "normal");
-        }, 5000);
+        }, 3000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
@@ -2398,7 +2516,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("🏆⚽ -- Mais um entra pra história da FUTZ! -- ⚽🏆"), null, yellow, "normal");
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamB[2].name + " agora tem " + getHatTrick(teamB[2]) + " hat-tricks"), null, white, "normal");
-        }, 5000);
+        }, 3000);
         sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
@@ -4691,7 +4809,7 @@ room.onPlayerChat = function (player, message) {
                         room.sendAnnouncement(centerText("A Partida foi reniciada"), null, warn, "bold")
                         }, 5);
                     }, 5);
-                }, 5);;
+                }, 5);
             }, 50);
             setTimeout(function () {
                 rr = false;
