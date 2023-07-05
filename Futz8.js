@@ -2432,6 +2432,33 @@ function getPlayersGoalCount() {
     }
 };
 
+function getPlayersGoalContra() {
+    if (teamR.length == 1) {
+        if (lastPlayersTouched[0].id == teamR[0].id) {goalsRp1--;}
+    }
+    if (teamR.length == 2) {
+        if (lastPlayersTouched[0].id == teamR[0].id) {goalsRp1--;}
+        if (lastPlayersTouched[0].id == teamR[1].id) {goalsRp2--;}
+    }
+    if (teamR.length == 3) {
+        if (lastPlayersTouched[0].id == teamR[0].id) {goalsRp1--;}
+        if (lastPlayersTouched[0].id == teamR[1].id) {goalsRp2--;}
+        if (lastPlayersTouched[0].id == teamR[2].id) {goalsRp3--;}
+    }
+    if (teamB.length == 1) {
+        if (lastPlayersTouched[0].id == teamB[0].id) {goalsBp1--;}
+    }
+    if (teamB.length == 2) {
+        if (lastPlayersTouched[0].id == teamB[0].id) {goalsBp1--;}
+        if (lastPlayersTouched[0].id == teamB[1].id) {goalsBp2--;}
+    }
+    if (teamB.length == 3) {
+        if (lastPlayersTouched[0].id == teamB[0].id) {goalsBp1--;}
+        if (lastPlayersTouched[0].id == teamB[1].id) {goalsBp2--;}
+        if (lastPlayersTouched[0].id == teamB[2].id) {goalsBp3--;}
+    }
+};
+
 function getPlayersAssistCount() {
     if (teamR.length == 1) {
         if (lastPlayersTouched[1].id == teamR[0].id) {assistsRp1++;}
@@ -3134,7 +3161,7 @@ room.onPlayerChat = function (player, message) {
     }
     if (["!record", "record"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Record Atual: " + obterRecordeStreak().streakers + " vitórias consecutivas!"), null, white, "bold");
-        room.sendAnnouncement(centerText("Faltam " + (obterRecordeStreak().jogadores - streak) + " vitórias para " + nameHome + " alcançar"), null, white, "bold", 0);
+        room.sendAnnouncement(centerText("Faltam " + (obterRecordeStreak().streakers - streak) + " vitórias para " + nameHome + " alcançar"), null, white, "bold", 0);
         return false;
     }
     if (["!stats"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, mostra para todos da sala.
@@ -9450,6 +9477,7 @@ room.onTeamGoal = function (team) {
             }, 0);
 		}
         golcontra(lastPlayersTouched[0]);
+        getPlayersGoalContra();
 	}
 	room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "normal");
     if (scores.scoreLimit != 0 && (scores.red == scores.scoreLimit || scores.blue == scores.scoreLimit || goldenGoal == true)) {
