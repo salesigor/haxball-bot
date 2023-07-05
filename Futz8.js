@@ -2032,9 +2032,9 @@ function IIIx() {
                     }, 5);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                        rr = false;
                     }, 800);
                 }, 300);
-                rr = false;
             }
             if (teamS.length > 2) {
                 room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
@@ -2050,9 +2050,9 @@ function IIIx() {
                     }, 5);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                        rr = false;
                     }, 800);
                 }, 300);
-                rr = false;
             }
             return;
         }
@@ -2071,9 +2071,9 @@ function IIIx() {
                     }, 5);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                        rr = false;
                     }, 800);
                 }, 300);
-                rr = false;
             }
             return;
         }
@@ -2093,9 +2093,9 @@ function IIIx() {
                     }, 5);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                        rr = false;
                     }, 800);
                 }, 300);
-                rr = false;
             }
             if (teamS.length > 2) {
                 room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
@@ -2111,9 +2111,9 @@ function IIIx() {
                     }, 5);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
+                        rr = false;
                     }, 800);
                 }, 300);
-                rr = false;
             }
             return;
         }
