@@ -1236,16 +1236,14 @@ let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
 const soberbo = ['3137392E3235302E33322E3537']; // soberbo
-const badass = ['3230302E3135382E3234392E313931', '3137372E3130322E3133372E3632', '3139312E3230392E34332E313533', '3137372E36382E32342E313239']; // malco
+const badass = ['3230302E3135382E3235302E313230']; // malco
 const supervisors = ['3138392E33302E38342E323335', '3138392E33342E31372E313539']; // Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 const blacklistnames = ["Arthur MM - ᱦiᱮ∀Ʀd - Schneider - Alcione III - MACACO"];
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III, MACACO
-const cartaoamarelo = [
-    '3138392E38352E32392E3739', '3138392E38352E32392E3733', '3138392E38352E32392E323434', '3138372E36302E3231372E313934'
-]; // 𝘿𝙄𝘼𝙕
-var lodiazCONN = "3138392E38352E32392E323434"; // conn do 𝘿𝙄𝘼𝙕
+const cartaoamarelo = ['3138392E38352E32392E3736']; // 𝘿𝙄𝘼𝙕
+var lodiazCONN = "3138392E38352E32392E3736"; // conn do 𝘿𝙄𝘼𝙕
 var lanocheCONN = "3138392E33342E31372E313539"; // conn do 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 var lodiaz = []; // id do 𝘿𝙄𝘼𝙕
 var lanoche = []; // id do 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
@@ -1302,14 +1300,14 @@ let seacha = ["ez", "facil", "fácil", "easy", "ganhamos", "ganhamo", "ganhamu"]
 let naoconfia = ["perdemos", "perdemo"];
 let sorry = ["mb", "mals", "foi mal", "desculpa", "chapei", "mosquei", "vacilei", "malz"];
 let agradece = ["gg", "boa"];
-let porpouco = ["u", "uu", "uuu", ];
-let raivaquase = ["a", "aa", "merda", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "A", "AA", "AAA", "AAAA",];
-let xis = ["x"];
+let porpouco = ["u", "uu", "uuu", "U", "quase"];
+let raivaquase = ["a", "aa", "merda", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "A", "AA", "AAA", "AAAA", "aaa", "ah", "AH"];
+let xis = ["x", "xx", "X", "XX"];
 let perdidao = ["ue", "ué"];
-let lagadao = ["mto lag", "tolagado", "to lagado", "to lag", "lag demais", "lag dmais", "lagou", "mt lag"];
+let lagadao = ["mto lag", "tolagado", "to lagado", "to lag", "lag demais", "lag dmais", "lagou", "mt lag", "tolag", "lag"];
 let relaxado = ["rlx", "relaxa", "acontece", "dboa", "de boa", "suave", "suav"];
-let humilhante = ["oe", "ole", "tomou"];
-let humilhado = ["tomei"];
+let humilhante = ["oe", "ole", "tomou", "mamou"];
+let humilhado = ["tomei", "levei", "mamei", "MAMEI"];
 
 function nameForbid(player) {
     if (forbid.includes(player.name)) { room.kickPlayer(player.id, 'nick proibido nessa sala', false) }
@@ -5660,7 +5658,7 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
-    if (humilhante.includes(mensagem)) {
+    if (humilhante.includes(message[0])) {
         var messages = [
             "Esse tomou em!",
             "Ai, pae... Devagar!",
@@ -5673,7 +5671,33 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 300);
     }
-    if (humilhado.includes(mensagem)) {
+    if (humilhante.includes(message[1])) {
+        var messages = [
+            "Esse tomou em!",
+            "Ai, pae... Devagar!",
+            "Vem tranquilo, nego kkkk",
+            "Depois dessa, eu mandava um !bb... kkk Brincadeira, fica ai."
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (humilhante.includes(message[2])) {
+        var messages = [
+            "Esse tomou em!",
+            "Ai, pae... Devagar!",
+            "Vem tranquilo, nego kkkk",
+            "Depois dessa, eu mandava um !bb... kkk Brincadeira, fica ai."
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (humilhado.includes(message[0])) {
         var messages = [
             "Puts mano... Tomou memo, " + player.name,
             "Ficou feio pro seu lado, " + player.name + "!"
@@ -5684,7 +5708,29 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 300);
     }
-    if (chorao.includes(mensagem)) {
+    if (humilhado.includes(message[1])) {
+        var messages = [
+            "Puts mano... Tomou memo, " + player.name,
+            "Ficou feio pro seu lado, " + player.name + "!"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (humilhado.includes(message[2])) {
+        var messages = [
+            "Puts mano... Tomou memo, " + player.name,
+            "Ficou feio pro seu lado, " + player.name + "!"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (chorao.includes(message[0])) {
         var messages1 = [
             "Vixe, chat",
             "Ae, rapa",
@@ -5708,7 +5754,55 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement2), null, white, "bold");
         }, 600);
     }
-    if (porpouco.includes(mensagem)) {
+    if (chorao.includes(message[1])) {
+        var messages1 = [
+            "Vixe, chat",
+            "Ae, rapa",
+            " ",
+            " ",
+        ];
+        var messages2 = [
+            player.name + " ficou bravo...",
+            player.name + " não curtiu, em...",
+            player.name + " ficou puto...",
+            "Te entendo, " + player.name + " foi feio..."
+        ];
+        var randomIndex1 = Math.floor(Math.random() * messages1.length);
+        var announcement1 = messages1[randomIndex1];
+        var randomIndex2 = Math.floor(Math.random() * messages2.length);
+        var announcement2 = messages2[randomIndex2];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement1), null, white, "bold");
+        }, 300);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement2), null, white, "bold");
+        }, 600);
+    }
+    if (chorao.includes(message[2])) {
+        var messages1 = [
+            "Vixe, chat",
+            "Ae, rapa",
+            " ",
+            " ",
+        ];
+        var messages2 = [
+            player.name + " ficou bravo...",
+            player.name + " não curtiu, em...",
+            player.name + " ficou puto...",
+            "Te entendo, " + player.name + " foi feio..."
+        ];
+        var randomIndex1 = Math.floor(Math.random() * messages1.length);
+        var announcement1 = messages1[randomIndex1];
+        var randomIndex2 = Math.floor(Math.random() * messages2.length);
+        var announcement2 = messages2[randomIndex2];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement1), null, white, "bold");
+        }, 300);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement2), null, white, "bold");
+        }, 600);
+    }
+    if (porpouco.includes(message[0])) {
         var messages = [
             "Puts mano... Quase foi",
             "Passou pertooooo!",
@@ -5720,7 +5814,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 300);
     }
-    if (relaxado.includes(mensagem)) {
+    if (relaxado.includes(message[0])) {
         var messages = [
             "Relaxa nada! Bora pro jogo recuperar isso aí!",
             "kkk O " + player.name + " ta relaxado...",
@@ -5732,7 +5826,31 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 300);
     }
-    if (perdidao.includes(mensagem)) {
+    if (relaxado.includes(message[1])) {
+        var messages = [
+            "Relaxa nada! Bora pro jogo recuperar isso aí!",
+            "kkk O " + player.name + " ta relaxado...",
+            player.name + " ta sem stress hoje, pelo visto kk"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (relaxado.includes(message[2])) {
+        var messages = [
+            "Relaxa nada! Bora pro jogo recuperar isso aí!",
+            "kkk O " + player.name + " ta relaxado...",
+            player.name + " ta sem stress hoje, pelo visto kk"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (perdidao.includes(message[0])) {
         var messages = [
             "Ué oque? Se perdeu? kk",
             "Se liga, o " + player.name + " tá perdidão! kkk"
@@ -5743,7 +5861,43 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 300);
     }
-    if (xis.includes(mensagem)) {
+    if (perdidao.includes(message[1])) {
+        var messages = [
+            "Ué oque? Se perdeu? kk",
+            "Se liga, o " + player.name + " tá perdidão! kkk"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (perdidao.includes(message[2])) {
+        var messages = [
+            "Ué oque? Se perdeu? kk",
+            "Se liga, o " + player.name + " tá perdidão! kkk"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (xis.includes(message[0])) {
+        var messages = [
+            "É X-men, caramba?",
+            "Apeeerta esse botão se não o " + player.name + " vai estressar!",
+            "x é a marca do 𝐌𝐚𝐥𝐜𝐨, " + player.name + "... ❌ Malco o Rei ❌",
+            "XXXXXXX",
+            "CHUTAAA, MANOOOOOO!!"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (xis.includes(message[1])) {
         var messages = [
             "É X-men, caramba?",
             "Apeeerta esse botão se não o " + player.name + " vai estressar!",
@@ -5755,7 +5909,19 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 300);
     }
-    if (raivaquase.includes(mensagem)) {
+    if (xis.includes(message[2])) {
+        var messages = [
+            "É X-men, caramba?",
+            "Apeeerta esse botão se não o " + player.name + " vai estressar!",
+            "x é a marca do 𝐌𝐚𝐥𝐜𝐨, " + player.name + "... ❌ Malco o Rei ❌"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (raivaquase.includes(message[0])) {
         var messages = [
             "Fica bravo não, pae. Acontece...",
             "Calma, " + player.name + "... No final da tudo errado!",
@@ -5767,7 +5933,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 300);
     }
-    if (seacha.includes(mensagem)) {
+    if (seacha.includes(message[0])) {
         var messages = [
             "Vixe, subiu pra cabeça",
             "Calmou, " + player.name,
@@ -5779,7 +5945,43 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 600);
     }
-    if (agradece.includes(mensagem)) {
+    if (seacha.includes(message[1])) {
+        var messages = [
+            "Vixe, subiu pra cabeça",
+            "Calmou, " + player.name,
+            "kkkk Desumildou, já " + player.name + "?"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (seacha.includes(message[2])) {
+        var messages = [
+            "Vixe, subiu pra cabeça",
+            "Calmou, " + player.name,
+            "kkkk Desumildou, já " + player.name + "?"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (seacha.includes(message[3])) {
+        var messages = [
+            "Vixe, subiu pra cabeça",
+            "Calmou, " + player.name,
+            "kkkk Desumildou, já " + player.name + "?"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (agradece.includes(message[0])) {
         var messages = [
             "Assino até PREMIERE pra assistir jogos assim...",
             "Jogão, né " + player.name + "?"
@@ -5790,7 +5992,29 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 600);
     }
-    if (sorry.includes(mensagem)) {
+    if (agradece.includes(message[1])) {
+        var messages = [
+            "Assino até PREMIERE pra assistir jogos assim...",
+            "Jogão, né " + player.name + "?"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (agradece.includes(message[2])) {
+        var messages = [
+            "Assino até PREMIERE pra assistir jogos assim...",
+            "Jogão, né " + player.name + "?"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (sorry.includes(message[0])) {
         var messages = [
             "Xi, essa foi vacilo...",
             "Moscou, " + player.name + "...",
@@ -5802,7 +6026,43 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 600);
     }
-    if (confuso.includes(mensagem)) {
+    if (sorry.includes(message[1])) {
+        var messages = [
+            "Xi, essa foi vacilo...",
+            "Moscou, " + player.name + "...",
+            "Tem que se retratar agora, " + player.name + "!"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (sorry.includes(message[2])) {
+        var messages = [
+            "Xi, essa foi vacilo...",
+            "Moscou, " + player.name + "...",
+            "Tem que se retratar agora, " + player.name + "!"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (sorry.includes(message[3])) {
+        var messages = [
+            "Xi, essa foi vacilo...",
+            "Moscou, " + player.name + "...",
+            "Tem que se retratar agora, " + player.name + "!"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
+    }
+    if (confuso.includes(message[0])) {
         var messages = [
             "Me parece que nosso amigo " + player.name + " não entendeu o lance.",
             "Alguém explica o lance pro " + player.name,
@@ -5814,7 +6074,19 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 300);
     }
-    if (naoconfia.includes(mensagem)) {
+    if (confuso.includes(message[0])) {
+        var messages = [
+            "Me parece que nosso amigo " + player.name + " não entendeu o lance.",
+            "Alguém explica o lance pro " + player.name,
+            "Te entendo, " + player.name + " foi feio..."
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (naoconfia.includes(message[0])) {
         var messages = [
             "O mano " + player.name + " não tá acreditando na equipe.",
             "Qual foi " + player.name + "? Da seus pulos!",
@@ -5826,21 +6098,115 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 300);
     }
-    if (malcorage.includes(mensagem)) {
+    if (naoconfia.includes(message[1])) {
+        var messages = [
+            "O mano " + player.name + " não tá acreditando na equipe.",
+            "Qual foi " + player.name + "? Da seus pulos!",
+            "Se liga no " + player.name + " mandando a ZIKA REVERSA kkk"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (naoconfia.includes(message[2])) {
+        var messages = [
+            "O mano " + player.name + " não tá acreditando na equipe.",
+            "Qual foi " + player.name + "? Da seus pulos!",
+            "Se liga no " + player.name + " mandando a ZIKA REVERSA kkk"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (malcorage.includes(message[0])) {
         room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", false);
         room.sendAnnouncement(centerText("Player " + player.name + " falou mal do 𝐌𝐚𝐥𝐜𝐨"), null, warn, "italic");
         return false;
     }
-    if (xingo.includes(mensagem)) {
+    if (malcorage.includes(message[1])) {
+        room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", false);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou mal do 𝐌𝐚𝐥𝐜𝐨"), null, warn, "italic");
+        return false;
+    }
+    if (malcorage.includes(message[2])) {
+        room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", false);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou mal do 𝐌𝐚𝐥𝐜𝐨"), null, warn, "italic");
+        return false;
+    }
+    if (malcorage.includes(message[3])) {
+        room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", false);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou mal do 𝐌𝐚𝐥𝐜𝐨"), null, warn, "italic");
+        return false;
+    }
+    if (malcorage.includes(message[4])) {
+        room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", false);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou mal do 𝐌𝐚𝐥𝐜𝐨"), null, warn, "italic");
+        return false;
+    }
+    if (malcorage.includes(message[5])) {
+        room.kickPlayer(player.id, "❌ Jamais fale mal do Malco 👎", false);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou mal do 𝐌𝐚𝐥𝐜𝐨"), null, warn, "italic");
+        return false;
+    }
+    if (xingo.includes(message[0])) {
         room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", false);
         room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
         return false;
     }
-    if (regex.includes(mensagem)) {
+    if (xingo.includes(message[1])) {
+        room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", false);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
+        return false;
+    }
+    if (xingo.includes(message[2])) {
+        room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", false);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
+        return false;
+    }
+    if (xingo.includes(message[3])) {
+        room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", false);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
+        return false;
+    }
+    if (xingo.includes(message[4])) {
+        room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", false);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
+        return false;
+    }
+    if (xingo.includes(message[5])) {
+        room.kickPlayer(player.id, "❌ Isso não foi legal. 👎", false);
+        room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
+        return false;
+    }
+    if (regex.includes(message[0])) {
         room.sendAnnouncement("Sem palavrões, " + player.name, null, warn, "italic", 2);
         return false;
     }
-    if (trava.includes(mensagem)) {
+    if (regex.includes(message[1])) {
+        room.sendAnnouncement("Sem palavrões, " + player.name, null, warn, "italic", 2);
+        return false;
+    }
+    if (regex.includes(message[2])) {
+        room.sendAnnouncement("Sem palavrões, " + player.name, null, warn, "italic", 2);
+        return false;
+    }
+    if (regex.includes(message[3])) {
+        room.sendAnnouncement("Sem palavrões, " + player.name, null, warn, "italic", 2);
+        return false;
+    }
+    if (regex.includes(message[4])) {
+        room.sendAnnouncement("Sem palavrões, " + player.name, null, warn, "italic", 2);
+        return false;
+    }
+    if (regex.includes(message[5])) {
+        room.sendAnnouncement("Sem palavrões, " + player.name, null, warn, "italic", 2);
+        return false;
+    }
+    if (trava.includes(message[0])) {
         room.kickPlayer(player.id, "❌ Trava-Hax detectada", false);
         room.sendAnnouncement(centerText("Player " + player.name + " falou merda"), null, warn, "italic");
         return false;
