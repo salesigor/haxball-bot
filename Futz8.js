@@ -1247,8 +1247,8 @@ const cartaoamarelo = [
 ]; // 𝘿𝙄𝘼𝙕
 var lodiazCONN = "3138392E38352E32392E323434"; // conn do 𝘿𝙄𝘼𝙕
 var lanocheCONN = "3138392E33342E31372E313539"; // conn do 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
-let lodiaz = ""; // id do 𝘿𝙄𝘼𝙕
-let lanoche = ""; // id do 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
+var lodiaz = []; // id do 𝘿𝙄𝘼𝙕
+var lanoche = []; // id do 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 var blacklist = [
     {Nick: "Arthur MM", Auth: "YD0Jm8MmB9G9YJCwJEEoIcC1SvD3Q2811xT9T-NTmVw", Conn: "3137372E35372E3135302E313736"},
     {Nick: "ᱦiᱮ∀Ʀd", Auth: "YJINpE0p70-sAT-nTx10vI5VvHyQ-jkZ1C-zi6dI2us", Conn: "3136372E3234392E39332E313135"},
@@ -5866,7 +5866,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5876,7 +5876,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5886,7 +5886,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5896,7 +5896,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5906,7 +5906,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5916,7 +5916,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5926,7 +5926,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5936,7 +5936,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5946,7 +5946,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5956,7 +5956,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5966,7 +5966,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5976,7 +5976,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5986,7 +5986,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -5996,7 +5996,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6006,7 +6006,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6016,7 +6016,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6026,7 +6026,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6036,7 +6036,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6046,7 +6046,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6056,7 +6056,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6066,7 +6066,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6076,7 +6076,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6086,7 +6086,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6096,7 +6096,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6106,7 +6106,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6116,7 +6116,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6126,7 +6126,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6136,7 +6136,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6146,7 +6146,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6156,7 +6156,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6166,7 +6166,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6176,7 +6176,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6186,7 +6186,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6196,7 +6196,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6206,7 +6206,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6216,7 +6216,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6226,7 +6226,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6236,7 +6236,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6246,7 +6246,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6256,7 +6256,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6266,7 +6266,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6276,7 +6276,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6286,7 +6286,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6296,7 +6296,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
@@ -6306,7 +6306,7 @@ room.onPlayerChat = function (player, message) {
                 mensagem = "***";
                 room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("❌ " + player.nam + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
+                    room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
                 return false;
             }
