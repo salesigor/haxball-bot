@@ -6374,27 +6374,27 @@ room.onPlayerChat = function (player, message) {
             room.setDiscProperties(0, {x: 0, y: 0});
             return false;
         }
-        if (message[2] == "7") {
+        if (message[0] == "7") {
             room.setDiscProperties(0, {x: -570.2821922951052, y: 2.6400869399422042});
             return false;
         }
-        if (message[2] == "9") {
+        if (message[0] == "9") {
             room.setDiscProperties(0, {x: 570.3752459334647, y: 6.043002925110973});
             return false;
         }
-        if (message[2] == "1") {
+        if (message[0] == "1") {
             room.setDiscProperties(0, {x: -373.5936483523506, y: 0.5983373488409471});
             return false;
         }
-        if (message[2] == "3") {
+        if (message[0] == "3") {
             room.setDiscProperties(0, {x: 375.7284515818114, y: 1.2789205458747022});
             return false;
         }
-        if (message[2] == "4") {
+        if (message[0] == "4") {
             room.setDiscProperties(0, {x: -278.0267002914287, y: 0.8277074874489898});
             return false;
         }
-        if (message[2] == "6") {
+        if (message[0] == "6") {
             room.setDiscProperties(0, {x: 276.86203618166985, y: 0.03387524642882023});
             return false;
         }
