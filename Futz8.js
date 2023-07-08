@@ -567,9 +567,9 @@ const mediumStadium = `{"name" : "𝒙3 𝓑𝔂 Malco", "width" : 620, "height"
 	"playerPhysics" : {
 		"bCoef" : 0,
 		"acceleration" : 0.11,
-		"kickingAcceleration" : 0.14,
+		"kickingAcceleration" : 0.13,
 		"kickStrength" : 4.75,
-        "kickback" : 1.80,
+        "kickback" : 2.0,
  	},
 
 	"ballPhysics" : "disc0",
