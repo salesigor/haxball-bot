@@ -284,8 +284,8 @@ const smallStadium = `{"name":"𝒙2 𝓑𝔂 Malco","width":420,"height":200,"b
     "kickback" : 1.80,
 },
 "ballPhysics":"disc0","spawnDistance":180}`
-const mediumStadium = `{"name" : "𝒙3 𝓑𝔂 Malco", "width" : 620, "height" : 270,
-	"bg" : { "width" : 550, "height" : 240, "canBeStored" : false, "kickOffRadius" : 80, "color" : "1E472E" },
+const mediumStadium = `{"name" : "𝒙3 𝓑𝔂 Malco", "width" : 620, "height" : 270, "canBeStored" : false,
+	"bg" : { "width" : 550, "height" : 240, "kickOffRadius" : 80, "color" : "1E472E" },
 
 	"vertexes" : [
 		/* 0 */ { "x" : 550, "y" : 240, "cMask" : ["ball" ] },
@@ -567,7 +567,7 @@ const mediumStadium = `{"name" : "𝒙3 𝓑𝔂 Malco", "width" : 620, "height"
 	"playerPhysics" : {
 		"bCoef" : 0,
 		"acceleration" : 0.11,
-		"kickingAcceleration" : 0.13,
+		"kickingAcceleration" : 0.12,
 		"kickStrength" : 4.75,
         "kickback" : 2.0,
  	},
@@ -596,8 +596,8 @@ const mediumStadium = `{"name" : "𝒙3 𝓑𝔂 Malco", "width" : 620, "height"
 
 	]
 }`
-const mediumBlue = `{"name" : "𝒙3 𝓑𝔂 Malco", "width" : 620, "height" : 270,
-"bg" : { "width" : 550, "height" : 240, "canBeStored" : false, "kickOffRadius" : 80, "color" : "1E472E" },
+const mediumBlue = `{"name" : "𝒙3 𝓑𝔂 Malco", "width" : 620, "height" : 270, "canBeStored" : false,
+"bg" : { "width" : 550, "height" : 240, "kickOffRadius" : 80, "color" : "262626" },
 
 "vertexes" : [
     /* 0 */ { "x" : 550, "y" : 240, "cMask" : ["ball" ] },
@@ -879,10 +879,9 @@ const mediumBlue = `{"name" : "𝒙3 𝓑𝔂 Malco", "width" : 620, "height" : 
 "playerPhysics" : {
     "bCoef" : 0,
     "acceleration" : 0.11,
-    "kickingAcceleration" : 0.15,
+    "kickingAcceleration" : 0.14,
     "kickStrength" : 4.75,
-    "kickback" : 1.80,
-    "kickingDamping" : 1.0  
+    "kickback" : 2.0,
  },
 
 "ballPhysics" : "disc0",
@@ -1754,8 +1753,6 @@ function soberbagem(goaler, assistant) {
     if (goaler.id === soberboID) {
         var messages = [
             "Bela, " + goaler.name + "! 🍫",
-            goaler.name + " não se contradiz! kk",
-            "Respeita o " + goaler.name + ", chat! 🍫",
             "Merecido! Sou fã desse cara... Quem mais?"
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
@@ -1767,8 +1764,6 @@ function soberbagem(goaler, assistant) {
     if (assistant.id === soberboID) {
         var messages = [
             "Que passe, pae! 🍫",
-            goaler.name + " ficou fácil com esse passe do " + assistant.name + "... 🍫",
-            assistant.name + " tá pra jogo? Acho que sim, com uns passes desses...",
             "Aiin, com um passe desses não tem como errar, pô!"
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
