@@ -5387,67 +5387,65 @@ room.onPlayerChat = function (player, message) {
         }, 2);
         setTimeout(function () {
             room.sendAnnouncement(centerText("Segurar o botão do chute aumenta a velocidade... ⚡"), null, white, "bold");
-        }, 100);
+        }, 400);
         setTimeout(function () {
             room.sendAnnouncement(centerText("sendo X, espaço ou ctrl"), null, white, "bold");
-        }, 150);
+        }, 600);
         setTimeout(function () {
             room.sendAnnouncement(centerText("Vou abastecer vocês agora!"), null, white, "bold");
-        }, 300);
+        }, 1000);
         setTimeout(function () {
             if (teamR.length == 1) {
-                room.setPlayerAvatar(teamR[0], "⚡")
+                room.setPlayerAvatar(teamR[0].id, "⚡")
             }
             if (teamB.length == 1) {
-                room.setPlayerAvatar(teamB[0], "⚡")
+                room.setPlayerAvatar(teamB[0].id, "⚡")
             }
             if (teamR.length == 2) {
-                room.setPlayerAvatar(teamR[0], "⚡")
-                room.setPlayerAvatar(teamR[1], "⚡")
+                room.setPlayerAvatar(teamR[0].id, "⚡")
+                room.setPlayerAvatar(teamR[1].id, "⚡")
             }
             if (teamB.length == 2) {
-                room.setPlayerAvatar(teamB[0], "⚡")
-                room.setPlayerAvatar(teamB[1], "⚡")
+                room.setPlayerAvatar(teamB[0].id, "⚡")
+                room.setPlayerAvatar(teamB[1].id, "⚡")
             }
             if (teamR.length == 3) {
-                room.setPlayerAvatar(teamR[0], "⚡")
-                room.setPlayerAvatar(teamR[1], "⚡")
-                room.setPlayerAvatar(teamR[2], "⚡")
+                room.setPlayerAvatar(teamR[0].id, "⚡")
+                room.setPlayerAvatar(teamR[1].id, "⚡")
+                room.setPlayerAvatar(teamR[2].id, "⚡")
             }
             if (teamB.length == 3) {
-                room.setPlayerAvatar(teamB[0], "⚡")
-                room.setPlayerAvatar(teamB[1], "⚡")
-                room.setPlayerAvatar(teamB[2], "⚡")
+                room.setPlayerAvatar(teamB[0].id, "⚡")
+                room.setPlayerAvatar(teamB[1].id, "⚡")
+                room.setPlayerAvatar(teamB[2].id, "⚡")
             }
-        }, 320);
+        }, 1000);
         setTimeout(function () {
             if (teamR.length == 1) {
-                room.setPlayerAvatar(teamR[0], null)
+                room.setPlayerAvatar(teamR[0].id, null)
             }
             if (teamB.length == 1) {
-                room.setPlayerAvatar(teamB[0], null)
+                room.setPlayerAvatar(teamB[0].id, null)
             }
             if (teamR.length == 2) {
-                room.setPlayerAvatar(teamR[0], null)
-                room.setPlayerAvatar(teamR[1], null)
+                room.setPlayerAvatar(teamR[0].id, null)
+                room.setPlayerAvatar(teamR[1].id, null)
             }
             if (teamB.length == 2) {
-                room.setPlayerAvatar(teamB[0], null)
-                room.setPlayerAvatar(teamB[1], null)
+                room.setPlayerAvatar(teamB[0].id, null)
+                room.setPlayerAvatar(teamB[1].id, null)
             }
             if (teamR.length == 3) {
-                room.setPlayerAvatar(teamR[0], null)
-                room.setPlayerAvatar(teamR[1], null)
-                room.setPlayerAvatar(teamR[2], null)
+                room.setPlayerAvatar(teamR[0].id, null)
+                room.setPlayerAvatar(teamR[1].id, null)
+                room.setPlayerAvatar(teamR[2].id, null)
             }
             if (teamB.length == 3) {
-                room.setPlayerAvatar(teamB[0], null)
-                room.setPlayerAvatar(teamB[1], null)
-                room.setPlayerAvatar(teamB[2], null)
+                room.setPlayerAvatar(teamB[0].id, null)
+                room.setPlayerAvatar(teamB[1].id, null)
+                room.setPlayerAvatar(teamB[2].id, null)
             }
-        }, 1500);
-        if (GKListname.includes(player.name)) {}
-        else {GKListname.push(" " + player.name);}
+        }, 2500);
     }
     if (["gk?", "gklist", "gklista"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
