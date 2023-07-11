@@ -1667,12 +1667,12 @@ let badassID = "";
 var supervisorsID = [];
 const soberbo = ['3137392E3235302E33322E3537']; // soberbo
 const badass = ['3230302E3135382E3235302E313230']; // malco
-const supervisors = ['3138392E33302E38342E323335', '3138392E33342E31372E313539']; // Chiquinho, ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
+const supervisors = ['3138392E33342E31372E313539']; // ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 const blacklistnames = ["Arthur MM - ᱦiᱮ∀Ʀd - Schneider - Alcione III - MACACO"];
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III, MACACO
-const cartaoamarelo = ['3138392E38352E32392E3736']; // 𝘿𝙄𝘼𝙕
+const cartaoamarelo = ['3138392E38352E32392E3736', '3138392E33302E38342E323335']; // 𝘿𝙄𝘼𝙕, Chiquinho
 var lodiazCONN = "3138392E38352E32392E3736"; // conn do 𝘿𝙄𝘼𝙕
 var lanocheCONN = "3138392E33342E31372E313539"; // conn do 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 var lodiaz = []; // id do 𝘿𝙄𝘼𝙕
