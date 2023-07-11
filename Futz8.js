@@ -660,7 +660,7 @@ const mediumStadium = `{"name" : "speed𝒙3 FUTZ 𝓑𝔂 Malco",
 	"playerPhysics" : {
 		"bCoef" : 0,
 		"acceleration" : 0.11,
-		"kickingAcceleration" : 0.128,
+		"kickingAcceleration" : 0.126,
 		"kickStrength" : 4.75,
 	},
 
