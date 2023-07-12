@@ -5401,8 +5401,19 @@ room.onPlayerChat = function (player, message) {
         setTimeout(function () {
             room.sendAnnouncement(centerText(" VAR 📹 --> analizando..."), null, white, "bold");
             setTimeout(function () { checkAndPauseGame(); alwaysOnTeam(); IIIx(); checkAndStartGame(); checkAndResumeGame(); }, 50);
+            if (teamR.length == 0) {topBtn();}
+            if (teamR.length == 2) {topBtn();}
             if (teamB.length == 0) {topBtn();}
             if (teamB.length == 2) {topBtn();}
+            if (acronymHome === acronymGuest) {
+                const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv, mia];
+                let randGuest = Math.floor(Math.random() * allClubes.length);
+                nameGuest = allClubes[randGuest].name;
+                acronymGuest = allClubes[randGuest];
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                room.sendAnnouncement(centerText("Uniforme do time BLUE foi atualizado"), null, yellow, "bold");
+                room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
+            }
         }, 300);
         return false;
     }
