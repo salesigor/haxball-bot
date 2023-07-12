@@ -10752,16 +10752,44 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
         var announcement = messages[randomIndex];
         room.sendAnnouncement(centerText(announcement), null, yellow, "italic", 0);
         setTimeout(() => {
-            if (randstadiumsfor3x == mediumStadium) {
-                room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
+            if (choose = false) {
+                if (allmediumstadiums[randstadiumsfor3x] == mediumStadium) {
+                    room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
+                }
+                if (allmediumstadiums[randstadiumsfor3x] == mediumdark) {
+                    room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
+                }
+                if (allmediumstadiums[randstadiumsfor3x] == medium2) {
+                    room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
+                }
             }
-            if (randstadiumsfor3x == mediumdark) {
-                room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
-            }
-            if (randstadiumsfor3x == medium2) {
-                room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
-            }
-        }, 2500);
+            setTimeout(() => {
+                if (choose = false) {
+                    if (allmediumstadiums[randstadiumsfor3x] == mediumStadium) {
+                        room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
+                    }
+                    if (allmediumstadiums[randstadiumsfor3x] == mediumdark) {
+                        room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
+                    }
+                    if (allmediumstadiums[randstadiumsfor3x] == medium2) {
+                        room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
+                    }
+                }
+                setTimeout(() => {
+                    if (choose = false) {
+                        if (allmediumstadiums[randstadiumsfor3x] == mediumStadium) {
+                            room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
+                        }
+                        if (allmediumstadiums[randstadiumsfor3x] == mediumdark) {
+                            room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
+                        }
+                        if (allmediumstadiums[randstadiumsfor3x] == medium2) {
+                            room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
+                        }
+                    }
+                }, 10000);
+            }, 10000);
+        }, 10000);
     }
 };
 
