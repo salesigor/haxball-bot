@@ -3362,6 +3362,7 @@ function endGame(winner) { // no stopGame() function in it
         countWinsTeamR();
         countLossesTeamB();
         setTimeout(function () {
+            choose = true;
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
             room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), teamB[0].id, white, "normal");
@@ -3372,7 +3373,6 @@ function endGame(winner) { // no stopGame() function in it
                 room.sendAnnouncement(centerText(teamR[0].name + " , você é o capitão da equipe."), teamR[0].id, yellow, "italic");
                 room.sendAnnouncement(centerText("Escolha o uniforme digitando o acrônimo do time. Ex.: Digite 'bar' ou 'rea'."), teamR[0].id, yellow, "italic");
             }, 4000);
-            choose = true;
             setTimeout(function () {
             capchat = true;
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
@@ -3412,7 +3412,7 @@ function endGame(winner) { // no stopGame() function in it
         countWinsTeamB();
         countLossesTeamR();
         setTimeout(function () {
-            capchat = true;
+            choose = true;
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
             room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), teamB[0].id, white, "normal");
@@ -3423,7 +3423,6 @@ function endGame(winner) { // no stopGame() function in it
                 room.sendAnnouncement(centerText(teamR[0].name + " , você é o capitão da equipe."), teamR[0].id, yellow, "italic");
                 room.sendAnnouncement(centerText("Escolha o uniforme digitando o acrônimo do time. Ex.: Digite 'bar' ou 'rea'."), teamR[0].id, yellow, "italic");
             }, 4000);
-            choose = true;
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos de inatividade voltará para a fila e o próx. escolhe ***"), null, warn, "italic");
                 setTimeout(function () {
@@ -3459,6 +3458,8 @@ function endGame(winner) { // no stopGame() function in it
         "🔵 **Escalação** " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
          + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)")
         setTimeout(function () {
+            choose = true;
+            redFirst = true;
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText(teamR[0].name + " e " + teamB[0].name + "escolhem"), null, white, "bold");
             room.sendAnnouncement(centerText("Para escolher digite Nº do player na fila, auto (fila) ou rand (aleatório)"), teamR[0].id, white, "italic");
@@ -3470,8 +3471,6 @@ function endGame(winner) { // no stopGame() function in it
                 room.sendAnnouncement(centerText(teamR[0].name + " , você é o capitão da equipe."), teamR[0].id, yellow, "italic");
                 room.sendAnnouncement(centerText("Escolha o uniforme digitando o acrônimo do time. Ex.: Digite 'bar' ou 'rea'."), teamR[0].id, yellow, "italic");
             }, 4000);
-            choose = true;
-            redFirst = true;
             setTimeout(function () {
                 room.sendAnnouncement(centerText("*** 20segundos e a vez de escolha será de " + teamB[0].name + " ***"), null, warn, "italic");
             }, 1000);
@@ -10763,43 +10762,43 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
         var announcement = messages[randomIndex];
         room.sendAnnouncement(centerText(announcement), null, yellow, "italic", 0);
         setTimeout(() => {
-            if (choose = false) {
-                if (allmediumstadiums[randstadiumsfor3x] == mediumStadium) {
+            if (cteamR.length === 3 || teamB.length === 3) {
+                if (allmediumstadiums[randstadiumsfor3x] === mediumStadium) {
                     room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
                 }
-                if (allmediumstadiums[randstadiumsfor3x] == mediumdark) {
+                if (allmediumstadiums[randstadiumsfor3x] === mediumdark) {
                     room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
                 }
-                if (allmediumstadiums[randstadiumsfor3x] == medium2) {
+                if (allmediumstadiums[randstadiumsfor3x] === medium2) {
                     room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
                 }
             }
             setTimeout(() => {
-                if (choose = false) {
-                    if (allmediumstadiums[randstadiumsfor3x] == mediumStadium) {
+                if (teamR.length === 3 || teamB.length === 3) {
+                    if (allmediumstadiums[randstadiumsfor3x] === mediumStadium) {
                         room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
                     }
-                    if (allmediumstadiums[randstadiumsfor3x] == mediumdark) {
+                    if (allmediumstadiums[randstadiumsfor3x] === mediumdark) {
                         room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
                     }
-                    if (allmediumstadiums[randstadiumsfor3x] == medium2) {
+                    if (allmediumstadiums[randstadiumsfor3x] === medium2) {
                         room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
                     }
                 }
                 setTimeout(() => {
-                    if (choose = false) {
-                        if (allmediumstadiums[randstadiumsfor3x] == mediumStadium) {
+                    if (teamR.length === 3 || teamB.length === 3) {
+                        if (allmediumstadiums[randstadiumsfor3x] === mediumStadium) {
                             room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
                         }
-                        if (allmediumstadiums[randstadiumsfor3x] == mediumdark) {
+                        if (allmediumstadiums[randstadiumsfor3x] === mediumdark) {
                             room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
                         }
-                        if (allmediumstadiums[randstadiumsfor3x] == medium2) {
+                        if (allmediumstadiums[randstadiumsfor3x] === medium2) {
                             room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
                         }
                     }
-                }, 10000);
-            }, 10000);
+                }, 60000);
+            }, 30000);
         }, 10000);
     }
 };
