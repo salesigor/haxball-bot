@@ -1883,6 +1883,8 @@ const bigStadium = `{"name":"𝒙5 𝓑𝔂 Malco","width":900,"height":460,"bg"
     {"d0":4,"d1":42,"length":7.478931750741822,"color":"A3A3A3"}
 ],
 "kickOffReset":"full"}`
+const allmediumstadiums = [mediumStadium, mediumdark, medium2, mediumStadium];
+let randstadiumsfor3x = Math.floor(Math.random() * allmediumstadiums.length);
 room.setCustomStadium(mediumStadium);
 
 /* UNIFORMS */ 
@@ -3033,12 +3035,11 @@ function checkAndResumeGame() {
 };
 
 function checkTeamSizeAndChangeMap() {
-    const allmediumstadiums = [mediumStadium, mediumdark, medium2, mediumStadium];
-    let randstadiumsfor3x = Math.floor(Math.random() * allmediumstadiums.length);
     if (teamR.length === 1 && teamB.length === 1) {
-      room.setCustomStadium(smallStadium);
+        room.setCustomStadium(smallStadium);
     } else if (teamR.length >= 2 && teamB.length >= 2) {
-      room.setCustomStadium(randstadiumsfor3x);
+        randstadiumsfor3x = Math.floor(Math.random() * allmediumstadiums.length);
+        room.setCustomStadium(randstadiumsfor3x);
     }
 };
 
@@ -10750,6 +10751,17 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
         room.sendAnnouncement(centerText(announcement), null, yellow, "italic", 0);
+        setTimeout(() => {
+            if (randstadiumsfor3x == mediumStadium) {
+                room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
+            }
+            if (randstadiumsfor3x == mediumdark) {
+                room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
+            }
+            if (randstadiumsfor3x == medium2) {
+                room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
+            }
+        }, 2500);
     }
 };
 
