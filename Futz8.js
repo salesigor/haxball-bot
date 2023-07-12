@@ -2143,7 +2143,7 @@ function generateAdminRandomPassword() {
       const randomDigit = Math.floor(Math.random() * 10); // gera um número aleatório entre 0 e 9
       password += randomDigit.toString(); // adiciona o número à senha como uma string
     }
-    sendAdminCommandsToDiscord('Senha: ' + password);
+    sendAdminCommandsToDiscord('**Senha:** ' + password);
     return password;
 };
 function generateRandomPassword() {
@@ -2153,7 +2153,7 @@ function generateRandomPassword() {
       const randomDigit = Math.floor(Math.random() * 10); // gera um número aleatório entre 0 e 9
       password += randomDigit.toString(); // adiciona o número à senha como uma string
     }
-    sendKeyToDiscord("  \n                  Howto:\n set <game> <goal> <assist> <hattrick> <key>\n add <number> <gols/assists/hats/jogos> <key>\n \n Last Key:   " + password + "    \n  ");
+    sendKeyToDiscord("  \n                  **Howto:**\n set <game> <goal> <assist> <hattrick> <key>\n add <number> <gols/assists/hats/jogos> <key>\n \n **Last Key:**   " + password + "    \n  ");
     return password;
 };
 function golzin(gols, player) {
@@ -3179,7 +3179,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamR[0].name + " agora tem " + getHatTrick(teamR[0]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
     if (goalsRp2 === 3 && teamR.length === 3) {
@@ -3189,7 +3189,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamR[1].name + " agora tem " + getHatTrick(teamR[1]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
     if (goalsRp2 === 3 && teamR.length === 3) {
@@ -3199,7 +3199,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamR[2].name + " agora tem " + getHatTrick(teamR[2]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
     if (goalsBp1 === 3 && teamB.length === 3) {
@@ -3209,7 +3209,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamB[0].name + " agora tem " + getHatTrick(teamB[0]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
     if (goalsBp2 === 3 && teamB.length === 3) {
@@ -3219,7 +3219,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamB[1].name + " agora tem " + getHatTrick(teamB[1]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
     if (goalsBp3 === 3 && teamB.length === 3) {
@@ -3229,7 +3229,7 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamB[2].name + " agora tem " + getHatTrick(teamB[2]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n🏆⚽ -- HAT TRICK -- ⚽🏆\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
+        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
         nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
 };
@@ -3692,11 +3692,11 @@ room.onPlayerJoin = function (player) {
     var ipv4 = conn.match(/.{1,2}/g).map(function(v){
     return String.fromCharCode(parseInt(v, 16));
     }).join('');
-    sendAnnouncementToDiscord("```"+"📝Informações do jogador, conn, auth, IP e data ⏰" + "\n" + "🛸 Nick: " + player.name +"\n" + 
-    "🌐 Conn: " + player.conn + "\n" + "🔥 Auth: "+ player.auth + "\n" + "🌏 Ipv4: " + (ipv4) + "\n" + "📅 Data: " + `${getDateInfo()}` +"```");
+    sendAnnouncementToDiscord("```"+"**📝Informações do jogador, conn, auth, IP e data ⏰**" + "\n" + "🛸 **Nick:** " + player.name +"\n" + 
+    "🌐 **Conn:** " + player.conn + "\n" + "🔥 **Auth:** "+ player.auth + "\n" + "🌏 **Ipv4:** " + (ipv4) + "\n" + "📅 **Data:** " + `${getDateInfo()}` +"```");
     var randomIndex = Math.floor(Math.random() * messages.length);
     var announcement = messages[randomIndex];
-    sendCountsToDiscord(".  \n📄   Nome: " + player.name + "\n🎮   Jogos: " + getStoredGames(player) + "\n⚽️   Gols: " + getStoredGoals(player) + "\n👟   Assistências: " + getStoredAssists(player) + "\n🏆   Hat-tricks: " + getHatTrick(player));
+    sendCountsToDiscord(".  \n📄   **Nome:** " + player.name + "\n🎮   **Jogos:** " + getStoredGames(player) + "\n⚽️   **Gols:** " + getStoredGoals(player) + "\n👟   **Assistências:** " + getStoredAssists(player) + "\n🏆   **Hat-tricks:** " + getHatTrick(player));
     updateTeams();
     updateAdmins();
     setTimeout(function () {
@@ -10657,7 +10657,7 @@ room.onPositionsReset = function () {
 room.onRoomLink = function (url) {
     const roomURL = url;
     linkinho = url;
-    sendRoomLinkToDiscord(botVersion + "\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL);
+    sendRoomLinkToDiscord("**" + botVersion + "**\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL);
     /*sendCommandsToDiscord(' | ' + botVersion + ' |\n.\n'+
         '!me ou "stats", "goat" (ranking da sala), !help, !tag, !uniforme, !gklist ou "gk?", gk (Entra para lista de GKs), !regras, !discord, !list (lista os player da fila), !vs, !verdade, !bb, !bye, !flw\n.\n'+
         'Comemorações:\n'+
