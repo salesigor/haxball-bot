@@ -3300,13 +3300,13 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
-        sendScoresToDiscord("____________________\n🏆-- FIM DE PARTIDA -- 🏆\n____________________" + "\n" + " " + "\n" + 
+        sendScoresToDiscord("____________________\n**🏆-- FIM DE PARTIDA -- 🏆**\n____________________" + "\n" + " " + "\n" + 
         "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
         (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
-        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "Partidas sem perder: " + streak + "\n" + "\n" + 
-        "🔴 Escalação " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
+        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "**Partidas sem perder:** " + streak + "\n" + "\n" + 
+        "🔴 **Escalação** " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
          + redp2 + " - " + goalsRp2 + " gol(s), " + assistsRp2 + " assist(s)\n" + redp3 + " - " + goalsRp3 + " gol(s), " + assistsRp3 + " assist(s)\n" +  "\n" + 
-        "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
+        "🔵 **Escalação** " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
          + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)");
         countWinsTeamR();
         countLossesTeamB();
@@ -3350,13 +3350,13 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
-        sendScoresToDiscord("____________________\n🏆-- FIM DE PARTIDA -- 🏆\n____________________" + "\n" + " " + "\n" + 
+        sendScoresToDiscord("____________________\n**🏆-- FIM DE PARTIDA -- 🏆**\n____________________" + "\n" + " " + "\n" + 
         "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
         (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
-        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "Partidas sem perder: " + streak + "\n" + "\n" + 
-        "🔴 Escalação " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
+        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "**Partidas sem perder:** " + streak + "\n" + "\n" + 
+        "🔴 **Escalação** " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
          + redp2 + " - " + goalsRp2 + " gol(s), " + assistsRp2 + " assist(s)\n" + redp3 + " - " + goalsRp3 + " gol(s), " + assistsRp3 + " assist(s)\n" +  "\n" + 
-        "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
+        "🔵 **Escalação** " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
          + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)");
         countWinsTeamB();
         countLossesTeamR();
@@ -3402,10 +3402,10 @@ function endGame(winner) { // no stopGame() function in it
         sendScoresToDiscord("____________________\n💤-- Limite de TEMPO -- 💤\n____________________" + "\n" + " " + "\n" + 
         "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
         (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
-        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "Partidas sem perder: " + streak + "\n" + "\n" + 
-        "🔴 Escalação " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
+        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "**Partidas sem perder:** " + streak + "\n" + "\n" + 
+        "🔴 **Escalação** " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
          + redp2 + " - " + goalsRp2 + " gol(s), " + assistsRp2 + " assist(s)\n" + redp3 + " - " + goalsRp3 + " gol(s), " + assistsRp3 + " assist(s)\n" +  "\n" + 
-        "🔵 Escalação " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
+        "🔵 **Escalação** " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
          + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)")
         setTimeout(function () {
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
