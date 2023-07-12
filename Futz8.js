@@ -3702,7 +3702,6 @@ room.onPlayerJoin = function (player) {
     setTimeout(function () {
         alwaysOnTeam();
         IIIx();
-        IIIx();
     }, 1000);
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
     playerList.push({"object": player, "nome": player.name, "id": player.id});
@@ -5350,7 +5349,7 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText(player.name + " chamou o VAR"), null, yellow, "normal");
         setTimeout(function () {
             room.sendAnnouncement(centerText(" VAR 📹 --> analizando..."), null, white, "bold");
-            setTimeout(function () { checkAndPauseGame(); IIIx(); alwaysOnTeam(); IIIx(); checkAndStartGame(); IIIx(); checkAndResumeGame(); }, 50);
+            setTimeout(function () { checkAndPauseGame(); alwaysOnTeam(); IIIx(); checkAndStartGame(); checkAndResumeGame(); }, 50);
             if (teamB.length == 0) {topBtn();}
             if (teamB.length == 2) {topBtn();}
         }, 300);
