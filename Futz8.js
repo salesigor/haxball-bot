@@ -1488,7 +1488,7 @@ const medium2 = `{"name" : "useless𝒙3 FUTZ 𝓑𝔂 Malco",
 	"playerPhysics" : {
 		"bCoef" : 0,
 		"acceleration" : 0.11,
-		"kickingAcceleration" : 0.088,
+		"kickingAcceleration" : 0.11,
 		"kickStrength" : 4.75
 
 	},
