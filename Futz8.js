@@ -1883,7 +1883,7 @@ const bigStadium = `{"name":"𝒙5 𝓑𝔂 Malco","width":900,"height":460,"bg"
     {"d0":4,"d1":42,"length":7.478931750741822,"color":"A3A3A3"}
 ],
 "kickOffReset":"full"}`
-const allmediumstadiums = [mediumStadium, mediumdark, medium2, mediumStadium];
+const allmediumstadiums = [mediumStadium, mediumdark, medium2, mediumStadium, mediumdark];
 let randstadiumsfor3x = Math.floor(Math.random() * allmediumstadiums.length);
 room.setCustomStadium(mediumStadium);
 
@@ -3039,7 +3039,7 @@ function checkTeamSizeAndChangeMap() {
         room.setCustomStadium(smallStadium);
     } else if (teamR.length >= 2 && teamB.length >= 2) {
         randstadiumsfor3x = Math.floor(Math.random() * allmediumstadiums.length);
-        room.setCustomStadium(randstadiumsfor3x);
+        room.setCustomStadium(allmediumstadiums[randstadiumsfor3x]);
     }
 };
 
