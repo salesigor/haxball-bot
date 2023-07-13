@@ -10762,7 +10762,7 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
         var announcement = messages[randomIndex];
         room.sendAnnouncement(centerText(announcement), null, yellow, "italic", 0);
         setTimeout(() => {
-            if (cteamR.length === 3 || teamB.length === 3) {
+            if (teamR.length === 3 || teamB.length === 3) {
                 if (allmediumstadiums[randstadiumsfor3x] === mediumStadium) {
                     room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
                 }
