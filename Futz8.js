@@ -10773,33 +10773,7 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
                     room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
                 }
             }
-            setTimeout(() => {
-                if (teamR.length === 3 || teamB.length === 3) {
-                    if (allmediumstadiums[randstadiumsfor3x] === mediumStadium) {
-                        room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
-                    }
-                    if (allmediumstadiums[randstadiumsfor3x] === mediumdark) {
-                        room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
-                    }
-                    if (allmediumstadiums[randstadiumsfor3x] === medium2) {
-                        room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
-                    }
-                }
-                setTimeout(() => {
-                    if (teamR.length === 3 || teamB.length === 3) {
-                        if (allmediumstadiums[randstadiumsfor3x] === mediumStadium) {
-                            room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
-                        }
-                        if (allmediumstadiums[randstadiumsfor3x] === mediumdark) {
-                            room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
-                        }
-                        if (allmediumstadiums[randstadiumsfor3x] === medium2) {
-                            room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
-                        }
-                    }
-                }, 60000);
-            }, 30000);
-        }, 10000);
+        }, 30000);
     }
 };
 
