@@ -2000,8 +2000,8 @@ let bluep3 = "";
 let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
-const soberbo = ['3137392E3235302E33322E3537']; // soberbo
-const badass = ['3230302E3135382E3234382E3134']; // malco
+const soberbo = ['3137392E3235312E34382E323039']; // soberbo
+const badass = ['3230302E3135382E3235302E3734']; // malco
 const supervisors = ['3138392E33342E31372E313539']; // ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 const blacklistnames = ["Arthur MM - ᱦiᱮ∀Ʀd - Schneider - Alcione III - MACACO"];
 const blacklistconn = [
@@ -2203,7 +2203,7 @@ function generateRandomPassword() {
       const randomDigit = Math.floor(Math.random() * 10); // gera um número aleatório entre 0 e 9
       password += randomDigit.toString(); // adiciona o número à senha como uma string
     }
-    sendKeyToDiscord("  \n                  **Howto:**\n set <game> <goal> <assist> <hattrick> <key>\n add <number> <gols/assists/hats/jogos> <key>\n \n **Last Key:**   " + password + "    \n  ");
+    sendKeyToDiscord("  \n                  **Howto:**\n set <game> <goal> <assist> <hattrick> <win> <loss> <key>\n add <number> <gols/assists/hats/jogos/win/loss> <key>\n \n **Last Key:**   " + password + "    \n  ");
     return password;
 };
 function golzin(gols, player) {
@@ -2225,6 +2225,16 @@ function joguin(joguins, player) {
     const playerName = player.name;
     const key = `jogos_${playerName}`;
     localStorage.setItem(key, parseInt(joguins)); // Armazenar o novo valor no localStorage
+};
+function vitor(vitori, player) {
+    const playerName = player.name;
+    const key = `vitórias_${playerName}`;
+    localStorage.setItem(key, parseInt(vitori)); // Armazenar o novo valor no localStorage
+};
+function derro(derrot, player) {
+    const playerName = player.name;
+    const key = `derrotas_${playerName}`;
+    localStorage.setItem(key, parseInt(derrot)); // Armazenar o novo valor no localStorage
 };
 // THE GOAT
 function findPlayerWithMostHatTricks(players) {
@@ -3712,10 +3722,11 @@ room.onPlayerJoin = function (player) {
     }
     if(supervisors.includes(player.conn)) {
         supervisorsID.push(player.id);
-        room.sendAnnouncement(centerText("O Supervisor " + player.name + " entrou na sala!"), null, green, "bold");
-        setTimeout(function () {
+        room.setPlayerAdmin(player.id, true);
+        room.sendAnnouncement(centerText("O GOAT " + player.name + " entrou na sala!"), null, green, "bold");
+        /*setTimeout(function () {
             room.sendAnnouncement(centerText("Se Malco e/ou Soberbo estiverem na sala é PROIBIDO pegar adm"), player.id, warn, "normal");
-        }, 1000);
+        }, 1000);*/
     }
     if(blacklistconn.includes(player.conn)) {
         room.sendAnnouncement(centerText("Ae, rapa... Se despeçam do " + player.name + ". Ele ta de saída!"), null, white, "bold");
@@ -6016,11 +6027,13 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (["set"].includes(message[0].toLowerCase())) {
-        if (message[5] == keyCommand) {
+        if (message[7] == keyCommand) {
             let joguins = parseInt(message[1]);
             let gols = parseInt(message[2]);
             let assists = parseInt(message[3]);
             let hatTricks = parseInt(message[4]);
+            let vitori = parseInt(message[5]);
+            let derrot = parseInt(message[6]);
             for (let i = 0; i < gols; i++) {
                 joguin(joguins, player);
             }
@@ -6032,6 +6045,20 @@ room.onPlayerChat = function (player, message) {
             }
             for (let i = 0; i < hatTricks; i++) {
                 hatzinho(hatTricks, player);
+            }
+            for (let i = 0; i < vitori; i++) {
+                vitor(vitori, player);
+            }
+            for (let i = 0; i < derrot; i++) {
+                derro(derrot, player);
+            }
+            room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player), null, white, "bold"); 
+            keyCommand = generateRandomPassword();
+        }
+        if (message[1] == "win") {
+            let vitori = parseInt(message[2]);
+            for (let i = 0; i < vitori; i++) {
+                vitor(vitori, player);
             }
             room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player), null, white, "bold"); 
             keyCommand = generateRandomPassword();
@@ -7042,6 +7069,7 @@ room.onPlayerChat = function (player, message) {
     if (player.id === badassID) {
         if (["5"].includes(message[0].toLowerCase())) {
             room.setDiscProperties(0, {x: 0, y: 0});
+            room.sendAnnouncement(centerText("❌ " + player.name + " reposicinou a bola."), null, green, "italic");
             return false;
         }
         if (message[0] == "7") {
@@ -7054,18 +7082,26 @@ room.onPlayerChat = function (player, message) {
         }
         if (message[0] == "1") {
             room.setDiscProperties(0, {x: -373.5936483523506, y: 0.5983373488409471});
+            room.sendAnnouncement(centerText("❌ " + player.name + " setou o tiro de meta para " + nameHome), null, green, "italic");
+            room.sendAnnouncement(centerText("para reposicionar para sua equipe, basta pedir ao 𝐌𝐚𝐥𝐜𝐨 na sua saída."), null, warn, "italic");
             return false;
         }
         if (message[0] == "3") {
             room.setDiscProperties(0, {x: 375.7284515818114, y: 1.2789205458747022});
+            room.sendAnnouncement(centerText("❌ " + player.name + " setou o tiro de meta para " + nameGuest), null, green, "italic");
+            room.sendAnnouncement(centerText("para reposicionar para sua equipe, basta pedir ao 𝐌𝐚𝐥𝐜𝐨 na sua saída."), null, warn, "italic");
             return false;
         }
         if (message[0] == "4") {
             room.setDiscProperties(0, {x: -278.0267002914287, y: 0.8277074874489898});
+            room.sendAnnouncement(centerText("❌ " + player.name + " setou o ponto de saída para " + nameHome), null, green, "italic");
+            room.sendAnnouncement(centerText("para reposicionar para sua equipe, basta pedir ao 𝐌𝐚𝐥𝐜𝐨 na sua saída."), null, warn, "italic");
             return false;
         }
         if (message[0] == "6") {
             room.setDiscProperties(0, {x: 276.86203618166985, y: 0.03387524642882023});
+            room.sendAnnouncement(centerText("❌ " + player.name + " setou o ponto de saída para " + nameGuest), null, green, "italic");
+            room.sendAnnouncement(centerText("para reposicionar para sua equipe, basta pedir ao 𝐌𝐚𝐥𝐜𝐨 na sua saída."), null, warn, "italic");
             return false;
         }
         if (["admin"].includes(message[0].toLowerCase())) {
@@ -9674,10 +9710,10 @@ room.onPlayerChat = function (player, message) {
             }
         }
         if (player.admin) {
-            room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 2);
+            room.sendAnnouncement("GOAT | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 2);
         }
         else {
-            room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 1);
+            room.sendAnnouncement("GOAT | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 1);
         }
         return false;
     }
