@@ -1,7 +1,7 @@
 /* ROOM */
 
 const botVersion = "Futz 8";
-const roomName = "⚽ FutZ 3x3 🏆 | Cola na humildade 🎯";
+const roomName = "3x3 | ⚽ FutZ Server 🏆 | Cola na humildade 🎯";
 /* NOMES SUGERIDOS:
 1: 🏆 3x3 Futsal ⚽ | Cola na humildade
 2: 🏆 SABOT | ⚽ 3x3 Futsal ⚽ | Cola na humildade
@@ -1305,30 +1305,30 @@ const medium2 = `{"name" : "useless𝒙3 FUTZ 𝓑𝔂 Malco",
 		/* 183 */ { "x" : 8.838425285494736, "y" : 19.562806162365845, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
 		/* 184 */ { "x" : 38.38387487644491, "y" : 20.493740029002353, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
 		/* 185 */ { "x" : 12.056648396555602, "y" : 20.493740029002353, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 186 */ { "x" : 20.169819947393258, "y" : 233.65546456330293, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 187 */ { "x" : 20.169819947393258, "y" : 223.65546456330293, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
+		/* 186 */ { "x" : 28.855899446204795, "y" : 234.33672570046463, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
+		/* 187 */ { "x" : 28.855899446204795, "y" : 224.33672570046463, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
 		/* 188 */ { "x" : 4.240398400186841, "y" : 228.5801586162082, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "faae3d" },
 		/* 189 */ { "x" : 9.819649911805108, "y" : 220.60469057655575, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "faae3d" },
-		/* 190 */ { "x" : 12.562581300169406, "y" : 229.68476730296038, "bCoef" : 0.1, "cMask" : [ ], "curve" : 1000, "color" : "3e937d" },
-		/* 191 */ { "x" : 13.639979292359818, "y" : 229.66150268369498, "bCoef" : 0.1, "cMask" : [ ], "curve" : 1000, "color" : "3e937d" },
-		/* 192 */ { "x" : 13.573427292365132, "y" : 223.48526590071674, "bCoef" : 0.1, "cMask" : [ ], "curve" : 1000, "color" : "3e937d" },
-		/* 193 */ { "x" : 12.499457868335448, "y" : 223.39628639557733, "bCoef" : 0.1, "cMask" : [ ], "curve" : 1000, "color" : "3e937d" },
-		/* 194 */ { "x" : 4.240398400186841, "y" : 236.1217194045881, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "faae3d" },
-		/* 195 */ { "x" : 9.819649911805108, "y" : 228.14625136493567, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "faae3d" },
-		/* 196 */ { "x" : 4.746778774145675, "y" : 227.57663489989665, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "faae3d" },
-		/* 197 */ { "x" : 8.178915044937703, "y" : 228.74254055954444, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "faae3d" },
-		/* 198 */ { "x" : 18.714369089035593, "y" : 223.69153468707157, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 199 */ { "x" : 26.66572529602397, "y" : 223.63998596626328, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 200 */ { "x" : 19.131511981417773, "y" : 227.53709083509455, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 201 */ { "x" : 23.66572529602397, "y" : 227.4855421142863, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 202 */ { "x" : 28.998964285008746, "y" : 233.65546456330293, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 203 */ { "x" : 28.998964285008746, "y" : 223.65546456330293, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 204 */ { "x" : 27.54351342665108, "y" : 223.69153468707157, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 205 */ { "x" : 35.49486963363946, "y" : 223.63998596626328, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 206 */ { "x" : 27.960656319033262, "y" : 227.53709083509455, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 207 */ { "x" : 32.49486963363946, "y" : 227.4855421142863, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d" },
-		/* 208 */ { "x" : 0.05413570785701438, "y" : 267, "bCoef" : 0.15, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
-		/* 209 */ { "x" : 0.05413570785701438, "y" : 240, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ], "_selected" : true }
+		/* 190 */ { "x" : 20.954873334345432, "y" : 223.3020089000563, "bCoef" : 0.1, "cMask" : [ ], "curve" : 1000, "color" : "3e937d" },
+		/* 191 */ { "x" : 18.874057575287917, "y" : 223.1296111088487, "bCoef" : 0.1, "cMask" : [ ], "curve" : 1000, "color" : "3e937d" },
+		/* 192 */ { "x" : 4.240398400186841, "y" : 236.1217194045881, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "faae3d" },
+		/* 193 */ { "x" : 9.819649911805108, "y" : 228.14625136493567, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "faae3d" },
+		/* 194 */ { "x" : 4.746778774145675, "y" : 227.57663489989665, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "faae3d" },
+		/* 195 */ { "x" : 8.178915044937703, "y" : 228.74254055954444, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "faae3d" },
+		/* 196 */ { "x" : 27.40044858784713, "y" : 224.37279582423326, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
+		/* 197 */ { "x" : 35.35180479483551, "y" : 224.32124710342498, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
+		/* 198 */ { "x" : 27.817591480229318, "y" : 228.21835197225624, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
+		/* 199 */ { "x" : 32.35180479483551, "y" : 228.166803251448, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
+		/* 200 */ { "x" : 37.6850437838203, "y" : 234.33672570046463, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
+		/* 201 */ { "x" : 37.6850437838203, "y" : 224.33672570046463, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
+		/* 202 */ { "x" : 36.22959292546263, "y" : 224.37279582423326, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
+		/* 203 */ { "x" : 44.18094913245101, "y" : 224.32124710342498, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
+		/* 204 */ { "x" : 36.64673581784481, "y" : 228.21835197225624, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
+		/* 205 */ { "x" : 41.18094913245101, "y" : 228.166803251448, "bCoef" : 0.1, "cMask" : [ ], "curve" : 0, "color" : "3e937d", "_selected" : true },
+		/* 206 */ { "x" : 0.05413570785701438, "y" : 267, "bCoef" : 0.15, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 207 */ { "x" : 0.05413570785701438, "y" : 240, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 208 */ { "x" : 18.725616867015038, "y" : 234.6798481064847, "bCoef" : 0.1, "cMask" : [ ], "curve" : 1000, "color" : "3e937d" },
+		/* 209 */ { "x" : 20.809495903095897, "y" : 234.54960454795656, "bCoef" : 0.1, "cMask" : [ ], "curve" : 1000, "color" : "3e937d" }
 
 	],
 
@@ -1439,18 +1439,18 @@ const medium2 = `{"name" : "useless𝒙3 FUTZ 𝓑𝔂 Malco",
 		{ "v0" : 180, "v1" : 181, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 204 },
 		{ "v0" : 182, "v1" : 183, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 204 },
 		{ "v0" : 184, "v1" : 185, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 204, "y" : 91.76266812461527 },
-		{ "v0" : 186, "v1" : 187, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100 },
+		{ "v0" : 186, "v1" : 187, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100, "_selected" : true },
 		{ "v0" : 188, "v1" : 189, "curve" : 0, "color" : "faae3d", "bCoef" : 0.1, "cMask" : [ ], "x" : 206 },
-		{ "v0" : 190, "v1" : 191, "curve" : 340, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 206 },
-		{ "v0" : 192, "v1" : 193, "curve" : 340, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 206 },
+		{ "v0" : 190, "v1" : 191, "curve" : 338.72555036441656, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 206 },
+		{ "v0" : 192, "v1" : 193, "curve" : 0, "color" : "faae3d", "bCoef" : 0.1, "cMask" : [ ], "x" : 206 },
 		{ "v0" : 194, "v1" : 195, "curve" : 0, "color" : "faae3d", "bCoef" : 0.1, "cMask" : [ ], "x" : 206 },
-		{ "v0" : 196, "v1" : 197, "curve" : 0, "color" : "faae3d", "bCoef" : 0.1, "cMask" : [ ], "x" : 206 },
-		{ "v0" : 198, "v1" : 199, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100 },
-		{ "v0" : 200, "v1" : 201, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100 },
-		{ "v0" : 202, "v1" : 203, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100 },
-		{ "v0" : 204, "v1" : 205, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100 },
-		{ "v0" : 206, "v1" : 207, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100 },
-		{ "v0" : 208, "v1" : 209, "vis" : false, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] }
+		{ "v0" : 196, "v1" : 197, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100, "_selected" : true },
+		{ "v0" : 198, "v1" : 199, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100, "_selected" : true },
+		{ "v0" : 200, "v1" : 201, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100, "_selected" : true },
+		{ "v0" : 202, "v1" : 203, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100, "_selected" : true },
+		{ "v0" : 204, "v1" : 205, "curve" : 0, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 100, "_selected" : true },
+		{ "v0" : 206, "v1" : 207, "vis" : false, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		{ "v0" : 208, "v1" : 209, "curve" : 338.72555036441656, "color" : "3e937d", "bCoef" : 0.1, "cMask" : [ ], "x" : 206 }
 
 	],
 
@@ -1883,9 +1883,44 @@ const bigStadium = `{"name":"𝒙5 𝓑𝔂 Malco","width":900,"height":460,"bg"
     {"d0":4,"d1":42,"length":7.478931750741822,"color":"A3A3A3"}
 ],
 "kickOffReset":"full"}`
+/* VOTE */
 const allmediumstadiums = [mediumStadium, mediumdark, medium2, mediumStadium, mediumdark];
 let randstadiumsfor3x = Math.floor(Math.random() * allmediumstadiums.length);
 room.setCustomStadium(mediumStadium);
+var forspeedx = 0;
+var fordark = 0;
+var foruseless = 0;
+let r1vote = true;
+let r2vote = true;
+let r3vote = true;
+let b1vote = true;
+let b2vote = true;
+let b3vote = true;
+function stadiumVote() {
+    if (forspeedx === 0 && fordark === 0 && foruseless === 0) {
+        return randstadiumsfor3x; // Caso não haja votos
+    }
+    // Verifica qual estádio tem mais votos
+    if (forspeedx > fordark && forspeedx > foruseless) {
+    return mediumStadium; // Estádio com mais votos: speedx
+    }
+    else if (fordark > forspeedx && fordark > foruseless) {
+    return mediumdark; // Estádio com mais votos: dark
+    }
+    else if (foruseless > forspeedx && foruseless > fordark) {
+    return medium2; // Estádio com mais votos: useless
+    }
+    else {
+    return randstadiumsfor3x; // Empate ou mais de um estádio com votos máximos
+    }
+};
+function checkTeamSizeAndChangeMap() {
+    if (teamR.length === 1 && teamB.length === 1) {
+        room.setCustomStadium(smallStadium);
+    } else if (teamR.length >= 2 && teamB.length >= 2) {
+        room.setCustomStadium(stadiumVote());
+    }
+};
 
 /* UNIFORMS */ 
 
@@ -1962,7 +1997,7 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 
 /* OPTIONS */
 
-var afkLimit = 1;
+var afkLimit = 20; //segundos
 var drawTimeLimit = 1; //minutos
 var maxTeamSize = 3;
 var yellow = 0xffeb15;
@@ -2045,6 +2080,7 @@ let blueChat = true;
 let specChat = true;
 var banList = [];
 var GKListname = [];
+var afklist = [];
 var countAFK = false; // Created to get better track of activity
 var SMSet = new Set(); // Set created to get slow mode which is useful in chooseMode
 let rr = false; // serve para restartar o game com o comnado rr
@@ -2128,14 +2164,20 @@ var resettingTeams = false;
 var statInterval = 6;
 let banidao = false;
 
-/* DISCORD */
+/* ANOUNCEMENTS */
 
 var Intervalo_mensagens;
 var help_mensagens;
 var var_mensage;
-var Intervalo_msgs = 1000 * 60 * 5; // 1000 * 60 * 15 = irá mandar a mensagem a cada 15 minutos
-var Intervalo_msgs2 = 1000 * 60 * 3; // 1000 * 60 * 15 = irá mandar a mensagem a cada X minutos
-var Intervalo_msgs3 = 1000 * 60 * 8;
+var speedADvar;
+var speedonORoffvar;
+var voteforyourmap;
+var Intervalo_15 = 1000 * 60 * 15; // 1000 * 60 * 15 = irá mandar a mensagem a cada 15 minutos
+var Intervalo_5 = 1000 * 60 * 5;
+var Intervalo_8 = 1000 * 60 * 8;
+var Intervalo_2 = 1000 * 60 * 2;
+var Intervalo_10 = 1000 * 60 * 10;
+var Intervalo_4 = 1000 * 60 * 4;
 
 Intervalo_mensagens = setInterval(() => {
 const msgs1 = ["▒█▀▀▄ ▀█▀ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▄"];
@@ -2147,20 +2189,110 @@ room.sendAnnouncement(centerText(msgs1), null, white, "bold", 0);
 room.sendAnnouncement(centerText(msgs2), null, white, "bold", 0);
 room.sendAnnouncement(centerText(msgs3), null, white, "bold", 0);
 room.sendAnnouncement(centerText(msgs4), null, white, "italic", 1);
-}, Intervalo_msgs);
+}, Intervalo_15);
 
 help_mensagens = setInterval(() => {
 room.sendAnnouncement(centerText("「📣」 𝘂𝘀𝗲 !𝗵𝗲𝗹𝗽 𝗽𝗮𝗿𝗮 𝘃𝗲𝗿 𝗼𝘀 𝗰𝗼𝗺𝗮𝗻𝗱𝗼𝘀"), null, yellow, "italic", 1);
-}, Intervalo_msgs2);
+}, Intervalo_5);
 
 var_mensage = setInterval(() => {
     room.sendAnnouncement(centerText("「📹」Se algo estiver errado, chame o 'var'!"), null, white, "italic", 1);
-}, Intervalo_msgs3);
+}, Intervalo_10);
 
-function joinDiscord(url) {
-    const janelinhaNova = window.open(url, "_blank");
-    janelinhaNova.focus()
+voteforyourmap = setInterval(() => {
+    room.sendAnnouncement(centerText("Voçê pode votar em qual mapa vai jogar!"), null, green, "bold", 1);
+    room.sendAnnouncement(centerText("Basta digitar o comando de voto antes do jogo começar"), null, white, "bold", 0);
+    room.sendAnnouncement(centerText("mapa SPEED X (com speed) - Digite 'speed' ou 'mapa1'"), null, yellow, "bold", 0);
+    room.sendAnnouncement(centerText("mapa DARK (com speed) - Digite 'dark' ou 'mapa2'"), null, yellow, "bold", 0);
+    room.sendAnnouncement(centerText("mapa USELESS (Sem speed) - Digite 'useless' ou 'mapa3'"), null, yellow, "bold", 0);
+}, Intervalo_4);
+
+function speedAd() {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("POWER UP"), null, yellow, "bold");
+        }, 2);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Os mapas escritos SPEED junto ao logo da sala tem o POWER UP"), null, white, "bold", 0);
+        }, 500);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Segurar o botão do chute aumenta a velocidade... ⚡"), null, white, "bold");
+        }, 550);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("sendo X, espaço ou ctrl"), null, white, "bold", 0);
+        }, 800);
+        setTimeout(function () {
+            if (teamR.length === 1) {
+                room.setPlayerAvatar(teamR[0].id, "⚡")
+            }
+            if (teamB.length === 1) {
+                room.setPlayerAvatar(teamB[0].id, "⚡")
+            }
+            if (teamR.length === 2) {
+                room.setPlayerAvatar(teamR[0].id, "⚡")
+                room.setPlayerAvatar(teamR[1].id, "⚡")
+            }
+            if (teamB.length === 2) {
+                room.setPlayerAvatar(teamB[0].id, "⚡")
+                room.setPlayerAvatar(teamB[1].id, "⚡")
+            }
+            if (teamR.length === 3) {
+                room.setPlayerAvatar(teamR[0].id, "⚡")
+                room.setPlayerAvatar(teamR[1].id, "⚡")
+                room.setPlayerAvatar(teamR[2].id, "⚡")
+            }
+            if (teamB.length === 3) {
+                room.setPlayerAvatar(teamB[0].id, "⚡")
+                room.setPlayerAvatar(teamB[1].id, "⚡")
+                room.setPlayerAvatar(teamB[2].id, "⚡")
+            }
+        }, 500);
+        setTimeout(function () {
+            if (teamR.length === 1) {
+                room.setPlayerAvatar(teamR[0].id, null)
+            }
+            if (teamB.length === 1) {
+                room.setPlayerAvatar(teamB[0].id, null)
+            }
+            if (teamR.length === 2) {
+                room.setPlayerAvatar(teamR[0].id, null)
+                room.setPlayerAvatar(teamR[1].id, null)
+            }
+            if (teamB.length === 2) {
+                room.setPlayerAvatar(teamB[0].id, null)
+                room.setPlayerAvatar(teamB[1].id, null)
+            }
+            if (teamR.length === 3) {
+                room.setPlayerAvatar(teamR[0].id, null)
+                room.setPlayerAvatar(teamR[1].id, null)
+                room.setPlayerAvatar(teamR[2].id, null)
+            }
+            if (teamB.length === 3) {
+                room.setPlayerAvatar(teamB[0].id, null)
+                room.setPlayerAvatar(teamB[1].id, null)
+                room.setPlayerAvatar(teamB[2].id, null)
+            }
+        }, 5000);
 };
+
+function speedONorOFF() {
+    if (allmediumstadiums[randstadiumsfor3x] === mediumStadium) {
+        room.sendAnnouncement(centerText("SPEED --> ATIVADO"), null, green, "italic", 0);
+    }
+    if (allmediumstadiums[randstadiumsfor3x] === mediumdark) {
+        room.sendAnnouncement(centerText("SPEED --> ATIVADO"), null, green, "italic", 0);
+    }
+    if (allmediumstadiums[randstadiumsfor3x] === medium2) {
+        room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
+    }
+};
+
+speedADvar = setInterval(() => {
+    speedAd();
+}, Intervalo_8);
+
+speedonORoffvar = setInterval(() => {
+    speedONorOFF();
+}, Intervalo_2);
 
 /* Sistema data e hora */
   
@@ -2992,6 +3124,7 @@ function checkAndStartGame() {
                 room.sendAnnouncement(centerText("PLAY!"), null, green, "bold");
             }, 1500);
             setTimeout(function () {
+                checkTeamSizeAndChangeMap();
                 room.startGame();
                 room.pauseGame(false);
             }, 2500);
@@ -3009,6 +3142,7 @@ function checkAndStartGame() {
                 room.sendAnnouncement(centerText("PLAY!"), null, green, "bold");
             }, 1500);
             setTimeout(function () {
+                checkTeamSizeAndChangeMap();
                 room.startGame();
                 room.pauseGame(false);
             }, 2500);
@@ -3027,6 +3161,7 @@ function checkAndStartGame() {
             room.sendAnnouncement(centerText("PLAY!"), null, green, "bold");
         }, 1500);
         setTimeout(function () {
+            checkTeamSizeAndChangeMap();
             room.startGame();
             room.pauseGame(false);
         }, 2500);
@@ -3042,15 +3177,6 @@ function checkAndPauseGame() {
 function checkAndResumeGame() {
     if (teamR.length === teamB.length) {
         setTimeout(() => { room.pauseGame(false); }, 500);
-    }
-};
-
-function checkTeamSizeAndChangeMap() {
-    if (teamR.length === 1 && teamB.length === 1) {
-        room.setCustomStadium(smallStadium);
-    } else if (teamR.length >= 2 && teamB.length >= 2) {
-        randstadiumsfor3x = Math.floor(Math.random() * allmediumstadiums.length);
-        room.setCustomStadium(allmediumstadiums[randstadiumsfor3x]);
     }
 };
 
@@ -3513,14 +3639,32 @@ function handleInactivity() {
     }
     for (var i = 0; i < extendedP.length; i++) {
         if (extendedP[i][eP.ACT] == 20 * 60 * (2 / 3 * afkLimit)) {
-            room.sendAnnouncement(centerText("⛔ ¡@" + room.getPlayer(extendedP[i][eP.ID]).name + ", se mova ou fale no Chat em " + Math.floor(afkLimit / 3) + " segundos ou irá para a fila!", extendedP[i][eP.ID]), null, green, "bold"); 
+            room.sendAnnouncement(centerText("⛔ " + room.getPlayer(extendedP[i][eP.ID]).name + ", se mova ou fale no Chat em " + Math.floor(afkLimit / 3) + " segundos ou irá para a fila!", extendedP[i][eP.ID]), extendedP[i][eP.ID], yellow, "bold"); 
         }
         if (extendedP[i][eP.ACT] >= 20 * 60 * afkLimit) {
             extendedP[i][eP.ACT] = 0;
             if (room.getScores().time <= afkLimit - 0.5) {
                 setTimeout(() => {room.stopGame();}, 10);
             }
-            room.setPlayerTeam(extendedP[i][eP.ID], Team.SPECTATORS);
+            if (player.id === badassID) {
+                room.sendAnnouncement(centerText("Se mexe, aí " + room.getPlayer(extendedP[i][eP.ID]).name), extendedP[i][eP.ID], warn, "bold", 0);
+                room.sendAnnouncement(centerText("Beleza, vamos ter que esperar a boa vontade, " + room.getPlayer(extendedP[i][eP.ID]).name + "?"), null, warn, "italic");
+            }
+            if (player.id === soberboID) {
+                room.sendAnnouncement(centerText("Se mexe, aí " + room.getPlayer(extendedP[i][eP.ID]).name), extendedP[i][eP.ID], warn, "bold", 0);
+                room.sendAnnouncement(centerText("Beleza, vamos ter que esperar a boa vontade, " + room.getPlayer(extendedP[i][eP.ID]).name + "?"), null, warn, "italic");
+            }
+            if (player.id === lanoche) {
+                room.sendAnnouncement(centerText("Se mexe, aí " + room.getPlayer(extendedP[i][eP.ID]).name), extendedP[i][eP.ID], warn, "bold", 0);
+                room.sendAnnouncement(centerText("Beleza, vamos ter que esperar a boa vontade, " + room.getPlayer(extendedP[i][eP.ID]).name + "?"), null, warn, "italic");
+            }
+            else {
+                afklist.push(extendedP[i][eP.ID]);
+                room.setPlayerTeam(extendedP[i][eP.ID], Team.SPECTATORS);
+                room.sendAnnouncement(centerText("Você está na lista de AFKs"), extendedP[i][eP.ID], warn, "italic", 0);
+                room.sendAnnouncement(centerText("para sair, digite !afk"), extendedP[i][eP.ID], warn, "italic");
+                room.sendAnnouncement(centerText(room.getPlayer(extendedP[i][eP.ID]).name + " entrou para a lista de AFKs"), null, warn, "italic");
+            }
         }
     }
 };
@@ -3766,6 +3910,7 @@ room.onPlayerJoin = function (player) {
         IIIx();
     }, 1000);
     room.sendAnnouncement(centerText(announcement), null, white, "bold");
+    extendedP.push([player.id, player.auth, player.conn, false, 0, 0, false]);
     playerList.push({"object": player, "nome": player.name, "id": player.id});
     extendedP.push([player.id, player.auth, player.conn, false, 0, 0, false]);
     lastPlayerJoinedID = player.id;
@@ -3777,11 +3922,15 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
         room.setPlayerTeam(0, Team.SPECTATORS);
         return;
     }
+    if (afklist.includes(changedPlayer.id)) {
+        room.setPlayerTeam(changedPlayer.id, Team.SPECTATORS);
+        room.sendAnnouncement(centerText(changedPlayer.name + " está AFK"), null, warn, "italic", 2);
+        return;
+    }
     if (changedPlayer.team == Team.SPECTATORS) {
         updateList(Math.max(teamR.findIndex((p) => p.id == changedPlayer.id), teamB.findIndex((p) => p.id == changedPlayer.id), teamS.findIndex((p) => p.id == changedPlayer.id)), changedPlayer.team);
     }
     updateTeams();
-    checkTeamSizeAndChangeMap();
     checkTeamSizeLimit();
 };
 
@@ -3878,11 +4027,11 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (["!me", "!eu", "stats"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player) + ", Taxa de vitórias: " + calculateWinPercentage(player) + "%", null, white, "bold"); 
+        room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ⛔ Derrotas: " + getStoredLosses(player) + ", Taxa de vitórias: " + calculateWinPercentage(player) + "%", null, white, "bold"); 
         /*
         var stats;
         localStorage.getItem(getAuth(player)) ? stats = JSON.parse(localStorage.getItem(getAuth(player))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00"]; 
-        room.sendAnnouncement("[📄] Seus stats: 🎮 Jogos: " + stats[Ss.GA] + ", ✅ Vitórias: " + stats[Ss.WI] + ", ❌ Derrotas: " + stats[Ss.LS] + ", 🏆 Taxa de vitórias: " + stats[Ss.WR] + "%, ⚽️ Gols: " + stats[Ss.GL] + ", 👟 Assistências: " + stats[Ss.AS] + ", 🧤 GK: " + stats[Ss.GK] + ", 🤚 CS: " + stats[Ss.CS] + ", 🤚 CS%: " + stats[Ss.CP] + "%", player.id, white, "normal"); 
+        room.sendAnnouncement("[📄] Seus stats: 🎮 Jogos: " + stats[Ss.GA] + ", ✅ Vitórias: " + stats[Ss.WI] + ", ⛔ Derrotas: " + stats[Ss.LS] + ", 🏆 Taxa de vitórias: " + stats[Ss.WR] + "%, ⚽️ Gols: " + stats[Ss.GL] + ", 👟 Assistências: " + stats[Ss.AS] + ", 🧤 GK: " + stats[Ss.GK] + ", 🤚 CS: " + stats[Ss.CS] + ", 🤚 CS%: " + stats[Ss.CP] + "%", player.id, white, "normal"); 
         */
         return false;
     }
@@ -3915,7 +4064,7 @@ room.onPlayerChat = function (player, message) {
         /*
         var stats;
         localStorage.getItem(getAuth(player)) ? stats = JSON.parse(localStorage.getItem(getAuth(player))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00"]; 
-        room.sendAnnouncement("[📄] Stats de " + player.name + ": 🎮 Partidas Jogadas: " + stats[Ss.GA] + ", ✅ Vitórias: " + stats[Ss.WI] + ", ❌ Derrotas: " + stats[Ss.LS] + ", Taxa: " + stats[Ss.WR] + "%, ⚽️ Gols: " + stats[Ss.GL] + ", 👟 Asistências: " +stats[Ss.AS] + ", 🧤 GK: " + stats[Ss.GK] + ", 🤚 Invictas: " + stats[Ss.CS] + ", 🤚 CS%: " + stats[Ss.CP] + "%", null, white, "normal"); 
+        room.sendAnnouncement("[📄] Stats de " + player.name + ": 🎮 Partidas Jogadas: " + stats[Ss.GA] + ", ✅ Vitórias: " + stats[Ss.WI] + ", ⛔ Derrotas: " + stats[Ss.LS] + ", Taxa: " + stats[Ss.WR] + "%, ⚽️ Gols: " + stats[Ss.GL] + ", 👟 Asistências: " +stats[Ss.AS] + ", 🧤 GK: " + stats[Ss.GK] + ", 🤚 Invictas: " + stats[Ss.CS] + ", 🤚 CS%: " + stats[Ss.CP] + "%", null, white, "normal"); 
         */
         return false;
     }
@@ -4626,7 +4775,21 @@ room.onPlayerChat = function (player, message) {
         }, 100);
     }
     if (["!afk"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("comando !AFK indisponível"), player.id, warn, "italic");
+        if (afklist.includes(player.id)) {
+            var index = afklist.indexOf(player.id);
+            if (index !== -1) {
+            afklist.splice(index, 1);
+            }
+            room.sendAnnouncement(centerText("Você não está mais na lista de AFKs"), player.id, warn, "italic", 0);
+            room.sendAnnouncement(centerText(player.name + " não está mais AFK"), null, warn, "italic");
+        }
+        else {
+            afklist.push(player.id);
+            room.setPlayerTeam(player.id, Team.SPECTATORS);
+            room.sendAnnouncement(centerText("Você está na lista de AFKs"), player.id, warn, "italic", 0);
+            room.sendAnnouncement(centerText("para sair, digite !afk novamente"), player.id, warn, "italic");
+            room.sendAnnouncement(centerText(player.name + " está AFK"), null, warn, "italic");
+        }
     }
     if (["!uniforme"].includes(message[0].toLowerCase())) {
         if (message[1] == null) {
@@ -5148,13 +5311,6 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("▒█▄▄▀ ▄█▄ ▒█▄▄▄█ ▒█▄▄█ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄▀"), null, white, "bold", 0);
         room.sendAnnouncement(centerText(" https://discord.gg/AR7ypuzJG8 "), null, white, "bold", 1);
     }
-    if (["!join" , "join"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("VoCê será redirecionado para o discord"), null, green, "italic");
-        setTimeout(function () {
-            joinDiscord("https://discord.gg/AR7ypuzJG8");
-            window.open("https://discord.gg/AR7ypuzJG8");
-        }, 500);
-    }
     if (["lenda"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("🥴 LENDA 🥴"), null, white, "bold");
@@ -5452,70 +5608,6 @@ room.onPlayerChat = function (player, message) {
         }, 10);
         if (GKListname.includes(player.name)) {}
         else {GKListname.push(" " + player.name);}
-    }
-    if (["speed"].includes(message[0].toLowerCase())) {
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("Rapaaa, se liga no POWER UP!!!"), null, yellow, "bold");
-        }, 2);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("Segurar o botão do chute aumenta a velocidade... ⚡"), null, white, "bold");
-        }, 500);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("sendo X, espaço ou ctrl"), null, white, "bold");
-        }, 800);
-        setTimeout(function () {
-            if (teamR.length === 1) {
-                room.setPlayerAvatar(teamR[0].id, "⚡")
-            }
-            if (teamB.length === 1) {
-                room.setPlayerAvatar(teamB[0].id, "⚡")
-            }
-            if (teamR.length === 2) {
-                room.setPlayerAvatar(teamR[0].id, "⚡")
-                room.setPlayerAvatar(teamR[1].id, "⚡")
-            }
-            if (teamB.length === 2) {
-                room.setPlayerAvatar(teamB[0].id, "⚡")
-                room.setPlayerAvatar(teamB[1].id, "⚡")
-            }
-            if (teamR.length === 3) {
-                room.setPlayerAvatar(teamR[0].id, "⚡")
-                room.setPlayerAvatar(teamR[1].id, "⚡")
-                room.setPlayerAvatar(teamR[2].id, "⚡")
-            }
-            if (teamB.length === 3) {
-                room.setPlayerAvatar(teamB[0].id, "⚡")
-                room.setPlayerAvatar(teamB[1].id, "⚡")
-                room.setPlayerAvatar(teamB[2].id, "⚡")
-            }
-        }, 1000);
-        setTimeout(function () {
-            if (teamR.length === 1) {
-                room.setPlayerAvatar(teamR[0].id, null)
-            }
-            if (teamB.length === 1) {
-                room.setPlayerAvatar(teamB[0].id, null)
-            }
-            if (teamR.length === 2) {
-                room.setPlayerAvatar(teamR[0].id, null)
-                room.setPlayerAvatar(teamR[1].id, null)
-            }
-            if (teamB.length === 2) {
-                room.setPlayerAvatar(teamB[0].id, null)
-                room.setPlayerAvatar(teamB[1].id, null)
-            }
-            if (teamR.length === 3) {
-                room.setPlayerAvatar(teamR[0].id, null)
-                room.setPlayerAvatar(teamR[1].id, null)
-                room.setPlayerAvatar(teamR[2].id, null)
-            }
-            if (teamB.length === 3) {
-                room.setPlayerAvatar(teamB[0].id, null)
-                room.setPlayerAvatar(teamB[1].id, null)
-                room.setPlayerAvatar(teamB[2].id, null)
-            }
-        }, 5000);
-        return false;
     }
     if (["gk?", "gklist", "gklista"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
@@ -6053,7 +6145,7 @@ room.onPlayerChat = function (player, message) {
             for (let i = 0; i < derrot; i++) {
                 derro(derrot, player);
             }
-            room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player), null, white, "bold"); 
+            room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ⛔ Derrotas: " + getStoredLosses(player), null, white, "bold"); 
             keyCommand = generateRandomPassword();
         }
         if (message[1] == "win") {
@@ -6061,7 +6153,7 @@ room.onPlayerChat = function (player, message) {
             for (let i = 0; i < vitori; i++) {
                 vitor(vitori, player);
             }
-            room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player), null, white, "bold"); 
+            room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ⛔ Derrotas: " + getStoredLosses(player), null, white, "bold"); 
             keyCommand = generateRandomPassword();
         }
         return false;
@@ -6099,7 +6191,7 @@ room.onPlayerChat = function (player, message) {
                     incrementLosses(player);
                 }
             }
-            room.sendAnnouncement("[📄] " + player.name + " | 🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ❌ Derrotas: " + getStoredLosses(player) + ", Taxa de vitórias: " + calculateWinPercentage(player) + "%", null, white, "bold"); 
+            room.sendAnnouncement("[📄] " + player.name + " | 🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ⛔ Derrotas: " + getStoredLosses(player) + ", Taxa de vitórias: " + calculateWinPercentage(player) + "%", null, white, "bold"); 
             keyCommand = generateRandomPassword();
         }
         return false;
@@ -6511,6 +6603,461 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
+    if (["fui"].includes(message[0]) && ["mlk"].includes(message[1])) {
+        var messages = [
+            "Errei, fui muleque...",
+            "Mlk dmaaais kkkkkk",
+            "Acertou, foi homem! Haha",
+            "Mulecagem profissional! "
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.setPlayerAvatar(player.id, "M")
+            setTimeout(function () {
+                room.setPlayerAvatar(player.id, "L")
+                setTimeout(function () {
+                    room.setPlayerAvatar(player.id, "K")
+                    setTimeout(function () {
+                        room.setPlayerAvatar(player.id, "ML")
+                        setTimeout(function () {
+                            room.setPlayerAvatar(player.id, "LK")
+                            setTimeout(function () {
+                                room.setPlayerAvatar(player.id, "ML")
+                                setTimeout(function () {
+                                    room.setPlayerAvatar(player.id, "LK")
+                                    setTimeout(function () {
+                                        room.setPlayerAvatar(player.id, null)
+                                    }, 500);
+                                }, 500);
+                            }, 500);
+                        }, 500);
+                    }, 500);
+                }, 500);
+            }, 500);
+        }, 1);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (["fui"].includes(message[1]) && ["mlk"].includes(message[2])) {
+        var messages = [
+            "Errei, fui muleque...",
+            "Mlk dmaaais kkkkkk",
+            "Acertou, foi homem! Haha",
+            "Mulecagem profissional! "
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.setPlayerAvatar(player.id, "M")
+            setTimeout(function () {
+                room.setPlayerAvatar(player.id, "L")
+                setTimeout(function () {
+                    room.setPlayerAvatar(player.id, "K")
+                    setTimeout(function () {
+                        room.setPlayerAvatar(player.id, "ML")
+                        setTimeout(function () {
+                            room.setPlayerAvatar(player.id, "LK")
+                            setTimeout(function () {
+                                room.setPlayerAvatar(player.id, "ML")
+                                setTimeout(function () {
+                                    room.setPlayerAvatar(player.id, "LK")
+                                    setTimeout(function () {
+                                        room.setPlayerAvatar(player.id, null)
+                                    }, 500);
+                                }, 500);
+                            }, 500);
+                        }, 500);
+                    }, 500);
+                }, 500);
+            }, 500);
+        }, 1);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 300);
+    }
+    if (["speed", "mapa1"].includes(message[0].toLowerCase())) {
+        if (choose == true) {
+            if (teamR[0]) {
+                if (r1vote == true) {
+                    forspeedx++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
+                    r1vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamR[1]) {
+                if (r2vote == true) {
+                    forspeedx++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
+                    r2vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamR[2]) {
+                if (r3vote == true) {
+                    forspeedx++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
+                    r3vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamB[0]) {
+                if (b1vote == true) {
+                    forspeedx++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
+                    b1vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamB[1]) {
+                if (b2vote == true) {
+                    forspeedx++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
+                    b2vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamB[2]) {
+                if (b3vote == true) {
+                    forspeedx++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
+                    b3vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamS[0]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[1]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[2]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[3]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[4]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[5]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[6]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[7]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[8]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[9]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[10]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[11]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[12]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[13]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[14]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[15]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[16]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[17]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[18]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[19]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[20]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+        }
+    }
+    if (["dark", "mapa2"].includes(message[0].toLowerCase())) {
+        if (choose == true) {
+            if (teamR[0]) {
+                if (r1vote == true) {
+                    fordark++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
+                    r1vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamR[1]) {
+                if (r2vote == true) {
+                    fordark++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
+                    r2vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamR[2]) {
+                if (r3vote == true) {
+                    fordark++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
+                    r3vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamB[0]) {
+                if (b1vote == true) {
+                    fordark++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
+                    b1vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamB[1]) {
+                if (b2vote == true) {
+                    fordark++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
+                    b2vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamB[2]) {
+                if (b3vote == true) {
+                    fordark++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
+                    b3vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamS[0]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[1]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[2]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[3]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[4]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[5]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[6]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[7]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[8]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[9]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[10]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[11]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[12]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[13]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[14]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[15]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[16]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[17]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[18]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[19]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[20]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+        }
+    }
+    if (["useless", "mapa3"].includes(message[0].toLowerCase())) {
+        if (choose == true) {
+            if (teamR[0]) {
+                if (r1vote == true) {
+                    foruseless++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
+                    r1vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamR[1]) {
+                if (r2vote == true) {
+                    foruseless++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
+                    r2vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamR[2]) {
+                if (r3vote == true) {
+                    foruseless++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
+                    r3vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamB[0]) {
+                if (b1vote == true) {
+                    foruseless++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
+                    b1vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamB[1]) {
+                if (b2vote == true) {
+                    foruseless++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
+                    b2vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamB[2]) {
+                if (b3vote == true) {
+                    foruseless++;
+                    room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
+                    b3vote = false;
+                }
+                else {
+                    room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
+                }
+            }
+            if (teamS[0]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[1]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[2]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[3]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[4]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[5]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[6]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[7]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[8]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[9]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[10]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[11]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[12]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[13]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[14]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[15]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[16]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[17]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[18]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[19]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+            if (teamS[20]) {
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+            }
+        }
+    }
     if (humilhante.includes(message[0])) {
         var messages = [
             "Esse tomou em!",
@@ -6742,7 +7289,10 @@ room.onPlayerChat = function (player, message) {
             "Apeeerta esse botão se não o " + player.name + " vai estressar!",
             "x é a marca do 𝐌𝐚𝐥𝐜𝐨, " + player.name + "... ❌ Malco o Rei ❌",
             "XXXXXXX",
-            "CHUTAAA, MANOOOOOO!!"
+            "CHUTAAA, MANOOOOOO!!",
+            "Lembrando que segurar o X ou Espaço corre mais, rapa!!",
+            "Não esquece que segurar o X ou Espaço corre mais, rapa!!",
+            "Lembrando que segurar o X ou Espaço corre mais, rapa!!"
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
@@ -6754,7 +7304,12 @@ room.onPlayerChat = function (player, message) {
         var messages = [
             "É X-men, caramba?",
             "Apeeerta esse botão se não o " + player.name + " vai estressar!",
-            "x é a marca do 𝐌𝐚𝐥𝐜𝐨, " + player.name + "... ❌ Malco o Rei ❌"
+            "x é a marca do 𝐌𝐚𝐥𝐜𝐨, " + player.name + "... ❌ Malco o Rei ❌",
+            "XXXXXXX",
+            "CHUTAAA, MANOOOOOO!!",
+            "Lembrando que segurar o X ou Espaço corre mais, rapa!!",
+            "Não esquece que segurar o X ou Espaço corre mais, rapa!!",
+            "Lembrando que segurar o X ou Espaço corre mais, rapa!!"
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
@@ -6766,7 +7321,12 @@ room.onPlayerChat = function (player, message) {
         var messages = [
             "É X-men, caramba?",
             "Apeeerta esse botão se não o " + player.name + " vai estressar!",
-            "x é a marca do 𝐌𝐚𝐥𝐜𝐨, " + player.name + "... ❌ Malco o Rei ❌"
+            "x é a marca do 𝐌𝐚𝐥𝐜𝐨, " + player.name + "... ❌ Malco o Rei ❌",
+            "XXXXXXX",
+            "CHUTAAA, MANOOOOOO!!",
+            "Lembrando que segurar o X ou Espaço corre mais, rapa!!",
+            "Não esquece que segurar o X ou Espaço corre mais, rapa!!",
+            "Lembrando que segurar o X ou Espaço corre mais, rapa!!"
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
@@ -10474,10 +11034,22 @@ room.onGameStart = function (byPlayer) {
         assistsRp3 = 0;
         scorer = 0;
         scoreb = 0;
+        r1vote = false;
+        r2vote = false;
+        r3vote = false;
+        b1vote = false;
+        b2vote = false;
+        b3vote = false;
     }, 1000);
 };
 
 room.onGameStop = function (byPlayer) {
+    r1vote = true;
+    r2vote = true;
+    r3vote = true;
+    b1vote = true;
+    b2vote = true;
+    b3vote = true;
     if (byPlayer && byPlayer.id == 0) {
         if (rr == false) {
             const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv, mia];
@@ -10810,19 +11382,6 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
         room.sendAnnouncement(centerText(announcement), null, yellow, "italic", 0);
-        setTimeout(() => {
-            if (teamR.length === 3 || teamB.length === 3) {
-                if (allmediumstadiums[randstadiumsfor3x] === mediumStadium) {
-                    room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
-                }
-                if (allmediumstadiums[randstadiumsfor3x] === mediumdark) {
-                    room.sendAnnouncement(centerText("power up SPEED --> ON"), null, green, "italic", 0);
-                }
-                if (allmediumstadiums[randstadiumsfor3x] === medium2) {
-                    room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
-                }
-            }
-        }, 30000);
     }
 };
 
@@ -10830,5 +11389,6 @@ room.onGameTick = function () {
     checkTime();
     getLastTouchOfTheBall();
     getStats();
+    handleInactivity();
     alwaysOnTeam();
 };
