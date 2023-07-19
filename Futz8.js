@@ -1900,16 +1900,21 @@ function stadiumVote() {
     // Verifica qual estádio tem mais votos
     if (forspeedx > fordark && forspeedx > foruseless) {
         votedS = allmediumstadiums[0]; // Estádio com mais votos: speedx
+        room.sendAnnouncement(centerText("Mapa mais votado foi: SPEED X"), null, white, "BOLD", 1);
     }
     if (fordark > forspeedx && fordark > foruseless) {
         votedS = allmediumstadiums[1]; // Estádio com mais votos: dark
+        room.sendAnnouncement(centerText("Mapa mais votado foi: DARK"), null, white, "BOLD", 1);
     }
     if (foruseless > forspeedx && foruseless > fordark) {
         votedS = allmediumstadiums[2]; // Estádio com mais votos: useless
+        room.sendAnnouncement(centerText("Mapa mais votado foi: USELESS"), null, white, "BOLD", 1);
     }
     else {
         randstadiumsfor3x = Math.floor(Math.random() * allmediumstadiums.length);
         votedS = allmediumstadiums[randstadiumsfor3x]; // Empate ou mais de um estádio com votos máximos
+        room.sendAnnouncement(centerText("Tivemos um EMPATE nos votos, ou não teve nenhum mesmo kkk"), null, white, "BOLD", 1);
+        room.sendAnnouncement(centerText("Mapa aleatório, então..."), null, white, "BOLD", 0);
     }
 };
 function checkTeamSizeAndChangeMap() {
@@ -2908,7 +2913,6 @@ function IIIx() {
                         }, 5);
                     }, 5);
                     setTimeout(function () {
-                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
                         rr = false;
                     }, 800);
                 }, 300);
@@ -2929,7 +2933,6 @@ function IIIx() {
                         }, 5);
                     }, 5);
                     setTimeout(function () {
-                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
                         rr = false;
                     }, 800);
                 }, 300);
@@ -2950,7 +2953,6 @@ function IIIx() {
                         }, 5);
                     }, 5);
                     setTimeout(function () {
-                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
                         rr = false;
                     }, 800);
                 }, 300);
@@ -2971,7 +2973,6 @@ function IIIx() {
                         }, 5);
                     }, 5);
                     setTimeout(function () {
-                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
                         rr = false;
                     }, 800);
                 }, 300);
@@ -11463,7 +11464,7 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
         room.setCustomStadium(mediumStadium);
         room.sendAnnouncement(centerText("Solicitação de mudança de mapa recusada"), null, warn, "italic");
     }
-    else if (byPlayer && byPlayer.id == 0)  {
+    /*else if (byPlayer && byPlayer.id == 0)  {
         var messages = [
             "Atualizando mapa...",
             "Mapa atualizado!",
@@ -11472,7 +11473,7 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
         room.sendAnnouncement(centerText(announcement), null, yellow, "italic", 0);
-    }
+    }*/
 };
 
 room.onGameTick = function () {
