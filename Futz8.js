@@ -3426,9 +3426,13 @@ function endGame(winner) { // no stopGame() function in it
         setTimeout(function () {
             choose = true;
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
-            room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
-            room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), teamB[0].id, white, "normal");
-            room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), teamB[0].id, yellow, "italic");
+            room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold", 0);
+            room.sendAnnouncement(centerText("Nº, auto (fila) ou rand (aleatório)"), teamB[0].id, white, "normal", 0);
+            room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), teamB[0].id, yellow, "italic", 0);
+            room.sendAnnouncement(centerText("Vote para o prox. Mapa"), null, green, "bold", 0);
+            room.sendAnnouncement(centerText("SPEED X -> 'speed' ou 'mapa1'"), null, yellow, "italic", 0);
+            room.sendAnnouncement(centerText("DARK -> 'dark' ou 'mapa2'"), null, yellow, "italic", 0);
+            room.sendAnnouncement(centerText("USELESS -> 'useless' ou 'mapa3'"), null, yellow, "italic", 0);
             setTimeout(function () {
                 room.sendAnnouncement(centerText(teamB[0].name + " , você é o capitão da equipe."), teamB[0].id, yellow, "italic");
                 room.sendAnnouncement(centerText("Escolha o uniforme digitando o acrônimo do time. Ex.: Digite 'bar' ou 'rea'."), teamB[0].id, yellow, "italic");
@@ -3444,9 +3448,9 @@ function endGame(winner) { // no stopGame() function in it
                         setTimeout(function () {
                             setTimeout(function () {
                                 room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
-                                room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
-                                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), teamB[0].id, white, "normal");
-                                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), teamB[0].id, yellow, "italic");
+                                room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold", 0);
+                                room.sendAnnouncement(centerText("Nº, auto (fila) ou rand (aleatório)"), teamB[0].id, white, "normal", 0);
+                                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), teamB[0].id, yellow, "italic", 0);
                             }, 600);
                         }, 300);
                     }
@@ -3477,8 +3481,12 @@ function endGame(winner) { // no stopGame() function in it
             choose = true;
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
-            room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), teamB[0].id, white, "normal");
+            room.sendAnnouncement(centerText("Nº, auto (fila) ou rand (aleatório)"), teamB[0].id, white, "normal");
             room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), teamB[0].id, yellow, "italic");
+            room.sendAnnouncement(centerText("Vote para o prox. Mapa"), null, green, "bold", 0);
+            room.sendAnnouncement(centerText("SPEED X -> 'speed' ou 'mapa1'"), null, yellow, "italic", 0);
+            room.sendAnnouncement(centerText("DARK -> 'dark' ou 'mapa2'"), null, yellow, "italic", 0);
+            room.sendAnnouncement(centerText("USELESS -> 'useless' ou 'mapa3'"), null, yellow, "italic", 0);
             setTimeout(function () {
                 room.sendAnnouncement(centerText(teamB[0].name + " , você é o capitão da equipe."), teamB[0].id, yellow, "italic");
                 room.sendAnnouncement(centerText("Escolha o uniforme digitando o acrônimo do time. Ex.: Digite 'bar' ou 'rea'."), teamB[0].id, yellow, "italic");
@@ -3493,9 +3501,9 @@ function endGame(winner) { // no stopGame() function in it
                         setTimeout(function () {
                             setTimeout(function () {
                                 room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
-                                room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold");
-                                room.sendAnnouncement(centerText("Nº, nome, auto (fila) ou rand (aleatório)"), teamB[0].id, white, "normal");
-                                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), teamB[0].id, yellow, "italic");
+                                room.sendAnnouncement(centerText("Você escolhe, " + teamB[0].name), null, white, "bold", 0);
+                                room.sendAnnouncement(centerText("Nº, auto (fila) ou rand (aleatório)"), teamB[0].id, white, "normal", 0);
+                                room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), teamB[0].id, yellow, "italic", 0);
                             }, 600);
                         }, 300);
                     }
@@ -3524,9 +3532,13 @@ function endGame(winner) { // no stopGame() function in it
             redFirst = true;
             room.sendAnnouncement(centerText("ATENÇÃO"), null, yellow, "bold");
             room.sendAnnouncement(centerText(teamR[0].name + " e " + teamB[0].name + "escolhem"), null, white, "bold");
-            room.sendAnnouncement(centerText("Para escolher digite Nº do player na fila, auto (fila) ou rand (aleatório)"), teamR[0].id, white, "italic");
-            room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), teamR[0].id, yellow, "italic");
+            room.sendAnnouncement(centerText("Para escolher digite Nº do player na fila, auto (fila) ou rand (aleatório)"), teamR[0].id, white, "italic", 0);
+            room.sendAnnouncement(centerText("Obs* digite 'lista' para ver a fila"), teamR[0].id, yellow, "italic", 0);
             room.sendAnnouncement(centerText(nameHome + " escolhe primeiro!"), null, warn, "bold");
+            room.sendAnnouncement(centerText("Vote para o prox. Mapa"), null, green, "bold", 0);
+            room.sendAnnouncement(centerText("SPEED X -> 'speed' ou 'mapa1'"), null, yellow, "italic", 0);
+            room.sendAnnouncement(centerText("DARK -> 'dark' ou 'mapa2'"), null, yellow, "italic", 0);
+            room.sendAnnouncement(centerText("USELESS -> 'useless' ou 'mapa3'"), null, yellow, "italic", 0);
             setTimeout(function () {
                 room.sendAnnouncement(centerText(teamB[0].name + " , você é o capitão da equipe."), teamB[0].id, yellow, "italic");
                 room.sendAnnouncement(centerText("Escolha o uniforme digitando o acrônimo do time. Ex.: Digite 'bar' ou 'rea'."), teamB[0].id, yellow, "italic");
