@@ -2895,87 +2895,49 @@ function alwaysOnTeam() {
 };
 
 function IIIx() {
-    if (teamS.length === 0) {
+    if (teamS.length <= 1) {
         return;
     }
     else {
-        if (teamR.length === 1) {
+        if (teamR.length === 1 && teamB.length === 1) {
             if (teamS.length >= 2) {
-                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
+                room.sendAnnouncement(centerText("Opa!! Chagou gente, vou ajustar e reiniciar"), null, white, "bold");
                 setTimeout(function () {
                     room.setPlayerTeam(teamS[0].id, Team.RED);
+                    room.setPlayerTeam(teamS[1].id, Team.BLUE);
                     rr = true;
-                    setTimeout(function () {
-                        room.stopGame();
-                        checkTeamSizeAndChangeMap();
-                        setTimeout(function () {
-                            checkAndStartGame();
-                        }, 5);
-                    }, 5);
-                    setTimeout(function () {
-                        rr = false;
-                    }, 800);
+                    room.stopGame();
+                    choose = true
                 }, 300);
+                setTimeout(function () {
+                    checkTeamSizeAndChangeMap();
+                    checkAndStartGame();
+                }, 800);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("2x2, tamo quase lá..."), null, white, "bold");
+                    rr = false;
+                }, 1000);
             }
             return;
         }
-        if (teamR.length === 2) {
+        if (teamR.length === 2 && teamB.length === 2) {
             if (teamS.length >= 2) {
-                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
+                room.sendAnnouncement(centerText("Opa!! Chagou gente, vou ajustar e reiniciar"), null, white, "bold");
                 setTimeout(function () {
                     room.setPlayerTeam(teamS[0].id, Team.RED);
+                    room.setPlayerTeam(teamS[1].id, Team.BLUE);
                     rr = true;
-                    setTimeout(function () {
-                        room.stopGame();
-                        checkTeamSizeAndChangeMap();
-                        setTimeout(function () {
-                            checkAndStartGame();
-                        }, 5);
-                    }, 5);
-                    setTimeout(function () {
-                        rr = false;
-                    }, 800);
+                    room.stopGame();
+                    choose = true
                 }, 300);
-            }
-            return;
-        }
-        if (teamB.length === 1) {
-            if (teamS.length >= 2) {
-                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
                 setTimeout(function () {
-                    room.setPlayerTeam(teamS[0].id, Team.BLUE);
-                    rr = true;
-                    setTimeout(function () {
-                        room.stopGame();
-                        checkTeamSizeAndChangeMap();
-                        setTimeout(function () {
-                            checkAndStartGame();
-                        }, 5);
-                    }, 5);
-                    setTimeout(function () {
-                        rr = false;
-                    }, 800);
-                }, 300);
-            }
-            return;
-        }
-        if (teamB.length === 2) {
-            if (teamS.length >= 2) {
-                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
+                    checkTeamSizeAndChangeMap();
+                    checkAndStartGame();
+                }, 800);
                 setTimeout(function () {
-                    room.setPlayerTeam(teamS[0].id, Team.BLUE);
-                    rr = true;
-                    setTimeout(function () {
-                        room.stopGame();
-                        checkTeamSizeAndChangeMap();
-                        setTimeout(function () {
-                            checkAndStartGame();
-                        }, 5);
-                    }, 5);
-                    setTimeout(function () {
-                        rr = false;
-                    }, 800);
-                }, 300);
+                    room.sendAnnouncement(centerText("3x3, agora sim!"), null, white, "bold");
+                    rr = false;
+                }, 1000);
             }
             return;
         }
@@ -3889,6 +3851,7 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
     if (afklist.includes(changedPlayer.id)) {
         room.setPlayerTeam(changedPlayer.id, Team.SPECTATORS);
         room.sendAnnouncement(centerText(changedPlayer.name + " está AFK"), null, warn, "italic", 2);
+        alwaysOnTeam();
         return;
     }
     if (changedPlayer.team == Team.SPECTATORS) {
