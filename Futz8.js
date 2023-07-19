@@ -280,8 +280,7 @@ const smallStadium = `{"name":"FUTZ 𝒙2 𝓑𝔂 Malco","width":420,"height":2
     "bCoef" : 0,
     "acceleration" : 0.11,
     "kickingAcceleration" : 0.13,
-    "kickStrength" : 4.75,
-    "kickback" : 1.80,
+    "kickStrength" : 4.75
 },
 "ballPhysics":"disc0","spawnDistance":180}`
 const mediumStadium = `{"name" : "speed𝒙3 FUTZ 𝓑𝔂 Malco",
@@ -1897,22 +1896,21 @@ let b1vote = true;
 let b2vote = true;
 let b3vote = true;
 function stadiumVote() {
-    if (forspeedx === 0 && fordark === 0 && foruseless === 0) {
-        return randstadiumsfor3x; // Caso não haja votos
-    }
+    let chosenStadium = randstadiumsfor3x;
     // Verifica qual estádio tem mais votos
     if (forspeedx > fordark && forspeedx > foruseless) {
-    return mediumStadium; // Estádio com mais votos: speedx
+        chosenStadium = mediumStadium; // Estádio com mais votos: speedx
     }
     else if (fordark > forspeedx && fordark > foruseless) {
-    return mediumdark; // Estádio com mais votos: dark
+        chosenStadium = mediumdark; // Estádio com mais votos: dark
     }
     else if (foruseless > forspeedx && foruseless > fordark) {
-    return medium2; // Estádio com mais votos: useless
+        chosenStadium = medium2; // Estádio com mais votos: useless
     }
     else {
-    return randstadiumsfor3x; // Empate ou mais de um estádio com votos máximos
+        chosenStadium = randstadiumsfor3x; // Empate ou mais de um estádio com votos máximos
     }
+    return chosenStadium;
 };
 function checkTeamSizeAndChangeMap() {
     if (teamR.length === 1 && teamB.length === 1) {
@@ -1997,7 +1995,7 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 
 /* OPTIONS */
 
-var afkLimit = 20; //segundos
+var afkLimit = 15; //segundos
 var drawTimeLimit = 1; //minutos
 var maxTeamSize = 3;
 var yellow = 0xffeb15;
@@ -2043,7 +2041,7 @@ const blacklistnames = ["Arthur MM - ᱦiᱮ∀Ʀd - Schneider - Alcione III - M
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III, MACACO
-const cartaoamarelo = ['3138392E38352E32392E3736', '3138392E33302E38342E323335']; // 𝘿𝙄𝘼𝙕, Chiquinho
+const cartaoamarelo = ['3138392E33302E38342E323335']; // Chiquinho
 var lodiazCONN = "3138392E38352E32392E3637"; // conn do 𝘿𝙄𝘼𝙕
 var lanocheCONN = "3138392E33342E31372E313539"; // conn do 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 var lodiaz = []; // id do 𝘿𝙄𝘼𝙕
@@ -2201,10 +2199,10 @@ var_mensage = setInterval(() => {
 
 voteforyourmap = setInterval(() => {
     room.sendAnnouncement(centerText("Voçê pode votar em qual mapa vai jogar!"), null, green, "bold", 1);
-    room.sendAnnouncement(centerText("Basta digitar o comando de voto antes do jogo começar"), null, white, "bold", 0);
-    room.sendAnnouncement(centerText("mapa SPEED X (com speed) - Digite 'speed' ou 'mapa1'"), null, yellow, "bold", 0);
-    room.sendAnnouncement(centerText("mapa DARK (com speed) - Digite 'dark' ou 'mapa2'"), null, yellow, "bold", 0);
-    room.sendAnnouncement(centerText("mapa USELESS (Sem speed) - Digite 'useless' ou 'mapa3'"), null, yellow, "bold", 0);
+    room.sendAnnouncement(centerText("Basta digitar o comando de voto antes do jogo começar"), null, white, "normal", 0);
+    room.sendAnnouncement(centerText("mapa SPEED X (com speed) - Digite 'speed' ou 'mapa1'"), null, yellow, "normal", 0);
+    room.sendAnnouncement(centerText("mapa DARK (com speed) - Digite 'dark' ou 'mapa2'"), null, yellow, "normal", 0);
+    room.sendAnnouncement(centerText("mapa USELESS (Sem speed) - Digite 'useless' ou 'mapa3'"), null, yellow, "normal", 0);
 }, Intervalo_4);
 
 function speedAd() {
@@ -3121,10 +3119,10 @@ function checkAndStartGame() {
                 room.sendAnnouncement(centerText("Atenção players!"), null, white, "normal", 2);
             }, 600);
             setTimeout(function () {
+                checkTeamSizeAndChangeMap();
                 room.sendAnnouncement(centerText("PLAY!"), null, green, "bold");
             }, 1500);
             setTimeout(function () {
-                checkTeamSizeAndChangeMap();
                 room.startGame();
                 room.pauseGame(false);
             }, 2500);
@@ -3139,10 +3137,10 @@ function checkAndStartGame() {
                 room.sendAnnouncement(centerText("Atenção players!"), null, white, "normal", 2);
             }, 600);
             setTimeout(function () {
+                checkTeamSizeAndChangeMap();
                 room.sendAnnouncement(centerText("PLAY!"), null, green, "bold");
             }, 1500);
             setTimeout(function () {
-                checkTeamSizeAndChangeMap();
                 room.startGame();
                 room.pauseGame(false);
             }, 2500);
@@ -3158,10 +3156,10 @@ function checkAndStartGame() {
             room.sendAnnouncement(centerText("Atenção players!"), null, white, "normal", 2);
         }, 600);
         setTimeout(function () {
+            checkTeamSizeAndChangeMap();
             room.sendAnnouncement(centerText("PLAY!"), null, green, "bold");
         }, 1500);
         setTimeout(function () {
-            checkTeamSizeAndChangeMap();
             room.startGame();
             room.pauseGame(false);
         }, 2500);
@@ -3646,7 +3644,7 @@ function handleInactivity() {
             if (room.getScores().time <= afkLimit - 0.5) {
                 setTimeout(() => {room.stopGame();}, 10);
             }
-            if (player.id === badassID) {
+            /*if (player.id === badassID) {
                 room.sendAnnouncement(centerText("Se mexe, aí " + room.getPlayer(extendedP[i][eP.ID]).name), extendedP[i][eP.ID], warn, "bold", 0);
                 room.sendAnnouncement(centerText("Beleza, vamos ter que esperar a boa vontade, " + room.getPlayer(extendedP[i][eP.ID]).name + "?"), null, warn, "italic");
             }
@@ -3657,14 +3655,12 @@ function handleInactivity() {
             if (player.id === lanoche) {
                 room.sendAnnouncement(centerText("Se mexe, aí " + room.getPlayer(extendedP[i][eP.ID]).name), extendedP[i][eP.ID], warn, "bold", 0);
                 room.sendAnnouncement(centerText("Beleza, vamos ter que esperar a boa vontade, " + room.getPlayer(extendedP[i][eP.ID]).name + "?"), null, warn, "italic");
-            }
-            else {
-                afklist.push(extendedP[i][eP.ID]);
-                room.setPlayerTeam(extendedP[i][eP.ID], Team.SPECTATORS);
-                room.sendAnnouncement(centerText("Você está na lista de AFKs"), extendedP[i][eP.ID], warn, "italic", 0);
-                room.sendAnnouncement(centerText("para sair, digite !afk"), extendedP[i][eP.ID], warn, "italic");
-                room.sendAnnouncement(centerText(room.getPlayer(extendedP[i][eP.ID]).name + " entrou para a lista de AFKs"), null, warn, "italic");
-            }
+            }*/
+            afklist.push(extendedP[i][eP.ID]);
+            room.setPlayerTeam(extendedP[i][eP.ID], Team.SPECTATORS);
+            room.sendAnnouncement(centerText("Você está na lista de AFKs"), extendedP[i][eP.ID], warn, "italic", 0);
+            room.sendAnnouncement(centerText("para sair, digite !afk"), extendedP[i][eP.ID], warn, "italic");
+            room.sendAnnouncement(centerText(room.getPlayer(extendedP[i][eP.ID]).name + " entrou para a lista de AFKs"), null, warn, "italic");
         }
     }
 };
@@ -11040,6 +11036,9 @@ room.onGameStart = function (byPlayer) {
         b1vote = false;
         b2vote = false;
         b3vote = false;
+        forspeedx = 0;
+        fordark = 0;
+        foruseless = 0;
     }, 1000);
 };
 
