@@ -1899,16 +1899,17 @@ var votedS = mediumStadium;
 function stadiumVote() {
     // Verifica qual estádio tem mais votos
     if (forspeedx > fordark && forspeedx > foruseless) {
-        votedS = mediumStadium; // Estádio com mais votos: speedx
+        votedS = allmediumstadiums[0]; // Estádio com mais votos: speedx
     }
-    else if (fordark > forspeedx && fordark > foruseless) {
-        votedS = mediumdark; // Estádio com mais votos: dark
+    if (fordark > forspeedx && fordark > foruseless) {
+        votedS = allmediumstadiums[1]; // Estádio com mais votos: dark
     }
-    else if (foruseless > forspeedx && foruseless > fordark) {
-        votedS = medium2; // Estádio com mais votos: useless
+    if (foruseless > forspeedx && foruseless > fordark) {
+        votedS = allmediumstadiums[2]; // Estádio com mais votos: useless
     }
     else {
-        votedS = randstadiumsfor3x; // Empate ou mais de um estádio com votos máximos
+        randstadiumsfor3x = Math.floor(Math.random() * allmediumstadiums.length);
+        votedS = allmediumstadiums[randstadiumsfor3x]; // Empate ou mais de um estádio com votos máximos
     }
 };
 function checkTeamSizeAndChangeMap() {
@@ -2068,6 +2069,7 @@ var mn = [];
 
 var lastTeamTouched;
 var lastPlayersTouched;
+var autoadmin = true;
 var goldenGoal = false;
 var activePlay = false;
 var muteList = [];
@@ -2199,7 +2201,7 @@ var_mensage = setInterval(() => {
 
 voteforyourmap = setInterval(() => {
     room.sendAnnouncement(centerText("Voçê pode votar em qual mapa vai jogar!"), null, green, "bold", 1);
-    room.sendAnnouncement(centerText("Basta digitar o comando de voto antes do jogo começar"), null, white, "normal", 0);
+    room.sendAnnouncement(centerText("Basta digitar o comando de voto antes do jogo começar"), null, white, "bold", 0);
     room.sendAnnouncement(centerText("mapa SPEED X (com speed) - Digite 'speed' ou 'mapa1'"), null, yellow, "normal", 0);
     room.sendAnnouncement(centerText("mapa DARK (com speed) - Digite 'dark' ou 'mapa2'"), null, yellow, "normal", 0);
     room.sendAnnouncement(centerText("mapa USELESS (Sem speed) - Digite 'useless' ou 'mapa3'"), null, yellow, "normal", 0);
@@ -2893,25 +2895,6 @@ function IIIx() {
     }
     else {
         if (teamR.length === 1) {
-            if (teamS.length >= 3) {
-                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
-                setTimeout(function () {
-                    room.setPlayerTeam(teamS[0].id, Team.RED);
-                    room.setPlayerTeam(teamS[1].id, Team.RED);
-                    rr = true;
-                    setTimeout(function () {
-                        room.stopGame();
-                        checkTeamSizeAndChangeMap();
-                        setTimeout(function () {
-                        room.startGame();
-                        }, 5);
-                    }, 5);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
-                        rr = false;
-                    }, 800);
-                }, 300);
-            }
             if (teamS.length >= 2) {
                 room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
                 setTimeout(function () {
@@ -2921,7 +2904,7 @@ function IIIx() {
                         room.stopGame();
                         checkTeamSizeAndChangeMap();
                         setTimeout(function () {
-                        room.startGame();
+                            checkAndStartGame();
                         }, 5);
                     }, 5);
                     setTimeout(function () {
@@ -2942,7 +2925,7 @@ function IIIx() {
                         room.stopGame();
                         checkTeamSizeAndChangeMap();
                         setTimeout(function () {
-                        room.startGame();
+                            checkAndStartGame();
                         }, 5);
                     }, 5);
                     setTimeout(function () {
@@ -2954,25 +2937,6 @@ function IIIx() {
             return;
         }
         if (teamB.length === 1) {
-            if (teamS.length >= 3) {
-                room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
-                setTimeout(function () {
-                    room.setPlayerTeam(teamS[0].id, Team.BLUE);
-                    room.setPlayerTeam(teamS[1].id, Team.BLUE);
-                    rr = true;
-                    setTimeout(function () {
-                        room.stopGame();
-                        checkTeamSizeAndChangeMap();
-                        setTimeout(function () {
-                        room.startGame();
-                        }, 5);
-                    }, 5);
-                    setTimeout(function () {
-                        room.sendAnnouncement(centerText("Agora melhorou!"), null, white, "bold");
-                        rr = false;
-                    }, 800);
-                }, 300);
-            }
             if (teamS.length >= 2) {
                 room.sendAnnouncement(centerText("Opa!! Chagou gente, vamos ajustar e reiniciar"), null, white, "bold");
                 setTimeout(function () {
@@ -2982,7 +2946,7 @@ function IIIx() {
                         room.stopGame();
                         checkTeamSizeAndChangeMap();
                         setTimeout(function () {
-                        room.startGame();
+                            checkAndStartGame();
                         }, 5);
                     }, 5);
                     setTimeout(function () {
@@ -3003,7 +2967,7 @@ function IIIx() {
                         room.stopGame();
                         checkTeamSizeAndChangeMap();
                         setTimeout(function () {
-                        room.startGame();
+                            checkAndStartGame();
                         }, 5);
                     }, 5);
                     setTimeout(function () {
@@ -3658,6 +3622,7 @@ function handleInactivity() {
             }*/
             afklist.push(extendedP[i][eP.ID]);
             room.setPlayerTeam(extendedP[i][eP.ID], Team.SPECTATORS);
+            checkAndPauseGame();
             room.sendAnnouncement(centerText("Você está na lista de AFKs"), extendedP[i][eP.ID], warn, "italic", 0);
             room.sendAnnouncement(centerText("para sair, digite !afk"), extendedP[i][eP.ID], warn, "italic");
             room.sendAnnouncement(centerText(room.getPlayer(extendedP[i][eP.ID]).name + " entrou para a lista de AFKs"), null, warn, "italic");
@@ -3703,12 +3668,14 @@ function updateTeams() {
 };
 
 function updateAdmins() {
-    if (players.length == 0 || players.find((player) => player.admin) != null) {
-        return;
+    if (autoadmin === true) {
+        if (players.length == 0 || players.find((player) => player.admin) != null) {
+            return;
+        }
+        var copie = [];
+        players.forEach(function (element) { copie.push(element.id); });
+        room.setPlayerAdmin(arrayMin(copie), true); // Give admin to the player who's played the longest on the room
     }
-    var copie = [];
-    players.forEach(function (element) { copie.push(element.id); });
-    room.setPlayerAdmin(arrayMin(copie), true); // Give admin to the player who's played the longest on the room
 };
 
 function updateList(number, team) {
@@ -3933,6 +3900,7 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
 room.onPlayerLeave = function (player) {
     updateList(Math.max(teamR.findIndex((p) => p.id == player.id), teamB.findIndex((p) => p.id == player.id), teamS.findIndex((p) => p.id == player.id)), player.team);
     updateTeams();
+    updateAdmins();
     /*updateAdmins();*/
     checkAndPauseGame();
     if (banidao == false) {
@@ -3969,7 +3937,7 @@ room.onPlayerChat = function (player, message) {
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
-        room.sendAnnouncement(centerText("!me, !goat, !streak, !help, !tag, !uniforme, !gklist, !regras, !discord,\n!list, !vs, !verdade, !bb, !bye, !flw"), null, yellow, "normal");
+        room.sendAnnouncement(centerText("!me, !goat, !streak, !help, !tag, !uniforme, !gklist, !regras, !discord,\n!list, !vs, !verdade, !bb, !bye, !flw, !afk"), null, yellow, "normal");
         room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
         room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !brabo"), player.id, yellow, "normal");
         room.sendAnnouncement(centerText("Uniformes:"), player.id, yellow, "bold");
@@ -6684,6 +6652,12 @@ room.onPlayerChat = function (player, message) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     r1vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6694,6 +6668,12 @@ room.onPlayerChat = function (player, message) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     r2vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6704,6 +6684,12 @@ room.onPlayerChat = function (player, message) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     r3vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6714,6 +6700,12 @@ room.onPlayerChat = function (player, message) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     b1vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6724,6 +6716,12 @@ room.onPlayerChat = function (player, message) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     b2vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6734,6 +6732,12 @@ room.onPlayerChat = function (player, message) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     b3vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6811,6 +6815,12 @@ room.onPlayerChat = function (player, message) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     r1vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6821,6 +6831,12 @@ room.onPlayerChat = function (player, message) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     r2vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6831,6 +6847,12 @@ room.onPlayerChat = function (player, message) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     r3vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6841,6 +6863,12 @@ room.onPlayerChat = function (player, message) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     b1vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6851,6 +6879,12 @@ room.onPlayerChat = function (player, message) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     b2vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6861,6 +6895,12 @@ room.onPlayerChat = function (player, message) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     b3vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6938,6 +6978,12 @@ room.onPlayerChat = function (player, message) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     r1vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6948,6 +6994,12 @@ room.onPlayerChat = function (player, message) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     r2vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6958,6 +7010,12 @@ room.onPlayerChat = function (player, message) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     r3vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6968,6 +7026,12 @@ room.onPlayerChat = function (player, message) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     b1vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6978,6 +7042,12 @@ room.onPlayerChat = function (player, message) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     b2vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -6988,6 +7058,12 @@ room.onPlayerChat = function (player, message) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     b3vote = false;
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                    }, 1000);
                 }
                 else {
                     room.sendAnnouncement(centerText(player.name + " você já votou, parceiro..."), null, white, "bold");
@@ -7628,6 +7704,17 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (player.id === badassID) {
+        if (["autoadmin"].includes(message[0].toLowerCase())) {
+            if (autoadmin === true) {
+                autoadmin = false;
+                room.sendAnnouncement(centerText("Auto Admin desativado, " + player.name + "!"), player.id, yellow, "italic");
+            }
+            else {
+                autoadmin = true;
+                room.sendAnnouncement(centerText("Auto Admin ativado, " + player.name + "!"), player.id, yellow, "italic");
+            }
+            return false;
+        }
         if (["5"].includes(message[0].toLowerCase())) {
             room.setDiscProperties(0, {x: 0, y: 0});
             room.sendAnnouncement(centerText("❌ " + player.name + " reposicinou a bola."), null, green, "italic");
