@@ -1895,28 +1895,28 @@ let r3vote = true;
 let b1vote = true;
 let b2vote = true;
 let b3vote = true;
+var votedS = mediumStadium;
 function stadiumVote() {
-    let chosenStadium = randstadiumsfor3x;
     // Verifica qual estádio tem mais votos
     if (forspeedx > fordark && forspeedx > foruseless) {
-        chosenStadium = mediumStadium; // Estádio com mais votos: speedx
+        votedS = mediumStadium; // Estádio com mais votos: speedx
     }
     else if (fordark > forspeedx && fordark > foruseless) {
-        chosenStadium = mediumdark; // Estádio com mais votos: dark
+        votedS = mediumdark; // Estádio com mais votos: dark
     }
     else if (foruseless > forspeedx && foruseless > fordark) {
-        chosenStadium = medium2; // Estádio com mais votos: useless
+        votedS = medium2; // Estádio com mais votos: useless
     }
     else {
-        chosenStadium = randstadiumsfor3x; // Empate ou mais de um estádio com votos máximos
+        votedS = randstadiumsfor3x; // Empate ou mais de um estádio com votos máximos
     }
-    return chosenStadium;
 };
 function checkTeamSizeAndChangeMap() {
+    stadiumVote();
     if (teamR.length === 1 && teamB.length === 1) {
         room.setCustomStadium(smallStadium);
     } else if (teamR.length >= 2 && teamB.length >= 2) {
-        room.setCustomStadium(stadiumVote());
+        room.setCustomStadium(votedS);
     }
 };
 
@@ -4070,7 +4070,7 @@ room.onPlayerChat = function (player, message) {
             choose = true;
         }
         else if (message[1] == "off") {
-            room.sendAnnouncement(centerText("Choose Mode Desativado"), null, green, "bold");
+            room.sendAnnouncement(centerText("Choose Mode Desativado"), null, warn, "bold");
             choose = false;
         }
     }
@@ -5769,15 +5769,19 @@ room.onPlayerChat = function (player, message) {
     }
     if (["go", "play", "bora"].includes(message[0].toLowerCase())) {
         if (player.admin) {
+            checkTeamSizeAndChangeMap();
             room.startGame();
+            room.sendAnnouncement(centerText("Choose Mode Desativado"), null, warn, "bold");
+            choose = false;
         }
-        return false;
     }
     if (["stop"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             room.stopGame();
+            room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
+            choose = true;
+            return false;
         }
-        return false;
     }
     if (["!timeout", "!javolto"].includes(message[0].toLowerCase())) {
         if (player.admin) {
