@@ -1899,15 +1899,15 @@ var votedS = mediumStadium;
 function stadiumVote() {
     // Verifica qual estádio tem mais votos
     if (forspeedx > fordark && forspeedx > foruseless) {
-        votedS = allmediumstadiums[0]; // Estádio com mais votos: speedx
+        votedS = mediumStadium; // Estádio com mais votos: speedx
         room.sendAnnouncement(centerText("Mapa mais votado foi: SPEED X"), null, white, "BOLD", 1);
     }
-    if (fordark > forspeedx && fordark > foruseless) {
-        votedS = allmediumstadiums[1]; // Estádio com mais votos: dark
+    else if (fordark > forspeedx && fordark > foruseless) {
+        votedS = mediumdark; // Estádio com mais votos: dark
         room.sendAnnouncement(centerText("Mapa mais votado foi: DARK"), null, white, "BOLD", 1);
     }
-    if (foruseless > forspeedx && foruseless > fordark) {
-        votedS = allmediumstadiums[2]; // Estádio com mais votos: useless
+    else if (foruseless > forspeedx && foruseless > fordark) {
+        votedS = medium2; // Estádio com mais votos: useless
         room.sendAnnouncement(centerText("Mapa mais votado foi: USELESS"), null, white, "BOLD", 1);
     }
     else {
@@ -2001,7 +2001,7 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 
 /* OPTIONS */
 
-var afkLimit = 15; //segundos
+var afkLimit = 20; //segundos
 var drawTimeLimit = 1; //minutos
 var maxTeamSize = 3;
 var yellow = 0xffeb15;
@@ -2097,8 +2097,8 @@ let trava = ["㧫璧 觭䢜潇ကᩨ쀡ఈ泄찉넾﫤㏭ 緺", "▓▓
 
 let regex = ["fdp", "cu", "carai", "cuzao", "porra", "arrombado", "cu preto", "lixo", "autista", "lixeira", "verme", "Horrível", "seu merda", "filho da puta", "vsfd",
 "caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu", "crl", "cadeirante", "caderante",
-"nigga", "prr", "CARALHO", "PORRA", "CARAI", "CUZAO", "CUZÃO", "FDP", "FILHO DA PUTA", "Cu", "CU", "CÚ", "PORR", "porr", "PRRA", "fodido", "FODIDO", "CRALHO", "CARLHO"];
-
+"nigga", "prr", "CARALHO", "PORRA", "CARAI", "CUZAO", "CUZÃO", "FDP", "FILHO DA PUTA", "Cu", "CU", "CÚ", "PORR", "porr", "PRRA", "fodido", "FODIDO", "CRALHO", "CARLHO", "poha",
+"prr" , "PRR", "POHA", "bct", "BCT"];
 let xingo = ["seu preto", "seu macaco", "macaco", "seu negro", "pretinho", "resto de aborto", "seu mcc", "Negrinho", "carvão", "nazista", "Nazista"];
 let malcorage = ["Manco", "manco", "Malco lixo", "malco lixo", "Malco ruim", "malco ruim", "malco fudido", "manko"];
 let chorao = ["mds", "meudeus"];
@@ -3597,10 +3597,10 @@ function handleInactivity() {
             }*/
             afklist.push(extendedP[i][eP.ID]);
             room.setPlayerTeam(extendedP[i][eP.ID], Team.SPECTATORS);
-            checkAndPauseGame();
             room.sendAnnouncement(centerText("Você está na lista de AFKs"), extendedP[i][eP.ID], warn, "italic", 0);
             room.sendAnnouncement(centerText("para sair, digite !afk"), extendedP[i][eP.ID], warn, "italic");
             room.sendAnnouncement(centerText(room.getPlayer(extendedP[i][eP.ID]).name + " entrou para a lista de AFKs"), null, warn, "italic");
+            checkAndPauseGame();
         }
     }
 };
@@ -4119,7 +4119,7 @@ room.onPlayerChat = function (player, message) {
         var randred2 = Math.floor(Math.random() * teamS.length);
         var randblue1 = Math.floor(Math.random() * teamS.length);
         var randblue2 = Math.floor(Math.random() * teamS.length);
-        if (choose == true && teamS.length > 2) {    
+        if (choose === true && teamS.length > 2) {    
             if (player.id == teamR[0].id) {
                 if (teamR.length == 1) {
                     room.sendAnnouncement(centerText(teamR[0].name + " escolheu RAND"), null, white, "bold");
@@ -4161,7 +4161,7 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (["1"].includes(message[0].toLowerCase()) && teamS.length >= 1) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[0].name), null, white, "bold");
                 room.setPlayerTeam(teamS[0].id, Team.RED);
@@ -4186,7 +4186,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["2"].includes(message[0].toLowerCase()) && teamS.length >= 2) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[1].name), null, white, "bold");
                 room.setPlayerTeam(teamS[1].id, Team.RED);
@@ -4211,7 +4211,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["3"].includes(message[0].toLowerCase()) && teamS.length >= 3) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[2].name), null, white, "bold");
                 room.setPlayerTeam(teamS[2].id, Team.RED);
@@ -4236,7 +4236,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["4"].includes(message[0].toLowerCase()) && teamS.length >= 4) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[3].name), null, white, "bold");
                 room.setPlayerTeam(teamS[3].id, Team.RED);
@@ -4261,7 +4261,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["5"].includes(message[0].toLowerCase()) && teamS.length >= 5) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[4].name), null, white, "bold");
                 room.setPlayerTeam(teamS[4].id, Team.RED);
@@ -4286,7 +4286,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["6"].includes(message[0].toLowerCase()) && teamS.length >= 6) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[5].name), null, white, "bold");
                 room.setPlayerTeam(teamS[5].id, Team.RED);
@@ -4311,7 +4311,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["7"].includes(message[0].toLowerCase()) && teamS.length >= 7) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[6].name), null, white, "bold");
                 room.setPlayerTeam(teamS[6].id, Team.RED);
@@ -4336,7 +4336,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["8"].includes(message[0].toLowerCase()) && teamS.length >= 8) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[7].name), null, white, "bold");
                 room.setPlayerTeam(teamS[7].id, Team.RED);
@@ -4361,7 +4361,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["9"].includes(message[0].toLowerCase()) && teamS.length >= 9) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[8].name), null, white, "bold");
                 room.setPlayerTeam(teamS[8].id, Team.RED);
@@ -4386,7 +4386,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["10"].includes(message[0].toLowerCase()) && teamS.length >= 10) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[9].name), null, white, "bold");
                 room.setPlayerTeam(teamS[9].id, Team.RED);
@@ -4411,7 +4411,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["11"].includes(message[0].toLowerCase()) && teamS.length >= 11) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[10].name), null, white, "bold");
                 room.setPlayerTeam(teamS[10].id, Team.RED);
@@ -4436,7 +4436,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["12"].includes(message[0].toLowerCase()) && teamS.length >= 12) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[11].name), null, white, "bold");
                 room.setPlayerTeam(teamS[11].id, Team.RED);
@@ -4461,7 +4461,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["13"].includes(message[0].toLowerCase()) && teamS.length >= 13) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[12].name), null, white, "bold");
                 room.setPlayerTeam(teamS[12].id, Team.RED);
@@ -4486,7 +4486,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["14"].includes(message[0].toLowerCase()) && teamS.length >= 14) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[13].name), null, white, "bold");
                 room.setPlayerTeam(teamS[13].id, Team.RED);
@@ -4511,7 +4511,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["15"].includes(message[0].toLowerCase()) && teamS.length >= 15) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[14].name), null, white, "bold");
                 room.setPlayerTeam(teamS[14].id, Team.RED);
@@ -4536,7 +4536,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["16"].includes(message[0].toLowerCase()) && teamS.length >= 16) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[15].name), null, white, "bold");
                 room.setPlayerTeam(teamS[15].id, Team.RED);
@@ -4561,7 +4561,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["17"].includes(message[0].toLowerCase()) && teamS.length >= 17) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[16].name), null, white, "bold");
                 room.setPlayerTeam(teamS[16].id, Team.RED);
@@ -4586,7 +4586,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["18"].includes(message[0].toLowerCase()) && teamS.length >= 18) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[17].name), null, white, "bold");
                 room.setPlayerTeam(teamS[17].id, Team.RED);
@@ -4611,7 +4611,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["19"].includes(message[0].toLowerCase()) && teamS.length >= 19) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[18].name), null, white, "bold");
                 room.setPlayerTeam(teamS[18].id, Team.RED);
@@ -4636,7 +4636,7 @@ room.onPlayerChat = function (player, message) {
         }
     }
     if (["20"].includes(message[0].toLowerCase()) && teamS.length >= 20) {
-        if (choose == true) {    
+        if (choose === true) {    
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[19].name), null, white, "bold");
                 room.setPlayerTeam(teamS[19].id, Team.RED);
@@ -6622,17 +6622,15 @@ room.onPlayerChat = function (player, message) {
         }, 300);
     }
     if (["speed", "mapa1"].includes(message[0].toLowerCase())) {
-        if (choose == true) {
+        if (choose === true) {
             if (teamR[0]) {
-                if (r1vote == true) {
+                if (r1vote === true) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     r1vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6640,15 +6638,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamR[1]) {
-                if (r2vote == true) {
+                if (r2vote === true) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     r2vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6656,15 +6652,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamR[2]) {
-                if (r3vote == true) {
+                if (r3vote === true) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     r3vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6672,15 +6666,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamB[0]) {
-                if (b1vote == true) {
+                if (b1vote === true) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     b1vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6688,15 +6680,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamB[1]) {
-                if (b2vote == true) {
+                if (b2vote === true) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     b2vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6704,15 +6694,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamB[2]) {
-                if (b3vote == true) {
+                if (b3vote === true) {
                     forspeedx++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED X"), null, white, "bold");
                     b3vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6720,82 +6708,80 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamS[0]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[1]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[2]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[3]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[4]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[5]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[6]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[7]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[8]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[9]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[10]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[11]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[12]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[13]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[14]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[15]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[16]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[17]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[18]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[19]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[20]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
         }
     }
     if (["dark", "mapa2"].includes(message[0].toLowerCase())) {
-        if (choose == true) {
+        if (choose === true) {
             if (teamR[0]) {
-                if (r1vote == true) {
+                if (r1vote === true) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     r1vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6803,15 +6789,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamR[1]) {
-                if (r2vote == true) {
+                if (r2vote === true) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     r2vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6819,15 +6803,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamR[2]) {
-                if (r3vote == true) {
+                if (r3vote === true) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     r3vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6835,15 +6817,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamB[0]) {
-                if (b1vote == true) {
+                if (b1vote === true) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     b1vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6851,15 +6831,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamB[1]) {
-                if (b2vote == true) {
+                if (b2vote === true) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     b2vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6867,15 +6845,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamB[2]) {
-                if (b3vote == true) {
+                if (b3vote === true) {
                     fordark++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
                     b3vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6883,82 +6859,80 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamS[0]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[1]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[2]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[3]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[4]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[5]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[6]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[7]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[8]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[9]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[10]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[11]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[12]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[13]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[14]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[15]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[16]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[17]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[18]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[19]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[20]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
         }
     }
     if (["useless", "mapa3"].includes(message[0].toLowerCase())) {
-        if (choose == true) {
+        if (choose === true) {
             if (teamR[0]) {
-                if (r1vote == true) {
+                if (r1vote === true) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     r1vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6966,15 +6940,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamR[1]) {
-                if (r2vote == true) {
+                if (r2vote === true) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     r2vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6982,15 +6954,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamR[2]) {
-                if (r3vote == true) {
+                if (r3vote === true) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     r3vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -6998,15 +6968,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamB[0]) {
-                if (b1vote == true) {
+                if (b1vote === true) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     b1vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -7014,15 +6982,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamB[1]) {
-                if (b2vote == true) {
+                if (b2vote === true) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     b2vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -7030,15 +6996,13 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamB[2]) {
-                if (b3vote == true) {
+                if (b3vote === true) {
                     foruseless++;
                     room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
                     b3vote = false;
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
-                        room.sendAnnouncement(centerText("SPEED X -> " + forspeedx + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("DARK -> " + fordark + " voto(s)"), null, lightgrey, "bold", 0);
-                        room.sendAnnouncement(centerText("USELESS X -> " + foruseless + " voto(s)"), null, lightgrey, "bold", 0);
+                        room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
                     }, 1000);
                 }
                 else {
@@ -7046,67 +7010,67 @@ room.onPlayerChat = function (player, message) {
                 }
             }
             if (teamS[0]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[1]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[2]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[3]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[4]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[5]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[6]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[7]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[8]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[9]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[10]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[11]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[12]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[13]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[14]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[15]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[16]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[17]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[18]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[19]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
             if (teamS[20]) {
-                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), null, white, "bold");
+                room.sendAnnouncement(centerText("Só quem vai jogar que vota, meu mano " + player.name), player.id, yellow, "normal");
             }
         }
     }
