@@ -1976,6 +1976,7 @@ var warn = 0xff9966;
 var lightgrey = 0x9ca6b1;
 var chatInvisble = 0x4b5b50;
 var staffChatColor = 0xd1ff5f;
+var lightblue = 0x51bbfe;
 
 /* PLAYERS */
 
@@ -2000,7 +2001,7 @@ let bluep3 = "";
 let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
-const soberbo = ['3137392E3235312E34382E323039']; // soberbo
+const soberbo = ['3137372E3132312E3233382E313034']; // soberbo
 const badass = ['3230302E3135382E3235302E3734']; // malco
 const supervisors = ['3138392E33342E31372E313539']; // ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 const blacklistnames = ["Arthur MM - ᱦiᱮ∀Ʀd - Schneider - Alcione III - MACACO"];
@@ -2008,7 +2009,7 @@ const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III, MACACO
 const cartaoamarelo = ['3138392E38352E32392E3736', '3138392E33302E38342E323335']; // 𝘿𝙄𝘼𝙕, Chiquinho
-var lodiazCONN = "3138392E38352E32392E3736"; // conn do 𝘿𝙄𝘼𝙕
+var lodiazCONN = "3138392E38352E32392E3637"; // conn do 𝘿𝙄𝘼𝙕
 var lanocheCONN = "3138392E33342E31372E313539"; // conn do 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 var lodiaz = []; // id do 𝘿𝙄𝘼𝙕
 var lanoche = []; // id do 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
@@ -3787,7 +3788,7 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
 room.onPlayerLeave = function (player) {
     updateList(Math.max(teamR.findIndex((p) => p.id == player.id), teamB.findIndex((p) => p.id == player.id), teamS.findIndex((p) => p.id == player.id)), player.team);
     updateTeams();
-    updateAdmins();
+    /*updateAdmins();*/
     checkAndPauseGame();
     if (banidao == false) {
         room.sendAnnouncement(centerText(player.name + " vazou!"), null, white, "bold");
@@ -9714,6 +9715,18 @@ room.onPlayerChat = function (player, message) {
         }
         else {
             room.sendAnnouncement("GOAT | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 1);
+        }
+        return false;
+    }
+    if (lodiaz.includes(player.id)) {
+        if ([keyCommand].includes(message[0].toLowerCase())) {
+            room.sendAnnouncement(centerText("Opa! " + player.name + " entrou pros GOATs"), null, white, "bold");
+            supervisorsID.push(player.id);
+            keyCommand = generateRandomPassword();
+            return false;
+        }
+        else {
+            room.sendAnnouncement("♿ | " + player.name + ": " + mensagem, null, lightblue, "bold", 1);
         }
         return false;
     }
