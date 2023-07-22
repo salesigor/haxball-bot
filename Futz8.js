@@ -2001,7 +2001,7 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 
 /* OPTIONS */
 
-var afkLimit = 20; //segundos
+var afkLimit = 15; //segundos
 var drawTimeLimit = 1; //minutos
 var maxTeamSize = 3;
 var yellow = 0xffeb15;
@@ -2960,7 +2960,15 @@ function topBtn() {
             room.setPlayerTeam(teamS[0].id, Team.RED);
         }
         else {
-            room.setPlayerTeam(teamS[0].id, Team.BLUE);
+            if (afklist.includes(teamS[0].id)) {
+                room.setPlayerTeam(teamS[1].id, Team.BLUE);
+            }
+            else if (afklist.includes(teamS[1].id)) {
+                room.setPlayerTeam(teamS[2].id, Team.BLUE);
+            }
+            else {
+                room.setPlayerTeam(teamS[0].id, Team.BLUE);
+            }
         }
     }
 };
@@ -3583,18 +3591,6 @@ function handleInactivity() {
             if (room.getScores().time <= afkLimit - 0.5) {
                 setTimeout(() => {room.stopGame();}, 10);
             }
-            /*if (player.id === badassID) {
-                room.sendAnnouncement(centerText("Se mexe, aí " + room.getPlayer(extendedP[i][eP.ID]).name), extendedP[i][eP.ID], warn, "bold", 0);
-                room.sendAnnouncement(centerText("Beleza, vamos ter que esperar a boa vontade, " + room.getPlayer(extendedP[i][eP.ID]).name + "?"), null, warn, "italic");
-            }
-            if (player.id === soberboID) {
-                room.sendAnnouncement(centerText("Se mexe, aí " + room.getPlayer(extendedP[i][eP.ID]).name), extendedP[i][eP.ID], warn, "bold", 0);
-                room.sendAnnouncement(centerText("Beleza, vamos ter que esperar a boa vontade, " + room.getPlayer(extendedP[i][eP.ID]).name + "?"), null, warn, "italic");
-            }
-            if (player.id === lanoche) {
-                room.sendAnnouncement(centerText("Se mexe, aí " + room.getPlayer(extendedP[i][eP.ID]).name), extendedP[i][eP.ID], warn, "bold", 0);
-                room.sendAnnouncement(centerText("Beleza, vamos ter que esperar a boa vontade, " + room.getPlayer(extendedP[i][eP.ID]).name + "?"), null, warn, "italic");
-            }*/
             afklist.push(extendedP[i][eP.ID]);
             room.setPlayerTeam(extendedP[i][eP.ID], Team.SPECTATORS);
             room.sendAnnouncement(centerText("Você está na lista de AFKs"), extendedP[i][eP.ID], warn, "italic", 0);
@@ -3877,7 +3873,6 @@ room.onPlayerLeave = function (player) {
     updateList(Math.max(teamR.findIndex((p) => p.id == player.id), teamB.findIndex((p) => p.id == player.id), teamS.findIndex((p) => p.id == player.id)), player.team);
     updateTeams();
     updateAdmins();
-    /*updateAdmins();*/
     checkAndPauseGame();
     if (banidao == false) {
         room.sendAnnouncement(centerText(player.name + " vazou!"), null, white, "bold");
