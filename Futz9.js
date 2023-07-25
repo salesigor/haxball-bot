@@ -1,7 +1,7 @@
 /* ROOM */
 
-const botVersion = "Futz 8";
-const roomName = "3x3 | ⚽ FutZ Server 🏆 | Cola na humildade 🎯";
+const botVersion = "Futz 9";
+const roomName = "3x3 | ⚽ FUTZ Server 🏆 | Cola na humildade 🎯";
 /* NOMES SUGERIDOS:
 1: 🏆 3x3 Futsal ⚽ | Cola na humildade
 2: 🏆 SABOT | ⚽ 3x3 Futsal ⚽ | Cola na humildade
@@ -1896,6 +1896,11 @@ let b1vote = true;
 let b2vote = true;
 let b3vote = true;
 var votedS = mediumStadium;
+function loadMap(map, scoreLim, timeLim) {
+    room.setCustomStadium(map);
+    room.setScoreLimit(scoreLim);
+    room.setTimeLimit(timeLim);
+}
 function stadiumVote() {
     // Verifica qual estádio tem mais votos
     if (forspeedx > fordark && forspeedx > foruseless) {
@@ -1922,7 +1927,7 @@ function checkTeamSizeAndChangeMap() {
     if (teamR.length === 1 && teamB.length === 1) {
         room.setCustomStadium(smallStadium);
     } else if (teamR.length >= 2 && teamB.length >= 2) {
-        room.setCustomStadium(votedS);
+        loadMap(votedS, scoreLimit, timeLimit);
     }
 };
 
@@ -2914,6 +2919,23 @@ function IIIx() {
                 }, 1000);
             }
             return;
+        }
+    }
+};
+
+function topBtnForBlue() {
+    if (teamS.length == 0) {
+        return;
+    }
+    else {
+        if (afklist.includes(teamS[0].id)) {
+            room.setPlayerTeam(teamS[1].id, Team.BLUE);
+        }
+        else if (afklist.includes(teamS[1].id)) {
+            room.setPlayerTeam(teamS[2].id, Team.BLUE);
+        }
+        else {
+            room.setPlayerTeam(teamS[0].id, Team.BLUE);
         }
     }
 };
@@ -4127,7 +4149,7 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (["1"].includes(message[0].toLowerCase()) && teamS.length >= 1) {
-        if (choose === true) {    
+        if (choose === true) {
             if (player.id == teamR[0].id) {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[0].name), null, white, "bold");
                 room.setPlayerTeam(teamS[0].id, Team.RED);
@@ -4680,7 +4702,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
         }, 100);
     }
-    /*if (["!afk"].includes(message[0].toLowerCase())) {
+    if (["!afk"].includes(message[0].toLowerCase())) {
         if (afklist.includes(player.id)) {
             var index = afklist.indexOf(player.id);
             if (index !== -1) {
@@ -4696,7 +4718,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("para sair, digite !afk novamente"), player.id, warn, "italic");
             room.sendAnnouncement(centerText(player.name + " está AFK"), null, warn, "italic");
         }
-    }*/
+    }
     if (["!uniforme"].includes(message[0].toLowerCase())) {
         if (message[1] == null) {
             room.sendAnnouncement("_______________________________________", null, yellow, "bold");
@@ -11103,7 +11125,7 @@ room.onGamePause = function (byPlayer) {
         setTimeout(function () {
             var messages = [
                 "Opa, vamos ter que levar para o VAR analizar...",
-                "VAR está coferindo o lance...",
+                "VAR está conferindo o lance...",
             ];
             var randomIndex = Math.floor(Math.random() * messages.length);
             var announcement = messages[randomIndex];

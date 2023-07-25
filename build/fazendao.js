@@ -7,7 +7,7 @@
 const roomName = "🌱𝐅𝐀𝐙𝐄𝐍𝐃𝐀𝐎🌱 BOLEIROS 3X";
 const botName = "👨‍🌾 Fazendeiro";
 const maxPlayers = 30;
-const roomPublic = true;
+const roomPublic = false;
 const geo = [{ "code": "br", "lat": -23.6, "lon": -45.4 }]; // Geo
 
 const room = HBInit({ roomName: roomName, maxPlayers: maxPlayers, public: roomPublic, playerName: botName, geo: geo[0] });
