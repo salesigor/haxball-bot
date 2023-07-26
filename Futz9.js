@@ -2048,9 +2048,9 @@ var supervisorsID = [];
 const soberbo = ['3137372E3132312E3233382E313034']; // soberbo
 const badass = ['3230302E3135382E3235302E3734']; // malco
 const supervisors = ['3138392E33342E31372E313539']; // ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
-const blacklistnames = ["Arthur MM - ᱦiᱮ∀Ʀd - Schneider - Alcione III - MACACO"];
+const blacklistnames = ["Arthur MM","ᱦiᱮ∀Ʀd","Schneider","Alcione III","MACACO","miguelgatao"];
 const blacklistconn = [
-    '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337'
+    '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337', '3137372E3134302E3130372E323239'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III, MACACO
 const cartaoamarelo = ['3138392E33302E38342E323335']; // Chiquinho
 var lodiazCONN = "3138392E38352E32392E3637"; // conn do 𝘿𝙄𝘼𝙕
@@ -2063,7 +2063,7 @@ var blacklist = [
     {Nick: "Schneider", Auth: "_nsAyl-n61ELIOJghIDiHojx-parT0N19K374jqygqo", Conn: "3137372E37362E3232342E3730"},
     {Nick: "Alcione III", Auth: "l6CTEtHr4eiv6xwCfvFow6dqEkTxuKRKhWUWgVkmFzY", Conn: "3137392E3231382E32312E323337"},
     {Nick: "MACACO", Auth: "aPIbu-KVDln_AP66WDgrgZYP7QdNWvDsvNQ6WU8whbA", Conn: "3138372E36302E3231372E313934"},
-    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "miguelgatao", Auth: "muhymMgE4Xq_Dxc3wtOhlvEsP0Y0EZaVXz4tX9mCJRg", Conn: "3137372E3134302E3130372E323239"},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
@@ -2919,23 +2919,6 @@ function IIIx() {
                 }, 1000);
             }
             return;
-        }
-    }
-};
-
-function topBtnForBlue() {
-    if (teamS.length == 0) {
-        return;
-    }
-    else {
-        if (afklist.includes(teamS[0].id)) {
-            room.setPlayerTeam(teamS[1].id, Team.BLUE);
-        }
-        else if (afklist.includes(teamS[1].id)) {
-            room.setPlayerTeam(teamS[2].id, Team.BLUE);
-        }
-        else {
-            room.setPlayerTeam(teamS[0].id, Team.BLUE);
         }
     }
 };
