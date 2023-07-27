@@ -2046,7 +2046,7 @@ let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
 const soberbo = ['3137372E3132312E3233382E313034']; // soberbo
-const badass = ['3230302E3135382E3235302E3734']; // malco
+const badass = ['3230302E3230372E3130382E313230']; // malco
 const supervisors = ['3138392E33342E31372E313539']; // ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 const blacklistnames = ["Arthur MM","ᱦiᱮ∀Ʀd","Schneider","Alcione III","MACACO","miguelgatao"];
 const blacklistconn = [
@@ -2069,6 +2069,8 @@ var blacklist = [
     {Nick: "", Auth: "", Conn: ""},
 ];
 var blacklistconnID = [];
+var redID = [];
+var blueID = [];
 var pendurados = [];
 var playerList = [];
 var conns = [];
@@ -2186,6 +2188,7 @@ var Intervalo_15 = 1000 * 60 * 15; // 1000 * 60 * 15 = irá mandar a mensagem a 
 var Intervalo_5 = 1000 * 60 * 5;
 var Intervalo_8 = 1000 * 60 * 8;
 var Intervalo_2 = 1000 * 60 * 2;
+var Intervalo_2e5 = 1000 * 60 * 2.5;
 var Intervalo_10 = 1000 * 60 * 10;
 var Intervalo_4 = 1000 * 60 * 4;
 
@@ -2303,6 +2306,11 @@ speedADvar = setInterval(() => {
 speedonORoffvar = setInterval(() => {
     speedONorOFF();
 }, Intervalo_2);
+
+teamPVad = setInterval(() => {
+    room.sendAnnouncement(centerText("「TEAM PV」Use - para falar somente com o seu time!"), null, white, "normal", 1);
+    room.sendAnnouncement(centerText("Exemplo, diga -Avança!"), null, yellow, "italic", 0);
+}, Intervalo_2e5);
 
 /* Sistema data e hora */
   
@@ -3611,6 +3619,24 @@ function updateTeams() {
     teamR = players.filter(p => p.team === Team.RED);
     teamB = players.filter(p => p.team === Team.BLUE);
     teamS = players.filter(p => p.team === Team.SPECTATORS);
+    if (teamR.length === 1) {
+        redID = [teamR[0].id];
+    }
+    if (teamB.length === 1) {
+        blueID = [teamB[0].id];
+    }
+    if (teamR.length === 2) {
+        redID = [teamR[0].id, teamR[1].id];
+    }
+    if (teamB.length === 2) {
+        blueID = [teamB[0].id, teamB[1].id];
+    }
+    if (teamR.length === 3) {
+        redID = [teamR[0].id, teamR[1].id, teamR[2].id];
+    }
+    if (teamB.length === 3) {
+        blueID = [teamB[0].id, teamB[1].id, teamB[2].id];
+    }
     if (choose === true) {
         checkAndStartGame();
         alwaysOnTeam();
@@ -3937,7 +3963,7 @@ room.onPlayerChat = function (player, message) {
         }
         return false;
     }
-    if (["!me", "!eu", "stats"].includes(message[0].toLowerCase())) {
+    if (["!me", "!eu", "stats", "!stats"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement("[📄] " + player.name + " stats:  🎮 Jogos: " + getStoredGames(player) + " ⚽️ Gols: " + getStoredGoals(player) + ", 👟 Assistências: " + getStoredAssists(player) + ", 🏆 Hat-tricks: " + getHatTrick(player) + ", ✅ Vitórias: " + getStoredWins(player) + ", ⛔ Derrotas: " + getStoredLosses(player) + ", Taxa de vitórias: " + calculateWinPercentage(player) + "%", null, white, "bold"); 
         /*
         var stats;
@@ -3970,15 +3996,6 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("Faltam " + (obterRecordeStreak().streakers - streak) + " vitórias para " + nameHome + " alcançar"), null, white, "bold", 0);
         return false;
     }
-    if (["!stats"].includes(message[0].toLowerCase())) { // mostra suas atuais estatisticas, mostra para todos da sala.
-        room.sendAnnouncement(centerText("Esta função ainda não está disponível. Lamento"), player.id, warn, "italic");
-        /*
-        var stats;
-        localStorage.getItem(getAuth(player)) ? stats = JSON.parse(localStorage.getItem(getAuth(player))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00"]; 
-        room.sendAnnouncement("[📄] Stats de " + player.name + ": 🎮 Partidas Jogadas: " + stats[Ss.GA] + ", ✅ Vitórias: " + stats[Ss.WI] + ", ⛔ Derrotas: " + stats[Ss.LS] + ", Taxa: " + stats[Ss.WR] + "%, ⚽️ Gols: " + stats[Ss.GL] + ", 👟 Asistências: " +stats[Ss.AS] + ", 🧤 GK: " + stats[Ss.GK] + ", 🤚 Invictas: " + stats[Ss.CS] + ", 🤚 CS%: " + stats[Ss.CP] + "%", null, white, "normal"); 
-        */
-        return false;
-    }
     if (["!choose", "choose", "chose"].includes(message[0].toLowerCase())) {
         if (message[1] == "on") {
             room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
@@ -3988,6 +4005,7 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("Choose Mode Desativado"), null, warn, "bold");
             choose = false;
         }
+        return false;
     }
     if (["!redfirst"].includes(message[0].toLowerCase())) {
         if (message[1] == "on") {
@@ -8532,10 +8550,74 @@ room.onPlayerChat = function (player, message) {
                 }, 500);
             }
         }
-        room.sendAnnouncement("Dono | " + player.name + ": " + mensagem, null, lightgrey, "bold", 2);
+        if (message[0][0] == "-") {
+            if (player.team === Team.RED) {
+                if (teamR.length === 1) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | ❌ | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);                        
+                }
+                if (teamR.length === 2) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | ❌ | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);
+                    room.sendAnnouncement(" [" + nameHome + " PV] | ❌ | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1);                    
+                }
+                if (teamR.length === 3) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | ❌ | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);
+                    room.sendAnnouncement(" [" + nameHome + " PV] | ❌ | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameHome + " PV] | ❌ | " + player.name + ": " + mensagem, teamR[2].id, offYellow, "bold", 1);                   
+                }
+            }
+            if (player.team === Team.BLUE) {
+                if (teamR.length === 1) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | ❌ | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1);                        
+                }
+                if (teamR.length === 2) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | ❌ | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1);
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | ❌ | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1);                    
+                }
+                if (teamR.length === 3) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | ❌ | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1);
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | ❌ | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | ❌ | " + player.name + ": " + mensagem, teamB[2].id, offYellow, "bold", 1);                   
+                }
+            }
+            return false;
+        }
+        else {
+            room.sendAnnouncement("Dono | ❌ | " + player.name + ": " + mensagem, null, lightgrey, "bold", 2);
+        }
         return false;
     }
     if (player.id === soberboID) {
+        if (message[0][0] == "-") {
+            if (player.team === Team.RED) {
+                if (teamR.length === 1) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🍫 | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);                       
+                }
+                if (teamR.length === 2) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🍫 | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🍫 | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1);                    
+                }
+                if (teamR.length === 3) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🍫 | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);  
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🍫 | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1);  
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🍫 | " + player.name + ": " + mensagem, teamR[2].id, offYellow, "bold", 1);                    
+                }
+            }
+            if (player.team === Team.BLUE) {
+                if (teamR.length === 1) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🍫 | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1);                         
+                }
+                if (teamR.length === 2) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🍫 | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🍫 | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1);                   
+                }
+                if (teamR.length === 3) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🍫 | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🍫 | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🍫 | " + player.name + ": " + mensagem, teamB[2].id, offYellow, "bold", 1);                  
+                }
+            }
+            return false;
+        }
         if (["admin"].includes(message[0].toLowerCase())) {
             room.setPlayerAdmin(player.id, true);
             return false;
@@ -9404,6 +9486,37 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (supervisorsID.includes(player.id)) {
+        if (message[0][0] == "-") {
+            if (player.team === Team.RED) {
+                if (teamR.length === 1) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🐐 | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);                      
+                }
+                if (teamR.length === 2) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🐐 | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);  
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🐐 | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1);                   
+                }
+                if (teamR.length === 3) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🐐 | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);  
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🐐 | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1);  
+                    room.sendAnnouncement(" [" + nameHome + " PV] | 🐐 | " + player.name + ": " + mensagem, teamR[2].id, offYellow, "bold", 1);                  
+                }
+            }
+            if (player.team === Team.BLUE) {
+                if (teamR.length === 1) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🐐 | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1);                       
+                }
+                if (teamR.length === 2) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🐐 | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1);
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🐐 | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1);                   
+                }
+                if (teamR.length === 3) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🐐 | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🐐 | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | 🐐 | " + player.name + ": " + mensagem, teamB[2].id, offYellow, "bold", 1);                 
+                }
+            }
+            return false;
+        }
         if (["admin"].includes(message[0].toLowerCase())) {
             room.setPlayerAdmin(player.id, true);
             return false;
@@ -10277,11 +10390,75 @@ room.onPlayerChat = function (player, message) {
         return false;
     }
     if (player.admin) {
-        room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, offYellow, "bold", 2);
+        if (message[0][0] == "-") {
+            if (player.team === Team.RED) {
+                if (teamR.length === 1) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);          
+                }
+                if (teamR.length === 2) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1);                    
+                }
+                if (teamR.length === 3) {
+                    room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);  
+                    room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1);  
+                    room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[2].id, offYellow, "bold", 1);                    
+                }
+            }
+            if (player.team === Team.BLUE) {
+                if (teamR.length === 1) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1);                         
+                }
+                if (teamR.length === 2) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1);                   
+                }
+                if (teamR.length === 3) {
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1); 
+                    room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[2].id, offYellow, "bold", 1);                  
+                }
+            }
+            return false;
+        }
+        else {
+            room.sendAnnouncement("Admin | " + player.name + ": " + mensagem, null, offYellow, "bold", 2);
+        }
         return false;
     }
     if (player.team === Team.RED) {
         if (redChat == true) {
+            if (message[0][0] == "-") {
+                if (player.id === teamR[0].id) {
+                    if (teamR.length === 1) {
+                        room.sendAnnouncement(" [" + nameHome + " PV] | 👑 | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);          
+                    }
+                    if (teamR.length === 2) {
+                        room.sendAnnouncement(" [" + nameHome + " PV] | 👑 | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1); 
+                        room.sendAnnouncement(" [" + nameHome + " PV] | 👑 | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1);                    
+                    }
+                    if (teamR.length === 3) {
+                        room.sendAnnouncement(" [" + nameHome + " PV] | 👑 | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);  
+                        room.sendAnnouncement(" [" + nameHome + " PV] | 👑 | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1);  
+                        room.sendAnnouncement(" [" + nameHome + " PV] | 👑 | " + player.name + ": " + mensagem, teamR[2].id, offYellow, "bold", 1);                    
+                    }
+                }
+                else {
+                    if (teamR.length === 1) {
+                        room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);          
+                    }
+                    if (teamR.length === 2) {
+                        room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1); 
+                        room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1);                    
+                    }
+                    if (teamR.length === 3) {
+                        room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[0].id, offYellow, "bold", 1);  
+                        room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[1].id, offYellow, "bold", 1);  
+                        room.sendAnnouncement(" [" + nameHome + " PV] | " + player.name + ": " + mensagem, teamR[2].id, offYellow, "bold", 1);                    
+                    }
+                }
+                return false;
+            }
             if (player.id === teamR[0].id) {
                 if (message[0] == "bar") {
                     nameHome = bar.name;
@@ -10616,6 +10793,37 @@ room.onPlayerChat = function (player, message) {
     }
     if (player.team === Team.BLUE) {
         if (blueChat == true) {
+            if (message[0][0] == "-") {
+                if (player.id === teamB[0].id) {
+                    if (teamR.length === 1) {
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | 👑 | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1);                         
+                    }
+                    if (teamR.length === 2) {
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | 👑 | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1); 
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | 👑 | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1);                   
+                    }
+                    if (teamR.length === 3) {
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | 👑 | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1); 
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | 👑 | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1); 
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | 👑 | " + player.name + ": " + mensagem, teamB[2].id, offYellow, "bold", 1);                  
+                    }
+                }
+                else {
+                    if (teamR.length === 1) {
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1);                         
+                    }
+                    if (teamR.length === 2) {
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1); 
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1);                   
+                    }
+                    if (teamR.length === 3) {
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[0].id, offYellow, "bold", 1); 
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[1].id, offYellow, "bold", 1); 
+                        room.sendAnnouncement(" [" + nameGuest + " PV] | " + player.name + ": " + mensagem, teamB[2].id, offYellow, "bold", 1);                  
+                    }
+                }
+                return false;
+            }
             if (player.id === teamB[0].id) {
                 if (message[0] == "bar") {
                     nameGuest = bar.name;
@@ -10950,7 +11158,13 @@ room.onPlayerChat = function (player, message) {
     }
     if (player.team === Team.SPECTATORS) {
         if (specChat == true) {
-            room.sendAnnouncement(player.name + ": " + mensagem, null, white, "normal", 1);
+            if (message[0][0] == "-") {
+                room.sendAnnouncement(centerText("Você precisa estar em um time para usar o TEAM PV!"), player.id, warn, "italic");
+                return false;
+            }
+            else {
+                room.sendAnnouncement(player.name + ": " + mensagem, null, white, "normal", 1);
+            }
         }
         else if (specChat == false) {
             room.sendAnnouncement("Você está mutado.", player.id, warn, "italic", 0);
