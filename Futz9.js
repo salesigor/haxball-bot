@@ -1,7 +1,7 @@
 /* ROOM */
 
 const botVersion = "Futz 9";
-const roomName = "3x3 | ⚽ FUTZ Server 🏆 | Cola na humildade 🎯";
+const roomName = "𝟯✘𝟯 | ⚽ 🅵🆄🆃🆉 🏆 | 𝐂𝐨𝐥𝐚 𝐧𝐚 𝐡𝐮𝐦𝐢𝐥𝐝𝐚𝐝𝐞 🎯";
 /* NOMES SUGERIDOS:
 1: 🏆 3x3 Futsal ⚽ | Cola na humildade
 2: 🏆 SABOT | ⚽ 3x3 Futsal ⚽ | Cola na humildade
@@ -12,6 +12,8 @@ const roomName = "3x3 | ⚽ FUTZ Server 🏆 | Cola na humildade 🎯";
 7: 🎯 Futsal ⚽ 3x3 🏆 | Cola na humildade
 8: 🎯 Cola na humildade | ⚽ Futsal 3x3 🏆
 9: ⚽ FutZ 3x3 🏆 | Cola na humildade 🎯
+10: 𝟯✘𝟯 | ⚽ 🅵🆄🆃🆉 🏆 | ᶜᵒˡᵃ ⁿᵃ ʰᵘᵐⁱˡᵈᵃᵈᵉ 🎯
+11: 𝟯✘𝟯 | ⚽ 🅵🆄🆃🆉 🏆 | 𝐂𝐨𝐥𝐚 𝐧𝐚 𝐡𝐮𝐦𝐢𝐥𝐝𝐚𝐝𝐞 🎯
 */
 const botName = "🏁 Áʀʙɪᴛʀᴏ ʙᴏᴛ 🤖";
 let linkinho = "";
@@ -703,7 +705,7 @@ const mediumdark = `{"name" : "dark𝒙3 FUTZ 𝓑𝔂 Malco",
 
 	"canBeStored" : false,
 
-	"bg" : { "width" : 550, "height" : 240, "kickOffRadius" : 80, "color" : "2e3035" },
+	"bg" : {  "type" : "futsal", "width" : 550, "height" : 240, "kickOffRadius" : 80, "color" : "2e3035" },
 
 	"vertexes" : [
 		/* 0 */ { "x" : 550, "y" : 240, "cMask" : ["ball" ] },
@@ -2466,6 +2468,19 @@ function bbb(playerName) {
     return parseInt(assists) || 0; // Retorna 0 se não houver assistências armazenadas
 }
 // ZOEIRAS
+function malcontato(goaler) {
+    if (goaler.id === badassID) {
+        var messages = [
+            "Droga, é o " + goaler.name + "!",
+            "E aí, chefe... Ta com 𝐌𝐚𝐥𝐜𝐨ntato? kkkk"
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 3000);
+    }
+};
 function igodnesses(goaler, assistant) {
     if (goaler.id === badassID) {
         var messages = [
@@ -2509,8 +2524,8 @@ function golcontra(goaler) {
         room.sendAnnouncement(centerText(announcement), null, white, "bold");
     }, 3000);
 };
-function goldelanoche(goaler, assistant) {
-    if (goaler.id === lanoche) {
+function messidaangola(goaler, assistant) {
+    if (goaler.id === supervisorsID) {
         var messages = [
             "Ankara, ankara, " + goaler.name + "! 🐐",
             "kk 🐐🐐🐐🐐 " + goaler.name + " o GOAT cantou! 🐐🐐🐐🐐 kk",
@@ -2525,11 +2540,12 @@ function goldelanoche(goaler, assistant) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 3000);
     }
-    if (assistant.id === lanoche) {
+    if (assistant.id === supervisorsID) {
         var messages = [
             "Que passe, pae! 🐐",
             goaler.name + " ficou fácil com esse passe do " + assistant.name + "... 🐐",
-            assistant.name + " tá pra jogo? Acho que sim, com uns passes desses..."
+            assistant.name + " tá pra jogo? Acho que sim, com uns passes desses...",
+            assistant.name + " aprendeu essa com o De Bruyne"
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
@@ -11520,6 +11536,7 @@ room.onTeamGoal = function (team) {
             }, 0);
 		}
         golcontra(lastPlayersTouched[0]);
+        malcontato(lastPlayersTouched[0]);
         getPlayersGoalContra();
 	}
 	room.sendAnnouncement(centerText(nameHome + " " + scores.red + " - " + scores.blue + " " + nameGuest), null, white, "normal");
@@ -11528,6 +11545,7 @@ room.onTeamGoal = function (team) {
         goldenGoal = false;
         setTimeout(() => { room.stopGame(); }, 1000);
     }
+    messidaangola(goleador, assistencia);
     igodnesses(goleador, assistencia);
 };
 
