@@ -2389,6 +2389,46 @@ function derro(derrot, player) {
     const key = `derrotas_${playerName}`;
     localStorage.setItem(key, parseInt(derrot)); // Armazenar o novo valor no localStorage
 };
+function afkNEXTplayer() {
+  if (afklist.includes(teamS[0].id)) {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("VOCÊ SERÁ O PRÓXIMO A JOGAR"), teamS[0].id, yellow, "bold", 2);
+            room.sendAnnouncement(centerText("SAIA AGORA DO AFK PARA NÃO SER KICKADO"), teamS[0].id, yellow, "bold", 2);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("para sair, digite !afk novamente"), teamS[0].id, yellow, "italic", 2);
+            }, 100);
+        }, 100);
+        setTimeout(function () {
+            kickAFKplayer0();
+        }, 15000);
+  }
+  if (afklist.includes(teamS[1].id)) {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("É QUASE SUA VEZ DE JOGAR"), teamS[1].id, yellow, "bold", 2);
+            setTimeout(function () {
+                room.sendAnnouncement(centerText("SAIA DO AFK PARA NÃO SER KICKADO"), teamS[1].id, yellow, "bold", 2);
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("para sair, digite !afk novamente"), teamS[1].id, yellow, "italic", 2);
+                }, 100);
+            }, 300);
+        }, 100);
+        setTimeout(function () {
+            kickAFKplayer1();
+        }, 15000);
+  }
+};
+function kickAFKplayer0() {
+  if (afklist.includes(teamS[0].id)) {
+    room.kickPlayer(teamS[0].id, "Estava AFK na sua vez. Volta quando estiver disponível, de boa?", false);
+    room.sendAnnouncement(centerText(teamS[0].name + " foi kickado por atingir o tempo limite para AFK"), null, yellow, "italic", 2);
+  }
+};
+function kickAFKplayer1() {
+  if (afklist.includes(teamS[1].id)) {
+    room.kickPlayer(teamS[1].id, "Estava AFK na sua vez. Volta quando estiver disponível, de boa?", false);
+    room.sendAnnouncement(centerText(teamS[1].name + " foi kickado por atingir o tempo limite para AFK"), null, yellow, "italic", 2);
+  }
+};
 // THE GOAT
 function findPlayerWithMostHatTricks(players) {
     let maxHatTricks = 0;
@@ -2702,6 +2742,14 @@ function calculateWinPercentage(player) {
     const winPercentage = (wins / totalGames) * 100;
     const winPercentageString = parseInt(winPercentage.toFixed(2)).toString();
     return winPercentageString;
+};
+// KEYCONTROLLS
+function handleKeyPress(event) {
+  // Verifica se a tecla pressionada é a tecla 'A'
+  if (event.key === 'a' || event.key === 'A') {
+    // Coloque aqui o código que deseja executar quando a tecla 'A' for pressionada
+    console.log('Tecla A foi pressionada!');
+  }
 };
 
 /* WEBHOOKS */ 
@@ -5513,10 +5561,10 @@ room.onPlayerChat = function (player, message) {
         setTimeout(function () {
             room.sendAnnouncement(centerText(" VAR 📹 --> analizando..."), null, white, "bold");
             setTimeout(function () { checkAndPauseGame(); alwaysOnTeam(); IIIx(); checkAndStartGame(); checkAndResumeGame(); }, 50);
-            if (teamR.length == 0) {topBtn();}
-            if (teamR.length == 2) {topBtn();}
-            if (teamB.length == 0) {topBtn();}
-            if (teamB.length == 2) {topBtn();}
+            if (teamR.length == 0) {room.setPlayerTeam(teamS[0].id, Team.RED);}
+            if (teamR.length == 2) {room.setPlayerTeam(teamS[0].id, Team.RED);}
+            if (teamB.length == 0) {room.setPlayerTeam(teamS[0].id, Team.BLUE);}
+            if (teamB.length == 2) {room.setPlayerTeam(teamS[0].id, Team.BLUE);}
             if (acronymHome === acronymGuest) {
                 const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv, mia];
                 let randGuest = Math.floor(Math.random() * allClubes.length);
@@ -11692,4 +11740,5 @@ room.onGameTick = function () {
     getStats();
     /*handleInactivity();*/
     alwaysOnTeam();
+    afkNEXTplayer();
 };
