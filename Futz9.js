@@ -2390,32 +2390,36 @@ function derro(derrot, player) {
     localStorage.setItem(key, parseInt(derrot)); // Armazenar o novo valor no localStorage
 };
 function afkNEXTplayer() {
-  if (afklist.includes(teamS[0].id)) {
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("VOCÊ SERÁ O PRÓXIMO A JOGAR"), teamS[0].id, yellow, "bold", 2);
-            room.sendAnnouncement(centerText("SAIA AGORA DO AFK PARA NÃO SER KICKADO"), teamS[0].id, yellow, "bold", 2);
-            setTimeout(function () {
-                room.sendAnnouncement(centerText("para sair, digite !afk novamente"), teamS[0].id, yellow, "italic", 2);
-            }, 100);
-        }, 100);
-        setTimeout(function () {
-            kickAFKplayer0();
-        }, 15000);
-  }
-  if (afklist.includes(teamS[1].id)) {
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("É QUASE SUA VEZ DE JOGAR"), teamS[1].id, yellow, "bold", 2);
-            setTimeout(function () {
-                room.sendAnnouncement(centerText("SAIA DO AFK PARA NÃO SER KICKADO"), teamS[1].id, yellow, "bold", 2);
+    if (teamS.length > 0) {
+        if (afklist.includes(teamS[0].id)) {
                 setTimeout(function () {
-                    room.sendAnnouncement(centerText("para sair, digite !afk novamente"), teamS[1].id, yellow, "italic", 2);
+                    room.sendAnnouncement(centerText("VOCÊ SERÁ O PRÓXIMO A JOGAR"), teamS[0].id, yellow, "bold", 2);
+                    room.sendAnnouncement(centerText("SAIA AGORA DO AFK PARA NÃO SER KICKADO"), teamS[0].id, yellow, "bold", 2);
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("para sair, digite !afk novamente"), teamS[0].id, yellow, "italic", 2);
+                    }, 100);
                 }, 100);
-            }, 300);
-        }, 100);
-        setTimeout(function () {
-            kickAFKplayer1();
-        }, 15000);
-  }
+                setTimeout(function () {
+                    kickAFKplayer0();
+                }, 15000);
+        }
+    }
+    if (teamS.length > 1) {
+        if (afklist.includes(teamS[1].id)) {
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("É QUASE SUA VEZ DE JOGAR"), teamS[1].id, yellow, "bold", 2);
+                    setTimeout(function () {
+                        room.sendAnnouncement(centerText("SAIA DO AFK PARA NÃO SER KICKADO"), teamS[1].id, yellow, "bold", 2);
+                        setTimeout(function () {
+                            room.sendAnnouncement(centerText("para sair, digite !afk novamente"), teamS[1].id, yellow, "italic", 2);
+                        }, 100);
+                    }, 300);
+                }, 100);
+                setTimeout(function () {
+                    kickAFKplayer1();
+                }, 15000);
+        }
+    }
 };
 function kickAFKplayer0() {
   if (afklist.includes(teamS[0].id)) {
