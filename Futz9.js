@@ -2047,8 +2047,8 @@ let bluep3 = "";
 let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
-const soberbo = ['3137372E3132312E3233382E313034']; // soberbo
-const badass = ['3230302E3230372E3130382E313230']; // malco
+const soberbo = ['3139312E3133352E3232302E3539']; // soberbo
+const badass = ['3230302E3135382E3234392E3631']; // malco
 const supervisors = ['3138392E33342E31372E313539']; // ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 const blacklistnames = ["Arthur MM","ᱦiᱮ∀Ʀd","Schneider","Alcione III","MACACO","miguelgatao"];
 const blacklistconn = [
@@ -6628,6 +6628,33 @@ room.onPlayerChat = function (player, message) {
     }
     if (["speed", "mapa1"].includes(message[0].toLowerCase())) {
         if (choose === true) {
+            if (player.id === badassID) {
+                forspeedx++;
+                room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED ❌"), null, white, "bold");
+                r1vote = false;
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                    room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
+                }, 1000);
+            }
+            if (player.id === soberboID) {
+                forspeedx++;
+                room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED ❌"), null, white, "bold");
+                r1vote = false;
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                    room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
+                }, 1000);
+            }
+            if (player.id === supervisorsID) {
+                forspeedx++;
+                room.sendAnnouncement(centerText(player.name + " votou no mapa SPEED ❌"), null, white, "bold");
+                r1vote = false;
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                    room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
+                }, 1000);
+            }
             if (player.id === teamR[0].id) {
                 if (r1vote === true) {
                     forspeedx++;
@@ -6779,6 +6806,33 @@ room.onPlayerChat = function (player, message) {
     }
     if (["dark", "mapa2"].includes(message[0].toLowerCase())) {
         if (choose === true) {
+            if (player.id === badassID) {
+                fordark++;
+                room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
+                r1vote = false;
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                    room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
+                }, 1000);
+            }
+            if (player.id === soberboID) {
+                fordark++;
+                room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
+                r1vote = false;
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                    room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
+                }, 1000);
+            }
+            if (player.id === supervisorsID) {
+                fordark++;
+                room.sendAnnouncement(centerText(player.name + " votou no mapa DARK"), null, white, "bold");
+                r1vote = false;
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                    room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
+                }, 1000);
+            }
             if (player.id === teamR[0].id) {
                 if (r1vote === true) {
                     fordark++;
@@ -6930,6 +6984,33 @@ room.onPlayerChat = function (player, message) {
     }
     if (["useless", "mapa3"].includes(message[0].toLowerCase())) {
         if (choose === true) {
+            if (player.id === badassID) {
+                foruseless++;
+                room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
+                r1vote = false;
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                    room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
+                }, 1000);
+            }
+            if (player.id === soberboID) {
+                foruseless++;
+                room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
+                r1vote = false;
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                    room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
+                }, 1000);
+            }
+            if (player.id === supervisorsID) {
+                foruseless++;
+                room.sendAnnouncement(centerText(player.name + " votou no mapa USELESS"), null, white, "bold");
+                r1vote = false;
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("VOTOS"), null, yellow, "bold", 0);
+                    room.sendAnnouncement(centerText("SPEED X (" + forspeedx + ") | DARK (" + fordark + ") | USELESS (" + foruseless + ")"), null, lightgrey, "bold", 0);
+                }, 1000);
+            }
             if (player.id === teamR[0].id) {
                 if (r1vote === true) {
                     foruseless++;
