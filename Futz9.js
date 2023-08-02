@@ -1,7 +1,7 @@
 /* ROOM */
 
 const botVersion = "Futz 9";
-const roomName = "𝟯✘𝟯 | ⚽ 🅵🆄🆃🆉 🏆 | 𝐂𝐨𝐥𝐚 𝐧𝐚 𝐡𝐮𝐦𝐢𝐥𝐝𝐚𝐝𝐞 🎯";
+const roomName = "𝟯✘𝟯 | 🅵🆄🆃🆉 | 𝐂𝐨𝐥𝐚 𝐧𝐚 𝐡𝐮𝐦𝐢𝐥𝐝𝐚𝐝𝐞 🎯";
 /* NOMES SUGERIDOS:
 1: 🏆 3x3 Futsal ⚽ | Cola na humildade
 2: 🏆 SABOT | ⚽ 3x3 Futsal ⚽ | Cola na humildade
@@ -2010,10 +2010,10 @@ const girl = { "name": '👩🏻‍🦰 𝔅𝔞𝔯𝔟𝔦𝔢𝔰 👱🏻‍
 const inv = { "name": '🟨 Iηvicŧus 🟨', "type": Uniform, "angle": 60, "textcolor": 0xFFE042, "color1": 0x213366, "color2": 0x2F64A1, "color3": 0x2F64A1};
 const vik = { "name": '[̲̅V̲̅i̲̅k̲̅i̲̅и̲̅g̲̅ร̲̅]', "type": Uniform, "angle": 60, "textcolor": 0x28231d, "color1": 0xa9957b, "color2": 0xa9957b, "color3": 0x756855};
 const v1 = { "name": '👑 Søbєrαηøs 👑', "type": Uniform, "angle": 60, "textcolor": 0x990DA8, "color1": 0x5E0061, "color2": 0x000000, "color3": 0x000000};
-const v2 = { "name": '𝔅𝔞𝔯ç𝔞 𝟚𝟘𝟘𝟡', "type": Uniform, "angle": 60, "textcolor": 0xE3D57B, "color1": 0x197FED, "color2": 0xB2273C, "color3": 0x232B58};
+const v2 = { "name": '𝔅𝔞𝔯ç𝔞', "type": Uniform, "angle": 0, "textcolor": 0xE3D57B, "color1": 0x197FED, "color2": 0xB2273C, "color3": 0x232B58};
 const v3 = { "name": 'Vip 3', "type": Uniform, "angle": 45, "textcolor": 0x42FFFF, "color1": 0xA8ABA9, "color2": 0xA3A3A3, "color3": 0x969696};
 const v4 = { "name": 'Vip 4', "type": Uniform, "angle": 1, "textcolor": 0x42FFFF, "color1": 0x000000, "color2": 0x781861, "color3": 0xDAFFC3};
-const v5 = { "name": 'Bambobees', "type": Uniform, "angle": 180, "textcolor": 0x42FFFF, "color1": 0x474747, "color2": 0xFFDD00, "color3": 0x474747};
+const v5 = { "name": 'Barça 2009', "type": Uniform, "angle": 0, "textcolor": 0xf7cf52, "color1": 0x102a74, "color2": 0xf31c35};
 // GOL comemoração
 const gol1 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0xFFFFFF, "color3": 0xFFFFFF};
 const gol12 = {"angle": 0, "textcolor": 0x0a5e11, "color1": 0x42f56f, "color2": 0xFFFFFF, "color3": 0x2ebdff};
@@ -3956,9 +3956,9 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
         return;
     }
     if (afklist.includes(changedPlayer.id)) {
-        room.setPlayerTeam(changedPlayer.id, Team.SPECTATORS);
         room.sendAnnouncement(centerText(changedPlayer.name + " está AFK"), null, warn, "italic", 2);
-        alwaysOnTeam();
+        room.setPlayerTeam(changedPlayer.id, Team.SPECTATORS);
+        topBtn();
         return;
     }
     if (changedPlayer.team == Team.SPECTATORS) {
@@ -3966,6 +3966,7 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
     }
     updateTeams();
     checkTeamSizeLimit();
+    alwaysOnTeam();
 };
 
 room.onPlayerLeave = function (player) {
@@ -4250,7 +4251,7 @@ room.onPlayerChat = function (player, message) {
         if (choose === true) {
             if (player.id == teamR[0].id) {
                 if (afklist.includes(teamS[0].id)) {
-                    room.sendAnnouncement(centerText(teamR[0].id + " está AFK"), null, warn, "italic", 2);
+                    room.sendAnnouncement(centerText(teamS[0].id + " está AFK"), null, warn, "italic", 2);
                 } 
                 else {
                     room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[0].name), null, white, "bold");
@@ -4260,7 +4261,7 @@ room.onPlayerChat = function (player, message) {
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
                     if (afklist.includes(teamS[0].id)) {
-                        room.sendAnnouncement(centerText(teamR[0].id + " está AFK"), null, warn, "italic", 2);
+                        room.sendAnnouncement(centerText(teamS[0].id + " está AFK"), null, warn, "italic", 2);
                     } 
                     else {
                         room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[0].name), null, white, "bold");
@@ -4284,13 +4285,23 @@ room.onPlayerChat = function (player, message) {
     if (["2"].includes(message[0].toLowerCase()) && teamS.length >= 2) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[1].name), null, white, "bold");
-                room.setPlayerTeam(teamS[1].id, Team.RED);
+                if (afklist.includes(teamS[1].id)) {
+                    room.sendAnnouncement(centerText(teamS[1].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
+                    room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[1].name), null, white, "bold");
+                    room.setPlayerTeam(teamS[1].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
-                    room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[1].name), null, white, "bold");
-                    room.setPlayerTeam(teamS[1].id, Team.BLUE);
+                    if (afklist.includes(teamS[1].id)) {
+                        room.sendAnnouncement(centerText(teamS[1].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
+                        room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[1].name), null, white, "bold");
+                        room.setPlayerTeam(teamS[1].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4309,13 +4320,23 @@ room.onPlayerChat = function (player, message) {
     if (["3"].includes(message[0].toLowerCase()) && teamS.length >= 3) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[2].id)) {
+                    room.sendAnnouncement(centerText(teamS[2].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[2].name), null, white, "bold");
                 room.setPlayerTeam(teamS[2].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[2].id)) {
+                        room.sendAnnouncement(centerText(teamS[2].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[2].name), null, white, "bold");
                     room.setPlayerTeam(teamS[2].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4334,13 +4355,23 @@ room.onPlayerChat = function (player, message) {
     if (["4"].includes(message[0].toLowerCase()) && teamS.length >= 4) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[3].id)) {
+                    room.sendAnnouncement(centerText(teamS[3].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[3].name), null, white, "bold");
                 room.setPlayerTeam(teamS[3].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[3].id)) {
+                        room.sendAnnouncement(centerText(teamS[3].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[3].name), null, white, "bold");
                     room.setPlayerTeam(teamS[3].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4359,13 +4390,23 @@ room.onPlayerChat = function (player, message) {
     if (["5"].includes(message[0].toLowerCase()) && teamS.length >= 5) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[4].id)) {
+                    room.sendAnnouncement(centerText(teamS[4].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[4].name), null, white, "bold");
                 room.setPlayerTeam(teamS[4].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[4].id)) {
+                        room.sendAnnouncement(centerText(teamS[4].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[4].name), null, white, "bold");
                     room.setPlayerTeam(teamS[4].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4384,13 +4425,23 @@ room.onPlayerChat = function (player, message) {
     if (["6"].includes(message[0].toLowerCase()) && teamS.length >= 6) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[5].id)) {
+                    room.sendAnnouncement(centerText(teamS[5].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[5].name), null, white, "bold");
                 room.setPlayerTeam(teamS[5].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[5].id)) {
+                        room.sendAnnouncement(centerText(teamS[5].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[5].name), null, white, "bold");
                     room.setPlayerTeam(teamS[5].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4409,13 +4460,23 @@ room.onPlayerChat = function (player, message) {
     if (["7"].includes(message[0].toLowerCase()) && teamS.length >= 7) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[6].id)) {
+                    room.sendAnnouncement(centerText(teamS[6].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[6].name), null, white, "bold");
                 room.setPlayerTeam(teamS[6].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[6].id)) {
+                        room.sendAnnouncement(centerText(teamS[6].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[6].name), null, white, "bold");
                     room.setPlayerTeam(teamS[6].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4434,13 +4495,23 @@ room.onPlayerChat = function (player, message) {
     if (["8"].includes(message[0].toLowerCase()) && teamS.length >= 8) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[7].id)) {
+                    room.sendAnnouncement(centerText(teamS[7].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[7].name), null, white, "bold");
                 room.setPlayerTeam(teamS[7].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[7].id)) {
+                        room.sendAnnouncement(centerText(teamS[7].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[7].name), null, white, "bold");
                     room.setPlayerTeam(teamS[7].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4459,13 +4530,23 @@ room.onPlayerChat = function (player, message) {
     if (["9"].includes(message[0].toLowerCase()) && teamS.length >= 9) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[8].id)) {
+                    room.sendAnnouncement(centerText(teamS[8].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[8].name), null, white, "bold");
                 room.setPlayerTeam(teamS[8].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[8].id)) {
+                        room.sendAnnouncement(centerText(teamS[8].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[8].name), null, white, "bold");
                     room.setPlayerTeam(teamS[8].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4484,13 +4565,23 @@ room.onPlayerChat = function (player, message) {
     if (["10"].includes(message[0].toLowerCase()) && teamS.length >= 10) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[9].id)) {
+                    room.sendAnnouncement(centerText(teamS[9].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[9].name), null, white, "bold");
                 room.setPlayerTeam(teamS[9].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[9].id)) {
+                        room.sendAnnouncement(centerText(teamS[9].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[9].name), null, white, "bold");
                     room.setPlayerTeam(teamS[9].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4509,13 +4600,23 @@ room.onPlayerChat = function (player, message) {
     if (["11"].includes(message[0].toLowerCase()) && teamS.length >= 11) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[10].id)) {
+                    room.sendAnnouncement(centerText(teamS[10].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[10].name), null, white, "bold");
                 room.setPlayerTeam(teamS[10].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[10].id)) {
+                        room.sendAnnouncement(centerText(teamS[10].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[10].name), null, white, "bold");
                     room.setPlayerTeam(teamS[10].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4534,13 +4635,23 @@ room.onPlayerChat = function (player, message) {
     if (["12"].includes(message[0].toLowerCase()) && teamS.length >= 12) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[11].id)) {
+                    room.sendAnnouncement(centerText(teamS[11].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[11].name), null, white, "bold");
                 room.setPlayerTeam(teamS[11].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[11].id)) {
+                        room.sendAnnouncement(centerText(teamS[11].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[11].name), null, white, "bold");
                     room.setPlayerTeam(teamS[11].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4559,13 +4670,23 @@ room.onPlayerChat = function (player, message) {
     if (["13"].includes(message[0].toLowerCase()) && teamS.length >= 13) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[12].id)) {
+                    room.sendAnnouncement(centerText(teamS[12].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[12].name), null, white, "bold");
                 room.setPlayerTeam(teamS[12].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[12].id)) {
+                        room.sendAnnouncement(centerText(teamS[12].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[12].name), null, white, "bold");
                     room.setPlayerTeam(teamS[12].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4584,13 +4705,23 @@ room.onPlayerChat = function (player, message) {
     if (["14"].includes(message[0].toLowerCase()) && teamS.length >= 14) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[13].id)) {
+                    room.sendAnnouncement(centerText(teamS[13].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[13].name), null, white, "bold");
                 room.setPlayerTeam(teamS[13].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[13].id)) {
+                        room.sendAnnouncement(centerText(teamS[13].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[13].name), null, white, "bold");
                     room.setPlayerTeam(teamS[13].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4609,13 +4740,23 @@ room.onPlayerChat = function (player, message) {
     if (["15"].includes(message[0].toLowerCase()) && teamS.length >= 15) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[14].id)) {
+                    room.sendAnnouncement(centerText(teamS[14].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[14].name), null, white, "bold");
                 room.setPlayerTeam(teamS[14].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[14].id)) {
+                        room.sendAnnouncement(centerText(teamS[14].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[14].name), null, white, "bold");
                     room.setPlayerTeam(teamS[14].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4634,13 +4775,23 @@ room.onPlayerChat = function (player, message) {
     if (["16"].includes(message[0].toLowerCase()) && teamS.length >= 16) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[15].id)) {
+                    room.sendAnnouncement(centerText(teamS[15].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[15].name), null, white, "bold");
                 room.setPlayerTeam(teamS[15].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[15].id)) {
+                        room.sendAnnouncement(centerText(teamS[15].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[15].name), null, white, "bold");
                     room.setPlayerTeam(teamS[15].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4659,13 +4810,23 @@ room.onPlayerChat = function (player, message) {
     if (["17"].includes(message[0].toLowerCase()) && teamS.length >= 17) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[16].id)) {
+                    room.sendAnnouncement(centerText(teamS[16].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[16].name), null, white, "bold");
                 room.setPlayerTeam(teamS[16].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[16].id)) {
+                        room.sendAnnouncement(centerText(teamS[16].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[16].name), null, white, "bold");
                     room.setPlayerTeam(teamS[16].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4684,13 +4845,23 @@ room.onPlayerChat = function (player, message) {
     if (["18"].includes(message[0].toLowerCase()) && teamS.length >= 18) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[17].id)) {
+                    room.sendAnnouncement(centerText(teamS[17].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[17].name), null, white, "bold");
                 room.setPlayerTeam(teamS[17].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[17].id)) {
+                        room.sendAnnouncement(centerText(teamS[17].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[17].name), null, white, "bold");
                     room.setPlayerTeam(teamS[17].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4709,13 +4880,23 @@ room.onPlayerChat = function (player, message) {
     if (["19"].includes(message[0].toLowerCase()) && teamS.length >= 19) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[18].id)) {
+                    room.sendAnnouncement(centerText(teamS[18].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[18].name), null, white, "bold");
                 room.setPlayerTeam(teamS[18].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[18].id)) {
+                        room.sendAnnouncement(centerText(teamS[18].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[18].name), null, white, "bold");
                     room.setPlayerTeam(teamS[18].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -4734,13 +4915,23 @@ room.onPlayerChat = function (player, message) {
     if (["20"].includes(message[0].toLowerCase()) && teamS.length >= 20) {
         if (choose === true) {    
             if (player.id == teamR[0].id) {
+                if (afklist.includes(teamS[19].id)) {
+                    room.sendAnnouncement(centerText(teamS[19].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
                 room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[19].name), null, white, "bold");
                 room.setPlayerTeam(teamS[19].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
+                    if (afklist.includes(teamS[19].id)) {
+                        room.sendAnnouncement(centerText(teamS[19].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
                     room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[19].name), null, white, "bold");
                     room.setPlayerTeam(teamS[19].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -8304,7 +8495,7 @@ room.onPlayerChat = function (player, message) {
                 nameHome = v5.name;
                 acronymHome = v5;
                 mensagem = "***";
-                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
@@ -8714,7 +8905,7 @@ room.onPlayerChat = function (player, message) {
                 nameGuest = v5.name;
                 acronymGuest = v5;
                 mensagem = "***";
-                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("❌ " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                 }, 500);
@@ -9235,7 +9426,7 @@ room.onPlayerChat = function (player, message) {
                 nameHome = v5.name;
                 acronymHome = v5;
                 mensagem = "***";
-                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
@@ -9645,7 +9836,7 @@ room.onPlayerChat = function (player, message) {
                 nameGuest = v5.name;
                 acronymGuest = v5;
                 mensagem = "***";
-                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("🍫 " + player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                 }, 500);
@@ -10134,7 +10325,7 @@ room.onPlayerChat = function (player, message) {
                 nameHome = v5.name;
                 acronymHome = v5;
                 mensagem = "***";
-                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                 }, 500);
@@ -10545,7 +10736,7 @@ room.onPlayerChat = function (player, message) {
                 nameGuest = v5.name;
                 acronymGuest = v5;
                 mensagem = "***";
-                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2]);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("O " +  player.name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                 }, 500);
@@ -10952,7 +11143,7 @@ room.onPlayerChat = function (player, message) {
                     nameHome = v5.name;
                     acronymHome = v5;
                     mensagem = "***";
-                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2, acronymHome.color3]);
+                    room.setTeamColors(1, acronymHome.angle, acronymHome.textcolor, [acronymHome.color1, acronymHome.color2]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamR[0].name + " alterou o time para " + nameHome + "!"), null, yellow, "italic");
                     }, 500);
@@ -11317,7 +11508,7 @@ room.onPlayerChat = function (player, message) {
                     nameGuest = v5.name;
                     acronymGuest = v5;
                     mensagem = "***";
-                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2, acronymGuest.color3]);
+                    room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.color1, acronymGuest.color2]);
                     setTimeout(function () {
                         room.sendAnnouncement(centerText("O 👑 Cap " + teamB[0].name + " alterou o time para " + nameGuest + "!"), null, yellow, "italic");
                     }, 500);
