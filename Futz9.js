@@ -2010,7 +2010,7 @@ const girl = { "name": '👩🏻‍🦰 𝔅𝔞𝔯𝔟𝔦𝔢𝔰 👱🏻‍
 const inv = { "name": '🟨 Iηvicŧus 🟨', "type": Uniform, "angle": 60, "textcolor": 0xFFE042, "color1": 0x213366, "color2": 0x2F64A1, "color3": 0x2F64A1};
 const vik = { "name": '[̲̅V̲̅i̲̅k̲̅i̲̅и̲̅g̲̅ร̲̅]', "type": Uniform, "angle": 60, "textcolor": 0x28231d, "color1": 0xa9957b, "color2": 0xa9957b, "color3": 0x756855};
 const v1 = { "name": '👑 Søbєrαηøs 👑', "type": Uniform, "angle": 60, "textcolor": 0x990DA8, "color1": 0x5E0061, "color2": 0x000000, "color3": 0x000000};
-const v2 = { "name": '🔸 🅽🅴🅾🅽 🔹', "type": Uniform, "angle": 60, "textcolor": 0xFFFFFF, "color1": 0x3DFF1F, "color2": 0xE1E809, "color3": 0x00FF11};
+const v2 = { "name": '𝔅𝔞𝔯ç𝔞 𝟚𝟘𝟘𝟡', "type": Uniform, "angle": 60, "textcolor": 0xE3D57B, "color1": 0x197FED, "color2": 0xB2273C, "color3": 0x232B58};
 const v3 = { "name": 'Vip 3', "type": Uniform, "angle": 45, "textcolor": 0x42FFFF, "color1": 0xA8ABA9, "color2": 0xA3A3A3, "color3": 0x969696};
 const v4 = { "name": 'Vip 4', "type": Uniform, "angle": 1, "textcolor": 0x42FFFF, "color1": 0x000000, "color2": 0x781861, "color3": 0xDAFFC3};
 const v5 = { "name": 'Bambobees', "type": Uniform, "angle": 180, "textcolor": 0x42FFFF, "color1": 0x474747, "color2": 0xFFDD00, "color3": 0x474747};
@@ -2037,7 +2037,7 @@ room.setTeamColors(2, acronymGuest.angle, acronymGuest.textcolor, [acronymGuest.
 
 /* OPTIONS */
 
-var afkLimit = 15; //segundos
+var afkLimit = 20; //segundos
 var drawTimeLimit = 1; //minutos
 var maxTeamSize = 3;
 var yellow = 0xffeb15;
@@ -2079,10 +2079,11 @@ var supervisorsID = [];
 const soberbo = ['3139312E3133352E3232302E3539']; // soberbo
 const badass = ['3230302E3135382E3234392E3631']; // malco
 const supervisors = ['3138392E33342E31372E313539']; // ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
-const blacklistnames = ["Arthur MM","ᱦiᱮ∀Ʀd","Schneider","Alcione III","MACACO","miguelgatao"];
+const blacklistnames = ["Arthur MM","ᱦiᱮ∀Ʀd","Schneider","Alcione III","MACACO","miguelgatao", "?yuno? |"];
 const blacklistconn = [
-    '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337', '3137372E3134302E3130372E323239'
-]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III, MACACO
+    '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337',
+    '3137372E3134302E3130372E323239', '3138392E36382E3136362E313136'
+]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III, MACACO, ?yuno? |
 const cartaoamarelo = ['3138392E33302E38342E323335']; // Chiquinho
 var lodiazCONN = "3138392E38352E32392E3637"; // conn do 𝘿𝙄𝘼𝙕
 var lanocheCONN = "3138392E33342E31372E313539"; // conn do 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
@@ -2095,7 +2096,7 @@ var blacklist = [
     {Nick: "Alcione III", Auth: "l6CTEtHr4eiv6xwCfvFow6dqEkTxuKRKhWUWgVkmFzY", Conn: "3137392E3231382E32312E323337"},
     {Nick: "MACACO", Auth: "aPIbu-KVDln_AP66WDgrgZYP7QdNWvDsvNQ6WU8whbA", Conn: "3138372E36302E3231372E313934"},
     {Nick: "miguelgatao", Auth: "muhymMgE4Xq_Dxc3wtOhlvEsP0Y0EZaVXz4tX9mCJRg", Conn: "3137372E3134302E3130372E323239"},
-    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "?yuno? |", Auth: "0IZr0_R0RZkeez25qT9A9F1Pz3QFgVB4jgBM1XZa9G0", Conn: "3138392E36382E3136362E313136"},
     {Nick: "", Auth: "", Conn: ""},
     {Nick: "", Auth: "", Conn: ""},
 ];
@@ -2130,9 +2131,8 @@ let rr = false; // serve para restartar o game com o comnado rr
 
 // WELL BEING
 
-let forbid = ['macaco', 'adolf hitler', 'nazismo', 'cuzao', 'cuzão', 'autista', 'cu', 'hitler', 'Manco', 'Malco', 'manco', 'malco', 'Macaco', 'Hitler', 'mancos', 'Mancos', "Pênis"];
+let forbid = ['macaco', 'adolf hitler', 'nazismo', 'cuzao', 'cuzão', 'autista', 'cu', 'hitler', 'Manco', 'Malco', 'manco', 'malco', 'Macaco', 'Hitler', 'mancos', 'Mancos', "Pênis", 'porra', 'Porra'];
 let trava = ["㧫璧 觭䢜潇ကᩨ쀡ఈ泄찉넾﫤㏭ 緺", "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓", "㧫", "璧", "懈౩䊀脁潡䣚⾤㸼짠ब", "뗲᭾ 띀急蔹⹉ꆣせㆉ였鷀Ú錘陈搳窇㉕"];
-
 let regex = ["fdp", "cu", "carai", "cuzao", "porra", "arrombado", "cu preto", "lixo", "autista", "lixeira", "verme", "Horrível", "seu merda", "filho da puta", "vsfd",
 "caralho", "seu gordo", "cuzão", "vadia", "sua mãe", "seu fdp", "cala a boca", "puta", "fudido", "krl", "f d p", "vtnc", "vai tomar no cu", "crl", "cadeirante", "caderante",
 "nigga", "prr", "CARALHO", "PORRA", "CARAI", "CUZAO", "CUZÃO", "FDP", "FILHO DA PUTA", "Cu", "CU", "CÚ", "PORR", "porr", "PRRA", "fodido", "FODIDO", "CRALHO", "CARLHO", "poha",
@@ -3675,11 +3675,11 @@ function handleInactivity() {
             if (room.getScores().time <= afkLimit - 0.5) {
                 setTimeout(() => {room.stopGame();}, 10);
             }
-            afklist.push(extendedP[i][eP.ID]);
             room.setPlayerTeam(extendedP[i][eP.ID], Team.SPECTATORS);
+            room.sendAnnouncement(centerText(room.getPlayer(extendedP[i][eP.ID]).name + " entrou para a lista de AFKs"), null, warn, "italic");
+            afklist.push(extendedP[i][eP.ID]);
             room.sendAnnouncement(centerText("Você está na lista de AFKs"), extendedP[i][eP.ID], warn, "italic", 0);
             room.sendAnnouncement(centerText("para sair, digite !afk"), extendedP[i][eP.ID], warn, "italic");
-            room.sendAnnouncement(centerText(room.getPlayer(extendedP[i][eP.ID]).name + " entrou para a lista de AFKs"), null, warn, "italic");
             checkAndPauseGame();
         }
     }
@@ -4249,13 +4249,23 @@ room.onPlayerChat = function (player, message) {
     if (["1"].includes(message[0].toLowerCase()) && teamS.length >= 1) {
         if (choose === true) {
             if (player.id == teamR[0].id) {
-                room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[0].name), null, white, "bold");
-                room.setPlayerTeam(teamS[0].id, Team.RED);
+                if (afklist.includes(teamS[0].id)) {
+                    room.sendAnnouncement(centerText(teamR[0].id + " está AFK"), null, warn, "italic", 2);
+                } 
+                else {
+                    room.sendAnnouncement(centerText(teamR[0].name + " escalou " + teamS[0].name), null, white, "bold");
+                    room.setPlayerTeam(teamS[0].id, Team.RED);
+                }
             }
             else if (player.id == teamB[0].id) {
                 if (redFirst == false) {
-                    room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[0].name), null, white, "bold");
-                    room.setPlayerTeam(teamS[0].id, Team.BLUE);
+                    if (afklist.includes(teamS[0].id)) {
+                        room.sendAnnouncement(centerText(teamR[0].id + " está AFK"), null, warn, "italic", 2);
+                    } 
+                    else {
+                        room.sendAnnouncement(centerText(teamB[0].name + " escalou " + teamS[0].name), null, white, "bold");
+                        room.setPlayerTeam(teamS[0].id, Team.BLUE);
+                    }
                 }
             }
             else if (redFirst == true && player.id == teamB[0].id) {
@@ -11771,7 +11781,7 @@ room.onGameTick = function () {
     checkTime();
     getLastTouchOfTheBall();
     getStats();
-    /*handleInactivity();*/
+    handleInactivity();
     alwaysOnTeam();
     afkNEXTplayer();
 };
