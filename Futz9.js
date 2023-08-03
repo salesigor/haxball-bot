@@ -18,7 +18,7 @@ const roomName = "𝟯✘𝟯 | 🅵🆄🆃🆉 | 𝐂𝐨𝐥𝐚 𝐧𝐚 �
 const botName = "🏁 Áʀʙɪᴛʀᴏ ʙᴏᴛ 🤖";
 let linkinho = "";
 const maxPlayers = 20;
-const roomPublic = true;
+var roomPublic = true;
 const geo = [{ "lat": -23.646709, "lon": -46.730114, "code": "br" }, { "code": "FR", "lat": 46.2, "lon": 2.2 }, { "code": "PL", "lat": 51.9, "lon": 19.1 }, { "code": "GB", "lat": 55.3, "lon": -3.4 }, { "code": "PT", "lat": 39.3, "lon": -8.2 }];
 
 const room = HBInit({ roomName: roomName, maxPlayers: maxPlayers, public: roomPublic, playerName: botName, geo: geo[0] });
@@ -2011,7 +2011,7 @@ const inv = { "name": '🟨 Iηvicŧus 🟨', "type": Uniform, "angle": 60, "tex
 const vik = { "name": '[̲̅V̲̅i̲̅k̲̅i̲̅и̲̅g̲̅ร̲̅]', "type": Uniform, "angle": 60, "textcolor": 0x28231d, "color1": 0xa9957b, "color2": 0xa9957b, "color3": 0x756855};
 const v1 = { "name": '👑 Søbєrαηøs 👑', "type": Uniform, "angle": 60, "textcolor": 0x990DA8, "color1": 0x5E0061, "color2": 0x000000, "color3": 0x000000};
 const v2 = { "name": '𝔅𝔞𝔯ç𝔞', "type": Uniform, "angle": 0, "textcolor": 0xE3D57B, "color1": 0x197FED, "color2": 0xB2273C, "color3": 0x232B58};
-const v3 = { "name": 'Vip 3', "type": Uniform, "angle": 45, "textcolor": 0x42FFFF, "color1": 0xA8ABA9, "color2": 0xA3A3A3, "color3": 0x969696};
+const v3 = { "name": ' ', "type": Uniform, "angle": 45, "textcolor": 0xFFFFFF, "color1": -1, "color2": -1, "color3": -1};
 const v4 = { "name": 'Vip 4', "type": Uniform, "angle": 1, "textcolor": 0x42FFFF, "color1": 0x000000, "color2": 0x781861, "color3": 0xDAFFC3};
 const v5 = { "name": 'Barça 2009', "type": Uniform, "angle": 0, "textcolor": 0xf7cf52, "color1": 0x102a74, "color2": 0xf31c35};
 // GOL comemoração
@@ -2076,6 +2076,7 @@ let bluep3 = "";
 let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
+var superspeed = false;
 const soberbo = ['3139312E3133352E3232302E3539']; // soberbo
 const badass = ['3230302E3135382E3234392E3631']; // malco
 const supervisors = ['3138392E33342E31372E313539']; // ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
@@ -2598,7 +2599,7 @@ function golcontra(goaler) {
     }, 3000);
 };
 function messidaangola(goaler, assistant) {
-    if (goaler.id === supervisorsID) {
+    if (goaler.id === lanoche) {
         var messages = [
             "Ankara, ankara, " + goaler.name + "! 🐐",
             "kk 🐐🐐🐐🐐 " + goaler.name + " o GOAT cantou! 🐐🐐🐐🐐 kk",
@@ -2613,7 +2614,7 @@ function messidaangola(goaler, assistant) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 3000);
     }
-    if (assistant.id === supervisorsID) {
+    if (assistant.id === lanoche) {
         var messages = [
             "Que passe, pae! 🐐",
             goaler.name + " ficou fácil com esse passe do " + assistant.name + "... 🐐",
@@ -3035,20 +3036,30 @@ function topBtn() {
     else {
         if (teamR.length == teamB.length) {
             if (teamS.length > 1) {
+                kickAFKplayer0();
+                kickAFKplayer1();
                 room.setPlayerTeam(teamS[0].id, Team.RED);
                 room.setPlayerTeam(teamS[1].id, Team.BLUE);
             }
             return;
         }
         else if (teamR.length < teamB.length) {
-            room.setPlayerTeam(teamS[0].id, Team.RED);
+            if (afklist.includes(teamS[0].id)) {
+                room.setPlayerTeam(teamS[1].id, Team.RED);
+                kickAFKplayer0();
+            }
+            else {
+                room.setPlayerTeam(teamS[0].id, Team.RED);
+            }
         }
         else {
             if (afklist.includes(teamS[0].id)) {
                 room.setPlayerTeam(teamS[1].id, Team.BLUE);
+                kickAFKplayer0();
             }
             else if (afklist.includes(teamS[1].id)) {
                 room.setPlayerTeam(teamS[2].id, Team.BLUE);
+                kickAFKplayer1();
             }
             else {
                 room.setPlayerTeam(teamS[0].id, Team.BLUE);
@@ -3655,7 +3666,7 @@ function getActivity(player) {
 
 function setActivity(player, value) {
     extendedP.filter((a) => a[0] == player.id).forEach((player) => player[eP.ACT] = value);
-};
+}; 
 
 function handleInactivity() {
     if ((teamR.length + teamB.length) > 1) {
@@ -3667,10 +3678,10 @@ function handleInactivity() {
         }
     }
     for (var i = 0; i < extendedP.length; i++) {
-        if (extendedP[i][eP.ACT] == 20 * 60 * (2 / 3 * afkLimit)) {
+        if (extendedP[i][eP.ACT] == 60 * (2 / 3 * afkLimit)) {
             room.sendAnnouncement(centerText("⛔ " + room.getPlayer(extendedP[i][eP.ID]).name + ", se mova ou fale no Chat em " + Math.floor(afkLimit / 3) + " segundos ou irá para a fila!", extendedP[i][eP.ID]), extendedP[i][eP.ID], yellow, "bold"); 
         }
-        if (extendedP[i][eP.ACT] >= 20 * 60 * afkLimit) {
+        if (extendedP[i][eP.ACT] >= 60 * afkLimit) {
             extendedP[i][eP.ACT] = 0;
             if (room.getScores().time <= afkLimit - 0.5) {
                 setTimeout(() => {room.stopGame();}, 10);
@@ -3938,6 +3949,7 @@ room.onPlayerJoin = function (player) {
     sendCountsToDiscord(".  \n📄   **Nome:** " + player.name + "\n🎮   **Jogos:** " + getStoredGames(player) + "\n⚽️   **Gols:** " + getStoredGoals(player) + "\n👟   **Assistências:** " + getStoredAssists(player) + "\n🏆   **Hat-tricks:** " + getHatTrick(player));
     updateTeams();
     updateAdmins();
+    setTimeout(() => { alwaysOnTeam(); }, 200);
     setTimeout(function () {
         alwaysOnTeam();
         IIIx();
@@ -3966,7 +3978,6 @@ room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
     }
     updateTeams();
     checkTeamSizeLimit();
-    alwaysOnTeam();
 };
 
 room.onPlayerLeave = function (player) {
@@ -3974,6 +3985,7 @@ room.onPlayerLeave = function (player) {
     updateTeams();
     updateAdmins();
     checkAndPauseGame();
+    setTimeout(() => { alwaysOnTeam(); }, 200);
     if (banidao == false) {
         room.sendAnnouncement(centerText(player.name + " vazou!"), null, white, "bold");
     }
@@ -5589,20 +5601,34 @@ room.onPlayerChat = function (player, message) {
     }
     if (["!malco"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
+            room.setPlayerAvatar(player.id, "❌")
+            setTimeout(function () {
+                room.setPlayerAvatar(player.id, "M")
+                room.setPlayerDiscProperties(player.id, {radius: 17, invMass: 30 / 30});
+                setTimeout(function () {
+                    room.setPlayerAvatar(player.id, "A")
+                    setTimeout(function () {
+                        room.setPlayerAvatar(player.id, "L")
+                        setTimeout(function () {
+                            room.setPlayerAvatar(player.id, "C")
+                            setTimeout(function () {
+                                room.setPlayerAvatar(player.id, "O")
+                                setTimeout(function () {
+                                    room.setPlayerAvatar(player.id, "❌")
+                                    setTimeout(function () {
+                                        room.setPlayerAvatar(player.id, null)
+                                        room.setPlayerDiscProperties(player.id, {radius: 15, invMass:  10 / 30});
+                                    }, 500);
+                                }, 500);
+                            }, 500);
+                        }, 500);
+                    }, 500);
+                }, 500);
+            }, 1000);
+        }, 1);
+        setTimeout(function () {
             room.sendAnnouncement(centerText("❌"), null, white, "normal");
         }, 10);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("🎵 Vai, malco! 🎶"), null, white, "normal");
-        }, 1250);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("🎶 Vai, malco! 🎵"), null, white, "normal");
-        }, 2500);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("🎵 Vai, malco! 🎶"), null, white, "normal");
-        }, 3750);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("❌"), null, white, "normal");
-        }, 5000);
     }
     if (["!diaz"].includes(message[0].toLowerCase())) {
         setTimeout(function () {
@@ -6692,7 +6718,6 @@ room.onPlayerChat = function (player, message) {
     }
     if (["!normal", "normal"].includes(message[0].toLowerCase())) {
         room.setPlayerDiscProperties(player.id, {radius: 15, invMass:  20 / 30});
-        return false;
     }
     if (["!blacklist", "blacklist"].includes(message[0].toLowerCase())) {
         setTimeout(() => {
@@ -6701,8 +6726,7 @@ room.onPlayerChat = function (player, message) {
         }, 300);
     }
     if (["!diminuir", "anao", "anão"].includes(message[0].toLowerCase())) {
-        room.setPlayerDiscProperties(player.id, {radius: 12, invMass:  20 / 30});
-        return false;
+        room.setPlayerDiscProperties(player.id, {radius: 12, invMass:  10 / 30});
     }
     if (["!mute", "mute"].includes(message[0].toLowerCase())) {
         if (player.admin) {
@@ -7442,6 +7466,20 @@ room.onPlayerChat = function (player, message) {
             }
         }
     }
+    if (["veloz"].includes(message[0].toLowerCase())) {
+        if (superspeed == false) {
+            superspeed = true;
+            var speedinquestion = parseFloat(message[1]);
+            room.sendAnnouncement(centerText("damping: " + speedinquestion), player.id, yellow, "bold");
+            room.setPlayerDiscProperties(player.id, {kickingAcceleration: speedinquestion});
+        }
+        else if (superspeed == true) {
+            superspeed = false;
+            room.sendAnnouncement(centerText("velocity padrão"), player.id, yellow, "bold");
+            room.setPlayerDiscProperties(player.id, {xspeed: 0.11, yspeed: 0.11});
+        }
+        return false;
+    }
     if (humilhante.includes(message[0])) {
         var messages = [
             "Esse tomou em!",
@@ -8020,6 +8058,17 @@ room.onPlayerChat = function (player, message) {
             else {
                 autoadmin = true;
                 room.sendAnnouncement(centerText("Auto Admin ativado, " + player.name + "!"), player.id, yellow, "italic");
+            }
+            return false;
+        }
+        if (["public"].includes(message[0].toLowerCase())) {
+            if (roomPublic == true) {
+                roomPublic = false;
+                room.sendAnnouncement(centerText("A sala não é mais pública!"), null, yellow, "italic");
+            }
+            else if (roomPublic == false) {
+                roomPublic = true;
+                room.sendAnnouncement(centerText("A sala agora é pública!"), null, yellow, "italic");
             }
             return false;
         }
@@ -11910,6 +11959,7 @@ room.onTeamGoal = function (team) {
     }
     messidaangola(goleador, assistencia);
     igodnesses(goleador, assistencia);
+    afkNEXTplayer();
 };
 
 room.onPositionsReset = function () {
@@ -11972,7 +12022,6 @@ room.onGameTick = function () {
     checkTime();
     getLastTouchOfTheBall();
     getStats();
-    handleInactivity();
+    //handleInactivity();
     alwaysOnTeam();
-    afkNEXTplayer();
 };
