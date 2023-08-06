@@ -1,6 +1,6 @@
 /* ROOM */
 
-const botVersion = "Futz 9";
+const botVersion = "FUTZ 9.1";
 const roomName = "𝟯✘𝟯 | 🅵🆄🆃🆉 | 𝐂𝐨𝐥𝐚 𝐧𝐚 𝐡𝐮𝐦𝐢𝐥𝐝𝐚𝐝𝐞 🎯";
 /* NOMES SUGERIDOS:
 1: 🏆 3x3 Futsal ⚽ | Cola na humildade
@@ -35,8 +35,10 @@ console.log("adminPassword : " + adminPassword);
 
 const playerRadius = 15;
 var ballRadius = 10;
+var velocitypadrao = 0.11;
+var speedvelocity = 0.127;
 const triggerDistance = playerRadius + ballRadius + 0.01;
-const smallStadium = `{"name" : "FUTZ 𝒙2 𝓑𝔂 Malco",
+const smallStadium = `{"name" : "𝒙2 ${botVersion}",
 
 	"width" : 420,
 
@@ -284,8 +286,8 @@ const smallStadium = `{"name" : "FUTZ 𝒙2 𝓑𝔂 Malco",
 
 	"playerPhysics" : {
 		"bCoef" : 0,
-		"acceleration" : 0.11,
-		"kickingAcceleration" : 0.13,
+		"acceleration" : ${velocitypadrao},
+		"kickingAcceleration" : ${speedvelocity},
 		"kickStrength" : 4.75
 
 	},
@@ -314,7 +316,7 @@ const smallStadium = `{"name" : "FUTZ 𝒙2 𝓑𝔂 Malco",
 
 	]
 }`
-const mediumStadium = `{"name" : "speed𝒙3 FUTZ 𝓑𝔂 Malco",
+const mediumStadium = `{"name" : "speed𝒙3 ${botVersion}",
 
 	"width" : 620,
 
@@ -696,8 +698,8 @@ const mediumStadium = `{"name" : "speed𝒙3 FUTZ 𝓑𝔂 Malco",
 
 	"playerPhysics" : {
 		"bCoef" : 0,
-		"acceleration" : 0.11,
-		"kickingAcceleration" : 0.126,
+		"acceleration" : ${velocitypadrao},
+		"kickingAcceleration" : ${speedvelocity},
 		"kickStrength" : 4.75
 
 	},
@@ -726,7 +728,7 @@ const mediumStadium = `{"name" : "speed𝒙3 FUTZ 𝓑𝔂 Malco",
 
 	]
 }`
-const mediumdark = `{"name" : "dark𝒙3 FUTZ 𝓑𝔂 Malco",
+const mediumdark = `{"name" : "dark𝒙3 ${botVersion}",
 
 	"width" : 620,
 
@@ -1108,8 +1110,8 @@ const mediumdark = `{"name" : "dark𝒙3 FUTZ 𝓑𝔂 Malco",
 
 	"playerPhysics" : {
 		"bCoef" : 0,
-		"acceleration" : 0.11,
-		"kickingAcceleration" : 0.126,
+		"acceleration" : ${velocitypadrao},
+		"kickingAcceleration" : ${speedvelocity},
 		"kickStrength" : 4.75
 
 	},
@@ -1138,7 +1140,7 @@ const mediumdark = `{"name" : "dark𝒙3 FUTZ 𝓑𝔂 Malco",
 
 	]
 }`
-const medium2 = `{"name" : "useless𝒙3 FUTZ 𝓑𝔂 Malco",
+const medium2 = `{"name" : "useless𝒙3 F${botVersion}",
 
 	"width" : 620,
 
@@ -1517,8 +1519,8 @@ const medium2 = `{"name" : "useless𝒙3 FUTZ 𝓑𝔂 Malco",
 
 	"playerPhysics" : {
 		"bCoef" : 0,
-		"acceleration" : 0.11,
-		"kickingAcceleration" : 0.11,
+		"acceleration" : ${velocitypadrao},
+		"kickingAcceleration" : ${velocitypadrao},
 		"kickStrength" : 4.75
 
 	},
@@ -1547,7 +1549,7 @@ const medium2 = `{"name" : "useless𝒙3 FUTZ 𝓑𝔂 Malco",
 
 	]
 }`
-const bigStadium = `{"name":"𝒙5 𝓑𝔂 Malco","width":900,"height":460,"bg":{"kickOffRadius":80,"color":"1E472E"},
+const bigStadium = `{"name":"𝒙5 ${botVersion}","width":900,"height":460,"bg":{"kickOffRadius":80,"color":"1E472E"},
 "vertexes":[
     {"x":0,"y":420,"cMask":["wall"]},
     {"x":0,"y":-420,"cMask":["wall"]},
@@ -2075,11 +2077,10 @@ let bluep2 = "";
 let bluep3 = "";
 let soberboID = "";
 let badassID = "";
-var supervisorsID = [];
-var superspeed = false;
+var supervisorsID = "";
 const soberbo = ['3139312E3133352E3232302E3539']; // soberbo
 const badass = ['3230302E3135382E3234392E3631']; // malco
-const supervisors = ['3138392E33342E31372E313539']; // ɪɴᴛ┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
+const supervisors = ['3138392E342E38382E313230']; // 𝔾𝕣𝕖̂┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 const blacklistnames = ["Arthur MM","ᱦiᱮ∀Ʀd","Schneider","Alcione III","MACACO","miguelgatao", "?yuno? |"];
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337',
@@ -7466,17 +7467,19 @@ room.onPlayerChat = function (player, message) {
             }
         }
     }
-    if (["veloz"].includes(message[0].toLowerCase())) {
-        if (superspeed == false) {
-            superspeed = true;
-            var speedinquestion = parseFloat(message[1]);
-            room.sendAnnouncement(centerText("damping: " + speedinquestion), player.id, yellow, "bold");
-            room.setPlayerDiscProperties(player.id, {kickingAcceleration: speedinquestion});
-        }
-        else if (superspeed == true) {
-            superspeed = false;
-            room.sendAnnouncement(centerText("velocity padrão"), player.id, yellow, "bold");
-            room.setPlayerDiscProperties(player.id, {xspeed: 0.11, yspeed: 0.11});
+    if (["velocity"].includes(message[0].toLowerCase())) {
+        if (message[1] == `null`) {
+            speedvelocity = 0.127;
+            room.sendAnnouncement(centerText(`speed padrão`), player.id, yellow, "bold");
+        } else {
+            var chosenspeed = parseFloat(message[1]);
+            if (chosenspeed > 0.11) {
+                speedvelocity = chosenspeed;
+                room.sendAnnouncement(centerText(`speed em ${message[1]}`), player.id, yellow, "bold");
+            } if (message[1] == 0.11) {
+                speedvelocity = 0.11;
+                room.sendAnnouncement(centerText(`speed desativada`), player.id, yellow, "bold");
+            }
         }
         return false;
     }
