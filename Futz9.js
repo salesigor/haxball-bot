@@ -1,7 +1,7 @@
 /* ROOM */
 
-const botVersion = "FUTZ 9.1";
-const roomName = "𝟯✘𝟯 | 🅵🆄🆃🆉 | 𝐂𝐨𝐥𝐚 𝐧𝐚 𝐡𝐮𝐦𝐢𝐥𝐝𝐚𝐝𝐞 🎯";
+const botVersion = "𝙵𝚄𝚃𝚉 𝚟9";
+const roomName = `𝟯✘𝟯 | ${botVersion} | 🏆 ᶜᵒˡᵃ ⁿᵃ ʰᵘᵐⁱˡᵈᵃᵈᵉ 🎯`;
 /* NOMES SUGERIDOS:
 1: 🏆 3x3 Futsal ⚽ | Cola na humildade
 2: 🏆 SABOT | ⚽ 3x3 Futsal ⚽ | Cola na humildade
@@ -14,6 +14,7 @@ const roomName = "𝟯✘𝟯 | 🅵🆄🆃🆉 | 𝐂𝐨𝐥𝐚 𝐧𝐚 �
 9: ⚽ FutZ 3x3 🏆 | Cola na humildade 🎯
 10: 𝟯✘𝟯 | ⚽ 🅵🆄🆃🆉 🏆 | ᶜᵒˡᵃ ⁿᵃ ʰᵘᵐⁱˡᵈᵃᵈᵉ 🎯
 11: 𝟯✘𝟯 | ⚽ 🅵🆄🆃🆉 🏆 | 𝐂𝐨𝐥𝐚 𝐧𝐚 𝐡𝐮𝐦𝐢𝐥𝐝𝐚𝐝𝐞 🎯
+12. 𝟯✘𝟯 | ${botVersion} | ᶜᵒˡᵃ ⁿᵃ ʰᵘᵐⁱˡᵈᵃᵈᵉ 🎯
 */
 const botName = "🏁 Áʀʙɪᴛʀᴏ ʙᴏᴛ 🤖";
 let linkinho = "";
@@ -2077,7 +2078,7 @@ let bluep2 = "";
 let bluep3 = "";
 let soberboID = "";
 let badassID = "";
-var supervisorsID = "";
+var supervisorsID = [];
 const soberbo = ['3139312E3133352E3232302E3539']; // soberbo
 const badass = ['3230302E3135382E3234392E3631']; // malco
 const supervisors = ['3138392E342E38382E313230']; // 𝔾𝕣𝕖̂┃𝕃 . 𝕄𝕖𝕤𝕤𝕚™
@@ -2600,7 +2601,7 @@ function golcontra(goaler) {
     }, 3000);
 };
 function messidaangola(goaler, assistant) {
-    if (goaler.id === lanoche) {
+    if (goaler.id === supervisorsID) {
         var messages = [
             "Ankara, ankara, " + goaler.name + "! 🐐",
             "kk 🐐🐐🐐🐐 " + goaler.name + " o GOAT cantou! 🐐🐐🐐🐐 kk",
@@ -2615,7 +2616,7 @@ function messidaangola(goaler, assistant) {
             room.sendAnnouncement(centerText(announcement), null, white, "bold");
         }, 3000);
     }
-    if (assistant.id === lanoche) {
+    if (assistant.id === supervisorsID) {
         var messages = [
             "Que passe, pae! 🐐",
             goaler.name + " ficou fácil com esse passe do " + assistant.name + "... 🐐",
