@@ -37,7 +37,7 @@ console.log("adminPassword : " + adminPassword);
 const playerRadius = 15;
 var ballRadius = 10;
 var velocitypadrao = 0.11;
-var speedvelocity = 0.127;
+var speedvelocity = 0.08;
 const triggerDistance = playerRadius + ballRadius + 0.01;
 const smallStadium = `{"name" : "𝒙2 ${botVersion}",
 
@@ -2254,7 +2254,7 @@ voteforyourmap = setInterval(() => {
     room.sendAnnouncement(centerText("mapa USELESS (Sem speed) - Digite 'useless' ou 'mapa3'"), null, yellow, "normal", 0);
 }, Intervalo_4);
 
-function speedAd() {
+/*function speedAd() {
         setTimeout(function () {
             room.sendAnnouncement(centerText("POWER UP"), null, yellow, "bold");
         }, 2);
@@ -2331,7 +2331,7 @@ function speedONorOFF() {
     if (allmediumstadiums[randstadiumsfor3x] === medium2) {
         room.sendAnnouncement(centerText("power up SPEED --> DESATIVADO"), null, warn, "italic", 0);
     }
-};
+};*/
 
 speedADvar = setInterval(() => {
     speedAd();
@@ -7473,7 +7473,7 @@ room.onPlayerChat = function (player, message) {
             speedvelocity = 0.127;
             room.sendAnnouncement(centerText(`speed padrão`), player.id, yellow, "bold");
         } else {
-            var chosenspeed = parseFloat(message[1]);
+            var chosenspeed = Number(message[1]);
             if (chosenspeed > 0.11) {
                 speedvelocity = chosenspeed;
                 room.sendAnnouncement(centerText(`speed em ${message[1]}`), player.id, yellow, "bold");
