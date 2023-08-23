@@ -2506,12 +2506,12 @@ let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
 const soberbo = ['3139312E3133352E3232302E3539']; // soberbo
-const badass = ['3138372E33342E3136302E3936']; // malco
+const badass = ['3137372E3130322E3133362E323133']; // malco
 const supervisors = ['3138392E342E38382E313230']; // 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
-const blacklistnames = ["Arthur MM","ᱦiᱮ∀Ʀd","Schneider","Alcione III","MACACO","miguelgatao", "?yuno? |"];
+const blacklistnames = ["Arthur MM","ᱦiᱮ∀Ʀd","Schneider","Alcione III","MACACO","miguelgatao", "?yuno? |", 'ALH | Neymar Jr'];
 const blacklistconn = [
     '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337',
-    '3137372E3134302E3130372E323239', '3138392E36382E3136362E313136'
+    '3137372E3134302E3130372E323239', '3138392E36382E3136362E313136', '3137372E32322E35392E323130'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III, MACACO, ?yuno? |
 const cartaoamarelo = ['3138392E33302E38342E323335']; // Chiquinho
 var lodiazCONN = "3138392E38352E32392E3637"; // conn do 𝘿𝙄𝘼𝙕
@@ -2526,7 +2526,7 @@ var blacklist = [
     {Nick: "MACACO", Auth: "aPIbu-KVDln_AP66WDgrgZYP7QdNWvDsvNQ6WU8whbA", Conn: "3138372E36302E3231372E313934"},
     {Nick: "miguelgatao", Auth: "muhymMgE4Xq_Dxc3wtOhlvEsP0Y0EZaVXz4tX9mCJRg", Conn: "3137372E3134302E3130372E323239"},
     {Nick: "?yuno? |", Auth: "0IZr0_R0RZkeez25qT9A9F1Pz3QFgVB4jgBM1XZa9G0", Conn: "3138392E36382E3136362E313136"},
-    {Nick: "", Auth: "", Conn: ""},
+    {Nick: "ALH | Neymar Jr", Auth: "7WHXLn5paStPAVj_yGFFMBLW3TqgMTjVY38xAFaID64", Conn: "3137372E32322E35392E323130"},
     {Nick: "", Auth: "", Conn: ""},
 ];
 var blacklistconnID = [];
@@ -2765,8 +2765,8 @@ function liveOnDiscord(message) {
     request.open("POST","https://discord.com/api/webhooks/1138895537756721332/mHX7-fko3m7_9lAx-5zvJF4r-t-xVSo-hX76VW-FJtMXc6dUEtCZn1aHz0HTDkG0Vn62"); // Webhook Link
     request.setRequestHeader('Content-type', 'application/json');
     var params = {
-        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1113830882818666588/image.png', // Avatar WEBHOOK
-        username: 'Malco', // Nome WEBHOOK
+        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1144018854876557532/image.png', // Avatar WEBHOOK
+        username: 'Fake Natty', // Nome WEBHOOK
         content: message
     };
     request.send(JSON.stringify(params));
