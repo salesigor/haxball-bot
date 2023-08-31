@@ -2540,7 +2540,7 @@ function altRed() {
             room.sendAnnouncement(centerText(`${nameHome} não possui uniforme alternativo`), null, yellow, "bold");
         }, 500);
     } else {
-        uniBlue(eval(acronymHome.altUni))
+        uniRed(eval(acronymHome.altUni))
         setTimeout(function () {
             room.sendAnnouncement(centerText(`${nameHome} está usando o uniforme alternativo`), null, yellow, "bold");
         }, 500);
