@@ -2427,10 +2427,12 @@ const bel = {'name': 'Bélgica', "type": Uniform, "angle": 0, "textcolor": 0xCA9
 const hol = {'name': 'Holanda', "type": Uniform, "angle": 0, "textcolor": 0xFFFFFF, "color1": 0xF25100, "color2": 0xF25100, "color3": 0xF25100, "majorColor": 'orange', "altUni": null};
 // clubes de zueira
 const girl = { "name": '👩🏻‍🦰 𝔅𝔞𝔯𝔟𝔦𝔢𝔰 👱🏻‍♀️', "type": Uniform, "angle": 60, "textcolor": 0xFFFFFF, "color1": 0xF2B3FF, "color2": 0xCAABFF, "color3": 0xCAABFF, "majorColor": 'pink', "altUni": null};
-const inv = { "name": '🟨 Iηvicŧus 🟨', "type": Uniform, "angle": 60, "textcolor": 0xFFE042, "color1": 0x213366, "color2": 0x2F64A1, "color3": 0x2F64A1, "majorColor": 'blue', "altUni": null};
+const inv = { "name": '🟨 Iηvicŧus 🟨', "type": Uniform, "angle": 60, "textcolor": 0xFFE042, "color1": 0x213366, "color2": 0x2F64A1, "color3": 0x2F64A1, "majorColor": 'blue', "altUni": 'inv2'};
+const inv2 = { "name": '🟨 Iηvicŧus 🟨', "type": Uniform, "angle": 60, "textcolor": 0x213366, "color1": 0xFFE042, "color2": 0xFFB41F, "color3": 0xFFB41F, "majorColor": 'blue', "altUni": 'inv'};
 const vik = { "name": '[̲̅V̲̅i̲̅k̲̅i̲̅и̲̅g̲̅ร̲̅]', "type": Uniform, "angle": 60, "textcolor": 0x28231d, "color1": 0xa9957b, "color2": 0xa9957b, "color3": 0x756855, "majorColor": 'brown', "altUni": null};
 // Uniformes Vip
-const v1 = { "name": '👑 Søbєrαηøs 👑', "type": Uniform, "angle": 60, "textcolor": 0x990DA8, "color1": 0x5E0061, "color2": 0x000000, "color3": 0x000000, "majorColor": 'purple', "altUni": null};
+const v1 = { "name": '👑 Søbєrαηøs 👑', "type": Uniform, "angle": 60, "textcolor": 0x990DA8, "color1": 0x5E0061, "color2": 0x000000, "color3": 0x000000, "majorColor": 'black', "altUni": 'v1s'};
+const v1s = { "name": '👑 Søbєrαηøs 👑', "type": Uniform, "angle": 60, "textcolor": 0xFFFFFF, "color1": 0x5E0061, "color2": 0x361029, "color3": 0x5E0061, "majorColor": 'purple', "altUni": 'v1'};
 const v2 = { "name": '𝔅𝔞𝔯ç𝔞', "type": Uniform, "angle": 0, "textcolor": 0xE3D57B, "color1": 0x197FED, "color2": 0xB2273C, "color3": 0x232B58, "majorColor": 'blue', "altUni": 'v5'};
 const v3 = { "name": ' ', "type": Uniform, "angle": 45, "textcolor": 0xFFFFFF, "color1": -1, "color2": -1, "color3": -1, "majorColor": 'white', "altUni": null};
 const v4 = { "name": 'Vip 4', "type": Uniform, "angle": 1, "textcolor": 0x42FFFF, "color1": 0x000000, "color2": 0x781861, "color3": 0xDAFFC3, "majorColor": null, "altUni": null};
