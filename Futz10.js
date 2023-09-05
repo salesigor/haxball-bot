@@ -2368,7 +2368,7 @@ const pal = {"name": 'Palmeiras', "type": Uniform, "angle": 0, "textcolor": 0xFF
 const pal2 = {"name": 'Palmeiras', "type": Uniform, "angle": 120, "textcolor": 0x174214, "color1": 0xFFFFFF, "color2": 0x489950, "color3": 0xFFFFFF, "majorColor": 'white', "altUni": 'pal'};
 const sfc = {"name": 'Santos', "type": Uniform, "angle": 0, "textcolor": 0x827E09, "color1": 0xFFFFFF, "color2": 0x000000, "color3": 0xFFFFFF, "majorColor": 'black/white', "altUni": null};
 const fla = {"name": 'Flamengo', "type": Uniform, "angle": 90, "textcolor": 0xFFFFFF, "color1": 0xD10404, "color2": 0x000000, "color3": 0xD10404, "majorColor": 'red', "altUni": 'fla2'};
-const fla2 = {"name": 'Flamengo', "type": Uniform, "angle": 50, "textcolor": 0x000000, "color1": 0x9C0202, "color2": 0xffffff, "color3": null, "majorColor": 'red', "altUni": 'fla'};
+const fla2 = {"name": 'Flamengo', "type": Uniform, "angle": 50, "textcolor": 0x000000, "color1": 0x9C0202, "color2": 0xffffff, "color3": null, "majorColor": null, "altUni": 'fla'};
 const vas = {"name": 'Vasco', "type": Uniform, "angle": 50, "textcolor": 0xA86428, "color1": 0x000000, "color2": 0xFFFFFF, "color3": 0x000000, "majorColor": 'black/white', "altUni": 'vas2'};
 const vas2 = {"name": 'Vasco', "type": Uniform, "angle": 60, "textcolor": 0xFF3030, "color1": 0x000000, "color2": 0xFFFAFF, "color3": 0x000000, "majorColor": 'black/white', "altUni": 'vas'};
 const flu = {"name": 'Fluminense', "type": Uniform, "angle": 0, "textcolor": 0xFFFFFF, "color1": 0xC70808, "color2": 0x0D7722, "color3": 0xC70808, "majorColor": 'red', "altUni": 'flu2'};
@@ -2404,7 +2404,7 @@ const mil = {"name": 'Milan', "type": Uniform, "angle": 0, "textcolor": 0xFFFFFF
 const mil2 = {"name": 'Milan', "type": Uniform, "angle": 0, "textcolor": 0x8889AB, "color1": 0xEFF2FF, "color2": 0xEFF2FF, "color3": 0xE90202, "majorColor": 'white', "altUni": 'mil'};
 const intM = {"name": 'Inter de Milão', "type": Uniform, "angle": 0, "textcolor": 0xFFFFFF, "color1": 0x00008F, "color2": 0x000000, "color3": 0x00008F, "majorColor": 'blue', "altUni": null};
 const che = {"name": 'Chelsea', "type": Uniform, "angle": 0, "textcolor": 0xFFFFFF, "color1": 0x0000CD, "color2": 0xFFFFFF, "color3": 0x0000CD, "majorColor": 'blue', "altUni": 'che2'};
-const che2 = {"name": 'Chelsea', "type": Uniform, "angle": 60, "textcolor": 0xFFFFFF, "color1": 0xF3FA37, "color2": 0x171717, "color3": null, "majorColor": 'blue', "altUni": 'che'};
+const che2 = {"name": 'Chelsea', "type": Uniform, "angle": 60, "textcolor": 0xFFFFFF, "color1": 0xF3FA37, "color2": 0x171717, "color3": null, "majorColor": 'yellow', "altUni": 'che'};
 // Clubes Americanos
 const mia = { "name": '𝐈𝐧𝐭𝐞𝐫 𝐌𝐢𝐚𝐦𝐢', "type": Uniform, "angle": 45, "textcolor": 0xFCA4B6, "color1": 0x141414, "color2": 0x141414, "color3": 0x141414, "majorColor": 'black', "altUni": 'mia2'};
 const mia2 = { "name": '𝐈𝐧𝐭𝐞𝐫 𝐌𝐢𝐚𝐦𝐢', "type": Uniform, "angle": 45, "textcolor": 0x141414, "color1": 0xFCA4B6, "color2": 0xFCA4B6, "color3": 0xFCA4B6, "majorColor": 'pink', "altUni": 'mia'};
@@ -2514,10 +2514,18 @@ function checkUni() {
                 room.sendAnnouncement(centerText("Alterado por conflito de Uniforme"), null, yellow, "bold");
             }, 500);
         } else {
-            uniBlue(eval(acronymGuest.altUni))
-            setTimeout(function () {
-                room.sendAnnouncement(centerText(`${nameGuest} está usando o uniforme alternativo`), null, yellow, "bold");
-            }, 500);
+            let outrouni = acronymGuest.altUni;
+            if (outrouni.majorColor === acronymHome.majorColor) {
+                uniBlue(allClubes[randGuest])
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText("Alterado por conflito de Uniforme"), null, yellow, "bold");
+                }, 500);
+            } else {
+                uniBlue(eval(acronymGuest.altUni))
+                setTimeout(function () {
+                    room.sendAnnouncement(centerText(`${nameGuest} está usando o uniforme alternativo`), null, yellow, "bold");
+                }, 500);
+            }
         }
     }
 }
