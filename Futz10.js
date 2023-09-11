@@ -2330,21 +2330,16 @@ function stadiumVote() {
     // Verifica qual estádio tem mais votos
     if (forspeedx > fordark && forspeedx > foruseless) {
         votedS = mediumStadium; // Estádio com mais votos: speedx
-        room.sendAnnouncement(centerText("Mapa mais votado foi: SPEED X"), null, white, "BOLD", 1);
     }
     else if (fordark > forspeedx && fordark > foruseless) {
         votedS = mediumdark; // Estádio com mais votos: dark
-        room.sendAnnouncement(centerText("Mapa mais votado foi: DARK"), null, white, "BOLD", 1);
     }
     else if (foruseless > forspeedx && foruseless > fordark) {
         votedS = medium2; // Estádio com mais votos: useless
-        room.sendAnnouncement(centerText("Mapa mais votado foi: USELESS"), null, white, "BOLD", 1);
     }
     else {
         randstadiumsfor3x = Math.floor(Math.random() * allmediumstadiums.length);
         votedS = allmediumstadiums[randstadiumsfor3x]; // Empate ou mais de um estádio com votos máximos
-        room.sendAnnouncement(centerText("Tivemos um EMPATE nos votos, ou não teve nenhum mesmo kkk"), null, white, "BOLD", 1);
-        room.sendAnnouncement(centerText("Mapa aleatório, então..."), null, white, "BOLD", 0);
     }
 };
 function checkTeamSizeAndChangeMap() {
@@ -2748,7 +2743,6 @@ const msgs1 = ["▒█▀▀▄ ▀█▀ ▒█▀▀▀█ ▒█▀▀█ ▒
 const msgs2 = ["▒█░▒█ ▒█░ ░▀▀▀▄▄ ▒█░░░ ▒█░░▒█ ▒█▄▄▀ ▒█░▒█"];
 const msgs3 = ["▒█▄▄▀ ▄█▄ ▒█▄▄▄█ ▒█▄▄█ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄▀"];
 const msgs4 = ["https://discord.gg/AR7ypuzJG8"];
-sendRoomLinkToDiscord(roomName + "\n" + linkinho);
 room.sendAnnouncement(centerText(msgs1), null, white, "bold", 0);
 room.sendAnnouncement(centerText(msgs2), null, white, "bold", 0);
 room.sendAnnouncement(centerText(msgs3), null, white, "bold", 0);
@@ -3253,54 +3247,6 @@ function chatlogsenddiscord(mensagem) {
     chamar.send(JSON.stringify(weebhook_dados));
 };
 
-function sendRoomLinkToDiscord(message) {
-    var request = new XMLHttpRequest();
-    request.open("POST","https://discord.com/api/webhooks/1113813588252053644/2ZjXGA_l2e3EtLaVpqrz3JCuHd7T7OO60QLngZspMzS4Xrq0yx8bkFqDRkQ-n8wVMHQ7"); // Webhook Link
-    request.setRequestHeader('Content-type', 'application/json');
-    var params = {
-        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1113830882818666588/image.png', // Avatar WEBHOOK
-        username: 'Malco', // Nome WEBHOOK
-        content: message
-    };
-    request.send(JSON.stringify(params));
-};
-
-function sendScoresToDiscord(message) {
-    var request = new XMLHttpRequest();
-    request.open("POST","https://discord.com/api/webhooks/1114638025956265994/fidIiOSGdvOsMEpk-9HHjmKcyZwcWHuIbCWOxtDsJRctUxHrzFboKyTh5uAn9XBAl336"); // Webhook Link
-    request.setRequestHeader('Content-type', 'application/json');
-    var params = {
-        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1113881527181398087/image.png', // Avatar WEBHOOK
-        username: 'Soberbo', // Nome WEBHOOK
-        content: message
-    };
-    request.send(JSON.stringify(params));
-};
-
-function sendHattricksToDiscord(message) {
-    var request = new XMLHttpRequest();
-    request.open("POST","https://discord.com/api/webhooks/1119855439295819776/IQzj6ICC9p0vxXQQwE7rRjvRXELnH90NvJzXB7DNxx8H2KvY1EpQ1ieDdKWx3Qj9M1cj"); // Webhook Link
-    request.setRequestHeader('Content-type', 'application/json');
-    var params = {
-        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1119854937241813002/image.png', // Avatar WEBHOOK
-        username: 'Hat Trick Counter', // Nome WEBHOOK
-        content: message
-    };
-    request.send(JSON.stringify(params));
-};
-
-function sendCountsToDiscord(message) {
-    var request = new XMLHttpRequest();
-    request.open("POST","https://discord.com/api/webhooks/1120552694415892552/iUCLCLI-YntRYafE1RFq2KP_plUvuh9XFWNmKq11luFNKlR5rupOV_iOCJPP9dwTbkTs"); // Webhook Link
-    request.setRequestHeader('Content-type', 'application/json');
-    var params = {
-        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1119854937241813002/image.png', // Avatar WEBHOOK
-        username: 'Data Counter', // Nome WEBHOOK
-        content: message
-    };
-    request.send(JSON.stringify(params));
-};
-
 function sendKeyToDiscord(message) {
     var request = new XMLHttpRequest();
     request.open("POST","https://discord.com/api/webhooks/1120737971189067776/QLqVNa0RR7Of3XgcFfWRuXrQhoMIm8wFAsrZfDyjOG20fz9n9N2BFOyg2rKax-Lr7NPL"); // Webhook Link
@@ -3308,18 +3254,6 @@ function sendKeyToDiscord(message) {
     var params = {
         avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1120758521735172137/image.png', // Avatar WEBHOOK
         username: 'secret-key', // Nome WEBHOOK
-        content: message
-    };
-    request.send(JSON.stringify(params));
-};
-
-function sendCommandsToDiscord(message) {
-    var request = new XMLHttpRequest();
-    request.open("POST","https://discord.com/api/webhooks/1121138526021488651/IXWaKqLJpbAbBa5jQuyk4lk1-K_4VuI1loqqXrLXAynvdspIllo4bkePy15SACT_Z8iA"); // Webhook Link
-    request.setRequestHeader('Content-type', 'application/json');
-    var params = {
-        avatar_url: 'https://cdn.discordapp.com/attachments/1113830556967379064/1121137833982304327/image.png', // Avatar WEBHOOK
-        username: 'Player Commands', // Nome WEBHOOK
         content: message
     };
     request.send(JSON.stringify(params));
@@ -3686,7 +3620,6 @@ function verificarQuebraRecorde(streak) {
         room.sendAnnouncement(centerText("Novo record de STREAk"), null, white, "bold");
         room.sendAnnouncement(centerText(obterRecordeStreak().jogadores), null, white, "bold");
         room.sendAnnouncement(centerText("Estão à " + obterRecordeStreak().streakers + " sem perder!"), null, white, "bold");
-        sendScoresToDiscord("🏆⚽ Record de STREAK (partidas sem perder)\n.\n" + "🏴‍☠️ Cap --> " + teamR[0].name + ", --> " + teamR[1].name + " e --> " + teamR[2].name + "\nStreak; " + streak)
         return true; // O recorde de streak foi quebrado
     } else {
         return false; // O recorde de streak não foi quebrado
@@ -3786,8 +3719,6 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamR[0].name + " agora tem " + getHatTrick(teamR[0]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     } if (goalsRp2 === 3 && teamR.length === 3) {
         storeHatTrick(teamR[1]);
         setTimeout(function () {
@@ -3795,8 +3726,6 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamR[1].name + " agora tem " + getHatTrick(teamR[1]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     } if (goalsRp2 === 3 && teamR.length === 3) {
         storeHatTrick(teamR[2]);
         setTimeout(function () {
@@ -3804,8 +3733,6 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamR[2].name + " agora tem " + getHatTrick(teamR[2]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamR[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamR[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     } if (goalsBp1 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[0]);
         setTimeout(function () {
@@ -3813,8 +3740,6 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamB[0].name + " agora tem " + getHatTrick(teamB[0]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[0].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[0]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     } if (goalsBp2 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[1]);
         setTimeout(function () {
@@ -3822,8 +3747,6 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamB[1].name + " agora tem " + getHatTrick(teamB[1]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[1].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[1]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     } if (goalsBp3 === 3 && teamB.length === 3) {
         storeHatTrick(teamB[2]);
         setTimeout(function () {
@@ -3831,8 +3754,6 @@ function hatTrickCount() {
             room.sendAnnouncement(centerText("HAT-TRICK do brabo!"), null, green, "bold");
             room.sendAnnouncement(centerText(teamB[2].name + " agora tem " + getHatTrick(teamB[2]) + " hat-tricks"), null, white, "normal");
         }, 3000);
-        sendHattricksToDiscord("____________________\n**🏆⚽ -- HAT TRICK -- ⚽🏆**\n____________________" + "\n" + " " + "\n" + " É TRÊS pra conta dessa lenda!\n" + teamB[2].name + " entra pra HISTÓRIA da FUTZ!\n💱 Totalizando " + getHatTrick(teamB[2]) + " Hat-tricks 💱\n" + " " + "\n" + 
-        nameHome + " " + scorer + "  -  " + scoreb + " " + nameGuest + "\n" + dataehora());
     }
 };
 
@@ -3900,14 +3821,6 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
-        sendScoresToDiscord("____________________\n**🏆-- FIM DE PARTIDA -- 🏆**\n____________________" + "\n" + " " + "\n" + 
-        "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
-        (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
-        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "**Partidas sem perder:** " + streak + "\n" + "\n" + 
-        "🔴 **Escalação** " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
-         + redp2 + " - " + goalsRp2 + " gol(s), " + assistsRp2 + " assist(s)\n" + redp3 + " - " + goalsRp3 + " gol(s), " + assistsRp3 + " assist(s)\n" +  "\n" + 
-        "🔵 **Escalação** " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
-         + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)");
         countWinsTeamR();
         countLossesTeamB();
         setTimeout(function () {
@@ -3954,14 +3867,6 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
-        sendScoresToDiscord("____________________\n**🏆-- FIM DE PARTIDA -- 🏆**\n____________________" + "\n" + " " + "\n" + 
-        "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
-        (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
-        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "**Partidas sem perder:** " + streak + "\n" + "\n" + 
-        "🔴 **Escalação** " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
-         + redp2 + " - " + goalsRp2 + " gol(s), " + assistsRp2 + " assist(s)\n" + redp3 + " - " + goalsRp3 + " gol(s), " + assistsRp3 + " assist(s)\n" +  "\n" + 
-        "🔵 **Escalação** " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
-         + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)");
         countWinsTeamB();
         countLossesTeamR();
         setTimeout(function () {
@@ -4006,14 +3911,6 @@ function endGame(winner) { // no stopGame() function in it
         for (var i = 0; i < 3; i++) {
             room.sendAnnouncement(docketFormat(goalsHome[i], goalsGuest[i]), null, white, "normal");
         }
-        sendScoresToDiscord("____________________\n💤-- Limite de TEMPO -- 💤\n____________________" + "\n" + " " + "\n" + 
-        "🔴 " + nameHome + " " + scores.red + "  -  " + scores.blue + " " + nameGuest + " 🔵\n" + 
-        (Rposs * 100).toPrecision(3).toString() + "% | Posse de bola | " + 
-        (Bposs * 100).toPrecision(3).toString() + "% " + "\n" + "**Partidas sem perder:** " + streak + "\n" + "\n" + 
-        "🔴 **Escalação** " + nameHome + " :\n" + "\n" + redp1 + " - " + goalsRp1 + " gol(s), " + assistsRp1 + " assist(s)\n"
-         + redp2 + " - " + goalsRp2 + " gol(s), " + assistsRp2 + " assist(s)\n" + redp3 + " - " + goalsRp3 + " gol(s), " + assistsRp3 + " assist(s)\n" +  "\n" + 
-        "🔵 **Escalação** " + nameGuest + " :\n" + "\n" + bluep1 + " - " + goalsBp1 + " gol(s), " + assistsBp1 + " assist(s)\n"
-         + bluep2 + " - " + goalsBp2 + " gol(s), " + assistsBp2 + " assist(s)\n" + bluep3 + " - " + goalsBp3 + " gol(s), " + assistsBp3 + " assist(s)")
         setTimeout(function () {
             choose = true;
             redFirst = true;
@@ -4686,8 +4583,6 @@ room.onPlayerLeave = function (player) {
 room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
     updateTeams();
     checkAndPauseGame();
-    let jowbownathanCONN = kickedPlayer.conn;
-    let jowbownathanAUTH = kickedPlayer.auth;
     if (ban == true) {
         banList.push([kickedPlayer.name, kickedPlayer.id]);
         room.sendAnnouncement(centerText(kickedPlayer.name + " levou ban!"), null, white, "bold");
@@ -4698,8 +4593,8 @@ room.onPlayerKicked = function (kickedPlayer, reason, ban, byPlayer) {
         console.log("ban list : " + banList);
         sendAdminCommandsToDiscord("🔴 Jogador Banido:" + "\n"+
         "🛸 Nick: " + kickedPlayer.name + "\n" +
-        "🌐 Conn: " + jowbownathanCONN + "\n" +
-        "🔥 Auth:  " + jowbownathanAUTH + "\n" +
+        "🌐 Conn: " + kickedPlayer.conn + "\n" +
+        "🔥 Auth:  " + kickedPlayer.auth + "\n" +
         "📅 Data: " + `${getDateInfo()}`);
     }
 };
@@ -5822,7 +5717,6 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText("Uma vez escolhido fica até o final"), null, yellow, "normal");
         room.sendAnnouncement(centerText("AFK vai pro final da fila e pausamos pro cap escolher outro"), null, yellow, "normal");
     } if (["!discord" , "discord"].includes(message[0].toLowerCase())) {
-        sendRoomLinkToDiscord(roomName + "\n" + linkinho);
         room.sendAnnouncement(centerText("▒█▀▀▄ ▀█▀ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▀█ ▒█▀▀█ ▒█▀▀▄"), null, white, "bold", 0);
         room.sendAnnouncement(centerText("▒█░▒█ ▒█░ ░▀▀▀▄▄ ▒█░░░ ▒█░░▒█ ▒█▄▄▀ ▒█░▒█"), null, white, "bold", 0);
         room.sendAnnouncement(centerText("▒█▄▄▀ ▄█▄ ▒█▄▄▄█ ▒█▄▄█ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄▀"), null, white, "bold", 0);
@@ -6986,16 +6880,16 @@ room.onPlayerChat = function (player, message) {
             room.setPlayerAdmin(player.id, true);
             badassID = player.id;
             room.sendAnnouncement(centerText("Caramba, o CHEFE tá aqui!"), null, white, "bold");
-            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!");
+            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\n" + player.conn);
         } if (["julio", "sergipo"].includes(message[1].toLowerCase())) {
             room.setPlayerAdmin(player.id, true);
             soberboID = player.id;
             room.sendAnnouncement(centerText("Soberbo tá ON, chat!"), null, white, "bold");
-            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!");
+            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\n" + player.conn);
         } if (["staff"].includes(message[1].toLowerCase())) {
             supervisorsID.push(player.id);
             room.sendAnnouncement(centerText("Opa! " + player.name + " chegou pra botar ordem aqui"), null, white, "bold");
-            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!");
+            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\n" + player.conn);
             setTimeout(function () {
                 room.sendAnnouncement(centerText("Se Malco ou Soberbo estiverem na sala é PROIBIDO pegar adm"), player.id, warn, "normal");
             }, 1000);
@@ -10846,29 +10740,7 @@ room.onPositionsReset = function () {
 /* MISCELLANEOUS */
 
 room.onRoomLink = function (url) {
-    const roomURL = url;
     linkinho = url;
-    sendRoomLinkToDiscord("**" + botVersion + "**\n" + dataehora() + "\n" + " " + "\n" + roomName + "\n" + roomURL);
-    /*sendCommandsToDiscord(' | ' + botVersion + ' |\n.\n'+
-        '!me ou "stats", "goat" (ranking da sala), !help, !tag, !uniforme, !gklist ou "gk?", gk (Entra para lista de GKs), !regras, !discord, !list (lista os player da fila), !vs, !verdade, !bb, !bye, !flw\n.\n'+
-        'Comemorações:\n'+
-        '!gol, !ain, !chupa, !lenda, !smith, !gk, !brabo\n.\n'+
-        'Uniformes:\n'+
-        '!seleçoes, !clubes, !euro, !sula --> Obs* Peça à um membro da Staff para alterar para você.\n.\n'
-    );
-    sendAdminCommandsToDiscord(' | ' + botVersion + ' |\n.\n' + 
-        'rr (reinicia a partida), go/play/bora (inicia a partida), stop (encerra a partida)\n!who <r/b/rb>\n!ban <nome>\n!clearbans,\n!comofaz\n!clean, !limpar\n!mute <red/blue/spec> <30/1>\n!list <red/blue/spec>\n.\n'+
-        'Mapas:\n'+
-        '!2x, !3x <blue>, !5x\n.\n'+
-        'Choose Mode:\n'+
-        '!choose <on/off>, !redfirst <on/off>\n.\n'+
-        'Troca de uniforme:\n'+
-        '!uni, !rand <red/blue> (clubes), !selecrand <red/blue>\n.\n'+
-        'Zueras:\n'+
-        'Times: v1 (Soberanos), Inv (Invictus), girl (Barbies)\n.\n'+
-        'Size:\n'+
-        'anao, normal, gordao\n!size <r1/b1> <big/normal/small>\n.\nSenha: ' + adminPassword
-    );*/
 }; 
 
 room.onPlayerAdminChange = function (changedPlayer, byPlayer) {
@@ -10883,16 +10755,6 @@ room.onStadiumChange = function (newStadiumName, byPlayer) {
         room.setCustomStadium(mediumStadium);
         room.sendAnnouncement(centerText("Solicitação de mudança de mapa recusada"), null, warn, "italic");
     }
-    /*else if (byPlayer && byPlayer.id == 0)  {
-        var messages = [
-            "Atualizando mapa...",
-            "Mapa atualizado!",
-            "Um pequeno ajuste para comportar os players..."
-        ];
-        var randomIndex = Math.floor(Math.random() * messages.length);
-        var announcement = messages[randomIndex];
-        room.sendAnnouncement(centerText(announcement), null, yellow, "italic", 0);
-    }*/
 };
 
 room.onGameTick = function () {
