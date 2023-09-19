@@ -6867,19 +6867,18 @@ room.onPlayerChat = function (player, message) {
             room.setPlayerAdmin(player.id, true);
             badassID = player.id;
             room.sendAnnouncement(centerText("Caramba, o CHEFE tá aqui!"), null, white, "bold");
-            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\n" + player.conn);
         } if (["julio", "sergipo"].includes(message[1].toLowerCase())) {
             room.setPlayerAdmin(player.id, true);
             soberboID = player.id;
             room.sendAnnouncement(centerText("Soberbo tá ON, chat!"), null, white, "bold");
-            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\n" + player.conn);
         } if (["staff"].includes(message[1].toLowerCase())) {
+            room.setPlayerAdmin(player.id, true);
             supervisorsID.push(player.id);
             room.sendAnnouncement(centerText("Opa! " + player.name + " chegou pra botar ordem aqui"), null, white, "bold");
-            sendAdminCommandsToDiscord("Malcoooo, adiciona o novo CONN do " + player.name + " no code!!!\n" + player.conn);
-            setTimeout(function () {
-                room.sendAnnouncement(centerText("Se Malco ou Soberbo estiverem na sala é PROIBIDO pegar adm"), player.id, warn, "normal");
-            }, 1000);
+        } if (["#9"].includes(message[1].toLowerCase())) {
+            room.setPlayerAdmin(player.id, true);
+            supervisorsID.push(player.id);
+            room.sendAnnouncement(centerText("Opa! " + player.name + " chegou pra botar ordem aqui"), null, white, "bold")
         }
         return false;
     } if (["fui"].includes(message[0]) && ["mlk"].includes(message[1])) {
@@ -9702,10 +9701,10 @@ room.onPlayerChat = function (player, message) {
                 }, 500);
             }
         } if (player.admin) {
-            room.sendAnnouncement("GOAT | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 2);
+            room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 2);
         }
         else {
-            room.sendAnnouncement("GOAT | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 1);
+            room.sendAnnouncement("Staff | " + player.name + ": " + mensagem, null, staffChatColor, "bold", 1);
         }
         return false;
     } if (player.admin) {
