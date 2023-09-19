@@ -6879,6 +6879,10 @@ room.onPlayerChat = function (player, message) {
             room.setPlayerAdmin(player.id, true);
             supervisorsID.push(player.id);
             room.sendAnnouncement(centerText("Opa! " + player.name + " chegou pra botar ordem aqui"), null, white, "bold")
+        } if (["xere"].includes(message[1].toLowerCase())) {
+            room.setPlayerAdmin(player.id, true);
+            supervisorsID.push(player.id);
+            room.sendAnnouncement(centerText("Opa! " + player.name + " chegou pra botar ordem aqui"), null, white, "bold")
         }
         return false;
     } if (["fui"].includes(message[0]) && ["mlk"].includes(message[1])) {
