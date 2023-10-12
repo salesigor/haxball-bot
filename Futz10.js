@@ -3368,15 +3368,15 @@ function IIIx() {
                     rr = true;
                     room.stopGame();
                     choose = true
-                }, 300);
+                }, 800);
                 setTimeout(function () {
                     checkTeamSizeAndChangeMap();
                     checkAndStartGame();
-                }, 800);
+                }, 1200);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("2x2, tamo quase lá..."), null, white, "bold");
                     rr = false;
-                }, 1000);
+                }, 1800);
             }
             return;
         } if (teamR.length === 2 && teamB.length === 2) {
@@ -3388,15 +3388,15 @@ function IIIx() {
                     rr = true;
                     room.stopGame();
                     choose = true
-                }, 300);
+                }, 800);
                 setTimeout(function () {
                     checkTeamSizeAndChangeMap();
                     checkAndStartGame();
-                }, 800);
+                }, 1200);
                 setTimeout(function () {
                     room.sendAnnouncement(centerText("3x3, agora sim!"), null, white, "bold");
                     rr = false;
-                }, 1000);
+                }, 1800);
             }
             return;
         }
@@ -4552,6 +4552,7 @@ room.onPlayerJoin = function (player) {
 
 room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
     if (changedPlayer.id == 0) {room.setPlayerTeam(0, Team.SPECTATORS);return;} if (afklist.includes(changedPlayer.id)) {afkNEXTplayer();return;} if (changedPlayer.team == Team.SPECTATORS) {updateList(Math.max(teamR.findIndex((p) => p.id == changedPlayer.id), teamB.findIndex((p) => p.id == changedPlayer.id), teamS.findIndex((p) => p.id == changedPlayer.id)), changedPlayer.team);}
+    if (afklist.includes(changedPlayer.id)) {room.setPlayerTeam(changedPlayer.id, Team.SPECTATORS);room.sendAnnouncement(centerText(`${changedPlayer.name} não pode jogar agora. Está AFK`), null, yellow, "bold", 0);}
     updateTeams();
     checkTeamSizeLimit();
 };
@@ -4671,16 +4672,6 @@ room.onPlayerChat = function (player, message) {
     } if (["!record", "record"].includes(message[0].toLowerCase())) {
         room.sendAnnouncement(centerText("Record Atual: " + obterRecordeStreak().streakers + " vitórias consecutivas!"), null, white, "bold");
         room.sendAnnouncement(centerText("Faltam " + (obterRecordeStreak().streakers - streak) + " vitórias para " + nameHome + " alcançar"), null, white, "bold", 0);
-        return false;
-    } if (["!choose", "choose", "chose"].includes(message[0].toLowerCase())) {
-        if (message[1] == "on") {
-            room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
-            choose = true;
-        }
-        else if (message[1] == "off") {
-            room.sendAnnouncement(centerText("Choose Mode Desativado"), null, warn, "bold");
-            choose = false;
-        }
         return false;
     } if (["!redfirst"].includes(message[0].toLowerCase())) {
         if (message[1] == "on") {
@@ -7479,6 +7470,16 @@ room.onPlayerChat = function (player, message) {
                 roomPublic = true;
                 room.sendAnnouncement(centerText("A sala agora é pública!"), null, yellow, "italic");
                 liveOnDiscord(`***SALA TA ON, RAPA***\n.\nCola na Humildade\n${linkinho}\n.\nPlayers online:\n${liveRoomToDiscord()}`);
+            }
+            return false;
+        } if (["!choose", "choose", "chose"].includes(message[0].toLowerCase())) {
+            if (message[1] == "on") {
+                room.sendAnnouncement(centerText("Choose Mode Ativado"), null, green, "bold");
+                choose = true;
+            }
+            else if (message[1] == "off") {
+                room.sendAnnouncement(centerText("Choose Mode Desativado"), null, warn, "bold");
+                choose = false;
             }
             return false;
         } if (["5"].includes(message[0].toLowerCase())) {
