@@ -4596,23 +4596,21 @@ room.onPlayerChat = function (player, message) {
     var mensagem = message;
     message = message.split(" ");
     if (["!help"].includes(message[0].toLowerCase())) {
-        room.sendAnnouncement(centerText("Comandos:"), player.id, yellow, "bold");
-        room.sendAnnouncement(centerText("!me, !goat, !streak, !help, !tag, !uniforme, !gklist, !regras, !discord,\n!list, !vs, !verdade, !bb, !bye, !flw, !afk"), null, yellow, "normal");
+        room.sendAnnouncement(centerText(`Comandos:`), player.id, yellow, "bold");
+        room.sendAnnouncement(centerText(`!me, !goat, !streak, !help, !tag, !uniforme, !gklist, !regras, !discord,\n!list, !vs, !verdade, !bb, !bye, !flw, !afk`), null, yellow, "normal");
         room.sendAnnouncement(centerText("Comemorações:"), player.id, yellow, "bold");
-        room.sendAnnouncement(centerText("!gol, !ain, !chupa, !lenda, !smith, !gk, !brabo"), player.id, yellow, "normal");
-        room.sendAnnouncement(centerText("Uniformes:"), player.id, yellow, "bold");
-        room.sendAnnouncement(centerText("!seleçoes, !clubes, !euro, !sula"), player.id, yellow, "normal");
+        room.sendAnnouncement(centerText(`!gol, !ain, !chupa, !lenda, !smith, !gk, !brabo`), player.id, yellow, "normal");
+        room.sendAnnouncement(centerText(`Uniformes:`), player.id, yellow, "bold");
+        room.sendAnnouncement(centerText(`!seleçoes, !clubes, !euro, !sula`), player.id, yellow, "normal");
         if (player.admin) {
-            room.sendAnnouncement(centerText("Admin Commands:"), player.id, yellow, "bold");
-            room.sendAnnouncement(centerText("rr, go/play/bora, !who <r/b/rb>, !ban <nome>, !clearbans,\n!comofaz, !clean, !limpar, !size <r1/b1> <big/normal/small>,\n!mute <red/blue/spec> <30/1>, !list <red/blue/spec>"), player.id, yellow, "normal");
-            room.sendAnnouncement(centerText("Mapas:"), player.id, yellow, "bold");
+            room.sendAnnouncement(centerText(`Admin Commands:`), player.id, yellow, "bold");
+            room.sendAnnouncement(centerText(`rr, go/play/bora, !who <r/b/rb>, !ban <nome>, !clearbans,\n!comofaz, !clean, !limpar, !size <r1/b1> <big/normal/small>,\n!mute <red/blue/spec> <30/1>, !list <red/blue/spec>`), player.id, yellow, "normal");
+            room.sendAnnouncement(centerText(`Mapas:`), player.id, yellow, "bold");
             room.sendAnnouncement(centerText("!2x, !3x <blue>, !5x"), player.id, yellow, "normal");
-            room.sendAnnouncement(centerText("Choose Mode:"), player.id, yellow, "bold");
-            room.sendAnnouncement(centerText("!choose <on/off>, !redfirst <on/off>"), player.id, yellow, "normal");
-            room.sendAnnouncement(centerText("Troca de uniforme:"), player.id, yellow, "bold");
-            room.sendAnnouncement(centerText("!uni (acronimo de !uniforme), !rand <red/blue> (clubes), !selecrand <red/blue>"), player.id, yellow, "normal");
-            room.sendAnnouncement(centerText("Zueras:"), player.id, yellow, "bold");
-            room.sendAnnouncement(centerText("Times: vip (Soberanos), Inv (Invictus), girl"), player.id, yellow, "normal");
+            room.sendAnnouncement(centerText(`Choose Mode:`), player.id, yellow, "bold");
+            room.sendAnnouncement(centerText(`!choose <on/off>, !redfirst <on/off>`), player.id, yellow, "normal");
+            room.sendAnnouncement(centerText(`Troca de uniforme:`), player.id, yellow, "bold");
+            room.sendAnnouncement(centerText(`uni (acronimo de !uniforme), unix <red/blue> (clubes), !selecrand <red/blue>`), player.id, yellow, "normal");
         }
     } if (muteList.includes(player.id)) {
         room.sendAnnouncement(centerText(`Você está mutado!`), player.id, warn, "italic");
@@ -5287,19 +5285,19 @@ room.onPlayerChat = function (player, message) {
         }
     } if (["!uniforme"].includes(message[0].toLowerCase())) {
         if (message[1] == null) {
-            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
-            room.sendAnnouncement("Seleções:", null, yellow, "bold");
-            room.sendAnnouncement("Brasil <bra> Alemanha <ale> Argentina <arg> Espanha <esp> Portugal <por>", null, white, "normal");
-            room.sendAnnouncement("Itália <ita> Uruguai <uru> França <fra> Inglaterra <ing> Bélgica <bel>, Holanda <hol>", null, white, "normal");
-            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
-            room.sendAnnouncement("Times Sulamericanos:", null, yellow, "bold");
-            room.sendAnnouncement("Corinthians <cor>, São Paulo <spfc>, Palmeiras <pal>, Santos <sfc>, Flamengo <fla>, Grêmio <gre>", null, white, "normal");
-            room.sendAnnouncement("Vasco <vas>, Fluminense <flu>, Internacional <int>, Cruzeiro <cru>, Boca Juniors <boc>, River Plate <riv>", null, white, "normal");
-            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
-            room.sendAnnouncement("Times Europeus:", null, yellow, "bold");
-            room.sendAnnouncement("Manchester City <mci>, Borussia Dortmund <bor>, Paris Saint-Germain <psg>, Real Madrid <rea>, Inter de Milão <intM>", null, white, "normal");
-            room.sendAnnouncement("Barcelona <bar>, Atlético de Madrid <atm>, Liverpool <liv>, Chelsea <che>, Juventus <juv>, Bayern de Munique <bay>, Milan <mil>", null, white, "normal");
-            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+            room.sendAnnouncement(`_______________________________________`, null, yellow, "bold");
+            room.sendAnnouncement(`Seleções:`, null, yellow, "bold");
+            room.sendAnnouncement(`Brasil "bra" Alemanha <ale> Argentina "arg" Espanha "esp" Portugal "por"`, null, white, "normal");
+            room.sendAnnouncement(`Itália "ita" Uruguai "uru" França "fra" Inglaterra "ing" Bélgica "bel", Holanda "hol"`, null, white, "normal");
+            room.sendAnnouncement(`_______________________________________`, null, yellow, "bold");
+            room.sendAnnouncement(`Times Sulamericanos:`, null, yellow, "bold");
+            room.sendAnnouncement(`Corinthians "cor", São Paulo "spfc", Palmeiras "pal", Santos "sfc", Flamengo "fla", Grêmio "gre"`, null, white, "normal");
+            room.sendAnnouncement(`Vasco "vas", Fluminense "flu", Internacional "int", Cruzeiro "cru", Boca Juniors "boc", River Plate "riv"`, null, white, "normal");
+            room.sendAnnouncement(`_______________________________________`, null, yellow, "bold");
+            room.sendAnnouncement(`Times Europeus:`, null, yellow, "bold");
+            room.sendAnnouncement(`Manchester City "mci", Borussia Dortmund "bor", Paris Saint-Germain "psg", Real Madrid "rea", Inter de Milão "intM"`, null, white, "normal");
+            room.sendAnnouncement(`Barcelona "bar", Atlético de Madrid "atm", Liverpool "liv", Chelsea "che", Juventus "juv", Bayern de Munique "bay", Milan "mil"`, null, white, "normal");
+            room.sendAnnouncement(`_______________________________________`, null, yellow, "bold");
         }
     } if (["!uni", "uni"].includes(message[0].toLowerCase())) {
         if (message[1] == "red") {
@@ -5671,11 +5669,11 @@ room.onPlayerChat = function (player, message) {
         room.sendAnnouncement(centerText(nameHome + " vs " + nameGuest), null, white, "bold");
         return false;
     } if (["!seleçoes"].includes(message[0].toLowerCase())) {
-            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
-            room.sendAnnouncement("Seleções:", null, yellow, "bold");
-            room.sendAnnouncement("Brasil <bra> Alemanha <ale> Argentina <arg> Espanha <esp> Portugal <por>", null, white, "normal");
-            room.sendAnnouncement("Itália <ita> Uruguai <uru> França <fra> Inglaterra <ing> Bélgica <bel>, Holanda <hol>", null, white, "normal");
-            room.sendAnnouncement("_______________________________________", null, yellow, "bold");
+            room.sendAnnouncement(`_______________________________________`, null, yellow, "bold");
+            room.sendAnnouncement(`Seleções:`, null, yellow, "bold");
+            room.sendAnnouncement(`Brasil "bra" Alemanha <ale> Argentina "arg" Espanha "esp" Portugal "por"`, null, white, "normal");
+            room.sendAnnouncement(`Itália "ita" Uruguai "uru" França "fra" Inglaterra "ing" Bélgica "bel", Holanda "hol"`, null, white, "normal");
+            room.sendAnnouncement(`_______________________________________`, null, yellow, "bold");
             setTimeout(function () {
                 room.sendAnnouncement(centerText("called by " + player.name), null, chatInvisble, "italic");
             }, 100);
