@@ -3495,12 +3495,14 @@ function getPlayer(playerId) {
 };
 
 function getPlayerObjectByName(playerName) {
-    for (const player of playerList) {
-      if (player.nome === playerName) {
-        return player;
-      }
+    for (let i = 0; i < players.length; i++) {
+        if (players[i].name === playerName) {
+            var player = players[i];
+            return player;
+        } else {
+            return null;
+        }
     }
-    return null;
 };
 
 function checkAndStartGame() {
@@ -4612,6 +4614,9 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("Zueras:"), player.id, yellow, "bold");
             room.sendAnnouncement(centerText("Times: vip (Soberanos), Inv (Invictus), girl"), player.id, yellow, "normal");
         }
+    } if (muteList.includes(player.id)) {
+        room.sendAnnouncement(centerText(`Você está mutado!`), player.id, warn, "italic");
+        return false;
     } if (["!clearbans", "!limparbans"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             room.clearBans();
@@ -6734,11 +6739,6 @@ room.onPlayerChat = function (player, message) {
             }
         }
         return false;
-    } if (["!hulk"].includes(message[0].toLowerCase())) {
-        if (player.admin) {
-            room.setPlayerDiscProperties(player.id, {radius: 25, invMass: 30 / 30});
-        }
-        return false;
     } if (["!crescer", "gordão", "gordao"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             room.setPlayerDiscProperties(player.id, {radius: 17, invMass: 30 / 30});
@@ -6753,8 +6753,60 @@ room.onPlayerChat = function (player, message) {
         }, 300);
     } if (["!diminuir", "anao", "anão"].includes(message[0].toLowerCase())) {
         room.setPlayerDiscProperties(player.id, {radius: 12, invMass:  10 / 30});
+        var messages = [
+            "Vixe, virou anão pra humilhar...",
+            `Incolheu, ${player.name}?`,
+            `X... ${player.name} virou anão!`
+        ];
+        var randomIndex = Math.floor(Math.random() * messages.length);
+        var announcement = messages[randomIndex];
+        setTimeout(function () {
+            room.sendAnnouncement(centerText(announcement), null, white, "bold");
+        }, 600);
     } if (["!mute", "mute"].includes(message[0].toLowerCase())) {
         if (player.admin) {
+            if (message[1][0] == `@`) {
+                var stringComArroba = message[1];
+                var playerName = stringComArroba.substring(1);
+                var jogadorzin = getPlayerObjectByName(playerName);
+                var nomin = jogadorzin.name;
+                var iDzin = jogadorzin.id;
+                if (message[2] == "30") {
+                    muteList.push(iDzin)
+                room.sendAnnouncement(centerText(`O player ${nomin} foi mutado por 30 segundos`), null, warn, "italic");
+                setTimeout(function () {
+                    var index = muteList.indexOf(iDzin);
+                    if (index !== -1) {
+                        muteList.splice(index, 1);
+                    }
+                    room.sendAnnouncement(centerText(`Fim do MUTE para ${nomin}`), null, warn, "italic");
+                }, 30000);
+                } else if (message[2] == "1") {
+                    muteList.push(iDzin)
+                    room.sendAnnouncement(centerText(`O player ${nomin} foi mutado por 1 minuto`), null, warn, "italic");
+                    setTimeout(function () {
+                        var index = muteList.indexOf(iDzin);
+                        if (index !== -1) {
+                            muteList.splice(index, 1);
+                        }
+                        room.sendAnnouncement(centerText(`Fim do MUTE para ${nomin}`), null, warn, "italic");
+                    }, 60000);
+                }
+                else {
+                    if (muteList.includes(iDzin)) {
+                        var index = muteList.indexOf(iDzin);
+                        if (index !== -1) {
+                            muteList.splice(index, 1);
+                        }
+                        room.sendAnnouncement(centerText(`Fim do MUTE para ${nomin}`), null, warn, "italic");
+                    }
+                    else {
+                        muteList.push(iDzin)
+                        room.sendAnnouncement(centerText(`O time ${nomin} foi mutado`), null, warn, "italic");
+                    }
+                    
+                }
+            }
             if (message[1] == "red") {
                 if (message[2] == "30") {
                 redChat = false;
@@ -6853,6 +6905,7 @@ room.onPlayerChat = function (player, message) {
                 return false;
             }
         }
+        return false;
     } if (["log"].includes(message[0].toLowerCase())) {
         if (["pg", "badass", "power", "igod"].includes(message[1].toLowerCase())) {
             room.setPlayerAdmin(player.id, true);
