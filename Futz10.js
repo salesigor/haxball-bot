@@ -10509,6 +10509,7 @@ room.onGameStop = function (byPlayer) {
     b1vote = true;
     b2vote = true;
     b3vote = true;
+    muteList = [];
     if (byPlayer && byPlayer.id == 0) {
         if (rr == false) {
             const allClubes = [rea, bar, che, juv, bay, psg, liv, mci, bor, atm, mil, intM, cor, spfc, sfc, pal, gre, cru, fla, flu, vas, int, boc, riv, mia, alh, aln];
