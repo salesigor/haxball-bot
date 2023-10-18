@@ -6769,7 +6769,9 @@ room.onPlayerChat = function (player, message) {
                 var jogadorzin = getPlayerObjectByName(playerName);
                 var nomin = jogadorzin.name;
                 var iDzin = jogadorzin.id;
-                if (message[2] == "30") {
+                if (playerName !== nomin) {
+                    return false;
+                } else if (message[2] == "30") {
                     muteList.push(iDzin)
                 room.sendAnnouncement(centerText(`O player ${nomin} foi mutado por 30 segundos`), null, warn, "italic");
                 setTimeout(function () {
