@@ -2590,8 +2590,8 @@ let bluep3 = "";
 let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
-const soberbo = ['3139312E3133352E3232302E3539']; // soberbo
-const badass = ['3137372E36382E32342E323438']; // malco
+const soberbo = ['3139312E3133352E3231382E313934']; // soberbo
+const badass = ['3137372E39352E3131342E323330']; // malco
 const supervisors = ['3138392E342E38382E313230']; // 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 const blacklistnames = ["Arthur MM","ᱦiᱮ∀Ʀd","Schneider","Alcione III","MACACO","miguelgatao", "?yuno? |", 'ALH | Neymar Jr'];
 const blacklistconn = [
@@ -6749,12 +6749,13 @@ room.onPlayerChat = function (player, message) {
             room.sendAnnouncement(centerText("☢️ --- BLACK LIST --- ☢️"), null, warn, "bold", 0);
             room.sendAnnouncement(centerText(blacklistnames), null, white, "italic");
         }, 300);
-    } if (["!diminuir", "anao", "anão"].includes(message[0].toLowerCase())) {
-        room.setPlayerDiscProperties(player.id, {radius: 12, invMass:  10 / 30});
+    } if (["anao", "anão"].includes(message[0].toLowerCase())) {
+        /* room.setPlayerDiscProperties(player.id, {radius: 12, invMass:  10 / 30}); */
         var messages = [
-            "Vixe, virou anão pra humilhar...",
-            `Incolheu, ${player.name}?`,
-            `X... ${player.name} virou anão!`
+            "Meu pau na sua mão!",
+            "Meu pau na sua mão!",
+            "Meu pau na sua mão!",
+            `Chega desse lance de ANÃO, ${player.name}...`
         ];
         var randomIndex = Math.floor(Math.random() * messages.length);
         var announcement = messages[randomIndex];
