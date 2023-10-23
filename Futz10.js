@@ -25,6 +25,7 @@ const geo = [{ "lat": -23.646709, "lon": -46.730114, "code": "br" }, { "code": "
 const room = HBInit({ roomName: roomName, maxPlayers: maxPlayers, public: roomPublic, playerName: botName, geo: geo[0]});
 const scoreLimit = 3;
 const timeLimit = 3;
+var teamLimit = 3;
 room.setScoreLimit(scoreLimit);
 room.setTimeLimit(timeLimit);
 room.setTeamsLock(true);
@@ -1230,6 +1231,193 @@ const bigStadium2 = `{"name":"𝒙5 ${botVersion}","width":900,"height":460,"bg"
     {"d0":4,"d1":42,"length":7.478931750741822,"color":"A3A3A3"}
 ],
 "kickOffReset":"full"}`
+const stadium4x = `{"name" : "𝒙4 ${botVersion}",
+	"width" : 800,
+	"height" : 350,
+    "bg" : { "width" : 700, "height" : 320, "kickOffRadius" : 80, "color" : "1E472E" }
+	"vertexes" : [
+		/* 0 */ { "x" : -700, "y" : 321, "cMask" : ["ball" ] },
+		/* 1 */ { "x" : -700, "y" : -319, "cMask" : ["ball" ] },
+		/* 2 */ { "x" : 699, "y" : 319, "cMask" : ["ball" ] },
+		/* 3 */ { "x" : 601, "y" : -320, "cMask" : ["ball" ] },
+		/* 4 */ { "x" : 0, "y" : 350, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 5 */ { "x" : 0, "y" : 80, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 6 */ { "x" : 0, "y" : -80, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 7 */ { "x" : 0, "y" : -350, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 8 */ { "x" : -700, "y" : -99, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		/* 9 */ { "x" : -750, "y" : -99, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		/* 10 */ { "x" : -750, "y" : 90, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		/* 11 */ { "x" : -700, "y" : 90, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		/* 12 */ { "x" : 700, "y" : -90, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		/* 13 */ { "x" : 749, "y" : -90, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		/* 14 */ { "x" : 749, "y" : 90, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		/* 15 */ { "x" : 699, "y" : 90, "bCoef" : 0.1, "cMask" : ["ball" ] },
+		/* 16 */ { "x" : -700, "y" : 90, "bCoef" : 1.25, "cMask" : ["ball" ] },
+		/* 17 */ { "x" : -700, "y" : 321, "bCoef" : 1.25, "cMask" : ["ball" ] },
+		/* 18 */ { "x" : -700, "y" : -99, "bCoef" : 1.25, "cMask" : ["ball" ] },
+		/* 19 */ { "x" : -700, "y" : -319, "bCoef" : 1.25, "cMask" : ["ball" ] },
+		/* 20 */ { "x" : -700, "y" : 321, "bCoef" : 2, "cMask" : ["ball" ] },
+		/* 21 */ { "x" : 699, "y" : 319, "bCoef" : 2, "cMask" : ["ball" ] },
+		/* 22 */ { "x" : 699, "y" : 90, "bCoef" : 1.25, "cMask" : ["ball" ] },
+		/* 23 */ { "x" : 699, "y" : 319, "bCoef" : 1.25, "cMask" : ["ball" ] },
+		/* 24 */ { "x" : 699, "y" : -321, "bCoef" : 1.25, "cMask" : ["ball" ] },
+		/* 25 */ { "x" : 699, "y" : -90, "bCoef" : 1.25, "cMask" : ["ball" ] },
+		/* 26 */ { "x" : 601, "y" : -320, "bCoef" : 0, "cMask" : ["ball" ] },
+		/* 27 */ { "x" : 601, "y" : -320, "bCoef" : 0, "cMask" : ["ball" ] },
+		/* 28 */ { "x" : -699, "y" : -320, "bCoef" : 2, "cMask" : ["ball" ] },
+		/* 29 */ { "x" : 699, "y" : -321, "bCoef" : 2, "cMask" : ["ball" ] },
+		/* 30 */ { "x" : 0, "y" : -320, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 31 */ { "x" : 0, "y" : -80, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 32 */ { "x" : 0, "y" : 80, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 33 */ { "x" : 0, "y" : 320, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 34 */ { "x" : 0, "y" : -80, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 35 */ { "x" : 0, "y" : 80, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 36 */ { "x" : 0, "y" : -150, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 37 */ { "x" : 0, "y" : 90, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 38 */ { "x" : 0, "y" : 80, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 39 */ { "x" : 0, "y" : -80, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 40 */ { "x" : 0, "y" : 80, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 41 */ { "x" : 0, "y" : -80, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 42 */ { "x" : -710, "y" : 90, "cMask" : ["ball" ] },
+		/* 43 */ { "x" : -710, "y" : 321, "cMask" : ["ball" ] },
+		/* 44 */ { "x" : -710, "y" : 90, "cMask" : ["ball" ] },
+		/* 45 */ { "x" : -710, "y" : 321, "cMask" : ["ball" ] },
+		/* 46 */ { "x" : -710, "y" : -315, "cMask" : ["ball" ] },
+		/* 47 */ { "x" : -710, "y" : -99, "cMask" : ["ball" ] },
+		/* 48 */ { "x" : 710, "y" : -90, "cMask" : ["ball" ] },
+		/* 49 */ { "x" : 709, "y" : -317, "cMask" : ["ball" ] },
+		/* 50 */ { "x" : 709, "y" : -90, "cMask" : ["ball" ] },
+		/* 51 */ { "x" : 709, "y" : 94, "cMask" : ["ball" ] },
+		/* 52 */ { "x" : 709, "y" : 319, "cMask" : ["ball" ] },
+		/* 53 */ { "x" : -699, "y" : 274, "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 54 */ { "x" : -506, "y" : 141, "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 55 */ { "x" : -506, "y" : 141, "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 56 */ { "x" : -506, "y" : -141, "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 57 */ { "x" : -506, "y" : -141, "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 58 */ { "x" : -699, "y" : -274, "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 59 */ { "x" : 698, "y" : 273, "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 60 */ { "x" : 505, "y" : 140, "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 61 */ { "x" : 505, "y" : 140, "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 62 */ { "x" : 505, "y" : -142, "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 63 */ { "x" : 505, "y" : -142, "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 64 */ { "x" : 698, "y" : -275, "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 65 */ { "x" : -701, "y" : 90, "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 66 */ { "x" : -701, "y" : -90, "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 67 */ { "x" : 699, "y" : 90, "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 68 */ { "x" : 699, "y" : -90, "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO","blueKO" ] },
+		/* 69 */ { "x" : -713, "y" : 90, "cMask" : ["ball" ] },
+		/* 70 */ { "x" : -713, "y" : 321, "cMask" : ["ball" ] },
+		/* 71 */ { "x" : -713, "y" : -315, "cMask" : ["ball" ] },
+		/* 72 */ { "x" : -713, "y" : -99, "cMask" : ["ball" ] },
+		/* 73 */ { "x" : 712, "y" : -317, "cMask" : ["ball" ] },
+		/* 74 */ { "x" : 712, "y" : -90, "cMask" : ["ball" ] },
+		/* 75 */ { "x" : 712, "y" : 94, "cMask" : ["ball" ] },
+		/* 76 */ { "x" : 712, "y" : 319, "cMask" : ["ball" ] },
+		/* 77 */ { "x" : 704, "y" : -317, "cMask" : ["ball" ] },
+		/* 78 */ { "x" : 704, "y" : -90, "cMask" : ["ball" ] },
+		/* 79 */ { "x" : 704, "y" : -317, "cMask" : ["ball" ] },
+		/* 80 */ { "x" : 704, "y" : -90, "cMask" : ["ball" ] },
+		/* 81 */ { "x" : 704, "y" : 94, "cMask" : ["ball" ] },
+		/* 82 */ { "x" : 704, "y" : 319, "cMask" : ["ball" ] },
+		/* 83 */ { "x" : 704, "y" : 94, "cMask" : ["ball" ] },
+		/* 84 */ { "x" : 704, "y" : 319, "cMask" : ["ball" ] },
+		/* 85 */ { "x" : -705, "y" : 90, "cMask" : ["ball" ] },
+		/* 86 */ { "x" : -705, "y" : 321, "cMask" : ["ball" ] },
+		/* 87 */ { "x" : -705, "y" : 90, "cMask" : ["ball" ] },
+		/* 88 */ { "x" : -705, "y" : 321, "cMask" : ["ball" ] },
+		/* 89 */ { "x" : -705, "y" : -315, "cMask" : ["ball" ] },
+		/* 90 */ { "x" : -705, "y" : -99, "cMask" : ["ball" ] },
+		/* 91 */ { "x" : -705, "y" : -315, "cMask" : ["ball" ] },
+		/* 92 */ { "x" : -705, "y" : -99, "cMask" : ["ball" ] },
+		/* 93 */ { "x" : -699, "y" : 319.88890075683594, "bCoef" : 2, "cMask" : ["ball" ] },
+		/* 94 */ { "x" : 699, "y" : 318.88890075683594, "bCoef" : 2, "cMask" : ["ball" ] }
+
+	],
+
+	"segments" : [
+		{ "v0" : 8, "v1" : 9, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 9, "v1" : 10, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 10, "v1" : 11, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 12, "v1" : 13, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 13, "v1" : 14, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 14, "v1" : 15, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["ball" ] },
+		{ "v0" : 4, "v1" : 5, "vis" : false, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		{ "v0" : 5, "v1" : 6, "curve" : 180, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["blueKO" ], "curveF" : 6.123233995736766e-17 },
+		{ "v0" : 6, "v1" : 5, "curve" : 180, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO" ], "curveF" : 6.123233995736766e-17 },
+		{ "v0" : 6, "v1" : 7, "vis" : false, "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		{ "v0" : 16, "v1" : 17, "color" : "F8F8F8", "bCoef" : 1.25, "cMask" : ["ball" ] },
+		{ "v0" : 18, "v1" : 19, "color" : "F8F8F8", "bCoef" : 1.25, "cMask" : ["ball" ] },
+		{ "v0" : 22, "v1" : 23, "color" : "F8F8F8", "bCoef" : 1.25, "cMask" : ["ball" ] },
+		{ "v0" : 24, "v1" : 25, "color" : "F8F8F8", "bCoef" : 1.25, "cMask" : ["ball" ] },
+		{ "v0" : 26, "v1" : 27, "color" : "F8F8F8", "bCoef" : 0, "cMask" : ["ball" ] },
+		{ "v0" : 28, "v1" : 29, "color" : "F8F8F8", "bCoef" : 2, "cMask" : ["ball" ] },
+		{ "v0" : 30, "v1" : 31, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		{ "v0" : 32, "v1" : 33, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["red","blue" ], "cGroup" : ["redKO","blueKO" ] },
+		{ "v0" : 42, "v1" : 43, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 44, "v1" : 45, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 46, "v1" : 47, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 49, "v1" : 50, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 51, "v1" : 52, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 54, "v1" : 53, "curve" : 89.99999999999997, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO" ], "curveF" : 1.0000000000000004 },
+		{ "v0" : 56, "v1" : 55, "curve" : 10, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO" ], "curveF" : 11.430052302761343 },
+		{ "v0" : 58, "v1" : 57, "curve" : 89.99999999999997, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO" ], "curveF" : 1.0000000000000004 },
+		{ "v0" : 59, "v1" : 60, "curve" : 89.99999999999997, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO" ], "curveF" : 1.0000000000000004 },
+		{ "v0" : 61, "v1" : 62, "curve" : 10, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO" ], "curveF" : 11.430052302761343 },
+		{ "v0" : 63, "v1" : 64, "curve" : 89.99999999999997, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO" ], "curveF" : 1.0000000000000004 },
+		{ "v0" : 65, "v1" : 66, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["blue" ], "cGroup" : ["redKO" ] },
+		{ "v0" : 67, "v1" : 68, "color" : "F8F8F8", "bCoef" : 0.1, "cMask" : ["red" ], "cGroup" : ["redKO" ] },
+		{ "v0" : 69, "v1" : 70, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 71, "v1" : 72, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 73, "v1" : 74, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 75, "v1" : 76, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 77, "v1" : 78, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 79, "v1" : 80, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 81, "v1" : 82, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 83, "v1" : 84, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 85, "v1" : 86, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 87, "v1" : 88, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 89, "v1" : 90, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 91, "v1" : 92, "vis" : false, "color" : "F8F8F8", "cMask" : ["ball" ] },
+		{ "v0" : 93, "v1" : 94, "color" : "F8F8F8", "bCoef" : 2, "cMask" : ["ball" ] }
+
+	],
+
+	"planes" : [
+		{ "normal" : [0,1 ], "dist" : -320, "cMask" : ["ball" ] },
+		{ "normal" : [0,-1 ], "dist" : -317.5, "cMask" : ["ball" ] },
+		{ "normal" : [0,1 ], "dist" : -350, "bCoef" : 0.1 },
+		{ "normal" : [0,-1 ], "dist" : -350, "bCoef" : 0.1 },
+		{ "normal" : [1,0 ], "dist" : -800, "bCoef" : 0.1 },
+		{ "normal" : [-1,0 ], "dist" : -800, "bCoef" : 0.1 }
+
+	],
+
+	"goals" : [
+		{ "p0" : [-707,-94 ], "p1" : [-707,86 ], "team" : "red" },
+		{ "p0" : [706,90 ], "p1" : [706,-90 ], "team" : "blue" }
+
+	],
+
+	"discs" : [
+		{ "radius" : 6.25, "invMass" : 1.5, "pos" : [0,0 ], "color" : "FFCC00", "bCoef" : 0.4, "cGroup" : ["ball","kick","score" ] },
+		{ "radius" : 6, "invMass" : 0, "pos" : [-700,89 ], "color" : "FF0000" },
+		{ "radius" : 6, "invMass" : 0, "pos" : [-700,-99 ], "color" : "FF0000" },
+		{ "radius" : 6, "invMass" : 0, "pos" : [700,90 ], "color" : "33FF" },
+		{ "radius" : 6, "invMass" : 0, "pos" : [701,-89 ], "color" : "33FF" }
+
+	],
+
+	"playerPhysics" : {
+		"bCoef" : 0,
+		"acceleration" : 0.11,
+		"kickingAcceleration" : 0.083
+
+	},
+
+	"ballPhysics" : "disc0",
+
+	"spawnDistance" : 350
+}`
 /* VOTE */
 const allmediumstadiums = [mediumStadium, mediumdark, medium2, mediumStadium, mediumdark];
 let randstadiumsfor3x = Math.floor(Math.random() * allmediumstadiums.length);
@@ -2348,6 +2536,8 @@ function checkTeamSizeAndChangeMap() {
         room.setCustomStadium(smallStadium);
     } else if (teamR.length >= 2 && teamB.length >= 2) {
         loadMap(votedS, scoreLimit, timeLimit);
+    } else if (teamR.length === 4 && teamB.length === 4) {
+        room.setCustomStadium(stadium4x);
     }
 };
 
@@ -3559,6 +3749,23 @@ function checkAndStartGame() {
             room.startGame();
             room.pauseGame(false);
         }, 2500);
+    } if (teamR.length === 4 && teamB.length === 4) {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO -- 🤖"), null, yellow, "bold");
+            capchat = false;
+            choose = false;
+        }, 10);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Atenção players!"), null, white, "normal", 2);
+        }, 600);
+        setTimeout(function () {
+            checkTeamSizeAndChangeMap();
+            room.sendAnnouncement(centerText("PLAY!"), null, green, "bold");
+        }, 1500);
+        setTimeout(function () {
+            room.startGame();
+            room.pauseGame(false);
+        }, 2500);
     }
 };
 
@@ -3575,14 +3782,26 @@ function checkAndResumeGame() {
 };
 
 function checkTeamSizeLimit() {
-    if (teamR.length === 4) {
-        room.setPlayerTeam(teamR[3].id, Team.SPECTATORS);
-        room.sendAnnouncement(centerText("Reduzindo time " + nameHome + "."), null, warn, "italic");
-        room.sendAnnouncement(centerText("Máximo suportado: 3 players por equipe"), null, warn, "normal");
-    } if (teamB.length === 4) {
-        room.setPlayerTeam(teamB[3].id, Team.SPECTATORS);
-        room.sendAnnouncement(centerText("Reduzindo time " + nameGuest + "."), null, warn, "italic");
-        room.sendAnnouncement(centerText("Máximo suportado: 3 players por equipe"), null, warn, "normal");
+    if (teamLimit === 3) {
+        if (teamR.length === 4) {
+            room.setPlayerTeam(teamR[3].id, Team.SPECTATORS);
+            room.sendAnnouncement(centerText("Reduzindo time " + nameHome + "."), null, warn, "italic");
+            room.sendAnnouncement(centerText("Máximo suportado: 3 players por equipe"), null, warn, "normal");
+        } if (teamB.length === 4) {
+            room.setPlayerTeam(teamB[3].id, Team.SPECTATORS);
+            room.sendAnnouncement(centerText("Reduzindo time " + nameGuest + "."), null, warn, "italic");
+            room.sendAnnouncement(centerText("Máximo suportado: 3 players por equipe"), null, warn, "normal");
+        }
+    } else if (teamLimit === 4) {
+        if (teamR.length === 5) {
+            room.setPlayerTeam(teamR[4].id, Team.SPECTATORS);
+            room.sendAnnouncement(centerText("Reduzindo time " + nameHome + "."), null, warn, "italic");
+            room.sendAnnouncement(centerText("Máximo suportado: 3 players por equipe"), null, warn, "normal");
+        } if (teamB.length === 5) {
+            room.setPlayerTeam(teamB[4].id, Team.SPECTATORS);
+            room.sendAnnouncement(centerText("Reduzindo time " + nameGuest + "."), null, warn, "italic");
+            room.sendAnnouncement(centerText("Máximo suportado: 3 players por equipe"), null, warn, "normal");
+        }
     }
 };
 
@@ -5220,29 +5439,16 @@ room.onPlayerChat = function (player, message) {
          else {
             room.sendAnnouncement(centerText("O Choose Mode não está ativado"), null, warn, "italic");
         }
-    } if (["2x"].includes(message[0].toLowerCase())) {
-        if (player.admin) {
-            if (message[1] == null) {
-                room.setCustomStadium(smallStadium);
-            } else {return false}
-        }
-        return false;
     } if (["3x"].includes(message[0].toLowerCase())) {
         if (player.admin) {
-            if (message[1] == null) {
-                room.setCustomStadium(mediumStadium);
-            } if (message[1] == "-") {
-                room.setCustomStadium(medium2);
-            } if (message[1] == "dark") {
-                room.setCustomStadium(mediumdark);
-            }
+            teamLimit = 3;
+            room.sendAnnouncement(centerText(`Sala agora é ${teamLimit}x!`), null, yellow, "bold");
         }
         return false;
-    } if (["5x"].includes(message[0].toLowerCase())) {
+    } if (["4x"].includes(message[0].toLowerCase())) {
         if (player.admin) {
-            if (message[1] == null) {
-            room.setCustomStadium(bigStadium);
-            }
+            teamLimit = 4;
+            room.sendAnnouncement(centerText(`Sala agora é ${teamLimit}x!`), null, yellow, "bold");
         }
         return false;
     } if (["!comofaz"].includes(message[0].toLowerCase())) {
@@ -6765,9 +6971,7 @@ room.onPlayerChat = function (player, message) {
     } if (["!mute", "mute"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             if (message[1][0] == `@`) {
-                var stringComArroba = message[1];
-                var playerName = stringComArroba.substring(1);
-                var jogadorzin = getPlayerObjectByName(playerName);
+                var jogadorzin = getPlayerObjectByName(message[1].substring(1));
                 var nomin = jogadorzin.name;
                 var iDzin = jogadorzin.id;
                 if (playerName !== nomin) {
