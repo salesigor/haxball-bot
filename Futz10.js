@@ -3732,24 +3732,7 @@ function checkAndStartGame() {
                 room.pauseGame(false);
             }, 2500);
         }
-    } else if (teamR.length === 4 && teamB.length === 4) {
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO -- 🤖"), null, yellow, "bold");
-            capchat = false;
-            choose = false;
-        }, 10);
-        setTimeout(function () {
-            room.sendAnnouncement(centerText("Atenção players!"), null, white, "normal", 2);
-        }, 600);
-        setTimeout(function () {
-            checkTeamSizeAndChangeMap();
-            room.sendAnnouncement(centerText("PLAY!"), null, green, "bold");
-        }, 1500);
-        setTimeout(function () {
-            room.startGame();
-            room.pauseGame(false);
-        }, 2500);
-    }else if (teamR.length === 3 && teamB.length === 3) {
+    }  else if (teamR.length === 3 && teamB.length === 3) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO -- 🤖"), null, yellow, "bold");
             capchat = false;
