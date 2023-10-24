@@ -3732,7 +3732,7 @@ function checkAndStartGame() {
                 room.pauseGame(false);
             }, 2500);
         }
-    } if (teamR.length === 3 && teamB.length === 3) {
+    } else if (teamR.length === 4 && teamB.length === 4) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO -- 🤖"), null, yellow, "bold");
             capchat = false;
@@ -3749,7 +3749,7 @@ function checkAndStartGame() {
             room.startGame();
             room.pauseGame(false);
         }, 2500);
-    } if (teamR.length === 4 && teamB.length === 4) {
+    }else if (teamR.length === 3 && teamB.length === 3) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO -- 🤖"), null, yellow, "bold");
             capchat = false;
@@ -3766,7 +3766,7 @@ function checkAndStartGame() {
             room.startGame();
             room.pauseGame(false);
         }, 2500);
-    }
+    } 
 };
 
 function checkAndPauseGame() {
