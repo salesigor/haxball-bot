@@ -2534,7 +2534,9 @@ function checkTeamSizeAndChangeMap() {
     stadiumVote();
     if (teamR.length === 1 && teamB.length === 1) {
         room.setCustomStadium(smallStadium);
-    } else if (teamR.length >= 2 && teamB.length >= 2) {
+    } else if (teamR.length === 2 && teamB.length === 2) {
+        loadMap(votedS, scoreLimit, timeLimit);
+    } else if (teamR.length === 3 && teamB.length === 3) {
         loadMap(votedS, scoreLimit, timeLimit);
     } else if (teamR.length === 4 && teamB.length === 4) {
         room.setCustomStadium(stadium4x);
@@ -3403,14 +3405,6 @@ function calculateWinPercentage(player) {
     const winPercentageString = parseInt(winPercentage.toFixed(2)).toString();
     return winPercentageString;
 };
-// KEYCONTROLLS
-function handleKeyPress(event) {
-  // Verifica se a tecla pressionada é a tecla 'A'
-  if (event.key === 'a' || event.key === 'A') {
-    // Coloque aqui o código que deseja executar quando a tecla 'A' for pressionada
-    console.log('Tecla A foi pressionada!');
-  }
-};
 
 /* WEBHOOKS */ 
 
@@ -3732,7 +3726,24 @@ function checkAndStartGame() {
                 room.pauseGame(false);
             }, 2500);
         }
-    }  else if (teamR.length === 3 && teamB.length === 3) {
+    } if (teamR.length === 3 && teamB.length === 3) {
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO -- 🤖"), null, yellow, "bold");
+            capchat = false;
+            choose = false;
+        }, 10);
+        setTimeout(function () {
+            room.sendAnnouncement(centerText("Atenção players!"), null, white, "normal", 2);
+        }, 600);
+        setTimeout(function () {
+            checkTeamSizeAndChangeMap();
+            room.sendAnnouncement(centerText("PLAY!"), null, green, "bold");
+        }, 1500);
+        setTimeout(function () {
+            room.startGame();
+            room.pauseGame(false);
+        }, 2500);
+    } if (teamR.length === 4 && teamB.length === 4) {
         setTimeout(function () {
             room.sendAnnouncement(centerText("🤖 -- INÍCIO AUTOMÁTICO -- 🤖"), null, yellow, "bold");
             capchat = false;
