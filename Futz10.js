@@ -1,7 +1,7 @@
 /* ROOM */
 
-const botVersion = "𝙵𝚄𝚃𝚉 𝚟10";
-const roomName = `𝟯✘𝟯 | ${botVersion} | 🏆 ᶜᵒˡᵃ ⁿᵃ ʰᵘᵐⁱˡᵈᵃᵈᵉ 🎯`;
+const botVersion = "𝙵𝚄𝚃𝚉 𝚟11";
+const roomName = `3/4✘ | ${botVersion} | 🏆C̶o̶l̶a̶ ̶n̶a̶ ̶h̶u̶m̶i̶l̶d̶a̶d̶e̶  `;
 /* NOMES SUGERIDOS:
 1: 🏆 3x3 Futsal ⚽ | Cola na humildade
 2: 🏆 SABOT | ⚽ 3x3 Futsal ⚽ | Cola na humildade
@@ -2785,10 +2785,9 @@ var supervisorsID = [];
 const soberbo = ['3139312E3133352E3231382E313934']; // soberbo
 const badass = ['3137372E39352E3131342E323330']; // malco
 const supervisors = ['3138392E342E38382E313230']; // 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
-const blacklistnames = ["Arthur MM","ᱦiᱮ∀Ʀd","Schneider","Alcione III","MACACO","miguelgatao", "?yuno? |", 'ALH | Neymar Jr'];
+const blacklistnames = ['^_-'];
 const blacklistconn = [
-    '3137372E35372E3135302E313736','3136372E3234392E39332E313135', '3137372E37362E3232342E3730', '3137392E3231382E32312E323337',
-    '3137372E3134302E3130372E323239', '3138392E36382E3136362E313136', '3137372E32322E35392E323130'
+    '3230312E332E39382E313536'
 ]; // Arthur MM, ᱦiᱮ∀Ʀd, Schneider, Alcione III, MACACO, ?yuno? |
 const cartaoamarelo = ['3138392E33302E38342E323335']; // Chiquinho
 var lodiazCONN = "3138392E38352E32392E3637"; // conn do 𝘿𝙄𝘼𝙕
@@ -3667,27 +3666,15 @@ function blueToRedBtn() {
 
 /* GAME FUNCTIONS */
 
-function getPlayer(playerId) {
-// Itera sobre os jogadores na playerList para encontrar o jogador com o ID correspondente
-    for (const player of playerList) {
-        if (player.id === playerId) {
-            return player;
-        }
-    }
-    // Retorna null se o jogador não for encontrado
-    return null;
-};
-
 function getPlayerObjectByName(playerName) {
     for (let i = 0; i < players.length; i++) {
-        if (players[i].name === playerName) {
-            var player = players[i];
-            return player;
-        } else {
-            return null;
+        const jogado = room.getPlayer(i);
+        if (jogado.name === playerName) {
+            return jogado;
         }
     }
-};
+    return null;
+}
 
 function checkAndStartGame() {
     if (teamS.length <= 2) {
@@ -3843,7 +3830,7 @@ function verificarQuebraRecorde(streak) {
 
 // Função para obter nome do jogador pelo ID
 function getPlayerName(playerId) {
-    const player = getPlayer(playerId);
+    const player = room.getPlayer(playerId);
     if (player) {
     return player.nome;
     }
@@ -6965,7 +6952,8 @@ room.onPlayerChat = function (player, message) {
     } if (["!mute", "mute"].includes(message[0].toLowerCase())) {
         if (player.admin) {
             if (message[1][0] == `@`) {
-                var jogadorzin = getPlayerObjectByName(message[1].substring(1));
+                var nomedoplayer = message[1].substring(1);
+                var jogadorzin = getPlayerObjectByName(nomedoplayer);
                 var nomin = jogadorzin.name;
                 var iDzin = jogadorzin.id;
                 if (playerName !== nomin) {
