@@ -1,7 +1,7 @@
 /* ROOM */
 
 const botVersion = "𝙵𝚄𝚃𝚉 𝚟11";
-const roomName = `3/4✘ | ${botVersion} | 🏆C̶o̶l̶a̶ ̶n̶a̶ ̶h̶u̶m̶i̶l̶d̶a̶d̶e̶  `;
+const roomName = `3✘ | ${botVersion} | 🏆C̶o̶l̶a̶ ̶n̶a̶ ̶h̶u̶m̶i̶l̶d̶a̶d̶e̶  `;
 /* NOMES SUGERIDOS:
 1: 🏆 3x3 Futsal ⚽ | Cola na humildade
 2: 🏆 SABOT | ⚽ 3x3 Futsal ⚽ | Cola na humildade
@@ -2782,8 +2782,8 @@ let bluep3 = "";
 let soberboID = "";
 let badassID = "";
 var supervisorsID = [];
-const soberbo = ['3139312E3133352E3231382E313934']; // soberbo
-const badass = ['3138392E37392E3139322E313636']; // malco
+const soberbo = ['3137392E33342E38362E3530']; // soberbo
+const badass = ['3137392E39332E34332E3134']; // malco
 const supervisors = ['3138392E342E38382E313230']; // 𝕃 . 𝕄𝕖𝕤𝕤𝕚™
 const blacklistnames = ['^_-'];
 const blacklistconn = [
